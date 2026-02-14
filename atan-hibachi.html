@@ -4,175 +4,371 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A-Tan's Hibachi Steakhouse | Chinese & Japanese Cuisine | Memphis, TN</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#c1121f;--dark:#1a0a0a;--accent:#e5a100;--cream:#fdf0d5;--warm:#a4161a;--white:#fff}
-body{font-family:'Lato',sans-serif;color:#333;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Playfair Display',serif}
-.preloader{position:fixed;inset:0;background:var(--dark);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s}.preloader.hidden{opacity:0;pointer-events:none}
-.preloader .dot{width:12px;height:12px;border-radius:50%;background:var(--primary);margin:0 6px;animation:bounce .6s infinite alternate}.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
-@keyframes bounce{to{transform:translateY(-15px);opacity:.5}}
-nav{position:fixed;top:0;width:100%;z-index:100;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;transition:.4s}
-nav.scrolled{background:rgba(26,10,10,.95);backdrop-filter:blur(10px);padding:12px 5%}
-.logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--white);text-decoration:none;font-weight:700}.logo span{color:var(--accent)}
-.nav-links{display:flex;gap:25px;list-style:none}.nav-links a{color:var(--white);text-decoration:none;font-size:.9rem;font-weight:500;transition:.3s}.nav-links a:hover{color:var(--accent)}
-.hero{height:100vh;background:linear-gradient(135deg,rgba(26,10,10,.85),rgba(193,18,31,.3)),url('https://placehold.co/1920x1080/1a0a0a/ffffff?text=Hibachi+Grill') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--white)}
-.hero-content{max-width:750px;padding:0 20px}
-.hero-tag{font-size:.9rem;text-transform:uppercase;letter-spacing:4px;color:var(--accent);margin-bottom:15px}
-.hero h1{font-size:clamp(2.5rem,6vw,4rem);line-height:1.1;margin-bottom:20px}.hero h1 span{color:var(--accent)}
-.hero p{font-size:1.1rem;opacity:.9;margin-bottom:35px;font-weight:300;line-height:1.6}
-.btn{display:inline-block;padding:14px 34px;border-radius:50px;font-weight:600;text-decoration:none;transition:.3s;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}
-.btn-primary{background:var(--primary);color:var(--white);box-shadow:0 8px 25px rgba(193,18,31,.4)}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(193,18,31,.6)}
-.btn-accent{background:var(--accent);color:var(--dark);margin-left:12px}.btn-accent:hover{transform:translateY(-3px)}
-.wave-divider svg{display:block;width:100%;height:70px}
-section{padding:80px 5%}
-.section-title{text-align:center;margin-bottom:50px}
-.section-title h2{font-size:2.4rem;color:var(--dark)}.section-title .line{width:50px;height:3px;background:var(--primary);margin:12px auto}
-.section-title p{color:#777;max-width:550px;margin:0 auto}
+:root{
+--red:#dc2626;--red-dark:#b91c1c;--gold:#d4a017;--gold-light:#fbbf24;
+--black:#0a0a0a;--dark:#141414;--darker:#0d0d0d;--cream:#fef7ed;
+--white:#ffffff;--gray:#9ca3af;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;color:#e5e5e5;overflow-x:hidden;background:var(--black);line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.2}
 
-/* Story */
-.story{background:var(--cream)}
-.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;max-width:1100px;margin:0 auto;align-items:center}
-.story-img{border-radius:14px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.15)}.story-img img{width:100%;display:block}
-.story-text h2{font-size:2rem;margin-bottom:15px;color:var(--dark)}.story-text h2 span{color:var(--primary)}
-.story-text p{color:#555;line-height:1.8;margin-bottom:15px}
-.year-badge{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:var(--white);padding:10px 20px;border-radius:50px;font-weight:600;margin-top:10px}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:4px}
 
-/* Menu Highlights */
-.menu{background:var(--dark);color:var(--white)}
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;max-width:1200px;margin:0 auto}
-.menu-card{background:rgba(255,255,255,.05);border-radius:14px;overflow:hidden;transition:.4s;border:1px solid rgba(255,255,255,.08)}
-.menu-card:hover{transform:translateY(-6px);border-color:var(--accent)}
-.menu-card img{width:100%;height:200px;object-fit:cover}
-.menu-info{padding:25px}
-.menu-info h3{font-size:1.2rem;margin-bottom:8px}.menu-info p{opacity:.7;font-size:.9rem;line-height:1.5}
-.menu-info .price{color:var(--accent);font-size:1.1rem;font-weight:700;margin-top:10px}
+/* PRELOADER */
+.preloader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader-inner{text-align:center}
+.preloader-logo{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--white);letter-spacing:4px}
+.preloader-logo span{color:var(--gold)}
+.preloader-dots{display:flex;gap:8px;justify-content:center;margin-top:20px}
+.preloader-dots span{width:8px;height:8px;background:var(--red);border-radius:50%;animation:dotBounce .6s ease infinite alternate}
+.preloader-dots span:nth-child(2){animation-delay:.2s}
+.preloader-dots span:nth-child(3){animation-delay:.4s}
+@keyframes dotBounce{to{transform:translateY(-12px);opacity:.4}}
 
-/* Experience */
-.experience{background:var(--cream)}
-.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;max-width:1100px;margin:0 auto}
-.exp-card{text-align:center;padding:30px}
-.exp-card i{font-size:2.5rem;color:var(--primary);margin-bottom:15px}
-.exp-card h3{font-size:1.1rem;margin-bottom:10px;color:var(--dark)}.exp-card p{color:#666;font-size:.9rem;line-height:1.6}
+.reveal{opacity:0;transform:translateY(50px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.12s}.reveal-delay-2{transition-delay:.24s}.reveal-delay-3{transition-delay:.36s}.reveal-delay-4{transition-delay:.48s}
 
-/* Reviews */
-.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1100px;margin:0 auto}
-.review{background:var(--cream);padding:30px;border-radius:14px;position:relative}
-.review::before{content:'"';font-family:'Playfair Display',serif;font-size:4rem;color:var(--primary);opacity:.2;position:absolute;top:5px;left:15px}
-.review .stars{color:var(--accent);margin-bottom:8px}.review p{font-style:italic;color:#555;line-height:1.7;margin-bottom:10px;position:relative;z-index:1}.review strong{color:var(--dark)}
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:0 5%;display:flex;justify-content:space-between;align-items:center;height:80px;transition:all .4s}
+nav.scrolled{background:rgba(10,10,10,.97);backdrop-filter:blur(20px);box-shadow:0 4px 30px rgba(0,0,0,.5);height:70px}
+.nav-logo{font-family:'Cormorant Garamond',serif;color:var(--white);font-size:1.6rem;text-decoration:none;font-weight:700;letter-spacing:2px}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--red);color:var(--white)!important;padding:10px 24px;border-radius:0;font-size:.75rem;letter-spacing:2px;transition:all .3s}
+.nav-cta:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(220,38,38,.4)}
+.mobile-toggle{display:none;background:none;border:none;color:var(--gold);font-size:1.5rem;cursor:pointer}
 
-.cta{background:linear-gradient(135deg,var(--primary),var(--warm));text-align:center;color:var(--white);padding:80px 5%}
-.cta h2{font-size:2.5rem;margin-bottom:15px}.cta p{opacity:.9;font-size:1.05rem;margin-bottom:30px}
-.cta .btn{background:var(--white);color:var(--primary)}.cta .btn:hover{transform:translateY(-3px)}
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://placehold.co/1920x1080/1a0a0a/dc2626?text=Hibachi+Flames') center/cover;opacity:.2}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.8) 0%,rgba(220,38,38,.15) 50%,rgba(10,10,10,.95) 100%)}
+.hero-particles{position:absolute;inset:0;overflow:hidden}
+.hero-particle{position:absolute;width:3px;height:3px;background:var(--gold);border-radius:50%;opacity:.4;animation:rise 8s linear infinite}
+@keyframes rise{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:.6}90%{opacity:.6}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+.hero-content{position:relative;z-index:2;max-width:800px;padding:0 5%}
+.hero-est{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:8px 24px;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(3rem,7vw,5.5rem);color:var(--white);margin-bottom:20px;line-height:1.05}
+.hero h1 .gold{color:var(--gold)}
+.hero h1 .red{background:linear-gradient(135deg,var(--red),#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-desc{color:rgba(255,255,255,.7);font-size:1.1rem;max-width:600px;margin:0 auto 36px;line-height:1.8;font-weight:300}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-weight:600;text-decoration:none;transition:all .3s;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;border:none;cursor:pointer}
+.btn-red{background:var(--red);color:var(--white);box-shadow:0 4px 20px rgba(220,38,38,.4)}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-3px);box-shadow:0 12px 30px rgba(220,38,38,.5)}
+.btn-gold{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.btn-gold:hover{background:var(--gold);color:var(--black);transform:translateY(-3px)}
+.hero-rating{display:flex;align-items:center;justify-content:center;gap:16px;color:rgba(255,255,255,.6);font-size:.9rem}
+.hero-rating .stars{color:var(--gold);font-size:1rem;letter-spacing:2px}
 
-footer{background:var(--dark);color:var(--white);padding:60px 5% 25px}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:35px;max-width:1200px;margin:0 auto}
-.footer-col h4{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:15px;color:var(--accent)}
-.footer-col p,.footer-col a{color:rgba(255,255,255,.65);text-decoration:none;font-size:.9rem;line-height:2}.footer-col a:hover{color:var(--accent)}
-.footer-social{display:flex;gap:12px;margin-top:12px}
-.footer-social a{width:38px;height:38px;border-radius:50%;border:2px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:var(--white);transition:.3s}.footer-social a:hover{background:var(--primary);border-color:var(--primary)}
-.footer-bottom{text-align:center;margin-top:35px;padding-top:25px;border-top:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-size:.85rem}
-.reveal{opacity:0;transform:translateY(35px);transition:.8s ease}.reveal.active{opacity:1;transform:translateY(0)}
-@media(max-width:768px){.nav-links{display:none}.story-grid{grid-template-columns:1fr}.hero h1{font-size:2.2rem}.btn-accent{margin:12px 0 0;display:block}}
+/* WAVE */
+.wave-section svg{display:block;width:100%}
+
+/* SECTIONS */
+.section{padding:100px 5%}
+.section-center{text-align:center;max-width:600px;margin:0 auto 60px}
+.section-tag{color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:12px;display:block}
+.section-title{font-size:clamp(2rem,3.5vw,3rem);margin-bottom:16px}
+.section-ornament{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px}
+.section-ornament span{width:40px;height:1px;background:var(--gold)}
+.section-ornament i{color:var(--gold);font-size:.6rem}
+
+/* STORY */
+.story{background:var(--cream);color:var(--black)}
+.story-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-img-wrap{position:relative}
+.story-img{overflow:hidden;box-shadow:20px 20px 0 var(--red)}
+.story-img img{width:100%;display:block;transition:transform .6s}
+.story-img:hover img{transform:scale(1.05)}
+.story-year{position:absolute;top:-20px;right:-20px;background:var(--red);color:var(--white);width:100px;height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif}
+.story-year .yr{font-size:2rem;font-weight:700;line-height:1}
+.story-year .lbl{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;opacity:.8}
+.story-text h2{font-size:clamp(1.8rem,3vw,2.6rem);color:var(--black);margin-bottom:20px}
+.story-text h2 span{color:var(--red)}
+.story-text p{color:#555;line-height:1.9;margin-bottom:16px;font-size:1rem}
+
+/* MENU */
+.menu-section{background:var(--dark)}
+.menu-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:48px;flex-wrap:wrap}
+.menu-tab{padding:10px 24px;background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Montserrat',sans-serif}
+.menu-tab.active,.menu-tab:hover{background:var(--red);border-color:var(--red);color:var(--white)}
+.menu-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.menu-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);overflow:hidden;transition:all .4s;position:relative}
+.menu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.menu-card:hover{transform:translateY(-8px);border-color:var(--gold)}
+.menu-card:hover::before{transform:scaleX(1)}
+.menu-card-img{overflow:hidden;height:220px}
+.menu-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.menu-card:hover .menu-card-img img{transform:scale(1.08)}
+.menu-card-body{padding:24px}
+.menu-card h3{font-size:1.3rem;color:var(--white);margin-bottom:8px}
+.menu-card p{color:rgba(255,255,255,.5);font-size:.88rem;line-height:1.6;margin-bottom:12px}
+.menu-price{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700}
+
+/* EXPERIENCE */
+.exp-section{background:var(--cream);color:var(--black);position:relative;clip-path:polygon(0 4%,100% 0,100% 96%,0 100%);padding:140px 5% 120px}
+.exp-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.exp-card{text-align:center;padding:32px 20px;transition:all .3s}
+.exp-card:hover{transform:translateY(-6px)}
+.exp-icon{width:70px;height:70px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:var(--white);font-size:1.5rem;transition:all .3s}
+.exp-card:hover .exp-icon{background:var(--black);transform:scale(1.05)}
+.exp-card h3{font-size:1.15rem;color:var(--black);margin-bottom:8px}
+.exp-card p{color:#666;font-size:.9rem;line-height:1.7}
+
+/* STATS */
+.stats-bar{background:linear-gradient(135deg,var(--red),var(--red-dark));padding:80px 5%;position:relative;overflow:hidden}
+.stats-bar::before{content:'';position:absolute;inset:0;background:repeating-radial-gradient(circle,transparent 0,transparent 2px,rgba(0,0,0,.1) 2px,rgba(0,0,0,.1) 3px)}
+.stats-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center;color:var(--white)}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4vw,3.5rem);display:block;font-weight:700}
+.stat-label{font-size:.8rem;opacity:.75;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+
+/* REVIEWS */
+.reviews-section{background:var(--dark)}
+.reviews-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.review-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:36px;position:relative;transition:all .4s}
+.review-card:hover{transform:translateY(-6px);border-color:rgba(212,160,23,.3)}
+.review-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:6rem;color:var(--red);opacity:.15;position:absolute;top:5px;left:20px;line-height:1}
+.review-stars{color:var(--gold);margin-bottom:16px;font-size:.9rem;letter-spacing:2px}
+.review-card p{color:rgba(255,255,255,.6);font-style:italic;line-height:1.8;margin-bottom:20px;position:relative;z-index:1;font-size:.95rem}
+.review-author{color:var(--white);font-weight:600;font-size:.9rem}
+
+/* CTA */
+.cta-section{position:relative;padding:100px 5%;overflow:hidden;text-align:center;background:linear-gradient(135deg,rgba(10,10,10,.95),rgba(220,38,38,.2)),url('https://placehold.co/1920x800/0a0a0a/dc2626?text=Reserve') center/cover}
+.cta-section h2{font-size:clamp(2rem,4vw,3.5rem);color:var(--white);margin-bottom:12px}
+.cta-section .sub{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;margin-bottom:32px;display:block}
+.cta-info{margin-top:24px;color:rgba(255,255,255,.6);font-size:.95rem}
+.cta-info i{color:var(--gold);margin-right:8px}
+
+/* FOOTER */
+footer{background:var(--darker);color:rgba(255,255,255,.5);padding:80px 5% 40px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:48px}
+.footer-col h4{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:24px;letter-spacing:1px}
+.footer-col p{line-height:2;font-size:.9rem}
+.footer-col a{color:rgba(255,255,255,.5);text-decoration:none;display:block;padding:3px 0;font-size:.9rem;transition:all .3s}
+.footer-col a:hover{color:var(--gold);transform:translateX(4px)}
+.footer-social{display:flex;gap:12px;margin-top:20px}
+.footer-social a{width:40px;height:40px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);transition:all .3s;transform:none!important}
+.footer-social a:hover{background:var(--red);border-color:var(--red);color:var(--white)}
+.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);text-align:center;font-size:.85rem}
+
+/* FLOATING */
+.floating-cta{position:fixed;bottom:24px;right:24px;z-index:900}
+.floating-btn{display:flex;align-items:center;gap:10px;background:var(--red);color:var(--white);padding:14px 24px;text-decoration:none;font-weight:600;font-size:.85rem;box-shadow:0 8px 25px rgba(220,38,38,.5);transition:all .3s;letter-spacing:1px;text-transform:uppercase}
+.floating-btn:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(220,38,38,.6)}
+
+@media(max-width:1024px){
+.exp-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+.nav-links{display:none}.mobile-toggle{display:block}
+.story-grid{grid-template-columns:1fr;gap:40px}
+.menu-grid,.reviews-grid{grid-template-columns:1fr}
+.exp-grid,.stats-grid{grid-template-columns:repeat(2,1fr)}
+.footer-grid{grid-template-columns:1fr 1fr}
+.exp-section{clip-path:none;padding:80px 5%}
+}
 </style>
 </head>
 <body>
-<div class="preloader"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+<div class="preloader">
+<div class="preloader-inner">
+<div class="preloader-logo">A-Tan's <span>Hibachi</span></div>
+<div class="preloader-dots"><span></span><span></span><span></span></div>
+</div>
+</div>
 
 <nav>
-  <a href="#" class="logo">A-Tan's <span>Hibachi</span></a>
-  <ul class="nav-links">
-    <li><a href="#story">Our Story</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#contact">Visit Us</a></li>
-  </ul>
+<a href="#" class="nav-logo">A-Tan's <span>Hibachi</span></a>
+<ul class="nav-links">
+<li><a href="#story">Our Story</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="tel:9014524477" class="nav-cta"><i class="fas fa-phone"></i> (901) 452-4477</a></li>
+</ul>
+<button class="mobile-toggle"><i class="fas fa-bars"></i></button>
 </nav>
 
+<!-- Hero -->
 <section class="hero">
-  <div class="hero-content">
-    <p class="hero-tag">Chinese & Japanese Cuisine Since 1989</p>
-    <h1>Memphis' Beloved <span>Hibachi Steakhouse</span></h1>
-    <p>Experience the sizzle of live hibachi grilling, savory Chinese classics, and our legendary Flaming Volcano cocktails — all in the heart of Midtown Memphis.</p>
-    <a href="tel:9014524477" class="btn btn-primary"><i class="fas fa-phone"></i> (901) 452-4477</a>
-    <a href="#menu" class="btn btn-accent">View Menu</a>
-  </div>
+<div class="hero-bg"></div>
+<div class="hero-overlay"></div>
+<div class="hero-particles">
+<div class="hero-particle" style="left:10%;animation-duration:7s;animation-delay:0s"></div>
+<div class="hero-particle" style="left:25%;animation-duration:9s;animation-delay:1s"></div>
+<div class="hero-particle" style="left:45%;animation-duration:6s;animation-delay:2s"></div>
+<div class="hero-particle" style="left:65%;animation-duration:8s;animation-delay:.5s"></div>
+<div class="hero-particle" style="left:80%;animation-duration:10s;animation-delay:3s"></div>
+<div class="hero-particle" style="left:90%;animation-duration:7s;animation-delay:1.5s"></div>
+</div>
+<div class="hero-content">
+<div class="hero-est reveal">Chinese & Japanese Cuisine · Since 1989</div>
+<h1 class="reveal reveal-delay-1">Memphis' Beloved <span class="gold">Hibachi</span> <span class="red">Steakhouse</span></h1>
+<p class="hero-desc reveal reveal-delay-2">Experience the sizzle of live hibachi grilling, savory Chinese classics, and our legendary Flaming Volcano cocktails — all in the heart of Midtown Memphis.</p>
+<div class="hero-btns reveal reveal-delay-3">
+<a href="tel:9014524477" class="btn btn-red"><i class="fas fa-phone"></i> Call to Reserve</a>
+<a href="#menu" class="btn btn-gold"><i class="fas fa-utensils"></i> View Menu</a>
+</div>
+<div class="hero-rating reveal reveal-delay-4">
+<span class="stars">★★★★★</span>
+<span>4.8 Stars · 500+ Google Reviews · 35 Years Strong</span>
+</div>
+</div>
 </section>
 
-<div class="wave-divider"><svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,35 C400,70 800,0 1200,35 L1200,70 L0,70Z" fill="#fdf0d5"/></svg></div>
+<div class="wave-section"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="#fef7ed" d="M0,60 C360,100 1080,20 1440,70 L1440,100 L0,100Z"/></svg></div>
 
-<section class="story" id="story">
-  <div class="story-grid">
-    <div class="story-img reveal"><img src="https://placehold.co/600x480/c1121f/fff?text=A-Tan's+Since+1989" alt="A-Tan's History"></div>
-    <div class="story-text reveal">
-      <h2>A Memphis <span>Tradition</span> Since 1989</h2>
-      <p>For over 35 years, A-Tan's Hibachi Steakhouse has been a cornerstone of Midtown Memphis dining. What started as a small family restaurant has grown into one of the city's most beloved destinations for authentic Chinese and Japanese cuisine.</p>
-      <p>Located just minutes from the University of Memphis, the Pink Palace Museum, and the Memphis Zoo, A-Tan's is where Memphians come to celebrate, gather, and enjoy an unforgettable dining experience.</p>
-      <div class="year-badge"><i class="fas fa-star"></i> Proudly Serving Memphis Since 1989</div>
-    </div>
-  </div>
+<!-- Story -->
+<section class="section story" id="story">
+<div class="story-grid">
+<div class="story-img-wrap reveal">
+<div class="story-img"><img src="https://placehold.co/600x480/dc2626/ffffff?text=A-Tan's+Heritage" alt="A-Tan's History"></div>
+<div class="story-year"><span class="yr">1989</span><span class="lbl">Est.</span></div>
+</div>
+<div class="story-text">
+<span class="section-tag reveal" style="color:var(--red)">Our Story</span>
+<h2 class="reveal reveal-delay-1">A Memphis <span>Tradition</span> for Over 35 Years</h2>
+<p class="reveal reveal-delay-2">For over three decades, A-Tan's Hibachi Steakhouse has been a cornerstone of Midtown Memphis dining. What started as a small family restaurant has grown into one of the city's most beloved destinations for authentic Chinese and Japanese cuisine.</p>
+<p class="reveal reveal-delay-3">Located just minutes from the University of Memphis, the Pink Palace Museum, and the Memphis Zoo, A-Tan's is where Memphians come to celebrate, gather, and enjoy an unforgettable dining experience.</p>
+</div>
+</div>
 </section>
 
-<div class="wave-divider"><svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,35 C400,0 800,70 1200,35 L1200,70 L0,70Z" fill="#1a0a0a"/></svg></div>
+<div class="wave-section"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="#141414" d="M0,40 C480,100 960,0 1440,60 L1440,100 L0,100Z"/></svg></div>
 
-<section class="menu" id="menu">
-  <div class="section-title reveal"><h2 style="color:#fff">Menu Highlights</h2><div class="line"></div><p style="color:rgba(255,255,255,.6)">A taste of what awaits you</p></div>
-  <div class="menu-grid">
-    <div class="menu-card reveal"><img src="https://placehold.co/400x250/333/fff?text=Hibachi+Steak" alt="Hibachi Steak"><div class="menu-info"><h3>Hibachi Filet Mignon</h3><p>Premium cuts grilled tableside with seasonal vegetables and fried rice.</p><div class="price">Market Price</div></div></div>
-    <div class="menu-card reveal"><img src="https://placehold.co/400x250/333/fff?text=Flaming+Volcano" alt="Flaming Volcano"><div class="menu-info"><h3>Flaming Volcano</h3><p>Our legendary signature cocktail — a must-try showstopper for your table.</p><div class="price">$12.99</div></div></div>
-    <div class="menu-card reveal"><img src="https://placehold.co/400x250/333/fff?text=General+Tso" alt="General Tso"><div class="menu-info"><h3>General Tso's Chicken</h3><p>Crispy chicken in our sweet-spicy sauce. A fan favorite for 35+ years.</p><div class="price">$14.99</div></div></div>
-    <div class="menu-card reveal"><img src="https://placehold.co/400x250/333/fff?text=Sushi+Platter" alt="Sushi"><div class="menu-info"><h3>Sushi & Sashimi Combo</h3><p>Fresh-cut chef's selection of premium sushi and sashimi rolls.</p><div class="price">$18.99</div></div></div>
-  </div>
+<!-- Menu -->
+<section class="section menu-section" id="menu">
+<div class="section-center">
+<span class="section-tag reveal">The Menu</span>
+<h2 class="section-title reveal reveal-delay-1" style="color:var(--white)">Culinary Excellence</h2>
+<div class="section-ornament reveal reveal-delay-2"><span></span><i class="fas fa-fire"></i><span></span></div>
+</div>
+<div class="menu-tabs reveal">
+<button class="menu-tab active">All</button>
+<button class="menu-tab">Hibachi</button>
+<button class="menu-tab">Chinese</button>
+<button class="menu-tab">Sushi</button>
+<button class="menu-tab">Cocktails</button>
+</div>
+<div class="menu-grid">
+<div class="menu-card reveal"><div class="menu-card-img"><img src="https://placehold.co/400x280/2a0a0a/dc2626?text=Hibachi+Filet" alt="Hibachi Steak"></div><div class="menu-card-body"><h3>Hibachi Filet Mignon</h3><p>Premium cuts grilled tableside with seasonal vegetables and fried rice.</p><span class="menu-price">Market Price</span></div></div>
+<div class="menu-card reveal reveal-delay-1"><div class="menu-card-img"><img src="https://placehold.co/400x280/2a0a0a/fbbf24?text=Flaming+Volcano" alt="Flaming Volcano"></div><div class="menu-card-body"><h3>Flaming Volcano</h3><p>Our legendary signature cocktail — a must-try showstopper for your table.</p><span class="menu-price">$12.99</span></div></div>
+<div class="menu-card reveal reveal-delay-2"><div class="menu-card-img"><img src="https://placehold.co/400x280/2a0a0a/dc2626?text=General+Tso's" alt="General Tso"></div><div class="menu-card-body"><h3>General Tso's Chicken</h3><p>Crispy chicken in our sweet-spicy sauce. A fan favorite for 35+ years.</p><span class="menu-price">$14.99</span></div></div>
+<div class="menu-card reveal reveal-delay-3"><div class="menu-card-img"><img src="https://placehold.co/400x280/2a0a0a/fbbf24?text=Sushi+Platter" alt="Sushi"></div><div class="menu-card-body"><h3>Sushi & Sashimi Combo</h3><p>Fresh-cut chef's selection of premium sushi and sashimi rolls.</p><span class="menu-price">$18.99</span></div></div>
+</div>
 </section>
 
-<div class="wave-divider"><svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,35 C400,70 800,0 1200,35 L1200,70 L0,70Z" fill="#fdf0d5"/></svg></div>
-
-<section class="experience" id="experience">
-  <div class="section-title reveal"><h2>The A-Tan's Experience</h2><div class="line"></div></div>
-  <div class="exp-grid">
-    <div class="exp-card reveal"><i class="fas fa-fire"></i><h3>Live Hibachi Grilling</h3><p>Watch our skilled chefs prepare your meal on sizzling teppanyaki grills right before your eyes.</p></div>
-    <div class="exp-card reveal"><i class="fas fa-utensils"></i><h3>Full Chinese Menu</h3><p>From dim sum to Szechuan, our extensive Chinese menu has something for every palate.</p></div>
-    <div class="exp-card reveal"><i class="fas fa-glass-cheers"></i><h3>Full Bar & Cocktails</h3><p>Signature cocktails, sake, imported beer, and our famous Flaming Volcano.</p></div>
-    <div class="exp-card reveal"><i class="fas fa-users"></i><h3>Private Events</h3><p>Host your celebration at A-Tan's. Large party accommodations available.</p></div>
-  </div>
+<!-- Experience -->
+<section class="exp-section" id="experience">
+<div class="section-center">
+<span class="section-tag reveal" style="color:var(--red)">The Experience</span>
+<h2 class="section-title reveal reveal-delay-1" style="color:var(--black)">More Than a Meal</h2>
+<div class="section-ornament reveal reveal-delay-2"><span style="background:var(--red)"></span><i class="fas fa-fire" style="color:var(--red)"></i><span style="background:var(--red)"></span></div>
+</div>
+<div class="exp-grid">
+<div class="exp-card reveal"><div class="exp-icon"><i class="fas fa-fire"></i></div><h3>Live Hibachi Grilling</h3><p>Watch skilled chefs prepare your meal on sizzling teppanyaki grills right before your eyes.</p></div>
+<div class="exp-card reveal reveal-delay-1"><div class="exp-icon"><i class="fas fa-utensils"></i></div><h3>Full Chinese Menu</h3><p>From dim sum to Szechuan, our extensive menu has something for every palate.</p></div>
+<div class="exp-card reveal reveal-delay-2"><div class="exp-icon"><i class="fas fa-glass-cheers"></i></div><h3>Full Bar & Cocktails</h3><p>Signature cocktails, sake, imported beer, and our famous Flaming Volcano.</p></div>
+<div class="exp-card reveal reveal-delay-3"><div class="exp-icon"><i class="fas fa-users"></i></div><h3>Private Events</h3><p>Host your celebration at A-Tan's. Large party accommodations available.</p></div>
+</div>
 </section>
 
-<div class="wave-divider"><svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,35 C400,0 800,70 1200,35 L1200,70 L0,70Z" fill="#fff"/></svg></div>
-
-<section id="reviews">
-  <div class="section-title reveal"><h2>What Memphis Says</h2><div class="line"></div></div>
-  <div class="review-grid">
-    <div class="review reveal"><div class="stars">★★★★★</div><p>"A-Tan's is a Memphis institution. The hibachi is always a show, and the food is consistently excellent. The Flaming Volcano is a must!"</p><strong>— Michelle D.</strong></div>
-    <div class="review reveal"><div class="stars">★★★★★</div><p>"Been coming here since the 90s. Still the best Chinese food in Midtown. The General Tso's is legendary."</p><strong>— James P.</strong></div>
-    <div class="review reveal"><div class="stars">★★★★★</div><p>"Perfect for birthday dinners. The hibachi chefs are entertaining and the food is top notch. Love this place!"</p><strong>— Crystal W.</strong></div>
-  </div>
+<!-- Stats -->
+<section class="stats-bar">
+<div class="stats-grid">
+<div class="stat-item reveal"><span class="stat-num" data-target="35">0</span><span class="stat-label">Years Serving Memphis</span></div>
+<div class="stat-item reveal reveal-delay-1"><span class="stat-num" data-target="500">0</span><span class="stat-label">5-Star Reviews</span></div>
+<div class="stat-item reveal reveal-delay-2"><span class="stat-num" data-target="100">0</span><span class="stat-label">Menu Items</span></div>
+<div class="stat-item reveal reveal-delay-3"><span class="stat-num" data-target="1000">0</span><span class="stat-label">Guests Weekly</span></div>
+</div>
 </section>
 
-<section class="cta" id="contact">
-  <h2 class="reveal">Reserve Your Table Tonight</h2>
-  <p class="reveal">Walk-ins welcome. Call ahead for parties of 6 or more.</p>
-  <a href="tel:9014524477" class="btn reveal"><i class="fas fa-phone"></i> (901) 452-4477</a>
-  <p class="reveal" style="margin-top:20px;font-size:1rem"><i class="fas fa-map-marker-alt"></i> 3445 Poplar Ave Suite 17, Memphis, TN 38111 &nbsp;|&nbsp; <i class="fas fa-envelope"></i> atanrestaurant@gmail.com</p>
+<!-- Reviews -->
+<section class="section reviews-section" id="reviews">
+<div class="section-center">
+<span class="section-tag reveal">Guest Reviews</span>
+<h2 class="section-title reveal reveal-delay-1" style="color:var(--white)">What Memphis Says</h2>
+<div class="section-ornament reveal reveal-delay-2"><span></span><i class="fas fa-star"></i><span></span></div>
+</div>
+<div class="reviews-grid">
+<div class="review-card reveal"><div class="review-stars">★★★★★</div><p>"A-Tan's is a Memphis institution. The hibachi is always a show, and the food is consistently excellent. The Flaming Volcano is a must!"</p><span class="review-author">— Michelle D.</span></div>
+<div class="review-card reveal reveal-delay-1"><div class="review-stars">★★★★★</div><p>"Been coming here since the 90s. Still the best Chinese food in Midtown. The General Tso's is legendary."</p><span class="review-author">— James P.</span></div>
+<div class="review-card reveal reveal-delay-2"><div class="review-stars">★★★★★</div><p>"Perfect for birthday dinners. The hibachi chefs are entertaining and the food is top notch. Love this place!"</p><span class="review-author">— Crystal W.</span></div>
+</div>
 </section>
 
+<!-- CTA -->
+<section class="cta-section">
+<h2 class="reveal">Reserve Your Table Tonight</h2>
+<span class="sub reveal reveal-delay-1">Walk-ins welcome · Call ahead for parties of 6+</span>
+<div class="reveal reveal-delay-2">
+<a href="tel:9014524477" class="btn btn-red"><i class="fas fa-phone"></i> (901) 452-4477</a>
+</div>
+<div class="cta-info reveal reveal-delay-3">
+<i class="fas fa-map-marker-alt"></i> 3445 Poplar Ave Suite 17, Memphis, TN 38111
+</div>
+</section>
+
+<!-- Footer -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-col"><h4>A-Tan's Hibachi Steakhouse</h4><p>Memphis' favorite Chinese & Japanese restaurant since 1989. Live hibachi, full bar, and unforgettable flavors.</p><div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-google"></i></a></div></div>
-    <div class="footer-col"><h4>Menu</h4><a href="#">Hibachi Entrees</a><br><a href="#">Chinese Classics</a><br><a href="#">Sushi & Sashimi</a><br><a href="#">Appetizers</a><br><a href="#">Cocktails & Bar</a></div>
-    <div class="footer-col"><h4>Visit Us</h4><p><i class="fas fa-map-marker-alt" style="color:var(--accent)"></i> 3445 Poplar Ave Suite 17<br>Memphis, TN 38111</p><p style="margin-top:8px"><i class="fas fa-phone" style="color:var(--accent)"></i> (901) 452-4477</p><p><i class="fas fa-envelope" style="color:var(--accent)"></i> atanrestaurant@gmail.com</p></div>
-    <div class="footer-col"><h4>Hours</h4><p>Mon–Thu: 11am – 9:30pm<br>Fri–Sat: 11am – 10:30pm<br>Sunday: 12pm – 9:00pm</p></div>
-  </div>
-  <div class="footer-bottom"><p>&copy; 2026 A-Tan's Hibachi Steakhouse. All Rights Reserved.</p></div>
+<div class="footer-grid">
+<div class="footer-col">
+<h4>A-Tan's Hibachi Steakhouse</h4>
+<p>Memphis' favorite Chinese & Japanese restaurant since 1989. Live hibachi, full bar, and unforgettable flavors.</p>
+<div class="footer-social">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-google"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Menu</h4>
+<a href="#">Hibachi Entrees</a>
+<a href="#">Chinese Classics</a>
+<a href="#">Sushi & Sashimi</a>
+<a href="#">Appetizers</a>
+<a href="#">Cocktails & Bar</a>
+</div>
+<div class="footer-col">
+<h4>Visit Us</h4>
+<p><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:6px"></i> 3445 Poplar Ave Suite 17<br>&nbsp;&nbsp;&nbsp;&nbsp; Memphis, TN 38111</p>
+<p style="margin-top:8px"><i class="fas fa-phone" style="color:var(--gold);margin-right:6px"></i> (901) 452-4477</p>
+<p style="margin-top:8px"><i class="fas fa-envelope" style="color:var(--gold);margin-right:6px"></i> atanrestaurant@gmail.com</p>
+</div>
+<div class="footer-col">
+<h4>Hours</h4>
+<p>Mon–Thu: 11am – 9:30pm<br>Fri–Sat: 11am – 10:30pm<br>Sunday: 12pm – 9:00pm</p>
+</div>
+</div>
+<div class="footer-bottom">&copy; 2026 A-Tan's Hibachi Steakhouse. All Rights Reserved.</div>
 </footer>
 
+<a href="tel:9014524477" class="floating-btn"><i class="fas fa-phone"></i> Reserve Now</a>
+
 <script>
-window.addEventListener('load',()=>{document.querySelector('.preloader').classList.add('hidden')});
-window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});
-const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('active');obs.unobserve(el.target)}})},{threshold:.15});
+window.addEventListener('load',()=>{setTimeout(()=>{document.querySelector('.preloader').classList.add('hidden')},600)});
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>80)});
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('active');obs.unobserve(el.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Counters
+function animateCounters(){document.querySelectorAll('.stat-num[data-target]').forEach(el=>{const t=+el.dataset.target,d=2000,s=performance.now();function u(n){const p=Math.min((n-s)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*t)+'+';if(p<1)requestAnimationFrame(u)}requestAnimationFrame(u)})}
+const cObs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){animateCounters();cObs.unobserve(el.target)}})},{threshold:.3});
+document.querySelector('.stats-bar')&&cObs.observe(document.querySelector('.stats-bar'));
+
+// Menu tabs (visual only)
+document.querySelectorAll('.menu-tab').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.menu-tab').forEach(b=>b.classList.remove('active'));t.classList.add('active')})});
 </script>
 </body>
 </html>
