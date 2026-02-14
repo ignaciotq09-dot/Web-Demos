@@ -3,281 +3,514 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All Season Remodeling & Exteriors | Minneapolis Roofer</title>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>All Season Remodeling & Exteriors | Minneapolis Roofing & Siding</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#1e3a5f;--accent:#e8491d;--sky:#3498db;--dark:#0f1923;--ice:#eef5fc;--slate:#34495e}
-body{font-family:'Open Sans',sans-serif;color:#333;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Merriweather',serif}
+:root{
+--deep:#1a1207;--wood:#92400e;--wood2:#b45309;--wood3:#d97706;
+--cream:#fdf8f0;--sand:#f5edd6;--navy:#1e293b;--white:#fff;
+--text:#3d2b1f;--text-light:#78716c;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);overflow-x:hidden;background:var(--cream)}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700}
 
-.preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--primary);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s}
-.preloader.hidden{opacity:0;pointer-events:none}
-.preloader i{font-size:3rem;color:var(--accent);animation:spin 1.2s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--deep)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--wood),var(--wood2));border-radius:4px}
 
-nav{position:fixed;top:0;width:100%;background:rgba(30,58,95,.95);backdrop-filter:blur(10px);z-index:100;padding:1rem 0}
-nav .container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem}
-nav .logo{color:white;font-family:'Merriweather',serif;font-size:1.3rem;font-weight:700}
-nav .logo span{color:var(--accent)}
-nav ul{list-style:none;display:flex;gap:2rem}
-nav ul a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:color .3s}
-nav ul a:hover{color:var(--accent)}
-.nav-toggle{display:none;color:white;font-size:1.5rem;cursor:pointer}
+.preloader{position:fixed;inset:0;background:var(--deep);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader-inner{text-align:center}
+.preloader-inner h2{font-family:'Playfair Display',serif;color:var(--cream);font-size:2.4rem;font-weight:300;letter-spacing:6px;opacity:0;animation:fadeUp .8s .2s forwards}
+.preloader-inner h2 span{background:linear-gradient(135deg,var(--wood2),var(--wood3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;border-radius:2px;overflow:hidden}
+.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--wood),var(--wood2));animation:slide 1s ease infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(15px)}}
 
-.hero{height:100vh;background:linear-gradient(135deg,rgba(30,58,95,.88),rgba(15,25,35,.75)),url('https://placehold.co/1920x1080/1e3a5f/e8491d?text=Minneapolis+Roofing') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white}
-.hero-content{max-width:800px;padding:0 2rem}
-.hero .ratings{display:flex;justify-content:center;gap:2rem;margin-bottom:2rem;flex-wrap:wrap}
-.hero .ratings .rating{display:flex;align-items:center;gap:.5rem;font-size:.9rem}
-.hero .ratings .rating i{color:var(--accent)}
-.hero h1{font-size:3.2rem;font-weight:900;margin-bottom:1rem;line-height:1.15}
-.hero p{font-size:1.1rem;opacity:.9;margin-bottom:2rem;font-weight:300;line-height:1.7}
-.btn{display:inline-block;padding:1rem 2.5rem;border-radius:50px;font-weight:700;text-decoration:none;transition:all .3s;font-size:.9rem}
-.btn-fire{background:var(--accent);color:white;box-shadow:0 4px 15px rgba(232,73,29,.4)}
-.btn-fire:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(232,73,29,.5)}
-.btn-outline{border:2px solid white;color:white;margin-left:1rem;border-radius:50px}
-.btn-outline:hover{background:white;color:var(--primary)}
+.reveal{opacity:0;transform:translateY(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.9);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.active{opacity:1;transform:scale(1)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
 
-.wave-divider svg{display:block;width:100%;height:80px}
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:linear-gradient(90deg,var(--wood),var(--wood2));padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--white);transition:transform .3s}
+.phone-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.phone-bar a:hover{text-decoration:underline}
+.phone-bar .separator{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
 
-section{padding:6rem 2rem}
-.section-header{text-align:center;margin-bottom:4rem}
-.section-header h2{font-size:2.4rem;color:var(--dark);margin-bottom:.5rem}
-.section-header .bar{width:60px;height:4px;background:var(--accent);margin:1rem auto;border-radius:2px}
-.section-header p{color:#888;max-width:550px;margin:auto}
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:80px;transition:all .4s}
+nav.scrolled{background:rgba(26,18,7,.95);backdrop-filter:blur(24px);box-shadow:0 8px 32px rgba(0,0,0,.2);height:68px;top:0}
+.nav-logo{font-family:'Playfair Display',serif;color:var(--cream);font-size:1.6rem;font-weight:700;text-decoration:none;letter-spacing:1px}
+.nav-logo span{background:linear-gradient(135deg,var(--wood2),var(--wood3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{color:rgba(253,248,240,.6);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--wood),var(--wood2));transition:width .3s}
+.nav-links a:hover{color:var(--cream)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--wood),var(--wood2));color:var(--white);padding:12px 30px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(146,64,14,.4)}
+.mobile-toggle{display:none;color:var(--cream);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(26,18,7,.98);backdrop-filter:blur(20px);z-index:10002;flex-direction:column;align-items:center;justify-content:center;gap:30px;opacity:0;visibility:hidden;transition:all .4s}
+.mobile-menu.open{opacity:1;visibility:visible;display:flex}
+.mobile-menu a{color:var(--cream);text-decoration:none;font-family:'Playfair Display',serif;font-size:2rem;transition:color .3s}
+.mobile-menu a:hover{color:var(--wood2)}
+.mobile-close{position:absolute;top:30px;right:30px;background:none;border:none;color:var(--cream);font-size:2rem;cursor:pointer}
 
-.about{background:var(--ice)}
-.about-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.about-img{position:relative}
-.about-img img{width:100%;height:420px;object-fit:cover;border-radius:15px;box-shadow:0 20px 50px rgba(0,0,0,.1)}
-.about-img .bbb{position:absolute;bottom:-15px;left:20px;background:var(--accent);color:white;padding:1rem 1.5rem;border-radius:10px;display:flex;align-items:center;gap:.8rem;box-shadow:0 10px 30px rgba(0,0,0,.15)}
-.about-img .bbb i{font-size:2rem}
-.about-img .bbb div span{font-size:.8rem;opacity:.8}
-.about-img .bbb div strong{display:block;font-size:1.2rem}
-.about-text h2{font-size:2.2rem;color:var(--primary);margin-bottom:1rem}
-.about-text p{color:#666;line-height:1.8;margin-bottom:1.5rem}
+.hero{min-height:100vh;padding-top:116px;background:var(--deep);display:flex;align-items:center;justify-content:center;text-align:center;padding-left:5%;padding-right:5%;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://placehold.co/1920x1080/1a1207/92400e?text=') center/cover;opacity:.25}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(146,64,14,.1),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(180,83,9,.06),transparent 50%)}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(transparent,var(--cream));z-index:2}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.12;animation:blobFloat 8s ease-in-out infinite}
+.hero-blob-1{width:400px;height:400px;background:var(--wood);top:-100px;right:-100px}
+.hero-blob-2{width:300px;height:300px;background:var(--wood2);bottom:0;left:-50px;animation-delay:-3s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
 
-.services-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
-.svc-card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,.05);display:flex;transition:all .3s}
-.svc-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.1)}
-.svc-card .svc-icon{width:100px;background:linear-gradient(135deg,var(--primary),var(--sky));display:flex;align-items:center;justify-content:center;color:white;font-size:1.8rem;flex-shrink:0}
-.svc-card .svc-content{padding:1.5rem}
-.svc-card h3{color:var(--primary);font-size:1.15rem;margin-bottom:.5rem}
-.svc-card p{color:#888;font-size:.9rem;line-height:1.6}
+.hero-content{max-width:900px;position:relative;z-index:3}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(146,64,14,.1);border:1px solid rgba(146,64,14,.25);color:var(--wood2);padding:10px 22px;border-radius:50px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:3px;margin-bottom:28px;backdrop-filter:blur(10px)}
+.hero h1{font-size:clamp(3.2rem,8vw,6.5rem);color:var(--cream);line-height:.95;margin-bottom:28px;font-weight:400}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:inline-block;animation:heroReveal 1s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateY(100%)}
+.hero h1 .line:nth-child(2) span{animation-delay:.15s}
+.hero h1 em{font-style:italic;font-weight:400}
+.hero h1 .gradient-text{background:linear-gradient(135deg,var(--wood2),var(--wood3),#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:gradientShift 4s ease infinite;font-weight:800}
+@keyframes heroReveal{to{opacity:1;transform:translateY(0)}}
+@keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.hero p{color:rgba(253,248,240,.5);font-size:1.15rem;max-width:600px;margin:0 auto 40px;line-height:1.9;font-weight:300}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--wood),var(--wood2));color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;display:inline-flex;align-items:center;gap:10px}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(146,64,14,.35)}
+.btn-outline{border:1.5px solid rgba(253,248,240,.2);color:var(--cream);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:500;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;backdrop-filter:blur(10px)}
+.btn-outline:hover{border-color:var(--wood2);color:var(--wood2)}
 
-.why-section{background:linear-gradient(135deg,var(--primary),var(--dark));color:white}
-.why-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.why-card{text-align:center;padding:2rem}
-.why-card .icon{width:70px;height:70px;border:2px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--accent);font-size:1.5rem}
-.why-card h3{margin-bottom:.5rem;font-size:1.1rem}
-.why-card p{opacity:.7;font-size:.9rem;line-height:1.6}
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-indicator span{color:rgba(253,248,240,.3);font-size:.65rem;text-transform:uppercase;letter-spacing:3px}
+.scroll-mouse{width:24px;height:38px;border:2px solid rgba(253,248,240,.2);border-radius:12px;position:relative}
+.scroll-mouse::after{content:'';position:absolute;top:6px;left:50%;width:3px;height:8px;margin-left:-1.5px;background:var(--wood2);border-radius:2px;animation:scrollDown 1.5s ease infinite}
+@keyframes scrollDown{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
 
-.reviews-section{background:var(--ice)}
-.reviews-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
-.review{background:white;padding:2rem;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.05)}
-.review .stars{color:var(--accent);margin-bottom:1rem}
-.review p{color:#666;font-style:italic;line-height:1.7;margin-bottom:1rem}
-.review .author{font-weight:700;color:var(--primary)}
+.section-tag{color:var(--wood);font-size:.7rem;text-transform:uppercase;letter-spacing:5px;font-weight:600;margin-bottom:15px;display:block}
+.section-header{text-align:center;max-width:650px;margin:0 auto 70px}
+.section-header h2{font-size:clamp(2.2rem,4.5vw,3.8rem);color:var(--deep);line-height:1.1;font-weight:400}
+.section-header h2 em{font-style:italic;background:linear-gradient(135deg,var(--wood),var(--wood2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-header p{color:var(--text-light);margin-top:18px;line-height:1.9;font-size:.95rem}
 
-.cta{background:linear-gradient(135deg,rgba(232,73,29,.9),rgba(30,58,95,.9)),url('https://placehold.co/1920x600/e8491d/ffffff?text=Call+Now') center/cover;color:white;text-align:center}
-.cta h2{font-size:2.5rem;margin-bottom:1rem}
-.cta p{opacity:.9;margin-bottom:2rem;font-size:1.1rem}
+.about{padding:140px 6% 120px;background:var(--cream);position:relative}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.about-img-wrapper{position:relative}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:480px;object-fit:cover;transition:transform .8s}
+.about-img:hover img{transform:scale(1.04)}
+.about-img-badge{position:absolute;bottom:-20px;right:-20px;background:linear-gradient(135deg,var(--wood),var(--wood2));color:var(--white);padding:20px 30px;border-radius:16px;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;box-shadow:0 12px 30px rgba(146,64,14,.3)}
+.about-floating-card{position:absolute;top:30px;left:-30px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.5);padding:18px 24px;border-radius:14px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 30px rgba(0,0,0,.08);z-index:2}
+.about-floating-card .stars{color:#f59e0b;font-size:.75rem;display:flex;gap:2px}
+.about-floating-card .rating-text{font-weight:700;color:var(--deep);font-size:.9rem}
+.about-floating-card .rating-sub{font-size:.7rem;color:var(--text-light)}
+.about-text h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--deep);margin-bottom:25px;line-height:1.15;font-weight:400}
+.about-text h2 em{font-style:italic;background:linear-gradient(135deg,var(--wood),var(--wood2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.about-text p{color:var(--text-light);line-height:1.9;margin-bottom:20px;font-size:.95rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:35px}
+.about-feature{display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--deep);font-weight:500;padding:12px 16px;background:var(--white);border-radius:12px;border:1px solid rgba(0,0,0,.04);transition:all .3s}
+.about-feature:hover{transform:translateX(5px);box-shadow:0 4px 15px rgba(0,0,0,.06)}
+.about-feature i{color:var(--wood);font-size:1rem;width:20px;text-align:center}
 
-.contact-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-.contact-info .item{display:flex;gap:1rem;margin-bottom:2rem}
-.contact-info .item .ic{width:50px;height:50px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;flex-shrink:0}
-.contact-info .item h4{color:var(--dark);margin-bottom:.2rem}
-.contact-info .item p{color:#888}
-.contact-form input,.contact-form textarea{width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-family:inherit;font-size:1rem;margin-bottom:1rem;transition:border .3s}
-.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);outline:none}
-.contact-form textarea{height:120px;resize:vertical}
+.services{padding:120px 6%;background:var(--white);position:relative;overflow:hidden}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.service-card{background:rgba(253,248,240,.7);backdrop-filter:blur(20px);border:1px solid rgba(146,64,14,.06);border-radius:20px;padding:40px 32px;transition:all .5s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--wood),var(--wood2));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover{transform:translateY(-12px);box-shadow:0 24px 60px rgba(26,18,7,.1)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card .svc-icon{width:65px;height:65px;background:linear-gradient(135deg,var(--wood),var(--wood2));border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.4rem;margin-bottom:22px}
+.service-card h3{font-size:1.3rem;color:var(--deep);margin-bottom:10px}
+.service-card p{color:var(--text-light);font-size:.9rem;line-height:1.8}
 
-footer{background:var(--dark);color:rgba(255,255,255,.5);padding:3rem 2rem;text-align:center}
-footer .brand{font-family:'Merriweather',serif;font-size:1.3rem;color:white;margin-bottom:.5rem}
-footer .brand span{color:var(--accent)}
+.experience{padding:100px 6%;background:var(--navy);position:relative;overflow:hidden}
+.experience::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(146,64,14,.08),transparent 50%)}
+.experience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1100px;margin:0 auto;text-align:center}
+.exp-item{position:relative;padding:30px 0}
+.exp-item:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:60px;background:linear-gradient(transparent,rgba(255,255,255,.1),transparent)}
+.exp-number{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);color:var(--cream);font-weight:300;line-height:1}
+.exp-number .counter-suffix{background:linear-gradient(135deg,var(--wood2),var(--wood3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.exp-label{color:rgba(255,255,255,.35);font-size:.72rem;text-transform:uppercase;letter-spacing:4px;font-weight:500;margin-top:12px}
 
-.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease-out}
-.fade-up.visible{opacity:1;transform:translateY(0)}
+/* ALT SECTIONS */
+.alt-section{padding:120px 6%;position:relative}
+.alt-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.alt-grid.reverse{direction:rtl}.alt-grid.reverse>*{direction:ltr}
+.alt-img{border-radius:20px;overflow:hidden}
+.alt-img img{width:100%;height:400px;object-fit:cover;transition:transform .8s}
+.alt-img:hover img{transform:scale(1.05)}
+.alt-text h2{font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--deep);margin-bottom:20px;font-weight:400}
+.alt-text h2 em{font-style:italic;background:linear-gradient(135deg,var(--wood),var(--wood2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.alt-text p{color:var(--text-light);line-height:1.9;margin-bottom:16px}
 
-@media(max-width:768px){
-.hero h1{font-size:2.2rem}
-.about-grid,.services-grid,.why-grid,.reviews-grid,.contact-grid{grid-template-columns:1fr}
-.svc-card{flex-direction:column}
-.svc-card .svc-icon{width:100%;height:60px}
-nav ul{display:none}
-.nav-toggle{display:block}
-.btn-outline{margin-left:0;margin-top:1rem}
+.why-section{padding:120px 6%;background:var(--cream)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1100px;margin:0 auto}
+.why-card{background:rgba(255,255,255,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.8);border-radius:20px;padding:40px 30px;text-align:center;transition:all .4s}
+.why-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.06)}
+.why-card .w-icon{width:70px;height:70px;border:2px solid var(--wood);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:var(--wood);font-size:1.5rem}
+.why-card h3{font-size:1.1rem;color:var(--deep);margin-bottom:10px}
+.why-card p{color:var(--text-light);font-size:.9rem;line-height:1.7}
+
+.testimonials{padding:120px 6%;background:var(--white);position:relative}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.testimonial-card{background:rgba(253,248,240,.7);backdrop-filter:blur(20px);border:1px solid rgba(253,248,240,.8);border-radius:20px;padding:40px 35px;transition:all .4s;position:relative;overflow:hidden}
+.testimonial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--wood),var(--wood2));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.06)}
+.testimonial-card:hover::before{transform:scaleX(1)}
+.quote-icon{font-family:'Playfair Display',serif;font-size:6rem;background:linear-gradient(135deg,var(--wood),var(--wood2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.15;line-height:1;position:absolute;top:10px;right:25px}
+.testimonial-stars{color:#f59e0b;font-size:.9rem;margin-bottom:16px;display:flex;gap:3px}
+.testimonial-text{color:var(--text-light);font-size:.95rem;line-height:1.9;margin-bottom:22px;font-style:italic;position:relative;z-index:1}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--wood),var(--wood2));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:var(--white);font-size:1.1rem}
+.testimonial-name{font-weight:600;font-size:.9rem;color:var(--deep)}
+.testimonial-role{font-size:.75rem;color:var(--text-light)}
+
+.cta-section{padding:140px 6%;background:var(--navy);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(146,64,14,.06),transparent 60%)}
+
+footer{background:#0f0c08;padding:100px 6% 30px;position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--wood),var(--wood2),transparent)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:50px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--cream);font-weight:400;margin-bottom:16px}
+.footer-brand h3 span{background:linear-gradient(135deg,var(--wood2),var(--wood3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-brand p{color:rgba(253,248,240,.35);font-size:.85rem;line-height:1.9;margin-bottom:22px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(253,248,240,.1);display:flex;align-items:center;justify-content:center;color:rgba(253,248,240,.4);text-decoration:none;transition:all .3s}
+.footer-social a:hover{border-color:var(--wood2);color:var(--wood2);transform:translateY(-3px)}
+.footer-col h4{color:var(--cream);font-family:'Inter',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:22px}
+.footer-col a{display:block;color:rgba(253,248,240,.35);text-decoration:none;font-size:.85rem;margin-bottom:12px;transition:all .3s}
+.footer-col a:hover{color:var(--wood2);padding-left:5px}
+.footer-newsletter input{width:100%;padding:16px 20px;border:1px solid rgba(253,248,240,.08);border-radius:50px;background:rgba(253,248,240,.04);color:var(--cream);font-size:.85rem;margin-bottom:12px;outline:none;font-family:'Inter',sans-serif}
+.footer-newsletter input::placeholder{color:rgba(253,248,240,.2)}
+.footer-newsletter input:focus{border-color:var(--wood2)}
+.footer-newsletter button{width:100%;padding:16px;border:none;border-radius:50px;background:linear-gradient(135deg,var(--wood),var(--wood2));color:var(--white);font-weight:600;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif}
+.footer-newsletter button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(146,64,14,.3)}
+.footer-bottom{border-top:1px solid rgba(253,248,240,.06);margin-top:60px;padding-top:25px;display:flex;justify-content:space-between;align-items:center;color:rgba(253,248,240,.25);font-size:.8rem;flex-wrap:wrap;gap:10px}
+
+.floating-cta{position:fixed;bottom:30px;right:30px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}
+.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--wood),var(--wood2));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(146,64,14,.4);transition:all .3s;animation:pulse 2s ease infinite}
+.floating-cta a:hover{transform:scale(1.1)}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(146,64,14,.4)}50%{box-shadow:0 8px 50px rgba(146,64,14,.6)}}
+
+@media(max-width:968px){
+.nav-links{display:none}.mobile-toggle{display:block}
+.about-grid,.alt-grid{grid-template-columns:1fr;gap:50px}
+.alt-grid.reverse{direction:ltr}
+.experience-grid{grid-template-columns:1fr 1fr}
+.exp-item::after{display:none}
+.why-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+.footer-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:600px){
+.hero h1{font-size:clamp(2.6rem,10vw,3.8rem)}
+.experience-grid{grid-template-columns:1fr 1fr}
+.services-grid,.testimonial-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}
+.about-features{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<div class="preloader"><i class="fas fa-snowflake"></i></div>
-
-<nav>
-<div class="container">
-<div class="logo">All Season <span>Remodeling</span></div>
-<div class="nav-toggle"><i class="fas fa-bars"></i></div>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#why">Why Us</a></li>
-<li><a href="#reviews">Reviews</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <h2>All Season <span>Remodeling</span></h2>
+    <div class="preloader-bar"></div>
+  </div>
 </div>
+
+<div class="phone-bar">
+  <a href="tel:7634441373"><i class="fas fa-phone"></i> 763-444-1373</a>
+  <span class="separator"></span>
+  <span><i class="fas fa-map-marker-alt"></i> Ramsey, MN — Serving Minneapolis Metro</span>
+  <span class="separator"></span>
+  <span><i class="fas fa-award"></i> A+ BBB Rated</span>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">All Season <span>Remodeling</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="tel:7634441373" class="nav-cta"><span>Free Estimate</span></a></li>
+  </ul>
+  <button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 </nav>
 
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose"><i class="fas fa-times"></i></button>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#why" onclick="closeMobile()">Why Us</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="tel:7634441373" style="color:var(--wood2)"><i class="fas fa-phone"></i> 763-444-1373</a>
+</div>
+
 <section class="hero">
-<div class="hero-content">
-<div class="ratings">
-<div class="rating"><i class="fas fa-award"></i> A+ BBB Rating</div>
-<div class="rating"><i class="fas fa-trophy"></i> Top Rated on Expertise.com</div>
-<div class="rating"><i class="fas fa-map-marker-alt"></i> Local Minneapolis Roofer</div>
-</div>
-<h1>Minneapolis' Most Dependable Roofing Experts</h1>
-<p>High quality, dependable roofing, gutters, siding, and sheet metal fabrication from a local company that lives and loves this area. We don't drive in from out of town — we're your neighbors.</p>
-<a href="#contact" class="btn btn-fire">Get Free Estimate</a>
-<a href="tel:763-444-1373" class="btn btn-outline"><i class="fas fa-phone"></i> 763-444-1373</a>
-</div>
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-award"></i> A+ BBB Rated · Top Rated on Expertise.com</div>
+    <h1>
+      <span class="line"><span><em>Minneapolis'</em></span></span>
+      <span class="line"><span><strong class="gradient-text">Most Dependable</strong></span></span>
+    </h1>
+    <p>High quality, dependable roofing, gutters, siding, and sheet metal fabrication. We don't drive in from out of town — we're your neighbors.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary"><i class="fas fa-file-alt"></i> <span>Free Estimate</span></a>
+      <a href="tel:7634441373" class="btn-outline"><i class="fas fa-phone"></i> 763-444-1373</a>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-mouse"></div><span>Scroll</span></div>
 </section>
 
-<div class="wave-divider">
-<svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,80 600,0 1200,40 L1200,80 L0,80 Z" fill="#eef5fc"/></svg>
-</div>
+<svg class="wave-divider" viewBox="0 0 1440 100" preserveAspectRatio="none" style="margin-top:-2px;position:relative;z-index:3"><path fill="var(--cream)" d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z"/></svg>
 
 <section class="about" id="about">
-<div class="about-grid">
-<div class="about-img fade-up">
-<img src="https://placehold.co/600x420/1e3a5f/e8491d?text=All+Season+Team" alt="All Season Remodeling team">
-<div class="bbb">
-<i class="fas fa-shield-alt"></i>
-<div><span>BBB Accredited</span><strong>A+ Rating</strong></div>
-</div>
-</div>
-<div class="about-text fade-up">
-<h2>Your Local Minneapolis Roofing Company</h2>
-<p>All Season Remodeling and Exteriors is a high-quality, dependable local professional roofing firm serving Minneapolis and the surrounding area. Unlike storm chasers who drive in from out of town and leave, we live right here — and we stand behind our work.</p>
-<p>If you're looking for excellent service and a people-friendly approach, you've come to the right place. Our teams are friendly, experienced, and our ultimate goal is to make your experience pleasant while delivering exceptional results.</p>
-<ul style="list-style:none;margin-top:1rem">
-<li style="margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem"><i class="fas fa-check" style="color:var(--accent)"></i> A+ BBB Rating</li>
-<li style="margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem"><i class="fas fa-check" style="color:var(--accent)"></i> Locally Owned & Operated</li>
-<li style="margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem"><i class="fas fa-check" style="color:var(--accent)"></i> Free Written Estimates</li>
-<li style="display:flex;align-items:center;gap:.5rem"><i class="fas fa-check" style="color:var(--accent)"></i> Fully Licensed & Insured</li>
-</ul>
-</div>
-</div>
+  <div class="about-grid">
+    <div class="about-img-wrapper reveal-left">
+      <div class="about-floating-card">
+        <div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="rating-text">A+ BBB Rating</div>
+          <div class="rating-sub">Top Rated · Expertise.com</div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://placehold.co/600x480/1a1207/92400e?text=All+Season+Team" alt="All Season Team">
+      </div>
+      <div class="about-img-badge">Local</div>
+    </div>
+    <div class="about-text reveal-right">
+      <span class="section-tag">Our Story</span>
+      <h2>Your <em>Local</em> Minneapolis Roofer</h2>
+      <p>All Season Remodeling and Exteriors is a high-quality, dependable local professional roofing firm serving Minneapolis and the surrounding area. Unlike storm chasers who drive in from out of town, we live right here — and we stand behind our work.</p>
+      <p>If you're looking for excellent service and a people-friendly approach, you've come to the right place. Our teams are experienced and our goal is to make your experience pleasant while delivering exceptional results.</p>
+      <div class="about-features">
+        <div class="about-feature"><i class="fas fa-shield-alt"></i> A+ BBB Rating</div>
+        <div class="about-feature"><i class="fas fa-map-pin"></i> Locally Owned</div>
+        <div class="about-feature"><i class="fas fa-file-alt"></i> Free Estimates</div>
+        <div class="about-feature"><i class="fas fa-certificate"></i> Fully Licensed</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="services">
-<div class="section-header fade-up">
-<h2>Our Expert Services</h2>
-<div class="bar"></div>
-<p>Comprehensive exterior solutions for Minneapolis homes.</p>
-</div>
-<div class="services-grid">
-<div class="svc-card fade-up">
-<div class="svc-icon"><i class="fas fa-home"></i></div>
-<div class="svc-content"><h3>Residential Roofing</h3><p>Complete residential roofing services including new installations, tear-offs, and repairs using quality shingles and materials.</p></div>
-</div>
-<div class="svc-card fade-up">
-<div class="svc-icon"><i class="fas fa-tint"></i></div>
-<div class="svc-content"><h3>Gutters</h3><p>Seamless gutter installation, repair, and maintenance. Protect your home's foundation with proper water management.</p></div>
-</div>
-<div class="svc-card fade-up">
-<div class="svc-icon"><i class="fas fa-hammer"></i></div>
-<div class="svc-content"><h3>Sheet Metal Fabrication</h3><p>Custom sheet metal work for flashing, trim, and specialty roofing applications. Precision fabrication for any project.</p></div>
-</div>
-<div class="svc-card fade-up">
-<div class="svc-icon"><i class="fas fa-th-large"></i></div>
-<div class="svc-content"><h3>Siding Installation</h3><p>Vinyl, fiber cement, and engineered wood siding installation. Transform your home's curb appeal and protection.</p></div>
-</div>
-</div>
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <span class="section-tag">What We Do</span>
+    <h2>Expert <em>Exterior</em> Services</h2>
+    <p>Comprehensive exterior solutions for Minneapolis homes and businesses.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal d1">
+      <div class="svc-icon"><i class="fas fa-home"></i></div>
+      <h3>Residential Roofing</h3>
+      <p>New installations, tear-offs, and repairs using quality shingles and materials that endure Minnesota weather.</p>
+    </div>
+    <div class="service-card reveal d2">
+      <div class="svc-icon"><i class="fas fa-tint"></i></div>
+      <h3>Gutters</h3>
+      <p>Seamless gutter installation, repair, and maintenance. Protect your home's foundation from water damage.</p>
+    </div>
+    <div class="service-card reveal d3">
+      <div class="svc-icon"><i class="fas fa-hammer"></i></div>
+      <h3>Sheet Metal Fabrication</h3>
+      <p>Custom sheet metal work for flashing, trim, and specialty roofing applications. Precision fabrication.</p>
+    </div>
+    <div class="service-card reveal d4">
+      <div class="svc-icon"><i class="fas fa-th-large"></i></div>
+      <h3>Siding Installation</h3>
+      <p>Vinyl, fiber cement, and engineered wood siding to transform your home's curb appeal and protection.</p>
+    </div>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="experience-grid">
+    <div class="exp-item reveal d1">
+      <div class="exp-number"><span class="counter" data-target="500">0</span><span class="counter-suffix">+</span></div>
+      <div class="exp-label">Roofs Completed</div>
+    </div>
+    <div class="exp-item reveal d2">
+      <div class="exp-number">A<span class="counter-suffix">+</span></div>
+      <div class="exp-label">BBB Rating</div>
+    </div>
+    <div class="exp-item reveal d3">
+      <div class="exp-number">5.0<span class="counter-suffix">★</span></div>
+      <div class="exp-label">Average Rating</div>
+    </div>
+    <div class="exp-item reveal d4">
+      <div class="exp-number"><span class="counter" data-target="100">0</span><span class="counter-suffix">%</span></div>
+      <div class="exp-label">Local Owned</div>
+    </div>
+  </div>
+</section>
+
+<svg class="wave-divider" viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="var(--cream)" d="M0,20 C480,100 960,0 1440,50 L1440,100 L0,100 Z"/></svg>
+
+<!-- ALT: Storm Chasers -->
+<section class="alt-section" style="background:var(--cream)">
+  <div class="alt-grid">
+    <div class="alt-img reveal-left">
+      <img src="https://placehold.co/600x400/1e293b/92400e?text=Local+Team" alt="Local team">
+    </div>
+    <div class="alt-text reveal-right">
+      <span class="section-tag">Truly Local</span>
+      <h2>Not <em>Storm Chasers</em></h2>
+      <p>Unlike companies that drive in from out of state after a storm, we live and work right here in the Minneapolis area. When you call us, you're calling your neighbor.</p>
+      <p>We stand behind our work because our reputation in this community matters. When you see us at the grocery store, we want you to smile — not look away.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ALT: Quality -->
+<section class="alt-section" style="background:var(--white)">
+  <div class="alt-grid reverse">
+    <div class="alt-img reveal-right">
+      <img src="https://placehold.co/600x400/1a1207/d97706?text=Quality+Work" alt="Quality work">
+    </div>
+    <div class="alt-text reveal-left">
+      <span class="section-tag">Our Promise</span>
+      <h2>Quality That <em>Endures</em></h2>
+      <p>Minnesota weather is brutal. That's why we use only the best materials and proven techniques that withstand our harsh winters and hot summers.</p>
+      <p>Every project includes a detailed written estimate, clear timeline, and our commitment to leave your property cleaner than we found it.</p>
+    </div>
+  </div>
 </section>
 
 <section class="why-section" id="why">
-<div class="section-header fade-up">
-<h2 style="color:white">Why All Season?</h2>
-<div class="bar"></div>
-</div>
-<div class="why-grid">
-<div class="why-card fade-up">
-<div class="icon"><i class="fas fa-map-pin"></i></div>
-<h3>Truly Local</h3>
-<p>We live and work in the Minneapolis area. We're not storm chasers — we're your neighbors who stand behind our work.</p>
-</div>
-<div class="why-card fade-up">
-<div class="icon"><i class="fas fa-handshake"></i></div>
-<h3>People Friendly</h3>
-<p>Our teams are friendly and experienced. We treat your home like our own and clean up when we're done.</p>
-</div>
-<div class="why-card fade-up">
-<div class="icon"><i class="fas fa-star"></i></div>
-<h3>Top Rated</h3>
-<p>A+ BBB rating and recognized as Top Rated on Expertise.com for Minneapolis roofing.</p>
-</div>
-</div>
+  <div class="section-header reveal">
+    <span class="section-tag">Why Choose Us</span>
+    <h2>The All Season <em>Difference</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal d1">
+      <div class="w-icon"><i class="fas fa-map-pin"></i></div>
+      <h3>Truly Local</h3>
+      <p>We live and work right here. We're not storm chasers — we're your neighbors who stand behind our work.</p>
+    </div>
+    <div class="why-card reveal d2">
+      <div class="w-icon"><i class="fas fa-handshake"></i></div>
+      <h3>People Friendly</h3>
+      <p>Our teams are friendly and experienced. We treat your home like our own and clean up when we're done.</p>
+    </div>
+    <div class="why-card reveal d3">
+      <div class="w-icon"><i class="fas fa-trophy"></i></div>
+      <h3>Top Rated</h3>
+      <p>A+ BBB rating and recognized as Top Rated on Expertise.com for Minneapolis roofing.</p>
+    </div>
+  </div>
 </section>
 
-<section class="reviews-section" id="reviews">
-<div class="section-header fade-up">
-<h2>Customer Reviews</h2>
-<div class="bar"></div>
-</div>
-<div class="reviews-grid">
-<div class="review fade-up">
-<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-<p>"All Season did an excellent job on our roof. The crew was professional, on time, and left our yard spotless. The price was fair and the quality is outstanding."</p>
-<div class="author">— Minneapolis Homeowner</div>
-</div>
-<div class="review fade-up">
-<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-<p>"After a big storm, we needed our roof and gutters replaced. All Season handled our insurance claim and the entire process was smooth. Highly recommend!"</p>
-<div class="author">— Ramsey Resident</div>
-</div>
-</div>
+<section class="testimonials" id="reviews">
+  <div class="section-header reveal">
+    <span class="section-tag">Reviews</span>
+    <h2>What <em>Homeowners</em> Say</h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal d1">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">All Season did an excellent job on our roof. The crew was professional, on time, and left our yard spotless. The price was fair and the quality is outstanding.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">H</div>
+        <div><div class="testimonial-name">Minneapolis Homeowner</div><div class="testimonial-role">Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d2">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">After a big storm, we needed our roof and gutters replaced. All Season handled our insurance claim and the entire process was smooth. Highly recommend!</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">R</div>
+        <div><div class="testimonial-name">Ramsey Resident</div><div class="testimonial-role">Google Review</div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="cta">
-<h2 class="fade-up">Don't Risk Your Roof — Call the Experts</h2>
-<p class="fade-up">Free written estimates. A+ BBB rated. Locally owned and operated.</p>
-<a href="tel:763-444-1373" class="btn btn-fire fade-up" style="margin-right:1rem"><i class="fas fa-phone"></i> 763-444-1373</a>
-<a href="#contact" class="btn btn-outline fade-up">Request a Quote</a>
-</section>
-
-<section id="contact">
-<div class="section-header fade-up">
-<h2>Get Your Free Estimate</h2>
-<div class="bar"></div>
-</div>
-<div class="contact-grid">
-<div class="contact-info fade-up">
-<div class="item"><div class="ic"><i class="fas fa-map-marker-alt"></i></div><div><h4>Office</h4><p>Ramsey, MN<br>Serving Minneapolis & Surrounding Areas</p></div></div>
-<div class="item"><div class="ic"><i class="fas fa-phone"></i></div><div><h4>Phone</h4><p>763-444-1373</p></div></div>
-<div class="item"><div class="ic"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p>asrinfo1373@gmail.com</p></div></div>
-<div class="item"><div class="ic"><i class="fas fa-clock"></i></div><div><h4>Hours</h4><p>Mon-Fri: 7AM - 6PM<br>Sat: 8AM - 2PM</p></div></div>
-</div>
-<form class="contact-form fade-up" onsubmit="event.preventDefault();alert('Thank you! We\'ll get back to you with a free written estimate.')">
-<input type="text" placeholder="Your Name" required>
-<input type="email" placeholder="Your Email" required>
-<input type="tel" placeholder="Your Phone" required>
-<input type="text" placeholder="Property Address">
-<textarea placeholder="Tell us about your project (roofing, gutters, siding, etc.)..."></textarea>
-<button type="submit" class="btn btn-fire" style="width:100%;border:none;cursor:pointer">Request Free Estimate</button>
-</form>
-</div>
+<section class="cta-section" id="contact">
+  <div class="section-header reveal">
+    <span class="section-tag" style="color:var(--wood3)">Get Started</span>
+    <h2 style="color:var(--cream)">Don't Risk Your Roof — <em style="background:linear-gradient(135deg,var(--wood2),var(--wood3));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Call the Experts</em></h2>
+    <p style="color:rgba(253,248,240,.4)">Free written estimates. A+ BBB rated. Locally owned and operated.</p>
+  </div>
+  <div class="hero-btns reveal">
+    <a href="tel:7634441373" class="btn-primary"><i class="fas fa-phone"></i> <span>763-444-1373</span></a>
+    <a href="mailto:asrinfo1373@gmail.com" class="btn-outline">Email Us</a>
+  </div>
 </section>
 
 <footer>
-<div class="brand">All Season <span>Remodeling</span> & Exteriors</div>
-<p>&copy; 2026 All Season Remodeling and Exteriors. Ramsey, MN. Licensed & Insured. A+ BBB Rated.</p>
+  <div class="footer-grid">
+    <div class="footer-brand reveal">
+      <h3>All Season <span>Remodeling</span></h3>
+      <p>High-quality, dependable roofing, gutters, siding, and sheet metal fabrication for the Minneapolis metro area.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-google"></i></a>
+        <a href="#"><i class="fab fa-yelp"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col reveal d1">
+      <h4>Services</h4>
+      <a href="#">Roofing</a>
+      <a href="#">Gutters</a>
+      <a href="#">Siding</a>
+      <a href="#">Sheet Metal</a>
+    </div>
+    <div class="footer-col reveal d2">
+      <h4>Hours</h4>
+      <a href="#">Mon–Fri: 7AM – 6PM</a>
+      <a href="#">Sat: 8AM – 2PM</a>
+      <a href="#">Sun: Closed</a>
+      <a href="#">Emergency Available</a>
+    </div>
+    <div class="footer-col reveal d3">
+      <h4>Contact</h4>
+      <p style="color:rgba(253,248,240,.35);font-size:.85rem;margin-bottom:15px;line-height:1.8"><i class="fas fa-map-marker-alt" style="color:var(--wood2);margin-right:6px"></i>Ramsey, MN<br>Serving Minneapolis & Surrounding</p>
+      <p style="color:rgba(253,248,240,.35);font-size:.85rem;margin-bottom:15px"><i class="fas fa-phone" style="color:var(--wood2);margin-right:6px"></i>763-444-1373</p>
+      <p style="color:rgba(253,248,240,.35);font-size:.85rem"><i class="fas fa-envelope" style="color:var(--wood2);margin-right:6px"></i>asrinfo1373@gmail.com</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 All Season Remodeling & Exteriors. All rights reserved.</p>
+    <p>Ramsey, MN · Licensed & Insured · A+ BBB · <a href="tel:7634441373" style="color:var(--wood2);text-decoration:none">763-444-1373</a></p>
+  </div>
 </footer>
 
+<div class="floating-cta" id="floatingCta">
+  <a href="tel:7634441373" title="Call Now"><i class="fas fa-phone"></i></a>
+</div>
+
 <script>
-window.addEventListener('load',()=>{document.querySelector('.preloader').classList.add('hidden')});
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
-document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},1000)});
+document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('menuClose').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
+const nav=document.getElementById('navbar');const floatingCta=document.getElementById('floatingCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>80);floatingCta.classList.toggle('visible',window.scrollY>600)});
+const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObserver.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>revealObserver.observe(el));
+const counterObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target;const target=+el.getAttribute('data-target');const duration=2000;const start=performance.now();const animate=(now)=>{const progress=Math.min((now-start)/duration,1);const eased=1-Math.pow(1-progress,4);el.textContent=Math.floor(eased*target);if(progress<1)requestAnimationFrame(animate);else el.textContent=target};requestAnimationFrame(animate);counterObserver.unobserve(el)}})},{threshold:.5});
+document.querySelectorAll('.counter').forEach(el=>counterObserver.observe(el));
+window.addEventListener('scroll',()=>{const y=window.scrollY;document.querySelectorAll('.hero-blob').forEach((blob,i)=>{blob.style.transform=`translateY(${y*(i===0?.15:-.1)}px)`})});
 </script>
 </body>
 </html>
