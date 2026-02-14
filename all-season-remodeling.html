@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Season Remodeling & Exteriors | Minneapolis Roofer</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#1e3a5f;--accent:#e8491d;--sky:#3498db;--dark:#0f1923;--ice:#eef5fc;--slate:#34495e}
+body{font-family:'Open Sans',sans-serif;color:#333;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Merriweather',serif}
+
+.preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--primary);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s}
+.preloader.hidden{opacity:0;pointer-events:none}
+.preloader i{font-size:3rem;color:var(--accent);animation:spin 1.2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+nav{position:fixed;top:0;width:100%;background:rgba(30,58,95,.95);backdrop-filter:blur(10px);z-index:100;padding:1rem 0}
+nav .container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem}
+nav .logo{color:white;font-family:'Merriweather',serif;font-size:1.3rem;font-weight:700}
+nav .logo span{color:var(--accent)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:color .3s}
+nav ul a:hover{color:var(--accent)}
+.nav-toggle{display:none;color:white;font-size:1.5rem;cursor:pointer}
+
+.hero{height:100vh;background:linear-gradient(135deg,rgba(30,58,95,.88),rgba(15,25,35,.75)),url('https://placehold.co/1920x1080/1e3a5f/e8491d?text=Minneapolis+Roofing') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white}
+.hero-content{max-width:800px;padding:0 2rem}
+.hero .ratings{display:flex;justify-content:center;gap:2rem;margin-bottom:2rem;flex-wrap:wrap}
+.hero .ratings .rating{display:flex;align-items:center;gap:.5rem;font-size:.9rem}
+.hero .ratings .rating i{color:var(--accent)}
+.hero h1{font-size:3.2rem;font-weight:900;margin-bottom:1rem;line-height:1.15}
+.hero p{font-size:1.1rem;opacity:.9;margin-bottom:2rem;font-weight:300;line-height:1.7}
+.btn{display:inline-block;padding:1rem 2.5rem;border-radius:50px;font-weight:700;text-decoration:none;transition:all .3s;font-size:.9rem}
+.btn-fire{background:var(--accent);color:white;box-shadow:0 4px 15px rgba(232,73,29,.4)}
+.btn-fire:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(232,73,29,.5)}
+.btn-outline{border:2px solid white;color:white;margin-left:1rem;border-radius:50px}
+.btn-outline:hover{background:white;color:var(--primary)}
+
+.wave-divider svg{display:block;width:100%;height:80px}
+
+section{padding:6rem 2rem}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-header h2{font-size:2.4rem;color:var(--dark);margin-bottom:.5rem}
+.section-header .bar{width:60px;height:4px;background:var(--accent);margin:1rem auto;border-radius:2px}
+.section-header p{color:#888;max-width:550px;margin:auto}
+
+.about{background:var(--ice)}
+.about-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{position:relative}
+.about-img img{width:100%;height:420px;object-fit:cover;border-radius:15px;box-shadow:0 20px 50px rgba(0,0,0,.1)}
+.about-img .bbb{position:absolute;bottom:-15px;left:20px;background:var(--accent);color:white;padding:1rem 1.5rem;border-radius:10px;display:flex;align-items:center;gap:.8rem;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.about-img .bbb i{font-size:2rem}
+.about-img .bbb div span{font-size:.8rem;opacity:.8}
+.about-img .bbb div strong{display:block;font-size:1.2rem}
+.about-text h2{font-size:2.2rem;color:var(--primary);margin-bottom:1rem}
+.about-text p{color:#666;line-height:1.8;margin-bottom:1.5rem}
+
+.services-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.svc-card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,.05);display:flex;transition:all .3s}
+.svc-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.1)}
+.svc-card .svc-icon{width:100px;background:linear-gradient(135deg,var(--primary),var(--sky));display:flex;align-items:center;justify-content:center;color:white;font-size:1.8rem;flex-shrink:0}
+.svc-card .svc-content{padding:1.5rem}
+.svc-card h3{color:var(--primary);font-size:1.15rem;margin-bottom:.5rem}
+.svc-card p{color:#888;font-size:.9rem;line-height:1.6}
+
+.why-section{background:linear-gradient(135deg,var(--primary),var(--dark));color:white}
+.why-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.why-card{text-align:center;padding:2rem}
+.why-card .icon{width:70px;height:70px;border:2px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--accent);font-size:1.5rem}
+.why-card h3{margin-bottom:.5rem;font-size:1.1rem}
+.why-card p{opacity:.7;font-size:.9rem;line-height:1.6}
+
+.reviews-section{background:var(--ice)}
+.reviews-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.review{background:white;padding:2rem;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.05)}
+.review .stars{color:var(--accent);margin-bottom:1rem}
+.review p{color:#666;font-style:italic;line-height:1.7;margin-bottom:1rem}
+.review .author{font-weight:700;color:var(--primary)}
+
+.cta{background:linear-gradient(135deg,rgba(232,73,29,.9),rgba(30,58,95,.9)),url('https://placehold.co/1920x600/e8491d/ffffff?text=Call+Now') center/cover;color:white;text-align:center}
+.cta h2{font-size:2.5rem;margin-bottom:1rem}
+.cta p{opacity:.9;margin-bottom:2rem;font-size:1.1rem}
+
+.contact-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-info .item{display:flex;gap:1rem;margin-bottom:2rem}
+.contact-info .item .ic{width:50px;height:50px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;flex-shrink:0}
+.contact-info .item h4{color:var(--dark);margin-bottom:.2rem}
+.contact-info .item p{color:#888}
+.contact-form input,.contact-form textarea{width:100%;padding:1rem;border:2px solid #e0e0e0;border-radius:10px;font-family:inherit;font-size:1rem;margin-bottom:1rem;transition:border .3s}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);outline:none}
+.contact-form textarea{height:120px;resize:vertical}
+
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:3rem 2rem;text-align:center}
+footer .brand{font-family:'Merriweather',serif;font-size:1.3rem;color:white;margin-bottom:.5rem}
+footer .brand span{color:var(--accent)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease-out}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+.hero h1{font-size:2.2rem}
+.about-grid,.services-grid,.why-grid,.reviews-grid,.contact-grid{grid-template-columns:1fr}
+.svc-card{flex-direction:column}
+.svc-card .svc-icon{width:100%;height:60px}
+nav ul{display:none}
+.nav-toggle{display:block}
+.btn-outline{margin-left:0;margin-top:1rem}
+}
+</style>
+</head>
+<body>
+
+<div class="preloader"><i class="fas fa-snowflake"></i></div>
+
+<nav>
+<div class="container">
+<div class="logo">All Season <span>Remodeling</span></div>
+<div class="nav-toggle"><i class="fas fa-bars"></i></div>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#why">Why Us</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<div class="ratings">
+<div class="rating"><i class="fas fa-award"></i> A+ BBB Rating</div>
+<div class="rating"><i class="fas fa-trophy"></i> Top Rated on Expertise.com</div>
+<div class="rating"><i class="fas fa-map-marker-alt"></i> Local Minneapolis Roofer</div>
+</div>
+<h1>Minneapolis' Most Dependable Roofing Experts</h1>
+<p>High quality, dependable roofing, gutters, siding, and sheet metal fabrication from a local company that lives and loves this area. We don't drive in from out of town — we're your neighbors.</p>
+<a href="#contact" class="btn btn-fire">Get Free Estimate</a>
+<a href="tel:763-444-1373" class="btn btn-outline"><i class="fas fa-phone"></i> 763-444-1373</a>
+</div>
+</section>
+
+<div class="wave-divider">
+<svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,80 600,0 1200,40 L1200,80 L0,80 Z" fill="#eef5fc"/></svg>
+</div>
+
+<section class="about" id="about">
+<div class="about-grid">
+<div class="about-img fade-up">
+<img src="https://placehold.co/600x420/1e3a5f/e8491d?text=All+Season+Team" alt="All Season Remodeling team">
+<div class="bbb">
+<i class="fas fa-shield-alt"></i>
+<div><span>BBB Accredited</span><strong>A+ Rating</strong></div>
+</div>
+</div>
+<div class="about-text fade-up">
+<h2>Your Local Minneapolis Roofing Company</h2>
+<p>All Season Remodeling and Exteriors is a high-quality, dependable local professional roofing firm serving Minneapolis and the surrounding area. Unlike storm chasers who drive in from out of town and leave, we live right here — and we stand behind our work.</p>
+<p>If you're looking for excellent service and a people-friendly approach, you've come to the right place. Our teams are friendly, experienced, and our ultimate goal is to make your experience pleasant while delivering exceptional results.</p>
+<ul style="list-style:none;margin-top:1rem">
+<li style="margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem"><i class="fas fa-check" style="color:var(--accent)"></i> A+ BBB Rating</li>
+<li style="margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem"><i class="fas fa-check" style="color:var(--accent)"></i> Locally Owned & Operated</li>
+<li style="margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem"><i class="fas fa-check" style="color:var(--accent)"></i> Free Written Estimates</li>
+<li style="display:flex;align-items:center;gap:.5rem"><i class="fas fa-check" style="color:var(--accent)"></i> Fully Licensed & Insured</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="services">
+<div class="section-header fade-up">
+<h2>Our Expert Services</h2>
+<div class="bar"></div>
+<p>Comprehensive exterior solutions for Minneapolis homes.</p>
+</div>
+<div class="services-grid">
+<div class="svc-card fade-up">
+<div class="svc-icon"><i class="fas fa-home"></i></div>
+<div class="svc-content"><h3>Residential Roofing</h3><p>Complete residential roofing services including new installations, tear-offs, and repairs using quality shingles and materials.</p></div>
+</div>
+<div class="svc-card fade-up">
+<div class="svc-icon"><i class="fas fa-tint"></i></div>
+<div class="svc-content"><h3>Gutters</h3><p>Seamless gutter installation, repair, and maintenance. Protect your home's foundation with proper water management.</p></div>
+</div>
+<div class="svc-card fade-up">
+<div class="svc-icon"><i class="fas fa-hammer"></i></div>
+<div class="svc-content"><h3>Sheet Metal Fabrication</h3><p>Custom sheet metal work for flashing, trim, and specialty roofing applications. Precision fabrication for any project.</p></div>
+</div>
+<div class="svc-card fade-up">
+<div class="svc-icon"><i class="fas fa-th-large"></i></div>
+<div class="svc-content"><h3>Siding Installation</h3><p>Vinyl, fiber cement, and engineered wood siding installation. Transform your home's curb appeal and protection.</p></div>
+</div>
+</div>
+</section>
+
+<section class="why-section" id="why">
+<div class="section-header fade-up">
+<h2 style="color:white">Why All Season?</h2>
+<div class="bar"></div>
+</div>
+<div class="why-grid">
+<div class="why-card fade-up">
+<div class="icon"><i class="fas fa-map-pin"></i></div>
+<h3>Truly Local</h3>
+<p>We live and work in the Minneapolis area. We're not storm chasers — we're your neighbors who stand behind our work.</p>
+</div>
+<div class="why-card fade-up">
+<div class="icon"><i class="fas fa-handshake"></i></div>
+<h3>People Friendly</h3>
+<p>Our teams are friendly and experienced. We treat your home like our own and clean up when we're done.</p>
+</div>
+<div class="why-card fade-up">
+<div class="icon"><i class="fas fa-star"></i></div>
+<h3>Top Rated</h3>
+<p>A+ BBB rating and recognized as Top Rated on Expertise.com for Minneapolis roofing.</p>
+</div>
+</div>
+</section>
+
+<section class="reviews-section" id="reviews">
+<div class="section-header fade-up">
+<h2>Customer Reviews</h2>
+<div class="bar"></div>
+</div>
+<div class="reviews-grid">
+<div class="review fade-up">
+<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"All Season did an excellent job on our roof. The crew was professional, on time, and left our yard spotless. The price was fair and the quality is outstanding."</p>
+<div class="author">— Minneapolis Homeowner</div>
+</div>
+<div class="review fade-up">
+<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"After a big storm, we needed our roof and gutters replaced. All Season handled our insurance claim and the entire process was smooth. Highly recommend!"</p>
+<div class="author">— Ramsey Resident</div>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<h2 class="fade-up">Don't Risk Your Roof — Call the Experts</h2>
+<p class="fade-up">Free written estimates. A+ BBB rated. Locally owned and operated.</p>
+<a href="tel:763-444-1373" class="btn btn-fire fade-up" style="margin-right:1rem"><i class="fas fa-phone"></i> 763-444-1373</a>
+<a href="#contact" class="btn btn-outline fade-up">Request a Quote</a>
+</section>
+
+<section id="contact">
+<div class="section-header fade-up">
+<h2>Get Your Free Estimate</h2>
+<div class="bar"></div>
+</div>
+<div class="contact-grid">
+<div class="contact-info fade-up">
+<div class="item"><div class="ic"><i class="fas fa-map-marker-alt"></i></div><div><h4>Office</h4><p>Ramsey, MN<br>Serving Minneapolis & Surrounding Areas</p></div></div>
+<div class="item"><div class="ic"><i class="fas fa-phone"></i></div><div><h4>Phone</h4><p>763-444-1373</p></div></div>
+<div class="item"><div class="ic"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p>asrinfo1373@gmail.com</p></div></div>
+<div class="item"><div class="ic"><i class="fas fa-clock"></i></div><div><h4>Hours</h4><p>Mon-Fri: 7AM - 6PM<br>Sat: 8AM - 2PM</p></div></div>
+</div>
+<form class="contact-form fade-up" onsubmit="event.preventDefault();alert('Thank you! We\'ll get back to you with a free written estimate.')">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<input type="tel" placeholder="Your Phone" required>
+<input type="text" placeholder="Property Address">
+<textarea placeholder="Tell us about your project (roofing, gutters, siding, etc.)..."></textarea>
+<button type="submit" class="btn btn-fire" style="width:100%;border:none;cursor:pointer">Request Free Estimate</button>
+</form>
+</div>
+</section>
+
+<footer>
+<div class="brand">All Season <span>Remodeling</span> & Exteriors</div>
+<p>&copy; 2026 All Season Remodeling and Exteriors. Ramsey, MN. Licensed & Insured. A+ BBB Rated.</p>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{document.querySelector('.preloader').classList.add('hidden')});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

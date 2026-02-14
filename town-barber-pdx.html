@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Town Barber PDX | Downtown Portland Barbershop</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#1a1a1a;--accent:#c49a6c;--cream:#f5f0eb;--dark:#0d0d0d;--charcoal:#2d2d2d;--warm:#3d2b1f}
+body{font-family:'Nunito Sans',sans-serif;color:#333;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif}
+
+.preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--primary);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s}
+.preloader.hidden{opacity:0;pointer-events:none}
+.preloader i{font-size:3rem;color:var(--accent);animation:spin 1.5s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+nav{position:fixed;top:0;width:100%;background:rgba(26,26,26,.95);backdrop-filter:blur(10px);z-index:100;padding:1rem 0}
+nav .container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem}
+nav .logo{color:white;font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700}
+nav .logo span{color:var(--accent)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;transition:color .3s}
+nav ul a:hover{color:var(--accent)}
+.nav-toggle{display:none;color:var(--accent);font-size:1.5rem;cursor:pointer}
+
+.hero{height:100vh;background:linear-gradient(135deg,rgba(26,26,26,.85),rgba(61,43,31,.7)),url('https://placehold.co/1920x1080/1a1a1a/c49a6c?text=Barbershop') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white}
+.hero-content{max-width:750px;padding:0 2rem}
+.hero .location-tag{display:inline-flex;align-items:center;gap:.5rem;color:var(--accent);font-size:.85rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;border:1px solid rgba(196,154,108,.4);padding:.5rem 1.5rem}
+.hero h1{font-size:3.5rem;font-weight:900;margin-bottom:1rem;line-height:1.1}
+.hero p{font-size:1.15rem;opacity:.85;margin-bottom:2rem;font-weight:300;line-height:1.7}
+.btn{display:inline-block;padding:.9rem 2.5rem;font-weight:700;text-decoration:none;transition:all .3s;font-size:.85rem;text-transform:uppercase;letter-spacing:2px}
+.btn-accent{background:var(--accent);color:var(--dark)}
+.btn-accent:hover{background:#d4a87a;transform:translateY(-3px);box-shadow:0 8px 25px rgba(196,154,108,.4)}
+.btn-outline{border:1px solid var(--accent);color:var(--accent);margin-left:1rem}
+.btn-outline:hover{background:var(--accent);color:var(--dark)}
+
+.wave-divider svg{display:block;width:100%;height:80px}
+
+section{padding:6rem 2rem}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-header h2{font-size:2.5rem;color:var(--primary);margin-bottom:.5rem}
+.section-header .line{width:50px;height:3px;background:var(--accent);margin:1rem auto}
+.section-header p{color:#888;max-width:500px;margin:auto;font-size:1rem}
+
+.heritage{background:var(--cream)}
+.heritage-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.heritage-img{position:relative}
+.heritage-img img{width:100%;height:450px;object-fit:cover}
+.heritage-img::after{content:'';position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;border:2px solid var(--accent);z-index:-1}
+.heritage-text h2{font-size:2.2rem;color:var(--primary);margin-bottom:1rem}
+.heritage-text p{color:#666;line-height:1.9;margin-bottom:1.5rem}
+.heritage-text .gen{display:flex;align-items:center;gap:1rem;background:white;padding:1rem 1.5rem;box-shadow:0 5px 20px rgba(0,0,0,.06);margin-top:1.5rem}
+.heritage-text .gen i{color:var(--accent);font-size:2rem}
+.heritage-text .gen div h4{color:var(--primary)}
+.heritage-text .gen div p{color:#888;font-size:.9rem;margin:0}
+
+.services-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.service-card{background:white;padding:3rem 2rem;text-align:center;box-shadow:0 5px 30px rgba(0,0,0,.05);transition:all .4s;border-bottom:3px solid transparent}
+.service-card:hover{transform:translateY(-8px);border-bottom-color:var(--accent);box-shadow:0 15px 40px rgba(0,0,0,.1)}
+.service-card .icon{font-size:2.5rem;color:var(--accent);margin-bottom:1.5rem}
+.service-card h3{font-size:1.3rem;margin-bottom:.5rem;color:var(--primary)}
+.service-card .price{font-size:1.8rem;color:var(--accent);font-family:'Playfair Display',serif;font-weight:700;margin-bottom:.5rem}
+.service-card p{color:#888;font-size:.9rem}
+
+.gallery{background:var(--dark);color:white}
+.gallery-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.gallery-grid img{width:100%;height:250px;object-fit:cover;transition:opacity .3s;cursor:pointer}
+.gallery-grid img:hover{opacity:.8}
+
+.hours-section{background:var(--cream)}
+.hours-card{max-width:600px;margin:auto;background:white;padding:3rem;box-shadow:0 10px 40px rgba(0,0,0,.08);text-align:center}
+.hours-card h2{color:var(--primary);margin-bottom:2rem;font-size:2rem}
+.hours-row{display:flex;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid #eee}
+.hours-row:last-child{border:none}
+.hours-row .day{font-weight:600;color:var(--primary)}
+.hours-row .time{color:var(--accent);font-weight:600}
+.hours-row .closed{color:#ccc}
+
+.cta-section{background:linear-gradient(135deg,rgba(26,26,26,.9),rgba(61,43,31,.85)),url('https://placehold.co/1920x600/1a1a1a/c49a6c?text=Book+Now') center/cover;color:white;text-align:center}
+.cta-section h2{font-size:2.5rem;margin-bottom:1rem}
+.cta-section p{opacity:.8;margin-bottom:2rem;font-size:1.1rem}
+
+.contact-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-info .item{display:flex;gap:1rem;margin-bottom:2rem;align-items:flex-start}
+.contact-info .item .ic{width:50px;height:50px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;flex-shrink:0}
+.contact-info .item h4{color:var(--primary);margin-bottom:.2rem}
+.contact-info .item p{color:#888;font-size:.95rem}
+.contact-form input,.contact-form textarea{width:100%;padding:1rem;border:2px solid #eee;font-family:inherit;font-size:1rem;margin-bottom:1rem;transition:border .3s}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);outline:none}
+.contact-form textarea{height:120px;resize:vertical}
+
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:3rem 2rem;text-align:center}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.5rem;color:white;margin-bottom:.5rem}
+footer .brand span{color:var(--accent)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease-out}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+.hero h1{font-size:2.3rem}
+.heritage-grid,.services-grid,.contact-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+nav ul{display:none}
+.nav-toggle{display:block}
+.btn-outline{margin-left:0;margin-top:1rem}
+}
+</style>
+</head>
+<body>
+
+<div class="preloader"><i class="fas fa-cut"></i></div>
+
+<nav>
+<div class="container">
+<div class="logo">Town <span>Barber</span> PDX</div>
+<div class="nav-toggle"><i class="fas fa-bars"></i></div>
+<ul>
+<li><a href="#heritage">Story</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#hours">Hours</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<div class="location-tag"><i class="fas fa-map-pin"></i> Downtown Portland, OR</div>
+<h1>A Cut Above the Rest</h1>
+<p>Three generations of master barbers in the Townsend family. Specializing in skin fades, buzz cuts, grey blending, and classic styling in the heart of downtown Portland.</p>
+<a href="#contact" class="btn btn-accent">Book Appointment</a>
+<a href="tel:503-841-5904" class="btn btn-outline"><i class="fas fa-phone"></i> 503-841-5904</a>
+</div>
+</section>
+
+<div class="wave-divider">
+<svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,80 600,0 1200,40 L1200,80 L0,80 Z" fill="#f5f0eb"/></svg>
+</div>
+
+<section class="heritage" id="heritage">
+<div class="heritage-grid">
+<div class="heritage-img fade-up">
+<img src="https://placehold.co/600x450/1a1a1a/c49a6c?text=Heritage+Barber" alt="Town Barber heritage">
+</div>
+<div class="heritage-text fade-up">
+<h2>Three Generations of Craft</h2>
+<p>Town Barber PDX carries on a proud family tradition. Jason Townsend brings years of expert barbering experience with a flair of his own style, continuing what his father and grandfather started decades ago.</p>
+<p>Conveniently located next to the new Ritz Carlton in downtown Portland, we blend old-school craftsmanship with modern style. Every cut gets the full attention it deserves — quality you can see and feel.</p>
+<div class="gen">
+<i class="fas fa-medal"></i>
+<div><h4>3rd Generation Barber</h4><p>Decades of experience in the Townsend family</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="wave-divider">
+<svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,0 600,80 1200,40 L1200,80 L0,80 Z" fill="white"/></svg>
+</div>
+
+<section id="services">
+<div class="section-header fade-up">
+<h2>Services & Pricing</h2>
+<div class="line"></div>
+<p>Expert cuts and grooming at affordable prices.</p>
+</div>
+<div class="services-grid">
+<div class="service-card fade-up">
+<div class="icon"><i class="fas fa-cut"></i></div>
+<h3>Stylized Haircut</h3>
+<div class="price">$30</div>
+<p>Classic and modern cuts tailored to your style and face shape.</p>
+</div>
+<div class="service-card fade-up">
+<div class="icon"><i class="fas fa-user-alt"></i></div>
+<h3>Skin Fade</h3>
+<div class="price">$40</div>
+<p>Precision skin fades with seamless blending and clean lines.</p>
+</div>
+<div class="service-card fade-up">
+<div class="icon"><i class="fas fa-bolt"></i></div>
+<h3>Buzz Cut</h3>
+<div class="price">$20</div>
+<p>Clean, sharp buzz cuts done right every time.</p>
+</div>
+<div class="service-card fade-up">
+<div class="icon"><i class="fas fa-spa"></i></div>
+<h3>Beard Trim</h3>
+<div class="price">$15</div>
+<p>Shape, line-up, and detail work for a polished look.</p>
+</div>
+<div class="service-card fade-up">
+<div class="icon"><i class="fas fa-magic"></i></div>
+<h3>Grey Blending</h3>
+<div class="price">$50</div>
+<p>Natural-looking grey coverage that blends seamlessly.</p>
+</div>
+<div class="service-card fade-up">
+<div class="icon"><i class="fas fa-star"></i></div>
+<h3>Hot Towel Shave</h3>
+<div class="price">$35</div>
+<p>Classic straight razor shave with hot towel treatment.</p>
+</div>
+</div>
+</section>
+
+<section class="gallery">
+<div class="section-header fade-up">
+<h2 style="color:white">Our Work</h2>
+<div class="line"></div>
+</div>
+<div class="gallery-grid">
+<img src="https://placehold.co/300x250/2d2d2d/c49a6c?text=Fade+1" alt="Haircut" class="fade-up">
+<img src="https://placehold.co/300x250/3d2b1f/c49a6c?text=Classic+Cut" alt="Haircut" class="fade-up">
+<img src="https://placehold.co/300x250/1a1a1a/c49a6c?text=Beard+Trim" alt="Beard" class="fade-up">
+<img src="https://placehold.co/300x250/2d2d2d/c49a6c?text=Skin+Fade" alt="Fade" class="fade-up">
+</div>
+</section>
+
+<section class="hours-section" id="hours">
+<div class="section-header fade-up">
+<h2>Hours</h2>
+<div class="line"></div>
+<p>Drop in or book ahead — we're here for you.</p>
+</div>
+<div class="hours-card fade-up">
+<div class="hours-row"><span class="day">Monday</span><span class="closed">Closed</span></div>
+<div class="hours-row"><span class="day">Tuesday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+<div class="hours-row"><span class="day">Wednesday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+<div class="hours-row"><span class="day">Thursday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+<div class="hours-row"><span class="day">Friday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+<div class="hours-row"><span class="day">Saturday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+<div class="hours-row"><span class="day">Sunday</span><span class="closed">Closed</span></div>
+</div>
+</section>
+
+<section class="cta-section">
+<h2 class="fade-up">Ready for a Fresh Cut?</h2>
+<p class="fade-up">Walk-ins welcome. Book your appointment today.</p>
+<a href="tel:503-841-5904" class="btn btn-accent fade-up"><i class="fas fa-phone"></i> Call 503-841-5904</a>
+</section>
+
+<section id="contact">
+<div class="section-header fade-up">
+<h2>Find Us</h2>
+<div class="line"></div>
+</div>
+<div class="contact-grid">
+<div class="contact-info fade-up">
+<div class="item"><div class="ic"><i class="fas fa-map-marker-alt"></i></div><div><h4>Address</h4><p>810 SW Washington Street<br>Portland, OR 97205</p></div></div>
+<div class="item"><div class="ic"><i class="fas fa-phone"></i></div><div><h4>Phone</h4><p>503-841-5904</p></div></div>
+<div class="item"><div class="ic"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p>townbarberpdx@yahoo.com</p></div></div>
+<div class="item"><div class="ic"><i class="fas fa-building"></i></div><div><h4>Landmark</h4><p>Next to the Ritz Carlton, Downtown Portland</p></div></div>
+</div>
+<form class="contact-form fade-up" onsubmit="event.preventDefault();alert('Message sent! We\'ll get back to you soon.')">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<input type="tel" placeholder="Your Phone">
+<textarea placeholder="Your message..."></textarea>
+<button type="submit" class="btn btn-accent" style="width:100%;border:none;cursor:pointer">Send Message</button>
+</form>
+</div>
+</section>
+
+<footer>
+<div class="brand">Town <span>Barber</span> PDX</div>
+<p>&copy; 2026 Town Barber PDX. Downtown Portland, Oregon. All rights reserved.</p>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{document.querySelector('.preloader').classList.add('hidden')});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

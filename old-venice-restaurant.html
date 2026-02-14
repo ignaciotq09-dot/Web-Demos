@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Old Venice Restaurant | Point Loma, San Diego</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#2c1810;--accent:#8b4513;--gold:#c9a96e;--cream:#faf3e8;--dark:#1a1008;--wine:#722f37}
+body{font-family:'Lato',sans-serif;color:#333;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
+
+.preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--primary);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s}
+.preloader.hidden{opacity:0;pointer-events:none}
+.preloader i{font-size:3rem;color:var(--gold);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.2);opacity:.7}}
+
+nav{position:fixed;top:0;width:100%;background:rgba(44,24,16,.92);backdrop-filter:blur(12px);z-index:100;padding:1rem 0}
+nav .container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem}
+nav .logo{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;letter-spacing:2px}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;transition:color .3s}
+nav ul a:hover{color:var(--gold)}
+.nav-toggle{display:none;color:var(--gold);font-size:1.5rem;cursor:pointer}
+
+.hero{height:100vh;background:linear-gradient(135deg,rgba(44,24,16,.8),rgba(114,47,55,.6)),url('https://placehold.co/1920x1080/2c1810/c9a96e?text=Italian+Dining') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white;position:relative}
+.hero-content{max-width:800px;padding:0 2rem}
+.hero .tagline{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:1rem}
+.hero h1{font-size:4rem;font-weight:700;margin-bottom:1rem;line-height:1.1}
+.hero p{font-size:1.15rem;opacity:.9;margin-bottom:2rem;font-weight:300;line-height:1.7}
+.hero .est{display:inline-block;border:1px solid var(--gold);padding:.4rem 1.5rem;font-size:.85rem;letter-spacing:3px;color:var(--gold);margin-bottom:1.5rem}
+
+.btn{display:inline-block;padding:.9rem 2.5rem;border-radius:0;font-weight:600;text-decoration:none;transition:all .3s;font-size:.9rem;text-transform:uppercase;letter-spacing:2px}
+.btn-gold{background:var(--gold);color:var(--dark)}
+.btn-gold:hover{background:#d4b577;transform:translateY(-3px);box-shadow:0 8px 25px rgba(201,169,110,.4)}
+.btn-outline{border:1px solid var(--gold);color:var(--gold);margin-left:1rem}
+.btn-outline:hover{background:var(--gold);color:var(--dark)}
+
+.wave-divider svg{display:block;width:100%;height:80px}
+
+section{padding:6rem 2rem}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-header h2{font-size:2.8rem;color:var(--primary);margin-bottom:.5rem}
+.section-header .sub{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;letter-spacing:2px}
+.section-header .ornament{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1rem}
+.section-header .ornament span{width:40px;height:1px;background:var(--gold)}
+.section-header .ornament i{color:var(--gold);font-size:.7rem}
+
+.story{background:var(--cream)}
+.story-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.story-img{position:relative}
+.story-img img{width:100%;height:450px;object-fit:cover;box-shadow:15px 15px 0 var(--gold)}
+.story-text h2{font-size:2.4rem;color:var(--primary);margin-bottom:1rem}
+.story-text p{color:#666;line-height:1.9;margin-bottom:1.5rem;font-size:1.05rem}
+.story-text .highlight{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--wine);font-style:italic;border-left:3px solid var(--gold);padding-left:1.5rem}
+
+.atmosphere-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.atmo-card{position:relative;overflow:hidden;height:350px;border-radius:0}
+.atmo-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.atmo-card:hover img{transform:scale(1.1)}
+.atmo-card .overlay{position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(transparent,rgba(44,24,16,.9));color:white}
+.atmo-card h3{font-size:1.5rem;margin-bottom:.3rem}
+.atmo-card p{font-size:.9rem;opacity:.8}
+
+.menu-section{background:var(--dark);color:white}
+.menu-grid{max-width:900px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.menu-category h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--gold);margin-bottom:1.5rem;padding-bottom:.5rem;border-bottom:1px solid rgba(201,169,110,.3)}
+.menu-item{margin-bottom:1.5rem}
+.menu-item .name{display:flex;justify-content:space-between;margin-bottom:.3rem}
+.menu-item .name h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600}
+.menu-item .name span{color:var(--gold);font-weight:600}
+.menu-item p{color:rgba(255,255,255,.6);font-size:.9rem}
+
+.events{background:var(--cream)}
+.events-content{max-width:800px;margin:auto;text-align:center}
+.events-content p{color:#666;line-height:1.8;font-size:1.05rem;margin-bottom:2rem}
+.event-features{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-bottom:2rem}
+.event-feature{text-align:center}
+.event-feature i{font-size:2rem;color:var(--gold);margin-bottom:.5rem;display:block}
+.event-feature span{font-size:.9rem;color:var(--primary);font-weight:500}
+
+.testimonials-row{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.test-card{background:white;padding:2.5rem;box-shadow:0 5px 30px rgba(0,0,0,.06)}
+.test-card .stars{color:var(--gold);margin-bottom:1rem}
+.test-card p{color:#666;font-style:italic;line-height:1.8;margin-bottom:1rem}
+.test-card .name{color:var(--primary);font-weight:700;font-family:'Cormorant Garamond',serif;font-size:1.1rem}
+
+.reservation{background:linear-gradient(135deg,rgba(44,24,16,.9),rgba(114,47,55,.8)),url('https://placehold.co/1920x600/2c1810/c9a96e?text=Reserve') center/cover;color:white;text-align:center}
+.reservation h2{font-size:2.8rem;margin-bottom:.5rem}
+.reservation .sub{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:2rem;display:block}
+
+.contact-row{max-width:1000px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-details .item{display:flex;gap:1rem;margin-bottom:1.5rem;align-items:flex-start}
+.contact-details .item i{color:var(--gold);font-size:1.2rem;margin-top:.2rem}
+.contact-details .item h4{color:var(--primary);margin-bottom:.2rem}
+.contact-details .item p{color:#666;font-size:.95rem}
+.contact-form input,.contact-form textarea{width:100%;padding:1rem;border:1px solid #ddd;font-family:inherit;font-size:1rem;margin-bottom:1rem;background:var(--cream);transition:border .3s}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--gold);outline:none}
+.contact-form textarea{height:120px;resize:vertical}
+
+footer{background:var(--dark);color:rgba(255,255,255,.6);padding:3rem 2rem;text-align:center}
+footer .brand{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--gold);margin-bottom:.5rem}
+footer .social{margin:1rem 0}
+footer .social a{color:var(--gold);font-size:1.2rem;margin:0 .8rem;transition:opacity .3s}
+footer .social a:hover{opacity:.7}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease-out}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+.hero h1{font-size:2.5rem}
+.story-grid,.atmosphere-grid,.menu-grid,.testimonials-row,.contact-row{grid-template-columns:1fr}
+nav ul{display:none}
+.nav-toggle{display:block}
+.btn-outline{margin-left:0;margin-top:1rem}
+}
+</style>
+</head>
+<body>
+
+<div class="preloader"><i class="fas fa-wine-glass-alt"></i></div>
+
+<nav>
+<div class="container">
+<div class="logo">Old Venice</div>
+<div class="nav-toggle"><i class="fas fa-bars"></i></div>
+<ul>
+<li><a href="#story">Our Story</a></li>
+<li><a href="#atmosphere">Ambiance</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<div class="est">Est. 1979 · Point Loma</div>
+<div class="tagline">Restaurant & Bar</div>
+<h1>An Evening at Old Venice</h1>
+<p>Family owned and operated for over 45 years. Two garden patios, a candlelit dining room, and a chic bar — the perfect spot for romance in San Diego.</p>
+<a href="#contact" class="btn btn-gold">Reserve a Table</a>
+<a href="#menu" class="btn btn-outline">View Menu</a>
+</div>
+</section>
+
+<div class="wave-divider">
+<svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,60 C200,20 400,80 600,40 C800,0 1000,60 1200,30 L1200,80 L0,80 Z" fill="#faf3e8"/></svg>
+</div>
+
+<section class="story" id="story">
+<div class="story-grid">
+<div class="story-img fade-up">
+<img src="https://placehold.co/600x450/2c1810/c9a96e?text=Old+Venice+Dining" alt="Old Venice interior">
+</div>
+<div class="story-text fade-up">
+<h2>Our Story</h2>
+<p>For over four decades, Old Venice has been San Diego's hidden gem in the heart of Point Loma. What started as a small neighborhood restaurant has grown into a beloved institution known for its old-world charm and exceptional cuisine.</p>
+<p class="highlight">"The perfect place to enjoy time with the ones you love."</p>
+<p>Whether you're celebrating a milestone, enjoying date night, or gathering with friends, our warm atmosphere and attentive service make every visit special.</p>
+</div>
+</div>
+</section>
+
+<section id="atmosphere">
+<div class="section-header fade-up">
+<h2>The Atmosphere</h2>
+<p class="sub">Where Every Moment Becomes a Memory</p>
+<div class="ornament"><span></span><i class="fas fa-diamond"></i><span></span></div>
+</div>
+<div class="atmosphere-grid">
+<div class="atmo-card fade-up">
+<img src="https://placehold.co/400x350/722f37/c9a96e?text=Garden+Patio" alt="Garden patio">
+<div class="overlay"><h3>Garden Patios</h3><p>Two heated outdoor garden patios</p></div>
+</div>
+<div class="atmo-card fade-up">
+<img src="https://placehold.co/400x350/2c1810/c9a96e?text=Candlelit+Dining" alt="Candlelit dining">
+<div class="overlay"><h3>Candlelit Dining</h3><p>Romantic indoor dining room</p></div>
+</div>
+<div class="atmo-card fade-up">
+<img src="https://placehold.co/400x350/8b4513/c9a96e?text=Classic+Bar" alt="Bar area">
+<div class="overlay"><h3>The Bar</h3><p>Classic cocktails with a modern twist</p></div>
+</div>
+</div>
+</section>
+
+<section class="menu-section" id="menu">
+<div class="section-header fade-up">
+<h2 style="color:white">The Menu</h2>
+<p class="sub">A Taste of Old World Italy</p>
+<div class="ornament"><span></span><i class="fas fa-diamond"></i><span></span></div>
+</div>
+<div class="menu-grid">
+<div class="menu-category fade-up">
+<h3>Starters</h3>
+<div class="menu-item"><div class="name"><h4>Garlic Bulb & Brie</h4><span>$16</span></div><p>Roasted garlic with warm brie, served with crostini</p></div>
+<div class="menu-item"><div class="name"><h4>Bruschetta Classica</h4><span>$14</span></div><p>Vine-ripened tomatoes, fresh basil, extra virgin olive oil</p></div>
+<div class="menu-item"><div class="name"><h4>Calamari Fritti</h4><span>$17</span></div><p>Lightly breaded and fried with marinara dipping sauce</p></div>
+<div class="menu-item"><div class="name"><h4>Caprese Salad</h4><span>$15</span></div><p>Fresh mozzarella, heirloom tomatoes, basil, balsamic glaze</p></div>
+</div>
+<div class="menu-category fade-up">
+<h3>Entrées</h3>
+<div class="menu-item"><div class="name"><h4>Chicken Parmigiana</h4><span>$26</span></div><p>Breaded chicken breast with marinara and melted mozzarella</p></div>
+<div class="menu-item"><div class="name"><h4>Osso Buco</h4><span>$34</span></div><p>Braised veal shank with vegetables in a rich wine sauce</p></div>
+<div class="menu-item"><div class="name"><h4>Linguine alle Vongole</h4><span>$28</span></div><p>Fresh clams sautéed in white wine, garlic, and herbs</p></div>
+<div class="menu-item"><div class="name"><h4>Risotto ai Funghi</h4><span>$24</span></div><p>Creamy arborio rice with wild mushrooms and parmesan</p></div>
+</div>
+</div>
+</section>
+
+<section class="events" id="events">
+<div class="section-header fade-up">
+<h2>Private Events</h2>
+<p class="sub">Your Perfect Celebration Awaits</p>
+<div class="ornament"><span></span><i class="fas fa-diamond"></i><span></span></div>
+</div>
+<div class="events-content fade-up">
+<p>Host your next special occasion at Old Venice. We can accommodate parties up to 100 people with customized menus, dedicated service, and our signature ambiance.</p>
+<div class="event-features">
+<div class="event-feature"><i class="fas fa-users"></i><span>Up to 100 Guests</span></div>
+<div class="event-feature"><i class="fas fa-utensils"></i><span>Custom Menus</span></div>
+<div class="event-feature"><i class="fas fa-glass-cheers"></i><span>Full Bar Service</span></div>
+<div class="event-feature"><i class="fas fa-tree"></i><span>Garden Patios</span></div>
+</div>
+<a href="#contact" class="btn btn-gold">Inquire About Events</a>
+</div>
+</section>
+
+<div class="wave-divider">
+<svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,80 600,0 1200,40 L1200,80 L0,80 Z" fill="white"/></svg>
+</div>
+
+<section>
+<div class="section-header fade-up">
+<h2>Guest Reviews</h2>
+<p class="sub">What Our Guests Are Saying</p>
+<div class="ornament"><span></span><i class="fas fa-diamond"></i><span></span></div>
+</div>
+<div class="testimonials-row">
+<div class="test-card fade-up">
+<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"Everything was fantastic from the service to the food and the restaurant putting up with our old lady shenanigans! I Love Old Venice!"</p>
+<div class="name">— Happy Guest</div>
+</div>
+<div class="test-card fade-up">
+<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"A true hidden gem in Point Loma. The garden patio is absolutely magical in the evening. We've been coming here for 20 years and it never disappoints."</p>
+<div class="name">— Loyal Regular</div>
+</div>
+</div>
+</section>
+
+<section class="reservation">
+<h2 class="fade-up">Reserve Your Table</h2>
+<span class="sub fade-up">Walk-ins welcome · Reservations for parties up to 12</span>
+<div class="fade-up">
+<a href="tel:619-222-5888" class="btn btn-gold"><i class="fas fa-phone"></i> Call 619.222.5888</a>
+<a href="mailto:Oldvenicerestaurant@gmail.com" class="btn btn-outline"><i class="fas fa-envelope"></i> Email Us</a>
+</div>
+</section>
+
+<section id="contact">
+<div class="section-header fade-up">
+<h2>Visit Us</h2>
+<p class="sub">Open Daily at 4:00 PM</p>
+<div class="ornament"><span></span><i class="fas fa-diamond"></i><span></span></div>
+</div>
+<div class="contact-row">
+<div class="contact-details fade-up">
+<div class="item"><i class="fas fa-map-marker-alt"></i><div><h4>Address</h4><p>2910 Canon Street<br>San Diego, CA 92103</p></div></div>
+<div class="item"><i class="fas fa-phone"></i><div><h4>Phone</h4><p>619.222.5888</p></div></div>
+<div class="item"><i class="fas fa-envelope"></i><div><h4>Email</h4><p>Oldvenicerestaurant@gmail.com</p></div></div>
+<div class="item"><i class="fas fa-clock"></i><div><h4>Hours</h4><p>Open Daily at 4:00 PM<br>15-minute grace period for reservations</p></div></div>
+</div>
+<form class="contact-form fade-up" onsubmit="event.preventDefault();alert('Thank you for your reservation request!')">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<input type="text" placeholder="Party Size & Date">
+<textarea placeholder="Special requests or event details..."></textarea>
+<button type="submit" class="btn btn-gold" style="width:100%;border:none;cursor:pointer">Send Reservation Request</button>
+</form>
+</div>
+</section>
+
+<footer>
+<div class="brand">Old Venice</div>
+<p>Restaurant & Bar · Point Loma, San Diego</p>
+<div class="social">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+</div>
+<p>&copy; 2026 Old Venice Restaurant. All rights reserved.</p>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{document.querySelector('.preloader').classList.add('hidden')});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

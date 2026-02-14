@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T&M Roofing LLC | Detroit's Trusted Roofing Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#1b3a4b;--accent:#e63946;--navy:#0d1b2a;--steel:#415a77;--gold:#f4a261;--light:#f1faee;--white:#fff}
+body{font-family:'Source Sans 3',sans-serif;color:#333;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif}
+
+.preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s}
+.preloader.hidden{opacity:0;pointer-events:none}
+.preloader i{font-size:3rem;color:var(--accent);animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+
+nav{position:fixed;top:0;width:100%;background:rgba(13,27,42,.95);backdrop-filter:blur(10px);z-index:100;padding:1rem 0}
+nav .container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem}
+nav .logo{color:white;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700}
+nav .logo span{color:var(--accent)}
+nav .badges{display:flex;gap:.8rem;align-items:center}
+nav .badges .badge{background:var(--accent);color:white;padding:.3rem .8rem;border-radius:3px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+nav ul{list-style:none;display:flex;gap:1.5rem}
+nav ul a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:color .3s}
+nav ul a:hover{color:var(--accent)}
+.nav-toggle{display:none;color:white;font-size:1.5rem;cursor:pointer}
+
+.hero{height:100vh;background:linear-gradient(135deg,rgba(13,27,42,.88),rgba(27,58,75,.75)),url('https://placehold.co/1920x1080/0d1b2a/e63946?text=Roofing+Experts') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white}
+.hero-content{max-width:800px;padding:0 2rem}
+.hero .trust-badges{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.hero .trust-badges .tb{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--gold)}
+.hero .trust-badges .tb i{font-size:1rem}
+.hero h1{font-size:3.5rem;font-weight:900;margin-bottom:1rem;line-height:1.1}
+.hero h1 span{color:var(--accent)}
+.hero p{font-size:1.15rem;opacity:.9;margin-bottom:2rem;font-weight:300}
+.btn{display:inline-block;padding:1rem 2.5rem;border-radius:5px;font-weight:700;text-decoration:none;transition:all .3s;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}
+.btn-red{background:var(--accent);color:white;box-shadow:0 4px 15px rgba(230,57,70,.4)}
+.btn-red:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(230,57,70,.5)}
+.btn-outline{border:2px solid white;color:white;margin-left:1rem}
+.btn-outline:hover{background:white;color:var(--navy)}
+
+.wave-divider svg{display:block;width:100%;height:80px}
+
+section{padding:6rem 2rem}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-header h2{font-size:2.5rem;color:var(--navy);margin-bottom:.5rem}
+.section-header .bar{width:60px;height:4px;background:var(--accent);margin:1rem auto}
+.section-header p{color:#666;max-width:600px;margin:auto}
+
+.why-us{background:var(--light)}
+.why-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.why-card{background:white;padding:2rem;text-align:center;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,.05);transition:all .3s}
+.why-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.why-card .icon{width:60px;height:60px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:white;font-size:1.3rem}
+.why-card h3{font-size:1.1rem;margin-bottom:.5rem;color:var(--navy)}
+.why-card p{color:#888;font-size:.9rem;line-height:1.6}
+
+.services-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.svc-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,.06);transition:all .4s}
+.svc-card:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(0,0,0,.12)}
+.svc-card img{width:100%;height:200px;object-fit:cover}
+.svc-card .content{padding:1.5rem}
+.svc-card h3{color:var(--navy);font-size:1.2rem;margin-bottom:.5rem}
+.svc-card p{color:#888;font-size:.9rem;line-height:1.6}
+
+.stats-bar{background:linear-gradient(135deg,var(--navy),var(--steel));color:white;padding:4rem 2rem}
+.stats-row{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat .num{font-size:3rem;font-weight:900;font-family:'Playfair Display',serif;color:var(--accent)}
+.stat .label{font-size:.9rem;opacity:.7;margin-top:.3rem}
+
+.about-section{background:var(--light)}
+.about-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img img{width:100%;height:400px;object-fit:cover;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.1)}
+.about-text h2{font-size:2.2rem;color:var(--navy);margin-bottom:1rem}
+.about-text p{color:#666;line-height:1.8;margin-bottom:1.5rem}
+.about-text .discount-box{background:var(--accent);color:white;padding:1.5rem;border-radius:8px;display:flex;align-items:center;gap:1rem}
+.about-text .discount-box i{font-size:2rem}
+.about-text .discount-box div h4{margin-bottom:.2rem}
+.about-text .discount-box div p{font-size:.9rem;opacity:.9;margin:0}
+
+.reviews-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.review-card{background:white;padding:2rem;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,.06)}
+.review-card .stars{color:var(--gold);margin-bottom:1rem}
+.review-card p{color:#666;font-style:italic;line-height:1.7;margin-bottom:1rem}
+.review-card .author{font-weight:700;color:var(--navy)}
+
+.cta{background:linear-gradient(135deg,rgba(230,57,70,.9),rgba(13,27,42,.9)),url('https://placehold.co/1920x600/e63946/ffffff?text=Get+Quote') center/cover;color:white;text-align:center}
+.cta h2{font-size:2.5rem;margin-bottom:1rem}
+.cta p{opacity:.9;margin-bottom:2rem;font-size:1.1rem}
+
+.contact-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-info .item{display:flex;gap:1rem;margin-bottom:2rem}
+.contact-info .item .ic{width:50px;height:50px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;flex-shrink:0}
+.contact-info .item h4{color:var(--navy);margin-bottom:.2rem}
+.contact-info .item p{color:#666}
+.contact-form input,.contact-form select,.contact-form textarea{width:100%;padding:1rem;border:2px solid #eee;border-radius:8px;font-family:inherit;font-size:1rem;margin-bottom:1rem;transition:border .3s}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);outline:none}
+.contact-form textarea{height:120px;resize:vertical}
+
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:3rem 2rem;text-align:center}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.5rem;color:white;margin-bottom:.5rem}
+footer .brand span{color:var(--accent)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease-out}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+.hero h1{font-size:2.2rem}
+.why-grid{grid-template-columns:repeat(2,1fr)}
+.services-grid,.about-grid,.reviews-grid,.contact-grid,.stats-row{grid-template-columns:1fr}
+nav ul,.nav .badges{display:none}
+.nav-toggle{display:block}
+.btn-outline{margin-left:0;margin-top:1rem}
+}
+</style>
+</head>
+<body>
+
+<div class="preloader"><i class="fas fa-home"></i></div>
+
+<nav>
+<div class="container">
+<div class="logo">T&M <span>Roofing</span></div>
+<div class="nav-toggle"><i class="fas fa-bars"></i></div>
+<ul>
+<li><a href="#why">Why Us</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<div class="trust-badges">
+<div class="tb"><i class="fas fa-shield-alt"></i> Licensed & Insured</div>
+<div class="tb"><i class="fas fa-medal"></i> Veteran Owned</div>
+<div class="tb"><i class="fas fa-users"></i> Family Operated</div>
+</div>
+<h1>Detroit's Most <span>Trusted</span> Roofing Company</h1>
+<p>Over 20 years of experience protecting homes and businesses across Metro Detroit. Free estimates. We'll beat any licensed & insured competitor's written quote.</p>
+<a href="#contact" class="btn btn-red">Get Free Estimate</a>
+<a href="tel:313-600-4538" class="btn btn-outline"><i class="fas fa-phone"></i> 313-600-4538</a>
+</div>
+</section>
+
+<div class="wave-divider">
+<svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,80 600,0 1200,40 L1200,80 L0,80 Z" fill="#f1faee"/></svg>
+</div>
+
+<section class="why-us" id="why">
+<div class="section-header fade-up">
+<h2>Why Choose T&M Roofing?</h2>
+<div class="bar"></div>
+</div>
+<div class="why-grid">
+<div class="why-card fade-up">
+<div class="icon"><i class="fas fa-flag-usa"></i></div>
+<h3>Veteran Owned</h3>
+<p>Proudly veteran-owned with the discipline and dedication you deserve.</p>
+</div>
+<div class="why-card fade-up">
+<div class="icon"><i class="fas fa-certificate"></i></div>
+<h3>10-Year Warranty</h3>
+<p>Our 10-year labor warranty plus manufacturer's lifetime limited warranty.</p>
+</div>
+<div class="why-card fade-up">
+<div class="icon"><i class="fas fa-dollar-sign"></i></div>
+<h3>Price Match</h3>
+<p>We'll beat any written estimate from a licensed and insured roofer.</p>
+</div>
+<div class="why-card fade-up">
+<div class="icon"><i class="fas fa-heart"></i></div>
+<h3>Community First</h3>
+<p>Discounts for seniors, veterans, and first responders.</p>
+</div>
+</div>
+</section>
+
+<section id="services">
+<div class="section-header fade-up">
+<h2>Our Services</h2>
+<div class="bar"></div>
+<p>Complete roofing and exterior solutions for residential, commercial, and industrial properties.</p>
+</div>
+<div class="services-grid">
+<div class="svc-card fade-up">
+<img src="https://placehold.co/400x200/1b3a4b/e63946?text=Roof+Replacement" alt="Roof replacement">
+<div class="content"><h3>Roof Replacement</h3><p>Full tear-off and replacement with quality materials. Shingles, flat roofing, metal, and more.</p></div>
+</div>
+<div class="svc-card fade-up">
+<img src="https://placehold.co/400x200/415a77/f4a261?text=Roof+Repair" alt="Roof repair">
+<div class="content"><h3>Roof Repair</h3><p>Storm damage, leaks, missing shingles — we fix it all quickly and affordably.</p></div>
+</div>
+<div class="svc-card fade-up">
+<img src="https://placehold.co/400x200/0d1b2a/e63946?text=Commercial" alt="Commercial roofing">
+<div class="content"><h3>Commercial Roofing</h3><p>Industrial and commercial roofing solutions built for durability and performance.</p></div>
+</div>
+<div class="svc-card fade-up">
+<img src="https://placehold.co/400x200/1b3a4b/ffffff?text=Siding" alt="Siding">
+<div class="content"><h3>Siding</h3><p>Vinyl, aluminum, and fiber cement siding installation and replacement.</p></div>
+</div>
+<div class="svc-card fade-up">
+<img src="https://placehold.co/400x200/415a77/ffffff?text=Gutters" alt="Gutters">
+<div class="content"><h3>Gutters</h3><p>Seamless gutter installation, repair, and gutter guard protection systems.</p></div>
+</div>
+<div class="svc-card fade-up">
+<img src="https://placehold.co/400x200/0d1b2a/f4a261?text=Inspections" alt="Inspections">
+<div class="content"><h3>Free Inspections</h3><p>Thorough roof inspections with detailed reports and honest recommendations.</p></div>
+</div>
+</div>
+</section>
+
+<section class="stats-bar">
+<div class="stats-row">
+<div class="stat fade-up"><div class="num">20+</div><div class="label">Years Experience</div></div>
+<div class="stat fade-up"><div class="num">3K+</div><div class="label">Roofs Completed</div></div>
+<div class="stat fade-up"><div class="num">10yr</div><div class="label">Labor Warranty</div></div>
+<div class="stat fade-up"><div class="num">100%</div><div class="label">Satisfaction</div></div>
+</div>
+</section>
+
+<section class="about-section" id="about">
+<div class="about-grid">
+<div class="about-img fade-up">
+<img src="https://placehold.co/600x400/1b3a4b/e63946?text=T%26M+Roofing+Team" alt="T&M Roofing team">
+</div>
+<div class="about-text fade-up">
+<h2>Family & Veteran Owned Since Day One</h2>
+<p>T&M Roofing is a family- and veteran-owned roofing company based right here in Detroit. We handle all types of roofing — residential, commercial, and industrial. From small repairs to full replacements, every job gets quality materials and attention to detail.</p>
+<p>We are fully licensed and insured, and we stand behind our work. Our commitment to fair pricing means we'll beat any written estimate from a licensed roofer.</p>
+<div class="discount-box">
+<i class="fas fa-tags"></i>
+<div>
+<h4>Special Discounts Available</h4>
+<p>Seniors, veterans, and first responders save on every project.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="reviews">
+<div class="section-header fade-up">
+<h2>Customer Reviews</h2>
+<div class="bar"></div>
+</div>
+<div class="reviews-grid">
+<div class="review-card fade-up">
+<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"T&M Roofing did an outstanding job on our roof replacement. Professional crew, fair price, and they cleaned up everything when they finished. Highly recommend!"</p>
+<div class="author">— Detroit Homeowner</div>
+</div>
+<div class="review-card fade-up">
+<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"As a fellow veteran, I appreciate the integrity this company brings. They did what they said they'd do, on time and on budget. My roof looks fantastic."</p>
+<div class="author">— Southfield Resident</div>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<h2 class="fade-up">Need a New Roof? Get Your Free Estimate Today</h2>
+<p class="fade-up">We'll beat any licensed & insured competitor's written quote.</p>
+<a href="tel:313-600-4538" class="btn btn-red fade-up" style="margin-right:1rem"><i class="fas fa-phone"></i> 313-600-4538</a>
+<a href="#contact" class="btn btn-outline fade-up">Request a Quote</a>
+</section>
+
+<section id="contact">
+<div class="section-header fade-up">
+<h2>Contact Us</h2>
+<div class="bar"></div>
+<p>Get your free, no-obligation roofing estimate today.</p>
+</div>
+<div class="contact-grid">
+<div class="contact-info fade-up">
+<div class="item"><div class="ic"><i class="fas fa-map-marker-alt"></i></div><div><h4>Location</h4><p>14564 Schaefer Hwy<br>Detroit, MI 48227</p></div></div>
+<div class="item"><div class="ic"><i class="fas fa-phone"></i></div><div><h4>Phone</h4><p>313-600-4538</p></div></div>
+<div class="item"><div class="ic"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p>4224tmroof@gmail.com</p></div></div>
+<div class="item"><div class="ic"><i class="fas fa-clock"></i></div><div><h4>Hours</h4><p>Mon-Sat: 7AM - 7PM<br>Emergency service available</p></div></div>
+</div>
+<form class="contact-form fade-up" onsubmit="event.preventDefault();alert('Thank you! We\'ll contact you within 24 hours with your free estimate.')">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<input type="tel" placeholder="Your Phone" required>
+<input type="text" placeholder="Property Address">
+<textarea placeholder="Describe your roofing needs..."></textarea>
+<button type="submit" class="btn btn-red" style="width:100%;border:none;cursor:pointer">Get Free Estimate</button>
+</form>
+</div>
+</section>
+
+<footer>
+<div class="brand">T&M <span>Roofing</span> LLC</div>
+<p>&copy; 2026 T&M Roofing LLC. Detroit, MI. Licensed & Insured. Veteran Owned.</p>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{document.querySelector('.preloader').classList.add('hidden')});
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
