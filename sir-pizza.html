@@ -3,200 +3,571 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sir Pizza | Key Biscayne, FL — Pizza & More</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Sir Pizza | Key Biscayne, FL — Artisan Pizza & More</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--red:#d62828;--red-dark:#b71c1c;--yellow:#fca311;--cream:#fef9ef;--dark:#2b2b2b;--white:#fff;--green:#2d6a4f}
+:root{
+  --red:#c1121f;--red-dark:#a00d1a;--red-light:#d4383f;
+  --cream:#fdf0d5;--cream-light:#fef8ec;--white:#ffffff;
+  --charcoal:#2b2d2f;--charcoal-dark:#1a1c1e;--charcoal-light:#3d3f42;
+  --text:#4a4a4a;--text-muted:#8a8a8a;--gold:#d4a574;
+}
 html{scroll-behavior:smooth}
-body{font-family:'Poppins',sans-serif;color:var(--dark);overflow-x:hidden}
-h1,h2,h3{font-family:'Poppins',sans-serif}
+body{font-family:'Inter',sans-serif;color:var(--text);overflow-x:hidden;background:var(--cream)}
+h1,h2,h3,h4{font-family:'DM Serif Display',serif;font-weight:400}
 
-nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(214,40,40,.97);backdrop-filter:blur(10px);padding:0 5%;display:flex;justify-content:space-between;align-items:center;height:70px}
-.nav-logo{font-family:'Fredoka One',cursive;color:var(--white);font-size:1.6rem;text-decoration:none}
-.nav-logo span{color:var(--yellow)}
-.nav-links{display:flex;gap:25px;list-style:none}
-.nav-links a{color:rgba(255,255,255,.9);text-decoration:none;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;transition:color .3s}
-.nav-links a:hover{color:var(--yellow)}
-.nav-cta{background:var(--yellow);color:var(--dark);padding:10px 22px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.85rem;transition:all .3s}
-.nav-cta:hover{background:#e8950f;transform:translateY(-1px)}
-.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+/* PRELOADER */
+.preloader{position:fixed;inset:0;background:var(--charcoal-dark);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader-inner{text-align:center}
+.preloader-inner h2{font-family:'DM Serif Display',serif;color:var(--cream);font-size:2.4rem;font-weight:400;letter-spacing:4px}
+.preloader-inner h2 span{color:var(--red)}
+.preloader-line{width:60px;height:2px;background:var(--red);margin:15px auto 0;animation:preloaderPulse 1s ease infinite}
+@keyframes preloaderPulse{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(1.5);opacity:.5}}
 
-.hero{height:100vh;background:linear-gradient(135deg,rgba(214,40,40,.88),rgba(43,43,43,.7)),url('https://placehold.co/1920x1080/d62828/fca311?text=Fresh+Pizza') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 5%}
-.hero-content{max-width:800px;animation:fadeUp .8s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
-.hero-icon{font-size:4rem;margin-bottom:15px}
-.hero h1{font-family:'Fredoka One',cursive;font-size:clamp(3rem,7vw,5.5rem);color:var(--white);line-height:1;margin-bottom:15px}
-.hero h1 span{color:var(--yellow);display:block;font-size:clamp(1.5rem,3.5vw,2.5rem)}
-.hero p{color:rgba(255,255,255,.8);font-size:1.15rem;margin-bottom:30px}
-.btn{display:inline-block;padding:15px 35px;border-radius:50px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.5px;font-size:.95rem;transition:all .3s}
-.btn-yellow{background:var(--yellow);color:var(--dark)}
-.btn-yellow:hover{background:#e8950f;transform:translateY(-2px);box-shadow:0 8px 25px rgba(252,163,17,.4)}
-.btn-white{background:transparent;border:2px solid rgba(255,255,255,.5);color:var(--white);margin-left:15px}
-.btn-white:hover{background:rgba(255,255,255,.15);border-color:#fff}
-.hero-rating{margin-top:30px;display:flex;justify-content:center;gap:25px;flex-wrap:wrap}
-.hero-rating div{color:rgba(255,255,255,.8);font-size:.9rem;display:flex;align-items:center;gap:6px}
-.hero-rating i{color:var(--yellow)}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.15s}
+.reveal-delay-2{transition-delay:.3s}
+.reveal-delay-3{transition-delay:.45s}
 
-.specials{background:var(--yellow);padding:20px 5%;display:flex;justify-content:center;gap:40px;flex-wrap:wrap;font-weight:700;font-size:.95rem;color:var(--dark)}
-.specials div{display:flex;align-items:center;gap:8px}
-.specials i{color:var(--red)}
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:80px;transition:all .4s cubic-bezier(.16,1,.3,1)}
+nav.transparent{background:transparent}
+nav.scrolled{background:rgba(43,45,47,.97);backdrop-filter:blur(20px);box-shadow:0 4px 30px rgba(0,0,0,.2);height:70px}
+.nav-logo{font-family:'DM Serif Display',serif;color:var(--cream);font-size:1.8rem;text-decoration:none;letter-spacing:1px}
+.nav-logo span{color:var(--red)}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
+.nav-links a{color:rgba(253,240,213,.6);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--red);transition:width .3s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:var(--cream)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--red);color:var(--white);padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s;border:none}
+.nav-cta:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(193,18,31,.3)}
+.mobile-toggle{display:none;color:var(--cream);font-size:1.5rem;cursor:pointer;background:none;border:none}
 
-section{padding:80px 5%}
-.section-header{text-align:center;margin-bottom:50px}
-.section-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;margin-bottom:10px;color:var(--dark)}
-.section-header p{color:#888;max-width:500px;margin:0 auto}
-.section-header .bar{width:50px;height:4px;background:var(--red);margin:12px auto;border-radius:2px}
+/* HERO */
+.hero{height:100vh;background:linear-gradient(180deg,rgba(43,45,47,.5) 0%,rgba(26,28,30,.88) 100%),url('https://placehold.co/1920x1080/2b2d2f/c1121f?text=Artisan+Pizza') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 5%;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:150px;background:linear-gradient(transparent,var(--cream))}
+.hero-content{max-width:850px;position:relative;z-index:2}
+.hero-sub{color:var(--gold);font-size:.85rem;text-transform:uppercase;letter-spacing:6px;font-weight:500;margin-bottom:20px;display:inline-block}
+.hero h1{font-size:clamp(3rem,7vw,5.5rem);color:var(--cream);line-height:1.05;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--red-light)}
+.hero p{color:rgba(253,240,213,.55);font-size:1.1rem;max-width:550px;margin:0 auto 35px;line-height:1.8;font-weight:300}
+.hero-btns{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--red);color:var(--white);padding:16px 40px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;transition:all .35s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--red-dark);transform:translateY(-3px);box-shadow:0 12px 35px rgba(193,18,31,.35)}
+.btn-outline{border:1.5px solid rgba(253,240,213,.3);color:var(--cream);padding:16px 40px;border-radius:50px;text-decoration:none;font-weight:500;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;transition:all .35s}
+.btn-outline:hover{border-color:var(--cream);background:rgba(253,240,213,.1)}
+.hero-rating{margin-top:35px;display:flex;justify-content:center;gap:30px;flex-wrap:wrap}
+.hero-rating-item{display:flex;align-items:center;gap:8px;color:rgba(253,240,213,.7);font-size:.85rem;font-weight:500}
+.hero-rating-item i{color:var(--gold)}
 
-.menu{background:var(--cream)}
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;max-width:1200px;margin:0 auto}
-.menu-card{background:var(--white);border-radius:15px;overflow:hidden;box-shadow:0 3px 15px rgba(0,0,0,.06);transition:all .3s}
-.menu-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.12)}
-.menu-card img{width:100%;height:200px;object-fit:cover}
-.menu-body{padding:20px}
-.menu-body h3{font-size:1.2rem;margin-bottom:6px;font-weight:700}
-.menu-body p{color:#666;font-size:.9rem;line-height:1.5}
-.menu-body .price{color:var(--red);font-weight:800;font-size:1.1rem;margin-top:8px}
+/* WAVE */
+.wave-divider{position:relative;overflow:hidden;line-height:0}
+.wave-divider svg{display:block;width:100%;height:80px}
 
-.about-strip{background:var(--red);color:var(--white);text-align:center;padding:50px 5%}
-.about-strip h2{font-family:'Fredoka One',cursive;font-size:clamp(1.5rem,3.5vw,2.5rem);margin-bottom:10px}
-.about-strip p{max-width:700px;margin:0 auto;font-size:1.05rem;opacity:.9;line-height:1.7}
+/* DAILY SPECIALS BAR */
+.specials-bar{padding:50px 6%;background:var(--cream);text-align:center}
+.specials-grid{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;max-width:1100px;margin:0 auto}
+.special-item{display:flex;align-items:center;gap:12px;font-size:.9rem;font-weight:500;color:var(--charcoal)}
+.special-item i{color:var(--red);font-size:1.1rem}
+.special-item strong{color:var(--red)}
 
-.reviews{background:var(--cream)}
-.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1100px;margin:0 auto}
-.rev{background:var(--white);border-radius:12px;padding:25px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-.rev-stars{color:var(--yellow);margin-bottom:10px}
-.rev p{color:#555;line-height:1.7;font-style:italic;margin-bottom:10px}
-.rev-name{font-weight:700;color:var(--dark);font-size:.9rem}
+/* ABOUT */
+.about{padding:120px 6%;background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.about-img{position:relative;border-radius:16px;overflow:hidden}
+.about-img img{width:100%;height:450px;object-fit:cover;border-radius:16px;transition:transform .6s}
+.about-img:hover img{transform:scale(1.03)}
+.about-img-badge{position:absolute;bottom:25px;right:25px;background:var(--red);color:var(--white);padding:15px 25px;border-radius:12px;font-family:'DM Serif Display',serif;font-size:1.3rem}
+.about-text .section-tag{color:var(--red);font-size:.75rem;text-transform:uppercase;letter-spacing:4px;font-weight:600;margin-bottom:15px;display:block}
+.about-text h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--charcoal);margin-bottom:25px;line-height:1.15}
+.about-text h2 em{font-style:italic;color:var(--red)}
+.about-text p{color:var(--text-muted);line-height:1.9;margin-bottom:20px;font-size:.95rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:25px}
+.about-feature{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--charcoal);font-weight:500}
+.about-feature i{color:var(--red);font-size:1rem}
 
-.location-section{background:var(--white)}
-.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1100px;margin:0 auto;align-items:start}
-.map-wrap{border-radius:15px;overflow:hidden;height:350px;background:#ddd}
-.map-wrap iframe{width:100%;height:100%;border:none}
-.info-card{background:var(--cream);border-radius:15px;padding:35px}
-.info-card h3{font-size:1.4rem;margin-bottom:20px;color:var(--red);font-weight:700}
-.info-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.08)}
-.info-row:last-of-type{border:none}
-.info-contact{margin-top:20px}
-.info-contact div{display:flex;align-items:center;gap:10px;margin-bottom:12px;color:#555}
-.info-contact i{color:var(--red);width:18px;text-align:center}
+/* MENU */
+.menu{padding:120px 6%;background:var(--white)}
+.section-header{text-align:center;max-width:600px;margin:0 auto 70px}
+.section-header .section-tag{color:var(--red);font-size:.75rem;text-transform:uppercase;letter-spacing:4px;font-weight:600;margin-bottom:12px;display:block}
+.section-header h2{font-size:clamp(2.2rem,4vw,3.5rem);color:var(--charcoal);line-height:1.15}
+.section-header h2 em{font-style:italic;color:var(--red)}
+.section-header p{color:var(--text-muted);margin-top:15px;line-height:1.8;font-size:.95rem}
 
-.cta-section{background:linear-gradient(135deg,var(--red),var(--red-dark));text-align:center;color:var(--white)}
-.cta-section h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,4.5vw,3rem);margin-bottom:10px}
-.cta-section p{font-size:1.1rem;margin-bottom:20px;opacity:.9}
-.cta-section .btn{background:var(--yellow);color:var(--dark)}
-.cta-section .btn:hover{background:#e8950f}
+.menu-categories{display:flex;justify-content:center;gap:12px;margin-bottom:50px;flex-wrap:wrap}
+.menu-cat{padding:10px 28px;border-radius:50px;border:1.5px solid #e0d5c4;color:var(--text-muted);font-size:.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .3s;background:transparent}
+.menu-cat:hover,.menu-cat.active{background:var(--charcoal);color:var(--cream);border-color:var(--charcoal)}
 
-footer{background:var(--dark);color:rgba(255,255,255,.5);text-align:center;padding:25px 5%;font-size:.85rem}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px;max-width:1200px;margin:0 auto}
+.menu-card{background:var(--cream-light);border-radius:16px;overflow:hidden;transition:all .4s cubic-bezier(.16,1,.3,1);cursor:pointer}
+.menu-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(43,45,47,.1)}
+.menu-card-img{height:220px;overflow:hidden}
+.menu-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.menu-card:hover .menu-card-img img{transform:scale(1.08)}
+.menu-card-body{padding:25px 28px 28px}
+.menu-card-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:8px}
+.menu-card h3{font-size:1.4rem;color:var(--charcoal)}
+.menu-card .price{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--red)}
+.menu-card p{color:var(--text-muted);font-size:.85rem;line-height:1.7}
 
-@media(max-width:768px){
-.nav-links{display:none;position:absolute;top:70px;left:0;width:100%;background:var(--red);flex-direction:column;padding:20px;gap:15px}
-.nav-links.active{display:flex}
-.mobile-toggle{display:block}
-.nav-cta{display:none}
-.loc-grid{grid-template-columns:1fr}
-.btn-white{margin-left:0;margin-top:10px}
+/* DAILY SPECIALS */
+.daily-specials{padding:120px 6%;background:var(--charcoal);position:relative;overflow:hidden}
+.daily-specials::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(193,18,31,.08),transparent);pointer-events:none}
+.specials-content{max-width:1100px;margin:0 auto}
+.specials-content .section-header h2{color:var(--cream)}
+.specials-content .section-header p{color:rgba(253,240,213,.45)}
+.specials-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.special-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:35px 28px;text-align:center;transition:all .4s}
+.special-card:hover{transform:translateY(-5px);background:rgba(255,255,255,.07);border-color:rgba(193,18,31,.2)}
+.special-card-icon{width:60px;height:60px;border-radius:50%;background:rgba(193,18,31,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.special-card-icon i{color:var(--red-light);font-size:1.3rem}
+.special-card h3{color:var(--cream);font-size:1.2rem;margin-bottom:8px}
+.special-card p{color:rgba(253,240,213,.45);font-size:.85rem;line-height:1.7}
+.special-card .special-price{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--red-light);margin-top:12px}
+
+/* STATS */
+.stats{padding:80px 6%;background:var(--cream)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1000px;margin:0 auto;text-align:center}
+.stat-item{}
+.stat-number{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,5vw,3.5rem);color:var(--charcoal);line-height:1}
+.stat-number span{color:var(--red)}
+.stat-label{color:var(--text-muted);font-size:.75rem;text-transform:uppercase;letter-spacing:3px;font-weight:500;margin-top:8px}
+
+/* TESTIMONIALS */
+.testimonials{padding:120px 6%;background:var(--white)}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;max-width:1200px;margin:0 auto}
+.testimonial-card{background:var(--cream-light);border-radius:16px;padding:40px 30px;transition:all .4s;position:relative}
+.testimonial-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(43,45,47,.08)}
+.testimonial-card .quote-icon{font-family:'DM Serif Display',serif;font-size:5rem;color:var(--red);opacity:.12;line-height:1;position:absolute;top:15px;right:25px}
+.testimonial-stars{color:var(--gold);font-size:.85rem;margin-bottom:15px;display:flex;gap:3px}
+.testimonial-text{color:var(--text-muted);font-size:.92rem;line-height:1.8;margin-bottom:20px;font-style:italic;position:relative;z-index:1}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:45px;height:45px;border-radius:50%;background:rgba(193,18,31,.1);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-weight:400;color:var(--red);font-size:1.1rem}
+.testimonial-name{font-weight:600;font-size:.9rem;color:var(--charcoal)}
+.testimonial-role{font-size:.75rem;color:var(--text-muted)}
+
+/* LOCATION */
+.location{padding:120px 6%;background:var(--cream)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;max-width:1100px;margin:0 auto;align-items:center}
+.loc-card{background:var(--white);border-radius:16px;padding:45px;box-shadow:0 5px 30px rgba(0,0,0,.06)}
+.loc-card h3{font-size:1.6rem;color:var(--charcoal);margin-bottom:25px}
+.loc-card h3 em{color:var(--red)}
+.loc-row{display:flex;align-items:start;gap:15px;padding:14px 0;border-bottom:1px solid var(--cream)}
+.loc-row:last-child{border:none}
+.loc-row i{color:var(--red);margin-top:3px;width:18px;text-align:center}
+.loc-row div{font-size:.9rem;line-height:1.6;color:var(--text)}
+.loc-row strong{color:var(--charcoal);display:block;margin-bottom:2px}
+.loc-img{border-radius:16px;overflow:hidden}
+.loc-img img{width:100%;height:450px;object-fit:cover;border-radius:16px;transition:transform .6s}
+.loc-img:hover img{transform:scale(1.03)}
+
+/* ORDER CTA */
+.order-cta{padding:120px 6%;background:var(--charcoal-dark);text-align:center;position:relative;overflow:hidden}
+.order-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(193,18,31,.08),transparent 70%);pointer-events:none}
+.order-cta h2{font-size:clamp(2rem,4.5vw,3.5rem);color:var(--cream);margin-bottom:15px}
+.order-cta h2 em{color:var(--red-light)}
+.order-cta p{color:rgba(253,240,213,.5);font-size:1rem;margin-bottom:30px;max-width:500px;margin-left:auto;margin-right:auto}
+.order-cta .btn-primary{font-size:1rem;padding:18px 50px}
+
+/* FOOTER */
+footer{background:var(--charcoal-dark);padding:80px 6% 30px;border-top:1px solid rgba(255,255,255,.05)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:50px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--cream);margin-bottom:15px}
+.footer-brand h3 span{color:var(--red)}
+.footer-brand p{color:rgba(253,240,213,.35);font-size:.85rem;line-height:1.8;margin-bottom:20px}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(253,240,213,.1);display:flex;align-items:center;justify-content:center;color:rgba(253,240,213,.4);text-decoration:none;transition:all .3s}
+.footer-social a:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+.footer-col h4{color:var(--cream);font-family:'Inter',sans-serif;font-size:.75rem;text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:20px}
+.footer-col a{display:block;color:rgba(253,240,213,.35);text-decoration:none;font-size:.85rem;margin-bottom:10px;transition:color .3s}
+.footer-col a:hover{color:var(--red)}
+.footer-hours{color:rgba(253,240,213,.35);font-size:.85rem;line-height:1.8}
+.footer-newsletter input{width:100%;padding:14px 18px;border:1px solid rgba(253,240,213,.1);border-radius:50px;background:rgba(253,240,213,.05);color:var(--cream);font-size:.85rem;margin-bottom:10px;outline:none;font-family:'Inter',sans-serif}
+.footer-newsletter input::placeholder{color:rgba(253,240,213,.25)}
+.footer-newsletter button{width:100%;padding:14px;border:none;border-radius:50px;background:var(--red);color:var(--white);font-weight:600;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif}
+.footer-newsletter button:hover{background:var(--red-dark)}
+.footer-bottom{border-top:1px solid rgba(253,240,213,.06);margin-top:50px;padding-top:25px;text-align:center;color:rgba(253,240,213,.2);font-size:.8rem}
+
+/* MOBILE */
+@media(max-width:968px){
+  .nav-links{display:none}
+  .mobile-toggle{display:block}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .specials-cards{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .testimonial-grid{grid-template-columns:1fr 1fr}
+  .loc-grid{grid-template-columns:1fr;gap:30px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+}
+@media(max-width:600px){
+  .hero h1{font-size:clamp(2.4rem,8vw,3.5rem)}
+  .menu-grid{grid-template-columns:1fr}
+  .specials-cards{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .testimonial-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<nav>
-<a href="#" class="nav-logo">Sir <span>Pizza</span></a>
-<ul class="nav-links" id="navLinks">
-<li><a href="#menu">Menu</a></li>
-<li><a href="#reviews">Reviews</a></li>
-<li><a href="#location">Location</a></li>
-</ul>
-<a href="#menu" class="nav-cta"><i class="fas fa-pizza-slice"></i> Order Now</a>
-<button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')"><i class="fas fa-bars"></i></button>
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <h2>Sir <span>Pizza</span></h2>
+    <div class="preloader-line"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="transparent" id="navbar">
+  <a href="#" class="nav-logo">Sir <span>Pizza</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#specials">Specials</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#order" class="nav-cta"><i class="fas fa-pizza-slice"></i> Order Online</a></li>
+  </ul>
+  <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')"><i class="fas fa-bars"></i></button>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-<div class="hero-content">
-<div class="hero-icon">🍕</div>
-<h1>Sir Pizza <span>Key Biscayne's Favorite Slice</span></h1>
-<p>Delicious pizza, subs, salads, and more — served fresh daily. Affordable prices, generous portions, and the taste that keeps you coming back.</p>
-<a href="#menu" class="btn btn-yellow">See the Menu</a>
-<a href="#location" class="btn btn-white">Find Us</a>
-<div class="hero-rating">
-<div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.0 Rating</div>
-<div><i class="fas fa-users"></i> 201+ Reviews</div>
-<div><i class="fas fa-map-marker-alt"></i> Key Biscayne, FL</div>
-</div>
-</div>
+  <div class="hero-content">
+    <span class="hero-sub">Key Biscayne, Florida</span>
+    <h1>Crafted Pizza, <em>Island Soul</em></h1>
+    <p>Handcrafted pies made with premium ingredients and island passion. Generous portions, honest prices, and the taste that keeps Key Biscayne coming back.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary"><i class="fas fa-utensils"></i> View Menu</a>
+      <a href="#order" class="btn-outline">Order Online</a>
+    </div>
+    <div class="hero-rating">
+      <div class="hero-rating-item"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.0 Rating</div>
+      <div class="hero-rating-item"><i class="fas fa-users"></i> 201+ Reviews</div>
+      <div class="hero-rating-item"><i class="fas fa-dollar-sign"></i> Budget-Friendly</div>
+    </div>
+  </div>
 </section>
 
-<div class="specials">
-<div><i class="fas fa-tag"></i> Lunch Specials Daily</div>
-<div><i class="fas fa-truck"></i> Delivery Available</div>
-<div><i class="fas fa-percent"></i> Family Combo Deals</div>
+<!-- WAVE -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,80 600,0 1200,40 L1200,80 L0,80Z" fill="#fdf0d5"/></svg>
 </div>
 
+<!-- SPECIALS BAR -->
+<section class="specials-bar">
+  <div class="specials-grid reveal">
+    <div class="special-item"><i class="fas fa-tag"></i> <strong>Lunch Specials</strong> Daily from 11am</div>
+    <div class="special-item"><i class="fas fa-truck"></i> <strong>Delivery</strong> Available Island-wide</div>
+    <div class="special-item"><i class="fas fa-users"></i> <strong>Family Combos</strong> Feed the whole crew</div>
+    <div class="special-item"><i class="fas fa-heart"></i> <strong>Key Biscayne</strong> Favorite since day one</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <img src="https://placehold.co/600x450/2b2d2f/c1121f?text=Our+Kitchen" alt="Sir Pizza Kitchen">
+      <div class="about-img-badge">Island Favorite</div>
+    </div>
+    <div class="about-text reveal reveal-delay-1">
+      <span class="section-tag">Our Story</span>
+      <h2>Key Biscayne's <em>Go-To</em> Pizzeria</h2>
+      <p>Sir Pizza has been the heart of Key Biscayne's food scene — the place locals turn to for a quick, delicious, and affordable meal. Whether it's Friday family night or a quick lunch break, we deliver honest food with generous portions.</p>
+      <p>Our dough is made fresh daily, our sauces are house-made, and every pie comes out of the oven with the care and craft that's made us a neighborhood institution.</p>
+      <div class="about-features">
+        <div class="about-feature"><i class="fas fa-bread-slice"></i> Fresh Dough Daily</div>
+        <div class="about-feature"><i class="fas fa-pepper-hot"></i> House-Made Sauces</div>
+        <div class="about-feature"><i class="fas fa-cheese"></i> Premium Mozzarella</div>
+        <div class="about-feature"><i class="fas fa-truck"></i> Fast Delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,80 600,0 1200,40 L1200,80 L0,80Z" fill="#ffffff"/></svg>
+</div>
+
+<!-- MENU -->
 <section class="menu" id="menu">
-<div class="section-header">
-<h2>Our Menu</h2>
-<div class="bar"></div>
-<p>Something for everyone — from classic pies to fresh subs</p>
-</div>
-<div class="menu-grid">
-<div class="menu-card"><img src="https://placehold.co/400x250/d62828/fca311?text=Classic+Pizza" alt="Pizza"><div class="menu-body"><h3>Classic Cheese Pizza</h3><p>Our signature hand-tossed crust with house-made sauce and premium mozzarella.</p><div class="price">From $9.99</div></div></div>
-<div class="menu-card"><img src="https://placehold.co/400x250/fca311/2b2b2b?text=Specialty+Pies" alt="Specialty"><div class="menu-body"><h3>Specialty Pizzas</h3><p>Supreme, Meat Lovers, Veggie, BBQ Chicken, and more loaded specialty pies.</p><div class="price">From $13.99</div></div></div>
-<div class="menu-card"><img src="https://placehold.co/400x250/2b2b2b/fca311?text=Subs+%26+Wraps" alt="Subs"><div class="menu-body"><h3>Subs & Wraps</h3><p>Italian sub, chicken parm, philly cheesesteak, and fresh wraps made to order.</p><div class="price">From $7.99</div></div></div>
-<div class="menu-card"><img src="https://placehold.co/400x250/2d6a4f/ffffff?text=Salads" alt="Salads"><div class="menu-body"><h3>Fresh Salads</h3><p>Caesar, Greek, garden, and chef salads with house-made dressings.</p><div class="price">From $6.99</div></div></div>
-</div>
+  <div class="section-header reveal">
+    <span class="section-tag">The Menu</span>
+    <h2>Crafted with <em>Passion</em></h2>
+    <p>From classic cheese to loaded specialty pies — something for every craving, every appetite, every budget.</p>
+  </div>
+  <div class="menu-categories reveal">
+    <button class="menu-cat active">Pizzas</button>
+    <button class="menu-cat">Specialty Pies</button>
+    <button class="menu-cat">Subs & Wraps</button>
+    <button class="menu-cat">Salads</button>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card reveal">
+      <div class="menu-card-img"><img src="https://placehold.co/400x260/c1121f/fdf0d5?text=Classic+Cheese" alt="Classic Cheese Pizza"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-top"><h3>Classic Cheese</h3><span class="price">$9.99</span></div>
+        <p>Hand-tossed crust with our signature house-made sauce and premium whole-milk mozzarella. The perfect pie.</p>
+      </div>
+    </div>
+    <div class="menu-card reveal reveal-delay-1">
+      <div class="menu-card-img"><img src="https://placehold.co/400x260/2b2d2f/d4a574?text=Meat+Lovers" alt="Meat Lovers"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-top"><h3>Meat Lovers</h3><span class="price">$15.99</span></div>
+        <p>Loaded with pepperoni, Italian sausage, ham, bacon, and seasoned ground beef on a bed of melted cheese.</p>
+      </div>
+    </div>
+    <div class="menu-card reveal reveal-delay-2">
+      <div class="menu-card-img"><img src="https://placehold.co/400x260/1a1c1e/c1121f?text=Supreme" alt="Supreme Pizza"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-top"><h3>Supreme</h3><span class="price">$16.99</span></div>
+        <p>The works — pepperoni, sausage, mushrooms, onions, green peppers, black olives, and extra cheese.</p>
+      </div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="menu-card-img"><img src="https://placehold.co/400x260/3d3f42/fdf0d5?text=BBQ+Chicken" alt="BBQ Chicken"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-top"><h3>BBQ Chicken</h3><span class="price">$14.99</span></div>
+        <p>Smoky BBQ sauce base topped with grilled chicken, red onions, cilantro, and a three-cheese blend.</p>
+      </div>
+    </div>
+    <div class="menu-card reveal reveal-delay-1">
+      <div class="menu-card-img"><img src="https://placehold.co/400x260/c1121f/ffffff?text=Italian+Sub" alt="Italian Sub"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-top"><h3>Italian Sub</h3><span class="price">$9.99</span></div>
+        <p>Stacked with capicola, salami, ham, provolone, lettuce, tomato, and house Italian dressing on fresh bread.</p>
+      </div>
+    </div>
+    <div class="menu-card reveal reveal-delay-2">
+      <div class="menu-card-img"><img src="https://placehold.co/400x260/2b2d2f/ffffff?text=Caesar+Salad" alt="Caesar Salad"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-top"><h3>Caesar Salad</h3><span class="price">$8.99</span></div>
+        <p>Crisp romaine, shaved parmesan, house croutons, and our creamy Caesar dressing. Add grilled chicken $3.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="about-strip">
-<h2>Serving Key Biscayne Since Day One 🍕</h2>
-<p>Sir Pizza has been a Key Biscayne staple for years — the place locals go for a quick, delicious, and affordable meal. Whether it's a Friday night family dinner or a quick lunch break, we've got you covered with hot, fresh food and friendly service.</p>
+<!-- WAVE -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,80 600,0 1200,40 L1200,80 L0,80Z" fill="#2b2d2f"/></svg>
+</div>
+
+<!-- DAILY SPECIALS -->
+<section class="daily-specials" id="specials">
+  <div class="specials-content">
+    <div class="section-header reveal">
+      <span class="section-tag">Don't Miss</span>
+      <h2>Daily <em>Specials</em></h2>
+      <p>Great deals every day of the week — because amazing pizza shouldn't break the bank.</p>
+    </div>
+    <div class="specials-cards">
+      <div class="special-card reveal">
+        <div class="special-card-icon"><i class="fas fa-pizza-slice"></i></div>
+        <h3>Lunch Combo</h3>
+        <p>2 slices + fountain drink. Perfect for a quick midday meal. Available 11am–3pm daily.</p>
+        <div class="special-price">$6.99</div>
+      </div>
+      <div class="special-card reveal reveal-delay-1">
+        <div class="special-card-icon"><i class="fas fa-users"></i></div>
+        <h3>Family Deal</h3>
+        <p>2 large pizzas + garlic knots + 2-liter soda. Feed the whole family for less.</p>
+        <div class="special-price">$29.99</div>
+      </div>
+      <div class="special-card reveal reveal-delay-2">
+        <div class="special-card-icon"><i class="fas fa-calendar-day"></i></div>
+        <h3>Tuesday Special</h3>
+        <p>Buy any large pizza, get a medium cheese free. The best deal on the island, every Tuesday.</p>
+        <div class="special-price">BOGO</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="reviews" id="reviews">
-<div class="section-header">
-<h2>What People Are Saying</h2>
-<div class="bar"></div>
-<p>201+ reviews and counting!</p>
+<!-- WAVE -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,80 600,0 1200,40 L1200,80 L0,80Z" fill="#fdf0d5"/></svg>
 </div>
-<div class="rev-grid">
-<div class="rev"><div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Best pizza on the island! Great prices and huge portions. We order from here at least once a week."</p><div class="rev-name">— Alex P.</div></div>
-<div class="rev"><div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div><p>"Quick delivery, hot pizza, and the lunch specials can't be beat. Solid neighborhood spot."</p><div class="rev-name">— Maria L.</div></div>
-<div class="rev"><div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"My kids love Sir Pizza! The combo deals are perfect for family night. Friendly staff too."</p><div class="rev-name">— Chris D.</div></div>
-</div>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid reveal">
+    <div class="stat-item">
+      <div class="stat-number">4.0<span>★</span></div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">201<span>+</span></div>
+      <div class="stat-label">Reviews</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">1000<span>s</span></div>
+      <div class="stat-label">Pies Served Monthly</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">30<span>min</span></div>
+      <div class="stat-label">Avg Delivery</div>
+    </div>
+  </div>
 </section>
 
-<section class="location-section" id="location">
-<div class="section-header">
-<h2>Find Us</h2>
-<div class="bar"></div>
-</div>
-<div class="loc-grid">
-<div class="map-wrap">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28689.5!2d-80.17!3d25.69!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9c70bb7285d51%3A0x1f3a4f1a2b5c6d7e!2sKey%20Biscayne%2C%20FL!5e0!3m2!1sen!2sus!4v1700000000000" loading="lazy"></iframe>
-</div>
-<div class="info-card">
-<h3><i class="fas fa-clock"></i> Hours</h3>
-<div class="info-row"><span>Monday – Thursday</span><span><strong>11:00 AM – 10:00 PM</strong></span></div>
-<div class="info-row"><span>Friday – Saturday</span><span><strong>11:00 AM – 11:00 PM</strong></span></div>
-<div class="info-row"><span>Sunday</span><span><strong>12:00 PM – 10:00 PM</strong></span></div>
-<div class="info-contact">
-<div><i class="fas fa-map-marker-alt"></i> Key Biscayne, FL</div>
-</div>
-</div>
-</div>
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="section-header reveal">
+    <span class="section-tag">Reviews</span>
+    <h2>What Our <em>Customers</em> Say</h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">Best pizza on the island! Great prices and huge portions. We order from Sir Pizza at least once a week — the whole family loves it.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">A</div>
+        <div><div class="testimonial-name">Alex P.</div><div class="testimonial-role">Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-1">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+      <p class="testimonial-text">Quick delivery, always hot, and the lunch specials can't be beat. Solid neighborhood pizzeria — exactly what Key Biscayne needed.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div><div class="testimonial-name">Maria L.</div><div class="testimonial-role">Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">The family combo deals are perfect for our Friday pizza night. Great quality, friendly staff, and the best value on the island. Love this place.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">C</div>
+        <div><div class="testimonial-name">Chris D.</div><div class="testimonial-role">Yelp Review</div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="cta-section">
-<h2>Hungry? We've Got You. 🍕</h2>
-<p>Order online or call for delivery & pickup</p>
-<a href="#menu" class="btn">Order Now</a>
+<!-- WAVE -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,80 600,0 1200,40 L1200,80 L0,80Z" fill="#fdf0d5"/></svg>
+</div>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="section-header reveal">
+    <span class="section-tag">Visit Us</span>
+    <h2>Find <em>Sir Pizza</em></h2>
+  </div>
+  <div class="loc-grid">
+    <div class="loc-card reveal">
+      <h3>Hours & <em>Info</em></h3>
+      <div class="loc-row">
+        <i class="fas fa-clock"></i>
+        <div><strong>Monday – Thursday</strong>11:00 AM – 10:00 PM</div>
+      </div>
+      <div class="loc-row">
+        <i class="fas fa-clock"></i>
+        <div><strong>Friday – Saturday</strong>11:00 AM – 11:00 PM</div>
+      </div>
+      <div class="loc-row">
+        <i class="fas fa-clock"></i>
+        <div><strong>Sunday</strong>12:00 PM – 10:00 PM</div>
+      </div>
+      <div class="loc-row">
+        <i class="fas fa-map-marker-alt"></i>
+        <div><strong>Location</strong>Key Biscayne, FL</div>
+      </div>
+      <div class="loc-row">
+        <i class="fas fa-truck"></i>
+        <div><strong>Delivery</strong>Available island-wide — call or order online</div>
+      </div>
+      <div class="loc-row">
+        <i class="fas fa-phone"></i>
+        <div><strong>Call Us</strong>Pickup & delivery orders welcome</div>
+      </div>
+    </div>
+    <div class="loc-img reveal reveal-delay-1">
+      <img src="https://placehold.co/600x450/2b2d2f/fdf0d5?text=📍+Key+Biscayne+FL" alt="Sir Pizza Location">
+    </div>
+  </div>
 </section>
 
-<footer><p>&copy; 2026 Sir Pizza | Key Biscayne, FL | Made with ❤️ and 🍕</p></footer>
+<!-- ORDER CTA -->
+<section class="order-cta" id="order">
+  <div class="reveal">
+    <h2>Hungry? <em>Let's Fix That.</em></h2>
+    <p>Order online for pickup or delivery — hot, fresh pizza at your door in 30 minutes or less.</p>
+    <a href="#menu" class="btn-primary"><i class="fas fa-pizza-slice"></i> Order Now</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Sir <span>Pizza</span></h3>
+      <p>Key Biscayne's favorite pizzeria. Handcrafted pies, generous portions, honest prices. Delivery and pickup available daily.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-yelp"></i></a>
+        <a href="#"><i class="fab fa-google"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <a href="#menu">Pizzas</a>
+      <a href="#menu">Specialty Pies</a>
+      <a href="#menu">Subs & Wraps</a>
+      <a href="#menu">Salads</a>
+      <a href="#specials">Daily Specials</a>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <div class="footer-hours">
+        Mon–Thu: 11am – 10pm<br>
+        Fri–Sat: 11am – 11pm<br>
+        Sunday: 12pm – 10pm<br><br>
+        <strong style="color:var(--cream)">Delivery Available</strong><br>
+        Island-wide
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p style="color:rgba(253,240,213,.35);font-size:.85rem;margin-bottom:15px;line-height:1.7">Get exclusive deals and specials delivered to your inbox.</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Your email address">
+        <button>Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Sir Pizza. All rights reserved. | Key Biscayne, FL | Crafted with passion.</p>
+  </div>
+</footer>
 
 <script>
-window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});
+// Preloader
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},800)});
+
+// Nav scroll
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50);nav.classList.toggle('transparent',window.scrollY<=50)});
+
+// Scroll reveal
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
