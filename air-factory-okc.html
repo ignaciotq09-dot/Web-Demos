@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Air Factory Heating & Cooling | HVAC Oklahoma City</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#0a2463;--accent:#fb3640;--accent2:#1e5f8a;--blue-light:#e8f1f8;--white:#fff;--dark:#111;--gray:#666;--shadow:0 10px 40px rgba(0,0,0,.1)}
+body{font-family:'Source Sans 3',sans-serif;color:#333;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
+.preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--primary);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s}.preloader.hidden{opacity:0;pointer-events:none}
+.preloader .spinner{width:50px;height:50px;border:4px solid rgba(255,255,255,.2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+nav{position:fixed;top:0;width:100%;z-index:100;padding:18px 0;transition:all .3s}nav.scrolled{background:var(--white);padding:10px 0;box-shadow:0 2px 20px rgba(0,0,0,.08)}nav.scrolled .logo,nav.scrolled .nav-links a{color:var(--dark)}
+.nav-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 30px}
+.logo{font-family:'Montserrat',sans-serif;font-size:1.3rem;color:var(--white);font-weight:800;text-decoration:none}.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:25px;list-style:none}.nav-links a{color:rgba(255,255,255,.9);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s}.nav-links a:hover{color:var(--accent)}
+.hero{height:100vh;background:linear-gradient(135deg,rgba(10,36,99,.95),rgba(30,95,138,.88)),url('https://placehold.co/1920x1080/0a2463/fb3640?text=HVAC') center/cover;display:flex;align-items:center;color:var(--white)}
+.hero-content{max-width:1200px;margin:auto;padding:0 30px}.hero-content h1{font-size:3.5rem;margin-bottom:20px;line-height:1.1;font-weight:800}.hero-content h1 span{color:var(--accent)}
+.hero-content p{font-size:1.15rem;opacity:.9;max-width:550px;margin-bottom:35px;font-weight:300;line-height:1.7}
+.btn{display:inline-block;padding:14px 34px;border-radius:6px;text-decoration:none;font-weight:700;font-size:.9rem;transition:all .3s;text-transform:uppercase;letter-spacing:.5px}
+.btn-accent{background:var(--accent);color:var(--white)}.btn-accent:hover{background:#e02e38;transform:translateY(-2px);box-shadow:0 8px 25px rgba(251,54,64,.4)}
+.btn-outline{border:2px solid var(--white);color:var(--white);margin-left:15px}.btn-outline:hover{background:var(--white);color:var(--primary)}
+.wave svg{display:block;width:100%;margin-top:-2px}
+.trust{background:var(--blue-light);padding:30px}.trust-inner{max-width:1200px;margin:auto;display:flex;justify-content:center;gap:60px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:12px;font-weight:600;color:var(--primary)}.trust-item i{font-size:1.3rem;color:var(--accent)}
+.services{padding:100px 30px;text-align:center}.services-inner{max-width:1200px;margin:auto}
+.tag{color:var(--accent);text-transform:uppercase;letter-spacing:3px;font-size:.8rem;font-weight:700;margin-bottom:10px}
+.services h2{font-size:2.5rem;color:var(--primary);margin-bottom:50px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.svc-card{background:var(--white);padding:40px 30px;border-radius:12px;box-shadow:var(--shadow);transition:transform .3s;border-top:4px solid transparent}
+.svc-card:hover{transform:translateY(-6px);border-top-color:var(--accent)}
+.svc-card i{font-size:2.2rem;color:var(--accent);margin-bottom:20px}
+.svc-card h3{font-size:1.1rem;margin-bottom:10px;color:var(--primary)}.svc-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
+.about{background:var(--primary);padding:100px 30px;color:var(--white)}
+.about-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-text h2{font-size:2.5rem;margin-bottom:20px}.about-text p{opacity:.85;line-height:1.8;margin-bottom:15px}
+.about-img img{width:100%;border-radius:12px}
+.stats{display:flex;gap:40px;margin-top:30px}.stat .num{font-size:2.5rem;font-weight:800;color:var(--accent)}.stat .lbl{font-size:.8rem;opacity:.7;text-transform:uppercase;letter-spacing:1px}
+.areas{padding:100px 30px;text-align:center}.areas h2{font-size:2.5rem;color:var(--primary);margin-bottom:15px}.areas>p{color:var(--gray);margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto}
+.area-tags{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:800px;margin:auto}
+.area-tag{background:var(--blue-light);padding:10px 22px;border-radius:50px;font-weight:600;color:var(--primary);font-size:.9rem}
+.reviews{background:var(--blue-light);padding:100px 30px;text-align:center}.reviews h2{font-size:2.5rem;color:var(--primary);margin-bottom:50px}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1100px;margin:auto}
+.rev-card{background:var(--white);padding:30px;border-radius:12px;box-shadow:var(--shadow);text-align:left}
+.rev-card .stars{color:#f59e0b;margin-bottom:12px}.rev-card p{color:var(--gray);line-height:1.7;font-style:italic;margin-bottom:12px;font-size:.95rem}.rev-card .author{font-weight:700;color:var(--primary)}
+.cta{background:linear-gradient(135deg,var(--accent),var(--primary));padding:80px 30px;text-align:center;color:var(--white)}
+.cta h2{font-size:2.5rem;margin-bottom:15px}.cta p{opacity:.9;margin-bottom:30px;max-width:500px;margin-left:auto;margin-right:auto}
+.cta .btn{background:var(--white);color:var(--accent)}.cta .btn:hover{transform:translateY(-2px)}
+footer{background:var(--dark);color:rgba(255,255,255,.7);padding:60px 30px 30px}
+.footer-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-col h4{color:var(--white);font-family:'Montserrat',sans-serif;margin-bottom:20px}.footer-col p,.footer-col a{font-size:.9rem;line-height:1.8}
+.footer-col a{color:rgba(255,255,255,.7);text-decoration:none;display:block;margin-bottom:6px;transition:color .3s}.footer-col a:hover{color:var(--accent)}
+.footer-bottom{max-width:1200px;margin:30px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);text-align:center;font-size:.85rem}
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s ease}.reveal.active{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.hero-content h1{font-size:2.2rem}.nav-links{display:none}.about-inner,.svc-grid,.rev-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.stats{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<div class="preloader"><div class="spinner"></div></div>
+<nav><div class="nav-inner"><a href="#" class="logo">Air <span>Factory</span></a><ul class="nav-links"><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#areas">Areas</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Oklahoma City's <span>Trusted</span> HVAC Experts</h1>
+<p>Licensed, bonded HVAC professionals serving the entire OKC metro. Heating, cooling, and ventilation services you can count on.</p>
+<a href="tel:4052431613" class="btn btn-accent"><i class="fas fa-phone"></i> (405) 243-1613</a>
+<a href="#services" class="btn btn-outline">Our Services</a>
+</div>
+</section>
+
+<div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="#e8f1f8" d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z"/></svg></div>
+
+<div class="trust"><div class="trust-inner">
+<div class="trust-item"><i class="fas fa-shield-alt"></i> Licensed & Bonded</div>
+<div class="trust-item"><i class="fas fa-clock"></i> 24/7 Emergency Service</div>
+<div class="trust-item"><i class="fas fa-star"></i> 5-Star Rated</div>
+<div class="trust-item"><i class="fas fa-hand-holding-usd"></i> Free Estimates</div>
+</div></div>
+
+<section class="services" id="services">
+<div class="reveal"><span class="tag">What We Do</span><h2>HVAC Services</h2></div>
+<div class="svc-grid">
+<div class="svc-card reveal"><i class="fas fa-snowflake"></i><h3>Air Conditioning</h3><p>AC installation, repair, and maintenance to keep you cool all summer long in the Oklahoma heat.</p></div>
+<div class="svc-card reveal"><i class="fas fa-fire"></i><h3>Heating Systems</h3><p>Furnace and heat pump installation, repair, and tune-ups to keep you warm through winter.</p></div>
+<div class="svc-card reveal"><i class="fas fa-wind"></i><h3>Ventilation</h3><p>Indoor air quality solutions, duct cleaning, and ventilation system installations.</p></div>
+<div class="svc-card reveal"><i class="fas fa-tools"></i><h3>HVAC Maintenance</h3><p>Preventive maintenance plans to extend system life and prevent costly breakdowns.</p></div>
+<div class="svc-card reveal"><i class="fas fa-building"></i><h3>Commercial HVAC</h3><p>Full commercial HVAC services for businesses of all sizes across the OKC metro.</p></div>
+<div class="svc-card reveal"><i class="fas fa-home"></i><h3>Residential HVAC</h3><p>Complete home comfort solutions from installation to ongoing service and support.</p></div>
+</div>
+</section>
+
+<section class="about" id="about">
+<div class="about-inner">
+<div class="about-text reveal">
+<span class="tag">About Us</span>
+<h2>Same Part, Better Service, Lower Price</h2>
+<p>AIR FACTORY Heating & Cooling Company is a bonded and licensed HVAC company located in Oklahoma City. We service across the entire OKC Metro area.</p>
+<p>Our mission is simple: provide reliable, honest HVAC services at fair prices with the kind of customer service that makes you want to refer us to your neighbors.</p>
+<div class="stats">
+<div class="stat"><div class="num">15+</div><div class="lbl">Years Experience</div></div>
+<div class="stat"><div class="num">2K+</div><div class="lbl">Happy Customers</div></div>
+<div class="stat"><div class="num">24/7</div><div class="lbl">Availability</div></div>
+</div>
+</div>
+<div class="about-img reveal"><img src="https://placehold.co/600x450/0a2463/fb3640?text=HVAC+Team" alt="Team"></div>
+</div>
+</section>
+
+<section class="areas" id="areas">
+<div class="reveal"><span class="tag">Coverage</span><h2>Areas We Serve</h2><p>Proudly serving Oklahoma City and surrounding communities with reliable HVAC services.</p></div>
+<div class="area-tags reveal">
+<span class="area-tag">Oklahoma City</span><span class="area-tag">Moore</span><span class="area-tag">Norman</span><span class="area-tag">Del City</span><span class="area-tag">Midwest City</span><span class="area-tag">Bethany</span><span class="area-tag">Mustang</span><span class="area-tag">Yukon</span><span class="area-tag">Piedmont</span><span class="area-tag">Edmond</span><span class="area-tag">Guthrie</span>
+</div>
+</section>
+
+<section class="reviews" id="reviews">
+<div class="reveal"><span class="tag">Reviews</span><h2>What Customers Say</h2></div>
+<div class="rev-grid">
+<div class="rev-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Air Factory has been our go-to for HVAC services for years. Their technicians are always on time, professional, and extremely knowledgeable."</p><div class="author">— Clarice T.</div></div>
+<div class="rev-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Had an emergency heater breakdown during a cold snap, and Air Factory responded so quickly! They fixed the issue and ensured my system was in top shape."</p><div class="author">— Melissa M.</div></div>
+<div class="rev-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Very pleased with the AC installation. The team was courteous, efficient, and took the time to explain everything. Our home has never been more comfortable."</p><div class="author">— Joyce G.</div></div>
+</div>
+</section>
+
+<section class="cta" id="contact">
+<div class="reveal"><h2>Stay Comfortable Year-Round</h2><p>Call us today for a free estimate on any HVAC service. Emergency service available 24/7.</p><a href="tel:4052431613" class="btn"><i class="fas fa-phone"></i> (405) 243-1613</a></div>
+</section>
+
+<footer><div class="footer-grid">
+<div class="footer-col"><h4>Air Factory Heating & Cooling</h4><p>Licensed and bonded HVAC professionals serving the OKC metro area with reliable heating, cooling, and ventilation services.</p></div>
+<div class="footer-col"><h4>Services</h4><a href="#">Air Conditioning</a><a href="#">Heating</a><a href="#">Ventilation</a><a href="#">Maintenance</a></div>
+<div class="footer-col"><h4>Quick Links</h4><a href="#services">Services</a><a href="#about">About</a><a href="#areas">Service Areas</a><a href="#reviews">Reviews</a></div>
+<div class="footer-col"><h4>Contact</h4><p><i class="fas fa-map-marker-alt"></i> 9619 Hefner Village Blvd<br>Oklahoma City, OK 73162</p><p><i class="fas fa-phone"></i> (405) 243-1613</p><p><i class="fas fa-envelope"></i> airfactoryokc@gmail.com</p></div>
+</div><div class="footer-bottom">&copy; 2026 Air Factory Heating & Cooling. All Rights Reserved.</div></footer>
+
+<script>
+window.addEventListener('load',()=>{document.querySelector('.preloader').classList.add('hidden')});
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50);document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-100)el.classList.add('active')})});
+document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('active')});
+</script>
+</body>
+</html>

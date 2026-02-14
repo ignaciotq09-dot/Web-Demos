@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlanta Road Body Shop | Premium Auto Body Repair in Smyrna, GA</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#1a1a2e;--accent:#e94560;--accent2:#0f3460;--light:#f5f5f5;--white:#fff;--dark:#111;--gray:#666;--shadow:0 10px 40px rgba(0,0,0,.12)}
+body{font-family:'Open Sans',sans-serif;color:#333;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px}
+/* Preloader */
+.preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--primary);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s}
+.preloader.hidden{opacity:0;pointer-events:none}
+.preloader .spinner{width:50px;height:50px;border:4px solid rgba(233,69,96,.3);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* Nav */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:18px 0;transition:all .3s}
+nav.scrolled{background:var(--primary);padding:10px 0;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.nav-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 30px}
+.logo{font-family:'Oswald',sans-serif;font-size:1.5rem;color:var(--white);font-weight:700;text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--accent)}
+/* Hero */
+.hero{height:100vh;background:linear-gradient(135deg,rgba(26,26,46,.92),rgba(15,52,96,.85)),url('https://placehold.co/1920x1080/1a1a2e/333?text=Auto+Body+Shop') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--white)}
+.hero-content h1{font-size:3.8rem;margin-bottom:15px;line-height:1.1}
+.hero-content h1 span{color:var(--accent)}
+.hero-content p{font-size:1.2rem;opacity:.85;max-width:600px;margin:0 auto 30px;font-weight:300}
+.btn{display:inline-block;padding:14px 36px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.95rem;transition:all .3s;text-transform:uppercase;letter-spacing:1px}
+.btn-primary{background:var(--accent);color:var(--white)}
+.btn-primary:hover{background:#d63650;transform:translateY(-2px);box-shadow:0 8px 25px rgba(233,69,96,.4)}
+.btn-outline{border:2px solid var(--white);color:var(--white);margin-left:15px}
+.btn-outline:hover{background:var(--white);color:var(--primary)}
+/* Wave Divider */
+.wave-divider{position:relative;margin-top:-2px}
+.wave-divider svg{display:block;width:100%}
+/* About */
+.about{padding:100px 30px;max-width:1200px;margin:auto}
+.section-tag{color:var(--accent);font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:3px;font-size:.85rem;margin-bottom:10px}
+.about h2{font-size:2.5rem;margin-bottom:25px;color:var(--primary)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:40px}
+.about-img{border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.about-img img{width:100%;display:block}
+.about-text p{line-height:1.8;color:var(--gray);margin-bottom:15px}
+.stat-row{display:flex;gap:40px;margin-top:30px}
+.stat{text-align:center}
+.stat .num{font-family:'Oswald',sans-serif;font-size:2.2rem;color:var(--accent);font-weight:700}
+.stat .label{font-size:.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px}
+/* Services */
+.services{background:var(--light);padding:100px 30px}
+.services-inner{max-width:1200px;margin:auto;text-align:center}
+.services h2{font-size:2.5rem;color:var(--primary);margin-bottom:50px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.service-card{background:var(--white);padding:40px 30px;border-radius:10px;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.15)}
+.service-card i{font-size:2.5rem;color:var(--accent);margin-bottom:20px}
+.service-card h3{font-size:1.2rem;margin-bottom:12px;color:var(--primary)}
+.service-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
+/* Why Choose */
+.why{padding:100px 30px;max-width:1200px;margin:auto}
+.why h2{font-size:2.5rem;color:var(--primary);text-align:center;margin-bottom:50px}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}
+.why-item{text-align:center;padding:30px 20px}
+.why-item .icon-circle{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.why-item .icon-circle i{color:var(--white);font-size:1.5rem}
+.why-item h4{color:var(--primary);margin-bottom:10px;font-size:1rem}
+.why-item p{color:var(--gray);font-size:.85rem;line-height:1.7}
+/* Gallery */
+.gallery{background:var(--primary);padding:100px 30px;color:var(--white);text-align:center}
+.gallery h2{font-size:2.5rem;margin-bottom:50px}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;max-width:1200px;margin:auto}
+.gallery-item{border-radius:8px;overflow:hidden;position:relative}
+.gallery-item img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.08)}
+/* Testimonials */
+.testimonials{padding:100px 30px;text-align:center}
+.testimonials h2{font-size:2.5rem;color:var(--primary);margin-bottom:50px}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1200px;margin:auto}
+.test-card{background:var(--white);padding:35px;border-radius:10px;box-shadow:var(--shadow);text-align:left}
+.test-card .stars{color:#f9a825;margin-bottom:15px;font-size:.9rem}
+.test-card p{color:var(--gray);line-height:1.8;font-style:italic;margin-bottom:15px}
+.test-card .author{font-weight:600;color:var(--primary)}
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--accent),var(--accent2));padding:80px 30px;text-align:center;color:var(--white)}
+.cta h2{font-size:2.5rem;margin-bottom:15px}
+.cta p{font-size:1.1rem;opacity:.9;margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto}
+.cta .btn{background:var(--white);color:var(--accent)}
+.cta .btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
+/* Footer */
+footer{background:var(--dark);color:rgba(255,255,255,.7);padding:60px 30px 30px}
+.footer-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-col h4{color:var(--white);font-family:'Oswald',sans-serif;margin-bottom:20px;font-size:1.1rem}
+.footer-col p{line-height:1.8;font-size:.9rem}
+.footer-col a{color:rgba(255,255,255,.7);text-decoration:none;display:block;margin-bottom:8px;font-size:.9rem;transition:color .3s}
+.footer-col a:hover{color:var(--accent)}
+.footer-col .social{display:flex;gap:12px;margin-top:15px}
+.footer-col .social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.footer-col .social a:hover{background:var(--accent);border-color:var(--accent)}
+.footer-bottom{max-width:1200px;margin:30px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);text-align:center;font-size:.85rem}
+/* Reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+/* Responsive */
+@media(max-width:768px){
+.hero-content h1{font-size:2.2rem}
+.nav-links{display:none}
+.about-grid,.services-grid,.why-grid,.gallery-grid,.test-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+.stat-row{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<div class="preloader"><div class="spinner"></div></div>
+<nav>
+<div class="nav-inner">
+<a href="#" class="logo">Atlanta Road <span>Body Shop</span></a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Expert <span>Collision Repair</span> Since 2002</h1>
+<p>I-CAR Gold certified auto body professionals delivering factory-quality repairs with a lifetime warranty in Smyrna, GA.</p>
+<a href="tel:7704338115" class="btn btn-primary"><i class="fas fa-phone"></i> (770) 433-8115</a>
+<a href="#services" class="btn btn-outline">Our Services</a>
+</div>
+</section>
+
+<div class="wave-divider">
+<svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="#fff" d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z"/></svg>
+</div>
+
+<section class="about" id="about">
+<div class="reveal">
+<span class="section-tag">About Us</span>
+<h2>Family Owned & Operated</h2>
+</div>
+<div class="about-grid">
+<div class="about-img reveal"><img src="https://placehold.co/600x400/1a1a2e/e94560?text=Our+Shop" alt="Shop"></div>
+<div class="about-text reveal">
+<p>Atlanta Road Body Shop is a family owned and operated collision repair business serving the greater Atlanta metro area. Our expertise allows us to consistently meet and exceed each customer's individual needs.</p>
+<p>We are dedicated to giving our customers the best customer service possible. As an I-CAR Gold Class business, we are committed to providing efficient, safe and high-quality repairs.</p>
+<div class="stat-row">
+<div class="stat"><div class="num">20+</div><div class="label">Years Experience</div></div>
+<div class="stat"><div class="num">5000+</div><div class="label">Cars Repaired</div></div>
+<div class="stat"><div class="num">100%</div><div class="label">Satisfaction</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="services" id="services">
+<div class="services-inner">
+<div class="reveal">
+<span class="section-tag">What We Do</span>
+<h2>Our Services</h2>
+</div>
+<div class="services-grid">
+<div class="service-card reveal"><i class="fas fa-car-crash"></i><h3>Collision Repairs</h3><p>We repair all makes and models using state-of-the-art computerized electronic frame measuring systems with a lifetime warranty.</p></div>
+<div class="service-card reveal"><i class="fas fa-palette"></i><h3>Expert Color Matching</h3><p>Our computerized paint system uses environmentally safe waterborne paint for perfect, factory-match color results every time.</p></div>
+<div class="service-card reveal"><i class="fas fa-truck-pickup"></i><h3>Aluminum Repairs</h3><p>Certified to repair all new aluminum trucks and vehicles with specialized equipment and trained technicians.</p></div>
+<div class="service-card reveal"><i class="fas fa-car"></i><h3>Rental Car Service</h3><p>Convenient rental car service available so you stay on the road while your vehicle is being repaired.</p></div>
+<div class="service-card reveal"><i class="fas fa-truck-loading"></i><h3>Towing Service</h3><p>Professional towing service available to safely transport your vehicle to our shop after an accident.</p></div>
+<div class="service-card reveal"><i class="fas fa-shield-alt"></i><h3>Insurance Claims</h3><p>We work with all major insurance companies to make the claims process smooth and hassle-free for you.</p></div>
+</div>
+</div>
+</section>
+
+<section class="why reveal" id="why">
+<h2>Why Choose Us</h2>
+<div class="why-grid">
+<div class="why-item"><div class="icon-circle"><i class="fas fa-award"></i></div><h4>I-CAR Gold Class</h4><p>Dedicated to providing high-quality, safe collision repairs.</p></div>
+<div class="why-item"><div class="icon-circle"><i class="fas fa-certificate"></i></div><h4>Lifetime Warranty</h4><p>Every repair backed by our lifetime guarantee for your peace of mind.</p></div>
+<div class="why-item"><div class="icon-circle"><i class="fas fa-users"></i></div><h4>Family Owned</h4><p>Personal attention and care that only a family business can provide.</p></div>
+<div class="why-item"><div class="icon-circle"><i class="fas fa-leaf"></i></div><h4>Eco-Friendly</h4><p>Waterborne paint technology that's better for the environment.</p></div>
+</div>
+</section>
+
+<section class="gallery" id="gallery">
+<div class="reveal">
+<span class="section-tag" style="color:var(--accent)">Our Work</span>
+<h2>Repair Gallery</h2>
+</div>
+<div class="gallery-grid reveal">
+<div class="gallery-item"><img src="https://placehold.co/400x300/2a2a4e/e94560?text=Before+%26+After" alt="Repair 1"></div>
+<div class="gallery-item"><img src="https://placehold.co/400x300/1a1a3e/e94560?text=Paint+Match" alt="Repair 2"></div>
+<div class="gallery-item"><img src="https://placehold.co/400x300/3a3a5e/e94560?text=Frame+Repair" alt="Repair 3"></div>
+<div class="gallery-item"><img src="https://placehold.co/400x300/0f3460/e94560?text=Finished+Job" alt="Repair 4"></div>
+</div>
+</section>
+
+<div class="wave-divider" style="background:var(--primary)">
+<svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="#fff" d="M0,60 C480,0 960,100 1440,40 L1440,100 L0,100 Z"/></svg>
+</div>
+
+<section class="testimonials" id="reviews">
+<div class="reveal">
+<span class="section-tag">Testimonials</span>
+<h2>What Our Customers Say</h2>
+</div>
+<div class="test-grid">
+<div class="test-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"They did an incredible job on my truck after a fender bender. Color match was perfect and you can't even tell it was in an accident."</p><div class="author">— James M.</div></div>
+<div class="test-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Family owned means they actually care. They kept me updated every step of the way and the repair was flawless."</p><div class="author">— Sarah T.</div></div>
+<div class="test-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"I-CAR Gold certified says it all. Professional, fast, and the lifetime warranty gives me total peace of mind."</p><div class="author">— David R.</div></div>
+</div>
+</section>
+
+<section class="cta" id="contact">
+<div class="reveal">
+<h2>Get a Free Estimate Today</h2>
+<p>Bring your vehicle in or call us for a free, no-obligation estimate on your collision repair.</p>
+<a href="tel:7704338115" class="btn"><i class="fas fa-phone"></i> (770) 433-8115</a>
+</div>
+</section>
+
+<footer>
+<div class="footer-grid">
+<div class="footer-col">
+<h4>Atlanta Road Body Shop</h4>
+<p>Family owned and operated since 2002. I-CAR Gold Class certified collision repair in Smyrna, GA.</p>
+<div class="social">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-google"></i></a>
+<a href="#"><i class="fab fa-yelp"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<a href="#about">About Us</a>
+<a href="#services">Services</a>
+<a href="#gallery">Gallery</a>
+<a href="#reviews">Reviews</a>
+</div>
+<div class="footer-col">
+<h4>Services</h4>
+<a href="#">Collision Repair</a>
+<a href="#">Paint Matching</a>
+<a href="#">Aluminum Repair</a>
+<a href="#">Towing Service</a>
+</div>
+<div class="footer-col">
+<h4>Contact</h4>
+<p><i class="fas fa-map-marker-alt"></i> 2300 Atlanta Road SE<br>Smyrna, GA 30080</p>
+<p><i class="fas fa-phone"></i> (770) 433-8115</p>
+<p><i class="fas fa-envelope"></i> ContactUs@AtlantaRoadBodyShop.Com</p>
+</div>
+</div>
+<div class="footer-bottom">&copy; 2026 Atlanta Road Body Shop. All Rights Reserved.</div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{document.querySelector('.preloader').classList.add('hidden')});
+window.addEventListener('scroll',()=>{
+document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50);
+document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-100)el.classList.add('active')});
+});
+document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('active')});
+</script>
+</body>
+</html>
