@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ben's Japanese Auto Clinic | Asian Import Specialists | Portland, OR</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#2d6a4f;--dark:#1b1b1b;--accent:#d4a373;--light:#f5f5f0;--white:#fff;--red:#c1121f}
+body{font-family:'Source Sans 3',sans-serif;color:#333;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;letter-spacing:2px}
+.preloader{position:fixed;inset:0;background:var(--dark);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s}.preloader.hidden{opacity:0;pointer-events:none}
+.preloader-spinner{width:50px;height:50px;border:4px solid rgba(45,106,79,.2);border-top-color:var(--primary);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+nav{position:fixed;top:0;width:100%;z-index:100;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;transition:.4s;background:transparent}
+nav.scrolled{background:rgba(27,27,27,.95);backdrop-filter:blur(10px);padding:12px 5%}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--white);text-decoration:none;letter-spacing:3px}.logo span{color:var(--primary)}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:var(--white);text-decoration:none;font-size:.9rem;font-weight:500;transition:.3s}.nav-links a:hover{color:var(--primary)}
+.hero{height:100vh;background:linear-gradient(135deg,rgba(27,27,27,.8),rgba(45,106,79,.5)),url('https://placehold.co/1920x1080/1b1b1b/ffffff?text=Japanese+Auto+Repair') center/cover;display:flex;align-items:center;color:var(--white)}
+.hero-content{max-width:700px;padding:0 5%}
+.hero-badge{display:inline-block;background:var(--primary);color:var(--white);padding:6px 18px;border-radius:50px;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.05;margin-bottom:20px}
+.hero h1 span{color:var(--primary)}
+.hero p{font-size:1.15rem;opacity:.9;margin-bottom:30px;font-weight:300;line-height:1.6}
+.btn{display:inline-block;padding:14px 34px;border-radius:50px;font-weight:600;text-decoration:none;transition:.3s;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}
+.btn-primary{background:var(--primary);color:var(--white);box-shadow:0 8px 25px rgba(45,106,79,.4)}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(45,106,79,.6)}
+.btn-dark{background:var(--dark);color:var(--white);margin-left:12px}.btn-dark:hover{transform:translateY(-3px)}
+.wave-divider svg{display:block;width:100%;height:70px;line-height:0}
+section{padding:80px 5%}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:2.5rem;color:var(--dark)}.section-title .line{width:50px;height:4px;background:var(--primary);margin:12px auto;border-radius:2px}
+.section-title p{color:#777;font-size:1rem;max-width:600px;margin:0 auto}
+
+/* Brands */
+.brands{background:var(--dark);color:var(--white);text-align:center;padding:50px 5%}
+.brand-logos{display:flex;justify-content:center;flex-wrap:wrap;gap:40px;margin-top:20px;opacity:.7}
+.brand-logos span{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px}
+
+/* Services */
+.services{background:var(--light)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;max-width:1200px;margin:0 auto}
+.svc{background:var(--white);border-radius:14px;padding:35px 25px;text-align:center;box-shadow:0 5px 25px rgba(0,0,0,.06);transition:.4s;border-left:4px solid transparent}
+.svc:hover{transform:translateY(-6px);border-left-color:var(--primary);box-shadow:0 12px 35px rgba(0,0,0,.12)}
+.svc-icon{font-size:2rem;color:var(--primary);margin-bottom:15px}
+.svc h3{font-size:1.2rem;margin-bottom:10px;color:var(--dark)}.svc p{color:#666;font-size:.9rem;line-height:1.6}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;max-width:1100px;margin:0 auto;align-items:center}
+.about-img{border-radius:14px;overflow:hidden;position:relative}.about-img img{width:100%;display:block}
+.experience-badge{position:absolute;bottom:20px;right:20px;background:var(--primary);color:var(--white);padding:15px 25px;border-radius:12px;text-align:center}
+.experience-badge h3{font-size:2rem;margin:0}.experience-badge p{font-size:.8rem;letter-spacing:1px}
+.about-text h2{font-size:2.2rem;margin-bottom:15px;color:var(--dark)}.about-text h2 span{color:var(--primary)}
+.about-text p{color:#555;line-height:1.8;margin-bottom:15px}
+.check-list{list-style:none;margin-top:20px}.check-list li{padding:8px 0;font-size:.95rem;color:#444}.check-list li i{color:var(--primary);margin-right:10px}
+
+/* Why Us */
+.why-us{background:var(--dark);color:var(--white)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;max-width:1100px;margin:0 auto}
+.why-card{text-align:center;padding:30px}.why-card i{font-size:2.5rem;color:var(--primary);margin-bottom:15px}
+.why-card h3{font-size:1.1rem;margin-bottom:10px}.why-card p{opacity:.7;font-size:.9rem;line-height:1.6}
+
+/* Reviews */
+.reviews{background:var(--light)}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1100px;margin:0 auto}
+.review{background:var(--white);padding:30px;border-radius:14px;box-shadow:0 4px 15px rgba(0,0,0,.05)}
+.review .stars{color:var(--accent);margin-bottom:10px}.review p{font-style:italic;color:#555;line-height:1.7;margin-bottom:12px}
+.review strong{color:var(--dark)}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--primary),#40916c);text-align:center;color:var(--white);padding:80px 5%}
+.cta h2{font-size:2.5rem;margin-bottom:15px}.cta p{opacity:.9;font-size:1.05rem;margin-bottom:30px}
+.cta .btn{background:var(--white);color:var(--primary)}.cta .btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+
+footer{background:#111;color:var(--white);padding:60px 5% 25px}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:35px;max-width:1200px;margin:0 auto}
+.footer-col h4{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;margin-bottom:15px;color:var(--primary);letter-spacing:2px}
+.footer-col p,.footer-col a{color:rgba(255,255,255,.65);text-decoration:none;font-size:.9rem;line-height:2}.footer-col a:hover{color:var(--primary)}
+.footer-social{display:flex;gap:12px;margin-top:12px}
+.footer-social a{width:38px;height:38px;border-radius:50%;border:2px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:var(--white);transition:.3s}.footer-social a:hover{background:var(--primary);border-color:var(--primary)}
+.footer-bottom{text-align:center;margin-top:35px;padding-top:25px;border-top:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-size:.85rem}
+.reveal{opacity:0;transform:translateY(35px);transition:.8s ease}.reveal.active{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.nav-links{display:none}.about-grid{grid-template-columns:1fr}.hero h1{font-size:2.2rem}.btn-dark{margin:12px 0 0;display:block}}
+</style>
+</head>
+<body>
+<div class="preloader"><div class="preloader-spinner"></div></div>
+
+<nav>
+  <a href="#" class="logo">BEN'S <span>AUTO</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🇯🇵 Asian Import Specialists</div>
+    <h1>Portland's Trusted <span>Japanese Auto</span> Clinic</h1>
+    <p>Over 40 years of combined experience servicing Toyota, Honda, Nissan, Subaru, Mazda, and all Asian imports. Since 2000.</p>
+    <a href="tel:5034080123" class="btn btn-primary"><i class="fas fa-phone"></i> (503) 408-0123</a>
+    <a href="#services" class="btn btn-dark">Our Services</a>
+  </div>
+</section>
+
+<div class="brands">
+  <div class="brand-logos">
+    <span>Toyota</span><span>Honda</span><span>Nissan</span><span>Subaru</span><span>Mazda</span><span>Lexus</span><span>Acura</span><span>Infiniti</span>
+  </div>
+</div>
+
+<div class="wave-divider"><svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,35 C400,70 800,0 1200,35 L1200,70 L0,70Z" fill="#f5f5f0"/></svg></div>
+
+<section class="services" id="services">
+  <div class="section-title reveal"><h2>Specialized Services</h2><div class="line"></div><p>Comprehensive care for your Japanese & Asian vehicle</p></div>
+  <div class="services-grid">
+    <div class="svc reveal"><div class="svc-icon"><i class="fas fa-oil-can"></i></div><h3>Oil & Fluid Service</h3><p>Factory-spec oil changes, transmission fluid, coolant flush, and brake fluid service.</p></div>
+    <div class="svc reveal"><div class="svc-icon"><i class="fas fa-engine"></i></div><h3>Engine Diagnostics</h3><p>Advanced computer diagnostics for check engine lights, misfires, and performance issues.</p></div>
+    <div class="svc reveal"><div class="svc-icon"><i class="fas fa-cog"></i></div><h3>Transmission Repair</h3><p>Manual and automatic transmission service, rebuilds, and fluid changes.</p></div>
+    <div class="svc reveal"><div class="svc-icon"><i class="fas fa-brake-warning"></i></div><h3>Brake Systems</h3><p>Brake pad replacement, rotor resurfacing, caliper service, and ABS diagnostics.</p></div>
+    <div class="svc reveal"><div class="svc-icon"><i class="fas fa-temperature-high"></i></div><h3>Cooling & AC</h3><p>Radiator repair, AC recharge, thermostat replacement, and heater core service.</p></div>
+    <div class="svc reveal"><div class="svc-icon"><i class="fas fa-clock"></i></div><h3>Timing Belt/Chain</h3><p>Critical maintenance for interference engines. Water pump replacement included.</p></div>
+  </div>
+</section>
+
+<div class="wave-divider"><svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,35 C400,0 800,70 1200,35 L1200,70 L0,70Z" fill="#fff"/></svg></div>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <img src="https://placehold.co/600x480/2d6a4f/fff?text=Ben's+Auto+Shop" alt="Ben's Auto Clinic">
+      <div class="experience-badge"><h3>25+</h3><p>Years Serving PDX</p></div>
+    </div>
+    <div class="about-text reveal">
+      <h2>Why Choose <span>Ben's</span>?</h2>
+      <p>Located on NE Sandy Blvd, Ben's Japanese Auto Clinic has been the Portland/Vancouver area's trusted destination for Asian import service since 2000. With over 40 years of combined experience, we deliver honest, high-quality work at fair prices.</p>
+      <p>We specialize exclusively in Japanese and Asian vehicles — it's all we do, and we do it better than anyone.</p>
+      <ul class="check-list">
+        <li><i class="fas fa-check-circle"></i> ASE-Certified Technicians</li>
+        <li><i class="fas fa-check-circle"></i> OEM & Quality Aftermarket Parts</li>
+        <li><i class="fas fa-check-circle"></i> Honest Diagnostics — No Upselling</li>
+        <li><i class="fas fa-check-circle"></i> Warranty on All Repairs</li>
+        <li><i class="fas fa-check-circle"></i> Same-Day Service Available</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="wave-divider"><svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,35 C400,70 800,0 1200,35 L1200,70 L0,70Z" fill="#1b1b1b"/></svg></div>
+
+<section class="why-us" id="why">
+  <div class="section-title reveal"><h2 style="color:#fff">The Ben's Difference</h2><div class="line"></div></div>
+  <div class="why-grid">
+    <div class="why-card reveal"><i class="fas fa-user-shield"></i><h3>Specialists, Not Generalists</h3><p>We focus exclusively on Asian imports. That specialization means faster, more accurate repairs.</p></div>
+    <div class="why-card reveal"><i class="fas fa-dollar-sign"></i><h3>Fair, Honest Pricing</h3><p>No surprise charges. We explain what needs fixing and give you options before any work begins.</p></div>
+    <div class="why-card reveal"><i class="fas fa-award"></i><h3>40+ Years Experience</h3><p>Decades of hands-on experience with Toyota, Honda, Subaru, and every Asian make.</p></div>
+    <div class="why-card reveal"><i class="fas fa-heart"></i><h3>Community Trusted</h3><p>Proudly serving Portland since 2000. Our customers come back year after year.</p></div>
+  </div>
+</section>
+
+<div class="wave-divider"><svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0,35 C400,0 800,70 1200,35 L1200,70 L0,70Z" fill="#f5f5f0"/></svg></div>
+
+<section class="reviews" id="reviews">
+  <div class="section-title reveal"><h2>Customer Reviews</h2><div class="line"></div></div>
+  <div class="review-grid">
+    <div class="review reveal"><div class="stars">★★★★★</div><p>"Best Japanese auto shop in Portland. They fixed my Subaru's head gasket issue perfectly and for a fair price. Won't go anywhere else."</p><strong>— Kevin M.</strong></div>
+    <div class="review reveal"><div class="stars">★★★★★</div><p>"Took my Accord here after another shop misdiagnosed the problem. Ben's found it immediately and had me back on the road same day."</p><strong>— Lisa R.</strong></div>
+    <div class="review reveal"><div class="stars">★★★★★</div><p>"Honest, knowledgeable, and affordable. They've maintained my Camry for 5 years now. Always great service."</p><strong>— Tom H.</strong></div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2 class="reveal">Schedule Your Service Today</h2>
+  <p class="reveal">Call us or stop by — walk-ins welcome. Located on NE Sandy Blvd in Portland.</p>
+  <a href="tel:5034080123" class="btn reveal"><i class="fas fa-phone"></i> (503) 408-0123</a>
+  <p class="reveal" style="margin-top:20px;font-size:1rem"><i class="fas fa-map-marker-alt"></i> 10323 NE Sandy Blvd, Portland, OR 97220 &nbsp;|&nbsp; <i class="fas fa-envelope"></i> bensjautoclinic@gmail.com</p>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col"><h4>Ben's Japanese Auto Clinic</h4><p>Portland's trusted specialists for all Asian import vehicles since 2000.</p><div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-google"></i></a></div></div>
+    <div class="footer-col"><h4>Services</h4><a href="#">Oil & Fluid Service</a><br><a href="#">Engine Diagnostics</a><br><a href="#">Transmission Repair</a><br><a href="#">Brake Systems</a><br><a href="#">Cooling & AC</a></div>
+    <div class="footer-col"><h4>Contact</h4><p><i class="fas fa-phone" style="color:var(--primary)"></i> (503) 408-0123</p><p><i class="fas fa-envelope" style="color:var(--primary)"></i> bensjautoclinic@gmail.com</p><p><i class="fas fa-map-marker-alt" style="color:var(--primary)"></i> 10323 NE Sandy Blvd<br>Portland, OR 97220</p></div>
+    <div class="footer-col"><h4>Hours</h4><p>Mon–Fri: 8:00am – 6:00pm<br>Saturday: 8:00am – 2:00pm<br>Sunday: Closed</p></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; 2026 Ben's Japanese Auto Clinic. All Rights Reserved.</p></div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{document.querySelector('.preloader').classList.add('hidden')});
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('active');obs.unobserve(el.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
