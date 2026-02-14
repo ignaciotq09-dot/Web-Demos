@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sir Pizza | Key Biscayne, FL — Pizza & More</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#d62828;--red-dark:#b71c1c;--yellow:#fca311;--cream:#fef9ef;--dark:#2b2b2b;--white:#fff;--green:#2d6a4f}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;color:var(--dark);overflow-x:hidden}
+h1,h2,h3{font-family:'Poppins',sans-serif}
+
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(214,40,40,.97);backdrop-filter:blur(10px);padding:0 5%;display:flex;justify-content:space-between;align-items:center;height:70px}
+.nav-logo{font-family:'Fredoka One',cursive;color:var(--white);font-size:1.6rem;text-decoration:none}
+.nav-logo span{color:var(--yellow)}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.9);text-decoration:none;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;transition:color .3s}
+.nav-links a:hover{color:var(--yellow)}
+.nav-cta{background:var(--yellow);color:var(--dark);padding:10px 22px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.85rem;transition:all .3s}
+.nav-cta:hover{background:#e8950f;transform:translateY(-1px)}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+
+.hero{height:100vh;background:linear-gradient(135deg,rgba(214,40,40,.88),rgba(43,43,43,.7)),url('https://placehold.co/1920x1080/d62828/fca311?text=Fresh+Pizza') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 5%}
+.hero-content{max-width:800px;animation:fadeUp .8s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+.hero-icon{font-size:4rem;margin-bottom:15px}
+.hero h1{font-family:'Fredoka One',cursive;font-size:clamp(3rem,7vw,5.5rem);color:var(--white);line-height:1;margin-bottom:15px}
+.hero h1 span{color:var(--yellow);display:block;font-size:clamp(1.5rem,3.5vw,2.5rem)}
+.hero p{color:rgba(255,255,255,.8);font-size:1.15rem;margin-bottom:30px}
+.btn{display:inline-block;padding:15px 35px;border-radius:50px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.5px;font-size:.95rem;transition:all .3s}
+.btn-yellow{background:var(--yellow);color:var(--dark)}
+.btn-yellow:hover{background:#e8950f;transform:translateY(-2px);box-shadow:0 8px 25px rgba(252,163,17,.4)}
+.btn-white{background:transparent;border:2px solid rgba(255,255,255,.5);color:var(--white);margin-left:15px}
+.btn-white:hover{background:rgba(255,255,255,.15);border-color:#fff}
+.hero-rating{margin-top:30px;display:flex;justify-content:center;gap:25px;flex-wrap:wrap}
+.hero-rating div{color:rgba(255,255,255,.8);font-size:.9rem;display:flex;align-items:center;gap:6px}
+.hero-rating i{color:var(--yellow)}
+
+.specials{background:var(--yellow);padding:20px 5%;display:flex;justify-content:center;gap:40px;flex-wrap:wrap;font-weight:700;font-size:.95rem;color:var(--dark)}
+.specials div{display:flex;align-items:center;gap:8px}
+.specials i{color:var(--red)}
+
+section{padding:80px 5%}
+.section-header{text-align:center;margin-bottom:50px}
+.section-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;margin-bottom:10px;color:var(--dark)}
+.section-header p{color:#888;max-width:500px;margin:0 auto}
+.section-header .bar{width:50px;height:4px;background:var(--red);margin:12px auto;border-radius:2px}
+
+.menu{background:var(--cream)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;max-width:1200px;margin:0 auto}
+.menu-card{background:var(--white);border-radius:15px;overflow:hidden;box-shadow:0 3px 15px rgba(0,0,0,.06);transition:all .3s}
+.menu-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.12)}
+.menu-card img{width:100%;height:200px;object-fit:cover}
+.menu-body{padding:20px}
+.menu-body h3{font-size:1.2rem;margin-bottom:6px;font-weight:700}
+.menu-body p{color:#666;font-size:.9rem;line-height:1.5}
+.menu-body .price{color:var(--red);font-weight:800;font-size:1.1rem;margin-top:8px}
+
+.about-strip{background:var(--red);color:var(--white);text-align:center;padding:50px 5%}
+.about-strip h2{font-family:'Fredoka One',cursive;font-size:clamp(1.5rem,3.5vw,2.5rem);margin-bottom:10px}
+.about-strip p{max-width:700px;margin:0 auto;font-size:1.05rem;opacity:.9;line-height:1.7}
+
+.reviews{background:var(--cream)}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1100px;margin:0 auto}
+.rev{background:var(--white);border-radius:12px;padding:25px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.rev-stars{color:var(--yellow);margin-bottom:10px}
+.rev p{color:#555;line-height:1.7;font-style:italic;margin-bottom:10px}
+.rev-name{font-weight:700;color:var(--dark);font-size:.9rem}
+
+.location-section{background:var(--white)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1100px;margin:0 auto;align-items:start}
+.map-wrap{border-radius:15px;overflow:hidden;height:350px;background:#ddd}
+.map-wrap iframe{width:100%;height:100%;border:none}
+.info-card{background:var(--cream);border-radius:15px;padding:35px}
+.info-card h3{font-size:1.4rem;margin-bottom:20px;color:var(--red);font-weight:700}
+.info-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.08)}
+.info-row:last-of-type{border:none}
+.info-contact{margin-top:20px}
+.info-contact div{display:flex;align-items:center;gap:10px;margin-bottom:12px;color:#555}
+.info-contact i{color:var(--red);width:18px;text-align:center}
+
+.cta-section{background:linear-gradient(135deg,var(--red),var(--red-dark));text-align:center;color:var(--white)}
+.cta-section h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,4.5vw,3rem);margin-bottom:10px}
+.cta-section p{font-size:1.1rem;margin-bottom:20px;opacity:.9}
+.cta-section .btn{background:var(--yellow);color:var(--dark)}
+.cta-section .btn:hover{background:#e8950f}
+
+footer{background:var(--dark);color:rgba(255,255,255,.5);text-align:center;padding:25px 5%;font-size:.85rem}
+
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:70px;left:0;width:100%;background:var(--red);flex-direction:column;padding:20px;gap:15px}
+.nav-links.active{display:flex}
+.mobile-toggle{display:block}
+.nav-cta{display:none}
+.loc-grid{grid-template-columns:1fr}
+.btn-white{margin-left:0;margin-top:10px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="#" class="nav-logo">Sir <span>Pizza</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#menu">Menu</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#location">Location</a></li>
+</ul>
+<a href="#menu" class="nav-cta"><i class="fas fa-pizza-slice"></i> Order Now</a>
+<button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')"><i class="fas fa-bars"></i></button>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<div class="hero-icon">🍕</div>
+<h1>Sir Pizza <span>Key Biscayne's Favorite Slice</span></h1>
+<p>Delicious pizza, subs, salads, and more — served fresh daily. Affordable prices, generous portions, and the taste that keeps you coming back.</p>
+<a href="#menu" class="btn btn-yellow">See the Menu</a>
+<a href="#location" class="btn btn-white">Find Us</a>
+<div class="hero-rating">
+<div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.0 Rating</div>
+<div><i class="fas fa-users"></i> 201+ Reviews</div>
+<div><i class="fas fa-map-marker-alt"></i> Key Biscayne, FL</div>
+</div>
+</div>
+</section>
+
+<div class="specials">
+<div><i class="fas fa-tag"></i> Lunch Specials Daily</div>
+<div><i class="fas fa-truck"></i> Delivery Available</div>
+<div><i class="fas fa-percent"></i> Family Combo Deals</div>
+</div>
+
+<section class="menu" id="menu">
+<div class="section-header">
+<h2>Our Menu</h2>
+<div class="bar"></div>
+<p>Something for everyone — from classic pies to fresh subs</p>
+</div>
+<div class="menu-grid">
+<div class="menu-card"><img src="https://placehold.co/400x250/d62828/fca311?text=Classic+Pizza" alt="Pizza"><div class="menu-body"><h3>Classic Cheese Pizza</h3><p>Our signature hand-tossed crust with house-made sauce and premium mozzarella.</p><div class="price">From $9.99</div></div></div>
+<div class="menu-card"><img src="https://placehold.co/400x250/fca311/2b2b2b?text=Specialty+Pies" alt="Specialty"><div class="menu-body"><h3>Specialty Pizzas</h3><p>Supreme, Meat Lovers, Veggie, BBQ Chicken, and more loaded specialty pies.</p><div class="price">From $13.99</div></div></div>
+<div class="menu-card"><img src="https://placehold.co/400x250/2b2b2b/fca311?text=Subs+%26+Wraps" alt="Subs"><div class="menu-body"><h3>Subs & Wraps</h3><p>Italian sub, chicken parm, philly cheesesteak, and fresh wraps made to order.</p><div class="price">From $7.99</div></div></div>
+<div class="menu-card"><img src="https://placehold.co/400x250/2d6a4f/ffffff?text=Salads" alt="Salads"><div class="menu-body"><h3>Fresh Salads</h3><p>Caesar, Greek, garden, and chef salads with house-made dressings.</p><div class="price">From $6.99</div></div></div>
+</div>
+</section>
+
+<section class="about-strip">
+<h2>Serving Key Biscayne Since Day One 🍕</h2>
+<p>Sir Pizza has been a Key Biscayne staple for years — the place locals go for a quick, delicious, and affordable meal. Whether it's a Friday night family dinner or a quick lunch break, we've got you covered with hot, fresh food and friendly service.</p>
+</section>
+
+<section class="reviews" id="reviews">
+<div class="section-header">
+<h2>What People Are Saying</h2>
+<div class="bar"></div>
+<p>201+ reviews and counting!</p>
+</div>
+<div class="rev-grid">
+<div class="rev"><div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Best pizza on the island! Great prices and huge portions. We order from here at least once a week."</p><div class="rev-name">— Alex P.</div></div>
+<div class="rev"><div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div><p>"Quick delivery, hot pizza, and the lunch specials can't be beat. Solid neighborhood spot."</p><div class="rev-name">— Maria L.</div></div>
+<div class="rev"><div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"My kids love Sir Pizza! The combo deals are perfect for family night. Friendly staff too."</p><div class="rev-name">— Chris D.</div></div>
+</div>
+</section>
+
+<section class="location-section" id="location">
+<div class="section-header">
+<h2>Find Us</h2>
+<div class="bar"></div>
+</div>
+<div class="loc-grid">
+<div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28689.5!2d-80.17!3d25.69!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9c70bb7285d51%3A0x1f3a4f1a2b5c6d7e!2sKey%20Biscayne%2C%20FL!5e0!3m2!1sen!2sus!4v1700000000000" loading="lazy"></iframe>
+</div>
+<div class="info-card">
+<h3><i class="fas fa-clock"></i> Hours</h3>
+<div class="info-row"><span>Monday – Thursday</span><span><strong>11:00 AM – 10:00 PM</strong></span></div>
+<div class="info-row"><span>Friday – Saturday</span><span><strong>11:00 AM – 11:00 PM</strong></span></div>
+<div class="info-row"><span>Sunday</span><span><strong>12:00 PM – 10:00 PM</strong></span></div>
+<div class="info-contact">
+<div><i class="fas fa-map-marker-alt"></i> Key Biscayne, FL</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta-section">
+<h2>Hungry? We've Got You. 🍕</h2>
+<p>Order online or call for delivery & pickup</p>
+<a href="#menu" class="btn">Order Now</a>
+</section>
+
+<footer><p>&copy; 2026 Sir Pizza | Key Biscayne, FL | Made with ❤️ and 🍕</p></footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My AZ Realty Team | Phoenix Homes — Louisa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0a1628;--navy2:#152238;--gold:#c9a84c;--gold-light:#e8d5a3;--white:#fff;--light:#f9f7f3;--text:#555}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;color:var(--text);overflow-x:hidden}
+h1,h2,h3{font-family:'Cormorant Garamond',serif}
+
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(10,22,40,.95);backdrop-filter:blur(10px);padding:0 5%;display:flex;justify-content:space-between;align-items:center;height:70px}
+.nav-logo{font-family:'Cormorant Garamond',serif;color:var(--white);font-size:1.5rem;font-weight:700;text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:1px;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:transparent;border:2px solid var(--gold);color:var(--gold);padding:9px 22px;border-radius:3px;text-decoration:none;font-weight:600;font-size:.8rem;letter-spacing:.5px;transition:all .3s}
+.nav-cta:hover{background:var(--gold);color:var(--navy)}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+
+.hero{height:100vh;background:linear-gradient(135deg,rgba(10,22,40,.9),rgba(21,34,56,.8)),url('https://placehold.co/1920x1080/0a1628/c9a84c?text=Phoenix+Luxury+Homes') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 5%}
+.hero-content{max-width:800px;animation:fadeUp .8s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+.hero-pre{color:var(--gold);font-size:.85rem;text-transform:uppercase;letter-spacing:3px;font-weight:500;margin-bottom:15px}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);color:var(--white);line-height:1.05;margin-bottom:20px;font-weight:700}
+.hero p{color:rgba(255,255,255,.6);font-size:1.1rem;margin-bottom:35px;max-width:600px;margin-left:auto;margin-right:auto}
+
+.search-box{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:25px;max-width:700px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}
+.search-box .field label{display:block;color:var(--gold-light);font-size:.7rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-weight:500}
+.search-box input,.search-box select{width:100%;padding:12px;border:1px solid rgba(255,255,255,.2);border-radius:5px;background:rgba(255,255,255,.08);color:#fff;font-family:'Poppins',sans-serif;font-size:.9rem;outline:none}
+.search-box input::placeholder{color:rgba(255,255,255,.4)}
+.search-btn{padding:12px 30px;background:var(--gold);color:var(--navy);border:none;border-radius:5px;font-weight:700;font-size:.9rem;cursor:pointer;font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.5px;transition:all .3s;white-space:nowrap}
+.search-btn:hover{background:var(--gold-light)}
+
+section{padding:80px 5%}
+.section-header{text-align:center;margin-bottom:50px}
+.section-header h2{font-size:clamp(2rem,4vw,3rem);color:var(--navy);margin-bottom:8px}
+.section-header p{color:#888;max-width:500px;margin:0 auto;font-size:.95rem}
+.section-header .gold-line{width:50px;height:3px;background:var(--gold);margin:12px auto}
+
+.featured{background:var(--light)}
+.prop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1200px;margin:0 auto}
+.prop-card{background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 3px 15px rgba(0,0,0,.06);transition:all .3s}
+.prop-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.1)}
+.prop-card img{width:100%;height:220px;object-fit:cover}
+.prop-body{padding:20px}
+.prop-price{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--navy)}
+.prop-addr{color:#888;font-size:.85rem;margin:5px 0 12px}
+.prop-features{display:flex;gap:15px;color:#666;font-size:.85rem}
+.prop-features span{display:flex;align-items:center;gap:5px}
+.prop-features i{color:var(--gold)}
+.prop-tag{position:absolute;top:15px;left:15px;background:var(--gold);color:var(--navy);padding:4px 12px;border-radius:3px;font-size:.7rem;font-weight:700;text-transform:uppercase}
+
+.agent-section{background:var(--navy);color:var(--white)}
+.agent-section .section-header h2{color:var(--white)}
+.agent-section .section-header p{color:rgba(255,255,255,.5)}
+.agent-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:50px;max-width:1000px;margin:0 auto;align-items:center}
+.agent-photo{text-align:center}
+.agent-photo img{width:280px;height:350px;object-fit:cover;border-radius:10px;border:3px solid var(--gold)}
+.agent-info h3{font-size:2rem;color:var(--white);margin-bottom:5px}
+.agent-info .title{color:var(--gold);font-size:.9rem;font-weight:500;margin-bottom:15px}
+.agent-info p{color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:15px}
+.agent-stats{display:flex;gap:30px;margin-top:20px}
+.agent-stat{text-align:center}
+.agent-stat .num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);font-weight:700}
+.agent-stat .lbl{font-size:.75rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px}
+
+.neighborhoods{background:var(--light)}
+.hood-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+.hood-card{position:relative;border-radius:10px;overflow:hidden;height:200px;cursor:pointer}
+.hood-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.hood-card:hover img{transform:scale(1.05)}
+.hood-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(10,22,40,.85));display:flex;align-items:flex-end;padding:20px}
+.hood-overlay h3{color:var(--white);font-size:1.3rem}
+
+.testimonials .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1100px;margin:0 auto}
+.testi-card{background:var(--light);border-radius:10px;padding:30px;border-left:3px solid var(--gold)}
+.testi-card p{color:#555;line-height:1.7;font-style:italic;margin-bottom:12px}
+.testi-name{color:var(--navy);font-weight:600;font-size:.9rem}
+
+.cta-section{background:linear-gradient(135deg,var(--gold),#d4af37);text-align:center;color:var(--navy)}
+.cta-section h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:10px}
+.cta-section p{font-size:1rem;margin-bottom:5px;opacity:.8}
+.cta-section .phone{font-size:2rem;font-weight:700;font-family:'Cormorant Garamond',serif;margin:15px 0}
+.cta-section .phone a{color:var(--navy);text-decoration:none}
+.cta-section .btn{background:var(--navy);color:var(--gold);padding:14px 35px;border-radius:5px;text-decoration:none;font-weight:700;font-size:.9rem;display:inline-block;transition:all .3s}
+.cta-section .btn:hover{background:var(--navy2)}
+
+footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;padding:25px 5%;font-size:.85rem}
+
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:70px;left:0;width:100%;background:var(--navy);flex-direction:column;padding:20px;gap:15px}
+.nav-links.active{display:flex}
+.mobile-toggle{display:block}
+.nav-cta{display:none}
+.search-box{grid-template-columns:1fr}
+.agent-grid{grid-template-columns:1fr}
+.agent-photo{order:-1}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="#" class="nav-logo">My AZ <span>Realty</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#listings">Listings</a></li>
+<li><a href="#agent">About Louisa</a></li>
+<li><a href="#neighborhoods">Areas</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<a href="tel:4806306016" class="nav-cta">Schedule Showing</a>
+<button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')"><i class="fas fa-bars"></i></button>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<div class="hero-pre">Phoenix, AZ Real Estate</div>
+<h1>Find Your Dream Home in Phoenix</h1>
+<p>Luxury homes, expert guidance, and personalized service. Let Louisa help you discover the perfect property in the Valley of the Sun.</p>
+<div class="search-box">
+<div class="field"><label>Location</label><input type="text" placeholder="City, ZIP, or neighborhood"></div>
+<div class="field"><label>Price Range</label><select><option>Any Price</option><option>$200K – $400K</option><option>$400K – $600K</option><option>$600K – $1M</option><option>$1M+</option></select></div>
+<button class="search-btn"><i class="fas fa-search"></i> Search</button>
+</div>
+</div>
+</section>
+
+<section class="featured" id="listings">
+<div class="section-header">
+<h2>Featured Properties</h2>
+<div class="gold-line"></div>
+<p>Handpicked homes in Phoenix's most desirable neighborhoods</p>
+</div>
+<div class="prop-grid">
+<div class="prop-card"><img src="https://placehold.co/400x250/0a1628/c9a84c?text=Scottsdale+Home" alt="Property"><div class="prop-body"><div class="prop-price">$675,000</div><div class="prop-addr">Scottsdale, AZ 85251</div><div class="prop-features"><span><i class="fas fa-bed"></i> 4 Bed</span><span><i class="fas fa-bath"></i> 3 Bath</span><span><i class="fas fa-ruler-combined"></i> 2,800 sqft</span></div></div></div>
+<div class="prop-card"><img src="https://placehold.co/400x250/152238/c9a84c?text=Paradise+Valley" alt="Property"><div class="prop-body"><div class="prop-price">$925,000</div><div class="prop-addr">Paradise Valley, AZ 85253</div><div class="prop-features"><span><i class="fas fa-bed"></i> 5 Bed</span><span><i class="fas fa-bath"></i> 4 Bath</span><span><i class="fas fa-ruler-combined"></i> 3,500 sqft</span></div></div></div>
+<div class="prop-card"><img src="https://placehold.co/400x250/c9a84c/0a1628?text=Gilbert+Home" alt="Property"><div class="prop-body"><div class="prop-price">$485,000</div><div class="prop-addr">Gilbert, AZ 85234</div><div class="prop-features"><span><i class="fas fa-bed"></i> 3 Bed</span><span><i class="fas fa-bath"></i> 2 Bath</span><span><i class="fas fa-ruler-combined"></i> 2,100 sqft</span></div></div></div>
+</div>
+</section>
+
+<section class="agent-section" id="agent">
+<div class="section-header">
+<h2>Meet Your Agent</h2>
+<div class="gold-line"></div>
+</div>
+<div class="agent-grid">
+<div class="agent-photo"><img src="https://placehold.co/280x350/c9a84c/0a1628?text=Louisa" alt="Louisa"></div>
+<div class="agent-info">
+<h3>Louisa</h3>
+<div class="title">Licensed Real Estate Agent — Phoenix, AZ</div>
+<p>With deep roots in the Phoenix metro area, Louisa brings unmatched local expertise and a client-first approach to every transaction. Whether you're buying your first home or selling a luxury property, she provides the personalized attention you deserve.</p>
+<p>Her knowledge of Scottsdale, Paradise Valley, Gilbert, Chandler, and the entire Valley means you'll always get the best deal in the best neighborhood for your lifestyle.</p>
+<div class="agent-stats">
+<div class="agent-stat"><div class="num">100+</div><div class="lbl">Homes Sold</div></div>
+<div class="agent-stat"><div class="num">5★</div><div class="lbl">Client Rating</div></div>
+<div class="agent-stat"><div class="num">AZ</div><div class="lbl">Licensed</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="neighborhoods" id="neighborhoods">
+<div class="section-header">
+<h2>Explore Neighborhoods</h2>
+<div class="gold-line"></div>
+<p>Discover Phoenix's most sought-after communities</p>
+</div>
+<div class="hood-grid">
+<div class="hood-card"><img src="https://placehold.co/350x200/0a1628/c9a84c?text=Scottsdale" alt="Scottsdale"><div class="hood-overlay"><h3>Scottsdale</h3></div></div>
+<div class="hood-card"><img src="https://placehold.co/350x200/152238/c9a84c?text=Paradise+Valley" alt="Paradise Valley"><div class="hood-overlay"><h3>Paradise Valley</h3></div></div>
+<div class="hood-card"><img src="https://placehold.co/350x200/c9a84c/0a1628?text=Gilbert" alt="Gilbert"><div class="hood-overlay"><h3>Gilbert</h3></div></div>
+<div class="hood-card"><img src="https://placehold.co/350x200/1a2a44/c9a84c?text=Chandler" alt="Chandler"><div class="hood-overlay"><h3>Chandler</h3></div></div>
+</div>
+</section>
+
+<section class="testimonials">
+<div class="section-header">
+<h2>Client Testimonials</h2>
+<div class="gold-line"></div>
+</div>
+<div class="testi-grid">
+<div class="testi-card"><p>"Louisa made buying our first home in Phoenix so easy. She knew every neighborhood inside and out and found us the perfect place within our budget."</p><div class="testi-name">— Jennifer & Mark W.</div></div>
+<div class="testi-card"><p>"We sold our home in 10 days above asking price. Louisa's marketing strategy and negotiation skills are incredible. Highly recommend!"</p><div class="testi-name">— Carlos M.</div></div>
+<div class="testi-card"><p>"Relocated from out of state and Louisa handled everything remotely until we arrived. Professional, responsive, and truly cares about her clients."</p><div class="testi-name">— Rachel S.</div></div>
+</div>
+</section>
+
+<section class="cta-section" id="contact">
+<h2>Ready to Find Your Phoenix Home?</h2>
+<p>Call Louisa today for a free consultation</p>
+<div class="phone"><a href="tel:4806306016">(480) 630-6016</a></div>
+<a href="tel:4806306016" class="btn">Schedule a Showing</a>
+</section>
+
+<footer><p>&copy; 2026 My AZ Realty Team | Phoenix, AZ | <a href="tel:4806306016" style="color:var(--gold)">(480) 630-6016</a></p></footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50)});
+</script>
+</body>
+</html>

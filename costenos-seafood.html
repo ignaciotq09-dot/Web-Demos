@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costeños Seafood | Key Biscayne, FL</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ocean:#0a5e7d;--deep:#063c50;--sand:#f5e6c8;--coral:#e8724a;--white:#ffffff;--light:#f0f7fa;--dark:#1a2a33}
+html{scroll-behavior:smooth}
+body{font-family:'Open Sans',sans-serif;color:var(--dark);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(6,60,80,.95);backdrop-filter:blur(10px);padding:0 5%;display:flex;justify-content:space-between;align-items:center;height:70px;transition:all .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.nav-logo{font-family:'Playfair Display',serif;color:var(--sand);font-size:1.6rem;font-weight:700;text-decoration:none}
+.nav-logo span{color:var(--coral)}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:var(--white);text-decoration:none;font-size:.9rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a:hover{color:var(--coral)}
+.nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--coral);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+
+/* HERO */
+.hero{height:100vh;background:linear-gradient(135deg,rgba(6,60,80,.85),rgba(10,94,125,.7)),url('https://placehold.co/1920x1080/0a5e7d/ffffff?text=Fresh+Seafood') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 5%}
+.hero-content{max-width:800px;animation:fadeUp 1s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);color:var(--white);line-height:1.1;margin-bottom:15px}
+.hero h1 span{color:var(--coral);display:block}
+.hero p{color:var(--sand);font-size:1.2rem;margin-bottom:30px;font-weight:300;max-width:600px;margin-left:auto;margin-right:auto}
+.btn{display:inline-block;padding:14px 35px;border-radius:50px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:1px;font-size:.9rem;transition:all .3s;cursor:pointer;border:none}
+.btn-primary{background:var(--coral);color:var(--white)}
+.btn-primary:hover{background:#d4612e;transform:translateY(-2px);box-shadow:0 8px 25px rgba(232,114,74,.4)}
+.btn-outline{border:2px solid var(--sand);color:var(--sand);background:transparent;margin-left:15px}
+.btn-outline:hover{background:var(--sand);color:var(--deep)}
+.hero-badges{margin-top:40px;display:flex;gap:30px;justify-content:center;flex-wrap:wrap}
+.hero-badge{color:var(--sand);font-size:.85rem;display:flex;align-items:center;gap:8px}
+.hero-badge i{color:var(--coral);font-size:1.1rem}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-header{text-align:center;margin-bottom:50px}
+.section-header h2{font-size:clamp(2rem,4vw,3rem);color:var(--deep);margin-bottom:10px}
+.section-header p{color:#666;max-width:600px;margin:0 auto;font-size:1.05rem}
+.section-header .divider{width:60px;height:3px;background:var(--coral);margin:15px auto}
+
+/* ABOUT */
+.about{background:var(--light)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;max-width:1100px;margin:0 auto;align-items:center}
+.about-img{border-radius:15px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.1);position:relative}
+.about-img img{width:100%;height:400px;object-fit:cover;display:block}
+.about-img::after{content:'Est. Key Biscayne';position:absolute;bottom:20px;left:20px;background:var(--coral);color:#fff;padding:8px 20px;border-radius:25px;font-size:.85rem;font-weight:600}
+.about-text h3{font-size:1.8rem;color:var(--deep);margin-bottom:15px}
+.about-text p{color:#555;line-height:1.8;margin-bottom:15px}
+.about-stats{display:flex;gap:30px;margin-top:25px}
+.stat{text-align:center}
+.stat .num{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--coral);font-weight:700}
+.stat .label{font-size:.8rem;color:#888;text-transform:uppercase;letter-spacing:1px}
+
+/* MENU */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;max-width:1200px;margin:0 auto}
+.menu-card{background:var(--white);border-radius:15px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s}
+.menu-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.15)}
+.menu-card img{width:100%;height:200px;object-fit:cover}
+.menu-card-body{padding:25px}
+.menu-card-body h3{font-size:1.3rem;color:var(--deep);margin-bottom:8px}
+.menu-card-body p{color:#666;font-size:.95rem;line-height:1.6}
+.menu-card-body .price{color:var(--coral);font-weight:700;font-size:1.1rem;margin-top:10px}
+
+/* REVIEWS */
+.reviews{background:var(--deep);color:var(--white)}
+.reviews .section-header h2{color:var(--white)}
+.reviews .section-header p{color:var(--sand)}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1100px;margin:0 auto}
+.review-card{background:rgba(255,255,255,.08);border-radius:15px;padding:30px;border:1px solid rgba(255,255,255,.1)}
+.review-stars{color:#ffc107;margin-bottom:10px;font-size:1rem}
+.review-card p{color:rgba(255,255,255,.85);line-height:1.7;font-style:italic;margin-bottom:15px}
+.review-author{color:var(--coral);font-weight:600;font-size:.9rem}
+
+/* HOURS/LOCATION */
+.location{background:var(--light)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1100px;margin:0 auto;align-items:start}
+.map-wrap{border-radius:15px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.1);height:350px;background:var(--ocean)}
+.map-wrap iframe{width:100%;height:100%;border:none}
+.hours-card{background:var(--white);border-radius:15px;padding:35px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.hours-card h3{font-size:1.5rem;color:var(--deep);margin-bottom:20px}
+.hours-card .hours-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eee;font-size:.95rem}
+.hours-card .hours-row:last-child{border:none}
+.hours-card .day{color:#555}
+.hours-card .time{color:var(--deep);font-weight:600}
+.contact-info{margin-top:25px}
+.contact-info div{display:flex;align-items:center;gap:12px;margin-bottom:12px;color:#555}
+.contact-info i{color:var(--coral);width:20px;text-align:center}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--coral),#d4612e);text-align:center;padding:60px 5%;color:var(--white)}
+.cta h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:15px}
+.cta p{font-size:1.1rem;margin-bottom:25px;opacity:.9}
+.cta .btn{background:var(--white);color:var(--coral)}
+.cta .btn:hover{background:var(--sand);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--dark);color:rgba(255,255,255,.6);text-align:center;padding:30px 5%;font-size:.85rem}
+footer a{color:var(--coral);text-decoration:none}
+
+/* MOBILE */
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:70px;left:0;width:100%;background:var(--deep);flex-direction:column;padding:20px;gap:15px}
+.nav-links.active{display:flex}
+.mobile-toggle{display:block}
+.about-grid,.loc-grid{grid-template-columns:1fr}
+.hero .btn-outline{margin-left:0;margin-top:10px}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+<a href="#" class="nav-logo">Costeños <span>Seafood</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#about">About</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#location">Visit Us</a></li>
+</ul>
+<button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')"><i class="fas fa-bars"></i></button>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Authentic Seafood <span>From Coast to Table</span></h1>
+<p>Experience the freshest catch in Key Biscayne. Inspired by the flavors of Latin America, crafted with passion and served with love.</p>
+<a href="#menu" class="btn btn-primary">View Our Menu</a>
+<a href="#location" class="btn btn-outline">Find Us</a>
+<div class="hero-badges">
+<div class="hero-badge"><i class="fas fa-star"></i> 4.8 Star Rating</div>
+<div class="hero-badge"><i class="fas fa-utensils"></i> 82+ Reviews</div>
+<div class="hero-badge"><i class="fas fa-map-marker-alt"></i> Key Biscayne, FL</div>
+</div>
+</div>
+</section>
+
+<section class="about" id="about">
+<div class="section-header">
+<h2>Our Story</h2>
+<div class="divider"></div>
+<p>A taste of the coast, right here in Key Biscayne</p>
+</div>
+<div class="about-grid">
+<div class="about-img">
+<img src="https://placehold.co/600x400/0a5e7d/ffffff?text=Our+Kitchen" alt="Costeños Kitchen">
+</div>
+<div class="about-text">
+<h3>Where Every Dish Tells a Story</h3>
+<p>At Costeños Seafood, we bring the vibrant flavors of coastal Latin America to beautiful Key Biscayne. Our chefs source the freshest seafood daily, preparing each dish with authentic recipes passed down through generations.</p>
+<p>From our signature ceviches to our perfectly grilled whole fish, every plate is a celebration of the sea. Whether you're joining us for a casual lunch or a special dinner, you'll feel the warmth of our hospitality in every bite.</p>
+<div class="about-stats">
+<div class="stat"><div class="num">4.8</div><div class="label">Star Rating</div></div>
+<div class="stat"><div class="num">82+</div><div class="label">Reviews</div></div>
+<div class="stat"><div class="num">100%</div><div class="label">Fresh Daily</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="menu">
+<div class="section-header">
+<h2>From Our Kitchen</h2>
+<div class="divider"></div>
+<p>Fresh catches and Latin-inspired favorites</p>
+</div>
+<div class="menu-grid">
+<div class="menu-card">
+<img src="https://placehold.co/400x250/0a5e7d/f5e6c8?text=Ceviche" alt="Ceviche">
+<div class="menu-card-body">
+<h3>Ceviches & Tiraditos</h3>
+<p>Fresh fish marinated in citrus juices with ají, red onion, and cilantro. A true coastal classic.</p>
+<div class="price">From $14.95</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://placehold.co/400x250/063c50/f5e6c8?text=Grilled+Fish" alt="Grilled Fish">
+<div class="menu-card-body">
+<h3>Whole Grilled Fish</h3>
+<p>Perfectly seasoned and grilled whole snapper served with coconut rice, tostones, and house salad.</p>
+<div class="price">From $24.95</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://placehold.co/400x250/e8724a/ffffff?text=Seafood+Platter" alt="Seafood Platter">
+<div class="menu-card-body">
+<h3>Mariscos Platter</h3>
+<p>A feast of shrimp, calamari, mussels, and fish filet served with yuca fries and sauces.</p>
+<div class="price">From $32.95</div>
+</div>
+</div>
+<div class="menu-card">
+<img src="https://placehold.co/400x250/1a2a33/f5e6c8?text=Cocktails" alt="Tropical Drinks">
+<div class="menu-card-body">
+<h3>Tropical Cocktails</h3>
+<p>Handcrafted mojitos, margaritas, and tropical fruit cocktails. The perfect companion to your meal.</p>
+<div class="price">From $10.00</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="reviews" id="reviews">
+<div class="section-header">
+<h2>What Our Guests Say</h2>
+<div class="divider"></div>
+<p>Join 82+ happy customers who love our food</p>
+</div>
+<div class="review-grid">
+<div class="review-card">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"The best seafood I've had in South Florida! The ceviche is unbelievably fresh and the grilled snapper was perfect. We'll be back every week."</p>
+<div class="review-author">— Maria G.</div>
+</div>
+<div class="review-card">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"A hidden gem in Key Biscayne! Authentic flavors, generous portions, and the staff makes you feel like family. Don't miss the mariscos platter."</p>
+<div class="review-author">— James R.</div>
+</div>
+<div class="review-card">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"We came for lunch and stayed for hours. The food is incredible, the cocktails are refreshing, and the ocean vibes are perfect. 10/10."</p>
+<div class="review-author">— Sofia T.</div>
+</div>
+</div>
+</section>
+
+<section class="location" id="location">
+<div class="section-header">
+<h2>Visit Us</h2>
+<div class="divider"></div>
+<p>We're waiting for you in beautiful Key Biscayne</p>
+</div>
+<div class="loc-grid">
+<div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28689.5!2d-80.17!3d25.69!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9c70bb7285d51%3A0x1f3a4f1a2b5c6d7e!2sKey%20Biscayne%2C%20FL!5e0!3m2!1sen!2sus!4v1700000000000" loading="lazy"></iframe>
+</div>
+<div class="hours-card">
+<h3><i class="far fa-clock" style="color:var(--coral)"></i> Hours & Info</h3>
+<div class="hours-row"><span class="day">Monday – Thursday</span><span class="time">11:00 AM – 10:00 PM</span></div>
+<div class="hours-row"><span class="day">Friday – Saturday</span><span class="time">11:00 AM – 11:00 PM</span></div>
+<div class="hours-row"><span class="day">Sunday</span><span class="time">11:00 AM – 9:00 PM</span></div>
+<div class="contact-info">
+<div><i class="fas fa-map-marker-alt"></i> Key Biscayne, FL</div>
+<div><i class="fas fa-globe"></i> costenosseafood.com</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<h2>Ready for the Freshest Seafood in Town?</h2>
+<p>Reserve your table today and taste the coast.</p>
+<a href="tel:" class="btn">Call to Reserve</a>
+</section>
+
+<footer>
+<p>&copy; 2026 Costeños Seafood — Key Biscayne, FL | Crafted with <i class="fas fa-heart" style="color:var(--coral)"></i></p>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+</script>
+</body>
+</html>
