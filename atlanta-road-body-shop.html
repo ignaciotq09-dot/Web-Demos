@@ -4,269 +4,686 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atlanta Road Body Shop | Premium Auto Body Repair in Smyrna, GA</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#1a1a2e;--accent:#e94560;--accent2:#0f3460;--light:#f5f5f5;--white:#fff;--dark:#111;--gray:#666;--shadow:0 10px 40px rgba(0,0,0,.12)}
-body{font-family:'Open Sans',sans-serif;color:#333;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px}
-/* Preloader */
-.preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--primary);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s}
-.preloader.hidden{opacity:0;pointer-events:none}
-.preloader .spinner{width:50px;height:50px;border:4px solid rgba(233,69,96,.3);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-/* Nav */
-nav{position:fixed;top:0;width:100%;z-index:100;padding:18px 0;transition:all .3s}
-nav.scrolled{background:var(--primary);padding:10px 0;box-shadow:0 2px 20px rgba(0,0,0,.3)}
-.nav-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 30px}
-.logo{font-family:'Oswald',sans-serif;font-size:1.5rem;color:var(--white);font-weight:700;text-decoration:none}
-.logo span{color:var(--accent)}
-.nav-links{display:flex;gap:25px;list-style:none}
-.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s}
-.nav-links a:hover{color:var(--accent)}
-/* Hero */
-.hero{height:100vh;background:linear-gradient(135deg,rgba(26,26,46,.92),rgba(15,52,96,.85)),url('https://placehold.co/1920x1080/1a1a2e/333?text=Auto+Body+Shop') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--white)}
-.hero-content h1{font-size:3.8rem;margin-bottom:15px;line-height:1.1}
-.hero-content h1 span{color:var(--accent)}
-.hero-content p{font-size:1.2rem;opacity:.85;max-width:600px;margin:0 auto 30px;font-weight:300}
-.btn{display:inline-block;padding:14px 36px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.95rem;transition:all .3s;text-transform:uppercase;letter-spacing:1px}
-.btn-primary{background:var(--accent);color:var(--white)}
-.btn-primary:hover{background:#d63650;transform:translateY(-2px);box-shadow:0 8px 25px rgba(233,69,96,.4)}
-.btn-outline{border:2px solid var(--white);color:var(--white);margin-left:15px}
-.btn-outline:hover{background:var(--white);color:var(--primary)}
-/* Wave Divider */
-.wave-divider{position:relative;margin-top:-2px}
-.wave-divider svg{display:block;width:100%}
-/* About */
-.about{padding:100px 30px;max-width:1200px;margin:auto}
-.section-tag{color:var(--accent);font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:3px;font-size:.85rem;margin-bottom:10px}
-.about h2{font-size:2.5rem;margin-bottom:25px;color:var(--primary)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:40px}
-.about-img{border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
-.about-img img{width:100%;display:block}
-.about-text p{line-height:1.8;color:var(--gray);margin-bottom:15px}
-.stat-row{display:flex;gap:40px;margin-top:30px}
-.stat{text-align:center}
-.stat .num{font-family:'Oswald',sans-serif;font-size:2.2rem;color:var(--accent);font-weight:700}
-.stat .label{font-size:.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px}
-/* Services */
-.services{background:var(--light);padding:100px 30px}
-.services-inner{max-width:1200px;margin:auto;text-align:center}
-.services h2{font-size:2.5rem;color:var(--primary);margin-bottom:50px}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-.service-card{background:var(--white);padding:40px 30px;border-radius:10px;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s}
-.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.15)}
-.service-card i{font-size:2.5rem;color:var(--accent);margin-bottom:20px}
-.service-card h3{font-size:1.2rem;margin-bottom:12px;color:var(--primary)}
-.service-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
-/* Why Choose */
-.why{padding:100px 30px;max-width:1200px;margin:auto}
-.why h2{font-size:2.5rem;color:var(--primary);text-align:center;margin-bottom:50px}
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}
-.why-item{text-align:center;padding:30px 20px}
-.why-item .icon-circle{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
-.why-item .icon-circle i{color:var(--white);font-size:1.5rem}
-.why-item h4{color:var(--primary);margin-bottom:10px;font-size:1rem}
-.why-item p{color:var(--gray);font-size:.85rem;line-height:1.7}
-/* Gallery */
-.gallery{background:var(--primary);padding:100px 30px;color:var(--white);text-align:center}
-.gallery h2{font-size:2.5rem;margin-bottom:50px}
-.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;max-width:1200px;margin:auto}
-.gallery-item{border-radius:8px;overflow:hidden;position:relative}
-.gallery-item img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .5s}
-.gallery-item:hover img{transform:scale(1.08)}
-/* Testimonials */
-.testimonials{padding:100px 30px;text-align:center}
-.testimonials h2{font-size:2.5rem;color:var(--primary);margin-bottom:50px}
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1200px;margin:auto}
-.test-card{background:var(--white);padding:35px;border-radius:10px;box-shadow:var(--shadow);text-align:left}
-.test-card .stars{color:#f9a825;margin-bottom:15px;font-size:.9rem}
-.test-card p{color:var(--gray);line-height:1.8;font-style:italic;margin-bottom:15px}
-.test-card .author{font-weight:600;color:var(--primary)}
-/* CTA */
-.cta{background:linear-gradient(135deg,var(--accent),var(--accent2));padding:80px 30px;text-align:center;color:var(--white)}
-.cta h2{font-size:2.5rem;margin-bottom:15px}
-.cta p{font-size:1.1rem;opacity:.9;margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto}
-.cta .btn{background:var(--white);color:var(--accent)}
-.cta .btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
-/* Footer */
-footer{background:var(--dark);color:rgba(255,255,255,.7);padding:60px 30px 30px}
-.footer-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
-.footer-col h4{color:var(--white);font-family:'Oswald',sans-serif;margin-bottom:20px;font-size:1.1rem}
-.footer-col p{line-height:1.8;font-size:.9rem}
-.footer-col a{color:rgba(255,255,255,.7);text-decoration:none;display:block;margin-bottom:8px;font-size:.9rem;transition:color .3s}
-.footer-col a:hover{color:var(--accent)}
-.footer-col .social{display:flex;gap:12px;margin-top:15px}
-.footer-col .social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:all .3s}
-.footer-col .social a:hover{background:var(--accent);border-color:var(--accent)}
-.footer-bottom{max-width:1200px;margin:30px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);text-align:center;font-size:.85rem}
-/* Reveal */
-.reveal{opacity:0;transform:translateY(30px);transition:all .7s ease}
+:root{
+--deep:#111827;--deep2:#1f2937;--emerald:#059669;--emerald2:#10b981;--emerald3:#34d399;
+--white:#ffffff;--cream:#f9fafb;--light:#f3f4f6;--text:#374151;--text-light:#6b7280;
+--shadow-sm:0 4px 15px rgba(0,0,0,.06);--shadow-md:0 12px 35px rgba(0,0,0,.1);--shadow-lg:0 24px 60px rgba(0,0,0,.15);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);overflow-x:hidden;background:var(--white)}
+h1,h2,h3,h4{font-family:'DM Serif Display',serif}
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--deep)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--emerald),var(--emerald2));border-radius:4px}
+
+/* PRELOADER */
+.preloader{position:fixed;inset:0;background:var(--deep);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s cubic-bezier(.4,0,.2,1),visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader-inner{text-align:center}
+.preloader-inner h2{font-family:'DM Serif Display',serif;color:var(--white);font-size:2.4rem;font-weight:400;letter-spacing:4px;opacity:0;animation:fadeUp .8s .2s forwards}
+.preloader-inner h2 span{background:linear-gradient(135deg,var(--emerald),var(--emerald2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;border-radius:2px;overflow:hidden}
+.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--emerald),var(--emerald2));animation:preloaderSlide 1s ease infinite}
+@keyframes preloaderSlide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(15px)}}
+
+/* REVEAL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
 .reveal.active{opacity:1;transform:translateY(0)}
-/* Responsive */
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.9);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.active{opacity:1;transform:scale(1)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* PHONE BAR */
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:linear-gradient(90deg,var(--emerald),var(--emerald2));padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--white);transition:transform .3s}
+.phone-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.phone-bar a:hover{text-decoration:underline}
+.phone-bar .sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
+
+/* NAV */
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:76px;transition:all .4s cubic-bezier(.16,1,.3,1)}
+nav.scrolled{background:rgba(17,24,39,.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 8px 32px rgba(0,0,0,.25);height:66px;top:0}
+.nav-logo{font-family:'DM Serif Display',serif;color:var(--white);font-size:1.6rem;text-decoration:none;letter-spacing:1px}
+.nav-logo span{background:linear-gradient(135deg,var(--emerald),var(--emerald2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--emerald),var(--emerald2));transition:width .3s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--emerald),var(--emerald2));color:var(--white)!important;padding:12px 28px;border-radius:50px;font-weight:600;letter-spacing:1px;transition:all .3s;border:none;position:relative;overflow:hidden}
+.nav-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--emerald2),var(--emerald));opacity:0;transition:opacity .3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(5,150,105,.4)}
+.nav-cta:hover::before{opacity:1}
+.nav-cta span{position:relative;z-index:1}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(17,24,39,.98);backdrop-filter:blur(20px);z-index:10002;flex-direction:column;align-items:center;justify-content:center;gap:30px;opacity:0;visibility:hidden;transition:all .4s}
+.mobile-menu.open{opacity:1;visibility:visible;display:flex}
+.mobile-menu a{color:var(--white);text-decoration:none;font-family:'DM Serif Display',serif;font-size:2rem;transition:color .3s}
+.mobile-menu a:hover{color:var(--emerald)}
+.mobile-close{position:absolute;top:30px;right:30px;background:none;border:none;color:var(--white);font-size:2rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:116px;background:var(--deep);display:flex;align-items:center;justify-content:center;text-align:center;padding-left:5%;padding-right:5%;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://placehold.co/1920x1080/111827/1f2937?text=') center/cover;opacity:.25}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(5,150,105,.1),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(16,185,129,.06),transparent 50%)}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(transparent,var(--white));z-index:2}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;animation:blobFloat 8s ease-in-out infinite}
+.hero-blob-1{width:400px;height:400px;background:var(--emerald);top:-100px;right:-100px;animation-delay:0s}
+.hero-blob-2{width:300px;height:300px;background:var(--emerald2);bottom:0;left:-50px;animation-delay:-3s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
+
+.hero-content{max-width:900px;position:relative;z-index:3}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(5,150,105,.1);border:1px solid rgba(5,150,105,.25);color:var(--emerald2);padding:10px 22px;border-radius:50px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:3px;margin-bottom:28px;backdrop-filter:blur(10px)}
+.hero-badge i{font-size:.65rem}
+.hero h1{font-size:clamp(2.5rem,5vw,4.5rem);color:var(--white);line-height:1;margin-bottom:28px;font-weight:400}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:inline-block;animation:heroReveal 1s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateY(100%)}
+.hero h1 .line:nth-child(2) span{animation-delay:.15s}
+.hero h1 .gradient-text{background:linear-gradient(135deg,var(--emerald),var(--emerald2),var(--emerald3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:gradientShift 4s ease infinite}
+@keyframes heroReveal{to{opacity:1;transform:translateY(0)}}
+@keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.hero p{color:rgba(255,255,255,.5);font-size:1.1rem;max-width:600px;margin:0 auto 40px;line-height:1.9;font-weight:300}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--emerald),var(--emerald2));color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--emerald2),var(--emerald));opacity:0;transition:opacity .3s}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(5,150,105,.35);scale:1.02}
+.btn-primary:hover::before{opacity:1}
+.btn-primary i,.btn-primary span{position:relative;z-index:1}
+.btn-outline{border:1.5px solid rgba(255,255,255,.2);color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:500;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;backdrop-filter:blur(10px)}
+.btn-outline:hover{border-color:var(--emerald);color:var(--emerald);background:rgba(5,150,105,.05)}
+
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-indicator span{color:rgba(255,255,255,.3);font-size:.65rem;text-transform:uppercase;letter-spacing:3px}
+.scroll-mouse{width:24px;height:38px;border:2px solid rgba(255,255,255,.2);border-radius:12px;position:relative}
+.scroll-mouse::after{content:'';position:absolute;top:6px;left:50%;width:3px;height:8px;margin-left:-1.5px;background:var(--emerald);border-radius:2px;animation:scrollDown 1.5s ease infinite}
+@keyframes scrollDown{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+
+/* SECTION STYLES */
+.section-tag{color:var(--emerald);font-size:.7rem;text-transform:uppercase;letter-spacing:5px;font-weight:600;margin-bottom:15px;display:block}
+.section-header{text-align:center;max-width:650px;margin:0 auto 70px}
+.section-header h2{font-size:clamp(2.2rem,4.5vw,3.8rem);color:var(--deep);line-height:1.1}
+.section-header h2 em{font-style:italic;background:linear-gradient(135deg,var(--emerald),var(--emerald2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-header p{color:var(--text-light);margin-top:18px;line-height:1.9;font-size:.95rem}
+
+/* ABOUT */
+.about{padding:140px 6% 120px;background:var(--white);position:relative}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.about-img-wrapper{position:relative}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:480px;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.about-img:hover img{transform:scale(1.05)}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,150,105,.1),transparent);pointer-events:none}
+.about-badge{position:absolute;bottom:-20px;right:-20px;background:linear-gradient(135deg,var(--emerald),var(--emerald2));color:var(--white);padding:20px 30px;border-radius:16px;font-family:'DM Serif Display',serif;font-size:1.5rem;box-shadow:0 12px 30px rgba(5,150,105,.3)}
+.about-floating{position:absolute;top:30px;left:-30px;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.5);padding:18px 24px;border-radius:14px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-md);z-index:2}
+.about-floating .stars{color:#f59e0b;font-size:.75rem;display:flex;gap:2px}
+.about-floating .rating-text{font-weight:700;color:var(--deep);font-size:.9rem}
+.about-floating .rating-sub{font-size:.7rem;color:var(--text-light)}
+.about-text h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--deep);margin-bottom:25px;line-height:1.15}
+.about-text h2 em{font-style:italic;background:linear-gradient(135deg,var(--emerald),var(--emerald2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.about-text p{color:var(--text-light);line-height:1.9;margin-bottom:20px;font-size:.95rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:35px}
+.about-feature{display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--deep);font-weight:500;padding:12px 16px;background:var(--cream);border-radius:12px;border:1px solid rgba(0,0,0,.04);transition:all .3s}
+.about-feature:hover{transform:translateX(5px);box-shadow:var(--shadow-sm)}
+.about-feature i{color:var(--emerald);font-size:1rem;width:20px;text-align:center}
+
+/* SERVICES */
+.services{padding:120px 6%;background:var(--cream);position:relative;overflow:hidden}
+.services::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(5,150,105,.04),transparent);pointer-events:none}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:0 auto}
+.service-card{background:rgba(255,255,255,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.8);border-radius:20px;padding:40px 32px;transition:all .5s cubic-bezier(.16,1,.3,1);cursor:pointer;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--emerald),var(--emerald2));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:65px;height:65px;background:linear-gradient(135deg,var(--emerald),var(--emerald2));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;color:var(--white);font-size:1.4rem;transition:transform .3s}
+.service-card:hover .service-icon{transform:scale(1.1) rotate(5deg)}
+.service-card h3{font-size:1.3rem;color:var(--deep);margin-bottom:12px}
+.service-card p{color:var(--text-light);font-size:.9rem;line-height:1.8}
+
+/* WAVE DIVIDER */
+.wave-divider{position:relative;margin-top:-2px;z-index:1}
+.wave-divider svg{display:block;width:100%}
+
+/* DIAGONAL SECTION */
+.diagonal-section{clip-path:polygon(0 5%,100% 0,100% 95%,0 100%);padding:160px 6% 160px;background:var(--deep);position:relative;overflow:hidden}
+.diagonal-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(5,150,105,.08),transparent 50%),radial-gradient(ellipse at 80% 50%,rgba(16,185,129,.05),transparent 50%)}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1100px;margin:0 auto;text-align:center}
+.stat-item{position:relative;padding:30px 0}
+.stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:60px;background:linear-gradient(transparent,rgba(255,255,255,.1),transparent)}
+.stat-number{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);color:var(--white);font-weight:400;line-height:1}
+.stat-number .counter-suffix{background:linear-gradient(135deg,var(--emerald),var(--emerald2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.stat-label{color:rgba(255,255,255,.35);font-size:.72rem;text-transform:uppercase;letter-spacing:4px;font-weight:500;margin-top:12px}
+
+/* WHY US ALTERNATING */
+.why-section{padding:120px 6%;background:var(--white)}
+.why-row{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto 80px;align-items:center}
+.why-row:last-child{margin-bottom:0}
+.why-row.reverse .why-img-wrap{order:2}
+.why-row.reverse .why-text{order:1}
+.why-img-wrap{border-radius:20px;overflow:hidden;position:relative}
+.why-img-wrap img{width:100%;height:400px;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.why-img-wrap:hover img{transform:scale(1.05)}
+.why-text h3{font-size:2rem;color:var(--deep);margin-bottom:18px}
+.why-text p{color:var(--text-light);line-height:1.9;margin-bottom:15px;font-size:.95rem}
+.why-text .check-list{list-style:none;margin-top:20px}
+.why-text .check-list li{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.9rem;color:var(--text)}
+.why-text .check-list li i{color:var(--emerald);font-size:.85rem}
+
+/* GALLERY */
+.gallery{padding:120px 6%;background:var(--cream)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1200px;margin:0 auto}
+.gallery-item{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;aspect-ratio:1}
+.gallery-item:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .4s}
+.gallery-item:hover img{transform:scale(1.05);filter:brightness(1.1)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(17,24,39,.6));opacity:0;transition:opacity .4s}
+.gallery-item:hover::after{opacity:1}
+.gallery-item .gallery-zoom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);color:var(--white);font-size:1.5rem;z-index:2;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.gallery-item:hover .gallery-zoom{transform:translate(-50%,-50%) scale(1)}
+
+/* TESTIMONIALS */
+.testimonials{padding:120px 6%;background:var(--white);position:relative}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.testimonial-card{background:rgba(249,250,251,.8);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.8);border-radius:20px;padding:40px 35px;transition:all .4s;position:relative;overflow:hidden}
+.testimonial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--emerald),var(--emerald2));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.testimonial-card:hover::before{transform:scaleX(1)}
+.quote-icon{font-family:'DM Serif Display',serif;font-size:6rem;background:linear-gradient(135deg,var(--emerald),var(--emerald2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.15;line-height:1;position:absolute;top:10px;right:25px}
+.testimonial-stars{color:#f59e0b;font-size:.9rem;margin-bottom:16px;display:flex;gap:3px}
+.testimonial-text{color:var(--text-light);font-size:.95rem;line-height:1.9;margin-bottom:22px;font-style:italic;position:relative;z-index:1}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--emerald),var(--emerald2));display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-weight:700;color:var(--white);font-size:1.1rem}
+.testimonial-name{font-weight:600;font-size:.9rem;color:var(--deep)}
+.testimonial-role{font-size:.75rem;color:var(--text-light);display:flex;align-items:center;gap:4px}
+.testimonial-role i{color:#f59e0b;font-size:.6rem}
+
+/* PROCESS */
+.process{padding:120px 6%;background:var(--cream)}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:1100px;margin:0 auto}
+.process-step{text-align:center;position:relative;padding:0 15px}
+.process-step::after{content:'';position:absolute;top:35px;right:-15px;width:30px;height:2px;background:linear-gradient(90deg,var(--emerald),transparent);display:block}
+.process-step:last-child::after{display:none}
+.process-num{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--emerald),var(--emerald2));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--white);box-shadow:0 8px 25px rgba(5,150,105,.3)}
+.process-step h4{font-size:1.1rem;color:var(--deep);margin-bottom:10px}
+.process-step p{color:var(--text-light);font-size:.88rem;line-height:1.7}
+
+/* CTA SECTION */
+.cta-section{padding:140px 6%;background:var(--deep);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(5,150,105,.08),transparent 60%)}
+.cta-section h2{font-size:clamp(2.5rem,5vw,4rem);color:var(--white);margin-bottom:20px;position:relative}
+.cta-section h2 em{font-style:italic;background:linear-gradient(135deg,var(--emerald),var(--emerald2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-section p{color:rgba(255,255,255,.4);max-width:600px;margin:0 auto 40px;line-height:1.8;font-size:1rem;position:relative}
+.urgency{background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.2);border-radius:14px;padding:18px 28px;display:inline-flex;align-items:center;gap:12px;margin-top:30px;font-size:.85rem;color:var(--white);position:relative}
+.urgency i{color:var(--emerald2);font-size:1rem}
+.urgency strong{color:var(--emerald2)}
+
+/* FOOTER */
+footer{background:#0a0f1a;padding:100px 6% 30px;position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--emerald),var(--emerald2),transparent)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:50px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--white);margin-bottom:16px}
+.footer-brand h3 span{background:linear-gradient(135deg,var(--emerald),var(--emerald2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-brand p{color:rgba(255,255,255,.35);font-size:.85rem;line-height:1.9;margin-bottom:22px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;transition:all .3s}
+.footer-social a:hover{border-color:var(--emerald);color:var(--emerald);transform:translateY(-3px);box-shadow:0 6px 20px rgba(5,150,105,.2)}
+.footer-col h4{color:var(--white);font-family:'Inter',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:22px}
+.footer-col a{display:block;color:rgba(255,255,255,.35);text-decoration:none;font-size:.85rem;margin-bottom:12px;transition:all .3s;padding-left:0}
+.footer-col a:hover{color:var(--emerald);padding-left:5px}
+.footer-hours span{display:block;color:rgba(255,255,255,.35);font-size:.85rem;margin-bottom:8px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);margin-top:60px;padding-top:25px;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,.25);font-size:.8rem;flex-wrap:wrap;gap:10px}
+
+/* FLOATING CTA */
+.floating-cta{position:fixed;bottom:30px;right:30px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}
+.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--emerald),var(--emerald2));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(5,150,105,.4);transition:all .3s;animation:pulse 2s ease infinite}
+.floating-cta a:hover{transform:scale(1.1)}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(5,150,105,.4)}50%{box-shadow:0 8px 50px rgba(5,150,105,.6)}}
+
+/* RESPONSIVE */
 @media(max-width:768px){
-.hero-content h1{font-size:2.2rem}
-.nav-links{display:none}
-.about-grid,.services-grid,.why-grid,.gallery-grid,.test-grid{grid-template-columns:1fr}
-.footer-grid{grid-template-columns:1fr 1fr}
-.stat-row{flex-wrap:wrap}
+  .nav-links{display:none}
+  .mobile-toggle{display:block}
+  .about-grid,.why-row{grid-template-columns:1fr;gap:50px}
+  .why-row.reverse .why-img-wrap,.why-row.reverse .why-text{order:unset}
+  .about-floating{position:relative;top:auto;left:auto;margin-bottom:15px;display:inline-flex}
+  .about-badge{bottom:15px;right:15px}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .stat-item::after{display:none}
+  .services-grid,.process-grid{grid-template-columns:1fr}
+  .process-step::after{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item:first-child{grid-column:span 2}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .phone-bar{font-size:.7rem;gap:10px}
+  .diagonal-section{clip-path:none;padding:100px 6%}
+  .testimonial-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .hero h1{font-size:clamp(2rem,8vw,3rem)}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .about-features{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:center}
 }
 </style>
 </head>
 <body>
-<div class="preloader"><div class="spinner"></div></div>
-<nav>
-<div class="nav-inner">
-<a href="#" class="logo">Atlanta Road <span>Body Shop</span></a>
-<ul class="nav-links">
-<li><a href="#about">About</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#reviews">Reviews</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <h2>Atlanta Road <span>Body Shop</span></h2>
+    <div class="preloader-bar"></div>
+  </div>
 </div>
+
+<!-- PHONE BAR -->
+<div class="phone-bar" id="phoneBar">
+  <a href="tel:7704338115"><i class="fas fa-phone"></i> (770) 433-8115</a>
+  <span class="sep"></span>
+  <span><i class="fas fa-map-marker-alt"></i> 2300 Atlanta Road SE, Smyrna, GA</span>
+  <span class="sep"></span>
+  <span><i class="fas fa-clock"></i> Mon–Fri: 8AM – 5:30PM</span>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Atlanta Road <span>Body Shop</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="tel:7704338115" class="nav-cta"><span>Call Now</span></a></li>
+  </ul>
+  <button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 </nav>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose"><i class="fas fa-times"></i></button>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#gallery" onclick="closeMobile()">Gallery</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="tel:7704338115" style="color:var(--emerald)"><i class="fas fa-phone"></i> (770) 433-8115</a>
+</div>
+
+<!-- HERO -->
 <section class="hero">
-<div class="hero-content">
-<h1>Expert <span>Collision Repair</span> Since 2002</h1>
-<p>I-CAR Gold certified auto body professionals delivering factory-quality repairs with a lifetime warranty in Smyrna, GA.</p>
-<a href="tel:7704338115" class="btn btn-primary"><i class="fas fa-phone"></i> (770) 433-8115</a>
-<a href="#services" class="btn btn-outline">Our Services</a>
-</div>
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-award"></i> I-CAR Gold Class Certified</div>
+    <h1>
+      <span class="line"><span>Expert</span></span>
+      <span class="line"><span><strong class="gradient-text">Collision Repair</strong></span></span>
+    </h1>
+    <p>Family-owned since 2002, delivering factory-quality auto body repairs with a lifetime warranty. I-CAR Gold Class certified and trusted by thousands of drivers in Smyrna, GA.</p>
+    <div class="hero-btns">
+      <a href="tel:7704338115" class="btn-primary"><i class="fas fa-phone"></i> <span>Call (770) 433-8115</span></a>
+      <a href="#services" class="btn-outline">View Services</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"></div>
+    <span>Scroll</span>
+  </div>
 </section>
 
+<!-- WAVE DIVIDER -->
 <div class="wave-divider">
-<svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="#fff" d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z"/></svg>
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#ffffff" d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z"/></svg>
 </div>
 
+<!-- ABOUT -->
 <section class="about" id="about">
-<div class="reveal">
-<span class="section-tag">About Us</span>
-<h2>Family Owned & Operated</h2>
-</div>
-<div class="about-grid">
-<div class="about-img reveal"><img src="https://placehold.co/600x400/1a1a2e/e94560?text=Our+Shop" alt="Shop"></div>
-<div class="about-text reveal">
-<p>Atlanta Road Body Shop is a family owned and operated collision repair business serving the greater Atlanta metro area. Our expertise allows us to consistently meet and exceed each customer's individual needs.</p>
-<p>We are dedicated to giving our customers the best customer service possible. As an I-CAR Gold Class business, we are committed to providing efficient, safe and high-quality repairs.</p>
-<div class="stat-row">
-<div class="stat"><div class="num">20+</div><div class="label">Years Experience</div></div>
-<div class="stat"><div class="num">5000+</div><div class="label">Cars Repaired</div></div>
-<div class="stat"><div class="num">100%</div><div class="label">Satisfaction</div></div>
-</div>
-</div>
-</div>
+  <div class="about-grid">
+    <div class="about-img-wrapper reveal-left">
+      <div class="about-floating">
+        <div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="rating-text">5.0 on Google</div>
+          <div class="rating-sub">Trusted by thousands</div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://placehold.co/600x480/111827/059669?text=Our+Shop" alt="Atlanta Road Body Shop">
+      </div>
+      <div class="about-badge">Est. 2002</div>
+    </div>
+    <div class="about-text reveal-right">
+      <span class="section-tag">Our Story</span>
+      <h2>Family Owned, <em>Expert Crafted</em></h2>
+      <p>Atlanta Road Body Shop has been serving the greater Atlanta metro area for over 20 years. As a family-owned and operated business, we treat every vehicle like it's our own — with care, precision, and pride.</p>
+      <p>Our I-CAR Gold Class certification means our technicians are trained to the highest industry standards, using state-of-the-art computerized frame measuring systems and environmentally safe waterborne paint.</p>
+      <div class="about-features">
+        <div class="about-feature"><i class="fas fa-award"></i> I-CAR Gold Class</div>
+        <div class="about-feature"><i class="fas fa-shield-alt"></i> Lifetime Warranty</div>
+        <div class="about-feature"><i class="fas fa-leaf"></i> Eco-Friendly Paint</div>
+        <div class="about-feature"><i class="fas fa-handshake"></i> Insurance Approved</div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- SERVICES -->
 <section class="services" id="services">
-<div class="services-inner">
-<div class="reveal">
-<span class="section-tag">What We Do</span>
-<h2>Our Services</h2>
-</div>
-<div class="services-grid">
-<div class="service-card reveal"><i class="fas fa-car-crash"></i><h3>Collision Repairs</h3><p>We repair all makes and models using state-of-the-art computerized electronic frame measuring systems with a lifetime warranty.</p></div>
-<div class="service-card reveal"><i class="fas fa-palette"></i><h3>Expert Color Matching</h3><p>Our computerized paint system uses environmentally safe waterborne paint for perfect, factory-match color results every time.</p></div>
-<div class="service-card reveal"><i class="fas fa-truck-pickup"></i><h3>Aluminum Repairs</h3><p>Certified to repair all new aluminum trucks and vehicles with specialized equipment and trained technicians.</p></div>
-<div class="service-card reveal"><i class="fas fa-car"></i><h3>Rental Car Service</h3><p>Convenient rental car service available so you stay on the road while your vehicle is being repaired.</p></div>
-<div class="service-card reveal"><i class="fas fa-truck-loading"></i><h3>Towing Service</h3><p>Professional towing service available to safely transport your vehicle to our shop after an accident.</p></div>
-<div class="service-card reveal"><i class="fas fa-shield-alt"></i><h3>Insurance Claims</h3><p>We work with all major insurance companies to make the claims process smooth and hassle-free for you.</p></div>
-</div>
-</div>
+  <div class="section-header reveal">
+    <span class="section-tag">What We Do</span>
+    <h2>Our <em>Services</em></h2>
+    <p>From minor dents to major collisions, we deliver factory-quality repairs on all makes and models.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal d1">
+      <div class="service-icon"><i class="fas fa-car-crash"></i></div>
+      <h3>Collision Repair</h3>
+      <p>Complete collision repairs using computerized electronic frame measuring for precise, factory-spec results with a lifetime warranty.</p>
+    </div>
+    <div class="service-card reveal d2">
+      <div class="service-icon"><i class="fas fa-palette"></i></div>
+      <h3>Expert Color Matching</h3>
+      <p>Computerized paint system with environmentally safe waterborne technology delivers a flawless, factory-match finish every time.</p>
+    </div>
+    <div class="service-card reveal d3">
+      <div class="service-icon"><i class="fas fa-truck-pickup"></i></div>
+      <h3>Aluminum Repairs</h3>
+      <p>Certified to repair all new aluminum trucks and vehicles with specialized equipment and factory-trained technicians.</p>
+    </div>
+    <div class="service-card reveal d4">
+      <div class="service-icon"><i class="fas fa-car"></i></div>
+      <h3>Rental Car Service</h3>
+      <p>Convenient rental car arrangements so you stay on the road while your vehicle is being expertly repaired.</p>
+    </div>
+    <div class="service-card reveal d5">
+      <div class="service-icon"><i class="fas fa-truck-loading"></i></div>
+      <h3>Towing Service</h3>
+      <p>Professional towing available to safely transport your vehicle directly to our shop after an accident.</p>
+    </div>
+    <div class="service-card reveal d1">
+      <div class="service-icon"><i class="fas fa-file-shield"></i></div>
+      <h3>Insurance Claims</h3>
+      <p>We work seamlessly with all major insurance companies to make your claims process smooth and stress-free.</p>
+    </div>
+  </div>
 </section>
 
-<section class="why reveal" id="why">
-<h2>Why Choose Us</h2>
-<div class="why-grid">
-<div class="why-item"><div class="icon-circle"><i class="fas fa-award"></i></div><h4>I-CAR Gold Class</h4><p>Dedicated to providing high-quality, safe collision repairs.</p></div>
-<div class="why-item"><div class="icon-circle"><i class="fas fa-certificate"></i></div><h4>Lifetime Warranty</h4><p>Every repair backed by our lifetime guarantee for your peace of mind.</p></div>
-<div class="why-item"><div class="icon-circle"><i class="fas fa-users"></i></div><h4>Family Owned</h4><p>Personal attention and care that only a family business can provide.</p></div>
-<div class="why-item"><div class="icon-circle"><i class="fas fa-leaf"></i></div><h4>Eco-Friendly</h4><p>Waterborne paint technology that's better for the environment.</p></div>
+<!-- STATS DIAGONAL -->
+<div class="diagonal-section">
+  <div class="stats-grid">
+    <div class="stat-item reveal d1">
+      <div class="stat-number"><span class="counter" data-target="20">0</span><span class="counter-suffix">+</span></div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-number"><span class="counter" data-target="5000">0</span><span class="counter-suffix">+</span></div>
+      <div class="stat-label">Cars Repaired</div>
+    </div>
+    <div class="stat-item reveal d3">
+      <div class="stat-number">5.0<span class="counter-suffix">★</span></div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+    <div class="stat-item reveal d4">
+      <div class="stat-number"><span class="counter" data-target="100">0</span><span class="counter-suffix">%</span></div>
+      <div class="stat-label">Satisfaction Rate</div>
+    </div>
+  </div>
 </div>
+
+<!-- WHY CHOOSE US - ALTERNATING -->
+<section class="why-section">
+  <div class="section-header reveal">
+    <span class="section-tag">Why Choose Us</span>
+    <h2>The <em>Gold Standard</em> in Auto Body</h2>
+    <p>Every repair is backed by decades of expertise, industry-leading certification, and our commitment to excellence.</p>
+  </div>
+  <div class="why-row reveal">
+    <div class="why-img-wrap">
+      <img src="https://placehold.co/600x400/111827/059669?text=I-CAR+Certified" alt="I-CAR Gold Class">
+    </div>
+    <div class="why-text">
+      <h3>I-CAR Gold Class Certified</h3>
+      <p>Only about 20% of collision repair shops earn the I-CAR Gold Class designation. This means our entire team maintains ongoing training in the latest repair techniques, ensuring your vehicle is restored to factory specifications.</p>
+      <ul class="check-list">
+        <li><i class="fas fa-check-circle"></i> Highest industry certification</li>
+        <li><i class="fas fa-check-circle"></i> Ongoing technician training</li>
+        <li><i class="fas fa-check-circle"></i> Factory-spec equipment</li>
+      </ul>
+    </div>
+  </div>
+  <div class="why-row reverse reveal">
+    <div class="why-img-wrap">
+      <img src="https://placehold.co/600x400/1f2937/10b981?text=Lifetime+Warranty" alt="Lifetime Warranty">
+    </div>
+    <div class="why-text">
+      <h3>Lifetime Warranty on Repairs</h3>
+      <p>We stand behind every repair with a lifetime warranty. Our commitment to quality means you can drive with confidence knowing your vehicle was repaired right — the first time.</p>
+      <ul class="check-list">
+        <li><i class="fas fa-check-circle"></i> Comprehensive coverage</li>
+        <li><i class="fas fa-check-circle"></i> All parts and labor</li>
+        <li><i class="fas fa-check-circle"></i> Complete peace of mind</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
+<!-- GALLERY -->
 <section class="gallery" id="gallery">
-<div class="reveal">
-<span class="section-tag" style="color:var(--accent)">Our Work</span>
-<h2>Repair Gallery</h2>
-</div>
-<div class="gallery-grid reveal">
-<div class="gallery-item"><img src="https://placehold.co/400x300/2a2a4e/e94560?text=Before+%26+After" alt="Repair 1"></div>
-<div class="gallery-item"><img src="https://placehold.co/400x300/1a1a3e/e94560?text=Paint+Match" alt="Repair 2"></div>
-<div class="gallery-item"><img src="https://placehold.co/400x300/3a3a5e/e94560?text=Frame+Repair" alt="Repair 3"></div>
-<div class="gallery-item"><img src="https://placehold.co/400x300/0f3460/e94560?text=Finished+Job" alt="Repair 4"></div>
-</div>
+  <div class="section-header reveal">
+    <span class="section-tag">Our Work</span>
+    <h2>Repair <em>Gallery</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal-scale"><img src="https://placehold.co/600x600/111827/059669?text=Before+%26+After" alt="Before and After"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d1"><img src="https://placehold.co/300x300/1f2937/10b981?text=Paint+Match" alt="Paint Match"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d2"><img src="https://placehold.co/300x300/111827/34d399?text=Frame+Work" alt="Frame Work"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d3"><img src="https://placehold.co/300x300/1f2937/059669?text=Finished" alt="Finished"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d4"><img src="https://placehold.co/300x300/111827/10b981?text=Detail+Work" alt="Detail Work"><i class="fas fa-search-plus gallery-zoom"></i></div>
+  </div>
 </section>
 
-<div class="wave-divider" style="background:var(--primary)">
-<svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path fill="#fff" d="M0,60 C480,0 960,100 1440,40 L1440,100 L0,100 Z"/></svg>
-</div>
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-header reveal">
+    <span class="section-tag">How It Works</span>
+    <h2>Our <em>Process</em></h2>
+    <p>Getting your vehicle repaired shouldn't be stressful. Here's how we make it easy.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step reveal d1">
+      <div class="process-num">1</div>
+      <h4>Free Estimate</h4>
+      <p>Bring your vehicle in or call us for a detailed, no-obligation repair estimate.</p>
+    </div>
+    <div class="process-step reveal d2">
+      <div class="process-num">2</div>
+      <h4>Insurance Filing</h4>
+      <p>We handle all insurance paperwork and communicate directly with your provider.</p>
+    </div>
+    <div class="process-step reveal d3">
+      <div class="process-num">3</div>
+      <h4>Expert Repair</h4>
+      <p>Our I-CAR certified technicians restore your vehicle to factory specifications.</p>
+    </div>
+    <div class="process-step reveal d4">
+      <div class="process-num">4</div>
+      <h4>Quality Check</h4>
+      <p>Thorough inspection ensures perfection before we hand back your keys.</p>
+    </div>
+  </div>
+</section>
 
+<!-- TESTIMONIALS -->
 <section class="testimonials" id="reviews">
-<div class="reveal">
-<span class="section-tag">Testimonials</span>
-<h2>What Our Customers Say</h2>
-</div>
-<div class="test-grid">
-<div class="test-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"They did an incredible job on my truck after a fender bender. Color match was perfect and you can't even tell it was in an accident."</p><div class="author">— James M.</div></div>
-<div class="test-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Family owned means they actually care. They kept me updated every step of the way and the repair was flawless."</p><div class="author">— Sarah T.</div></div>
-<div class="test-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"I-CAR Gold certified says it all. Professional, fast, and the lifetime warranty gives me total peace of mind."</p><div class="author">— David R.</div></div>
-</div>
+  <div class="section-header reveal">
+    <span class="section-tag">Reviews</span>
+    <h2>What Our <em>Customers</em> Say</h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal d1">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">They did an incredible job on my truck after a fender bender. Color match was absolutely perfect — you can't even tell it was in an accident. Top-notch quality!</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">J</div>
+        <div><div class="testimonial-name">James M.</div><div class="testimonial-role"><i class="fab fa-google"></i> Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d2">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">Family owned means they actually care. They kept me updated every step of the way and the repair was flawless. I wouldn't trust my car with anyone else.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">S</div>
+        <div><div class="testimonial-name">Sarah T.</div><div class="testimonial-role"><i class="fab fa-google"></i> Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d3">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">I-CAR Gold certified says it all. Professional, fast, and the lifetime warranty gives me total peace of mind. Best body shop in the Atlanta metro area.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">D</div>
+        <div><div class="testimonial-name">David R.</div><div class="testimonial-role"><i class="fab fa-yelp"></i> Yelp Review</div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="cta" id="contact">
-<div class="reveal">
-<h2>Get a Free Estimate Today</h2>
-<p>Bring your vehicle in or call us for a free, no-obligation estimate on your collision repair.</p>
-<a href="tel:7704338115" class="btn"><i class="fas fa-phone"></i> (770) 433-8115</a>
-</div>
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-header reveal">
+    <span class="section-tag" style="color:var(--emerald2)">Get Started</span>
+    <h2 style="color:var(--white)">Get Your <em>Free Estimate</em> Today</h2>
+    <p style="color:rgba(255,255,255,.4)">Bring your vehicle in or call us — we'll have you back on the road looking brand new.</p>
+  </div>
+  <div class="reveal" style="text-align:center">
+    <a href="tel:7704338115" class="btn-primary" style="margin-right:15px"><i class="fas fa-phone"></i> <span>(770) 433-8115</span></a>
+    <a href="mailto:ContactUs@AtlantaRoadBodyShop.Com" class="btn-outline"><i class="fas fa-envelope"></i> Email Us</a>
+  </div>
+  <div class="urgency reveal" style="display:flex;justify-content:center;margin-top:30px">
+    <div class="urgency"><i class="fas fa-shield-alt"></i> <span><strong>Lifetime Warranty</strong> on all collision repairs — drive with confidence</span></div>
+  </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-<div class="footer-grid">
-<div class="footer-col">
-<h4>Atlanta Road Body Shop</h4>
-<p>Family owned and operated since 2002. I-CAR Gold Class certified collision repair in Smyrna, GA.</p>
-<div class="social">
-<a href="#"><i class="fab fa-facebook-f"></i></a>
-<a href="#"><i class="fab fa-google"></i></a>
-<a href="#"><i class="fab fa-yelp"></i></a>
-</div>
-</div>
-<div class="footer-col">
-<h4>Quick Links</h4>
-<a href="#about">About Us</a>
-<a href="#services">Services</a>
-<a href="#gallery">Gallery</a>
-<a href="#reviews">Reviews</a>
-</div>
-<div class="footer-col">
-<h4>Services</h4>
-<a href="#">Collision Repair</a>
-<a href="#">Paint Matching</a>
-<a href="#">Aluminum Repair</a>
-<a href="#">Towing Service</a>
-</div>
-<div class="footer-col">
-<h4>Contact</h4>
-<p><i class="fas fa-map-marker-alt"></i> 2300 Atlanta Road SE<br>Smyrna, GA 30080</p>
-<p><i class="fas fa-phone"></i> (770) 433-8115</p>
-<p><i class="fas fa-envelope"></i> ContactUs@AtlantaRoadBodyShop.Com</p>
-</div>
-</div>
-<div class="footer-bottom">&copy; 2026 Atlanta Road Body Shop. All Rights Reserved.</div>
+  <div class="footer-grid">
+    <div class="footer-brand reveal">
+      <h3>Atlanta Road <span>Body Shop</span></h3>
+      <p>Family-owned and operated since 2002. I-CAR Gold Class certified collision repair in Smyrna, GA. Your vehicle deserves the best.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-google"></i></a>
+        <a href="#"><i class="fab fa-yelp"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col reveal d1">
+      <h4>Quick Links</h4>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="tel:7704338115">Contact</a>
+    </div>
+    <div class="footer-col reveal d2">
+      <h4>Hours</h4>
+      <div class="footer-hours">
+        <span>Mon–Fri: 8AM – 5:30PM</span>
+        <span>Saturday: By Appointment</span>
+        <span>Sunday: Closed</span>
+        <span style="margin-top:8px;color:var(--emerald)">Towing Available 24/7</span>
+      </div>
+    </div>
+    <div class="footer-col reveal d3">
+      <h4>Contact Info</h4>
+      <div class="footer-hours">
+        <span><i class="fas fa-map-marker-alt" style="color:var(--emerald);margin-right:6px"></i> 2300 Atlanta Road SE</span>
+        <span style="padding-left:20px">Smyrna, GA 30080</span>
+        <span><i class="fas fa-phone" style="color:var(--emerald);margin-right:6px"></i> <a href="tel:7704338115" style="color:rgba(255,255,255,.35);text-decoration:none">(770) 433-8115</a></span>
+        <span><i class="fas fa-envelope" style="color:var(--emerald);margin-right:6px"></i> <a href="mailto:ContactUs@AtlantaRoadBodyShop.Com" style="color:rgba(255,255,255,.35);text-decoration:none;font-size:.78rem">ContactUs@AtlantaRoadBodyShop.Com</a></span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Atlanta Road Body Shop. All rights reserved.</p>
+    <p>2300 Atlanta Road SE, Smyrna, GA 30080 · <a href="tel:7704338115" style="color:var(--emerald);text-decoration:none">(770) 433-8115</a></p>
+  </div>
 </footer>
 
+<!-- FLOATING CTA -->
+<div class="floating-cta" id="floatingCta">
+  <a href="tel:7704338115" title="Call Now"><i class="fas fa-phone"></i></a>
+</div>
+
 <script>
-window.addEventListener('load',()=>{document.querySelector('.preloader').classList.add('hidden')});
+// Preloader
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},1000)});
+
+// Mobile menu
+document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('menuClose').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
+
+// Nav scroll + floating CTA
+const nav=document.getElementById('navbar');
+const floatingCta=document.getElementById('floatingCta');
 window.addEventListener('scroll',()=>{
-document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50);
-document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-100)el.classList.add('active')});
+  nav.classList.toggle('scrolled',window.scrollY>80);
+  floatingCta.classList.toggle('visible',window.scrollY>600);
 });
-document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('active')});
+
+// Scroll reveal with IntersectionObserver
+const revealObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObserver.unobserve(e.target)}})
+},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>revealObserver.observe(el));
+
+// Animated counters
+const counterObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const target=+el.getAttribute('data-target');
+      const duration=2000;
+      const start=performance.now();
+      const animate=(now)=>{
+        const progress=Math.min((now-start)/duration,1);
+        const eased=1-Math.pow(1-progress,4);
+        el.textContent=Math.floor(eased*target);
+        if(progress<1)requestAnimationFrame(animate);
+        else el.textContent=target;
+      };
+      requestAnimationFrame(animate);
+      counterObserver.unobserve(el);
+    }
+  })
+},{threshold:.5});
+document.querySelectorAll('.counter').forEach(el=>counterObserver.observe(el));
+
+// Parallax blobs
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  document.querySelectorAll('.hero-blob').forEach((blob,i)=>{
+    blob.style.transform=`translateY(${y*(i===0?.15:-.1)}px)`;
+  });
+});
 </script>
 </body>
 </html>

@@ -4,306 +4,690 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>T&M Roofing LLC | Detroit's Trusted Roofing Company</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#1b3a4b;--accent:#e63946;--navy:#0d1b2a;--steel:#415a77;--gold:#f4a261;--light:#f1faee;--white:#fff}
-body{font-family:'Source Sans 3',sans-serif;color:#333;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Playfair Display',serif}
+:root{
+--deep:#1e293b;--deep2:#0f172a;--sky:#0284c7;--sky2:#0ea5e9;--sky3:#38bdf8;
+--white:#ffffff;--cream:#f0f9ff;--light:#e0f2fe;--text:#374151;--text-light:#6b7280;
+--shadow-sm:0 4px 15px rgba(0,0,0,.06);--shadow-md:0 12px 35px rgba(0,0,0,.1);--shadow-lg:0 24px 60px rgba(0,0,0,.15);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);overflow-x:hidden;background:var(--white)}
+h1,h2,h3,h4{font-family:'DM Serif Display',serif}
 
-.preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s}
-.preloader.hidden{opacity:0;pointer-events:none}
-.preloader i{font-size:3rem;color:var(--accent);animation:pulse 1s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--deep)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--sky),var(--sky2));border-radius:4px}
 
-nav{position:fixed;top:0;width:100%;background:rgba(13,27,42,.95);backdrop-filter:blur(10px);z-index:100;padding:1rem 0}
-nav .container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem}
-nav .logo{color:white;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700}
-nav .logo span{color:var(--accent)}
-nav .badges{display:flex;gap:.8rem;align-items:center}
-nav .badges .badge{background:var(--accent);color:white;padding:.3rem .8rem;border-radius:3px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px}
-nav ul{list-style:none;display:flex;gap:1.5rem}
-nav ul a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:color .3s}
-nav ul a:hover{color:var(--accent)}
-.nav-toggle{display:none;color:white;font-size:1.5rem;cursor:pointer}
+.preloader{position:fixed;inset:0;background:var(--deep);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s cubic-bezier(.4,0,.2,1),visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader-inner{text-align:center}
+.preloader-inner h2{font-family:'DM Serif Display',serif;color:var(--white);font-size:2.4rem;font-weight:400;letter-spacing:4px;opacity:0;animation:fadeUp .8s .2s forwards}
+.preloader-inner h2 span{background:linear-gradient(135deg,var(--sky),var(--sky2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;border-radius:2px;overflow:hidden}
+.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--sky),var(--sky2));animation:preloaderSlide 1s ease infinite}
+@keyframes preloaderSlide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(15px)}}
 
-.hero{height:100vh;background:linear-gradient(135deg,rgba(13,27,42,.88),rgba(27,58,75,.75)),url('https://placehold.co/1920x1080/0d1b2a/e63946?text=Roofing+Experts') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white}
-.hero-content{max-width:800px;padding:0 2rem}
-.hero .trust-badges{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
-.hero .trust-badges .tb{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--gold)}
-.hero .trust-badges .tb i{font-size:1rem}
-.hero h1{font-size:3.5rem;font-weight:900;margin-bottom:1rem;line-height:1.1}
-.hero h1 span{color:var(--accent)}
-.hero p{font-size:1.15rem;opacity:.9;margin-bottom:2rem;font-weight:300}
-.btn{display:inline-block;padding:1rem 2.5rem;border-radius:5px;font-weight:700;text-decoration:none;transition:all .3s;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}
-.btn-red{background:var(--accent);color:white;box-shadow:0 4px 15px rgba(230,57,70,.4)}
-.btn-red:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(230,57,70,.5)}
-.btn-outline{border:2px solid white;color:white;margin-left:1rem}
-.btn-outline:hover{background:white;color:var(--navy)}
+.reveal{opacity:0;transform:translateY(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.9);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.active{opacity:1;transform:scale(1)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
 
-.wave-divider svg{display:block;width:100%;height:80px}
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:linear-gradient(90deg,var(--sky),var(--sky2));padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--white);transition:transform .3s}
+.phone-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.phone-bar a:hover{text-decoration:underline}
+.phone-bar .sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
 
-section{padding:6rem 2rem}
-.section-header{text-align:center;margin-bottom:4rem}
-.section-header h2{font-size:2.5rem;color:var(--navy);margin-bottom:.5rem}
-.section-header .bar{width:60px;height:4px;background:var(--accent);margin:1rem auto}
-.section-header p{color:#666;max-width:600px;margin:auto}
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:76px;transition:all .4s cubic-bezier(.16,1,.3,1)}
+nav.scrolled{background:rgba(30,41,59,.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 8px 32px rgba(0,0,0,.25);height:66px;top:0}
+.nav-logo{font-family:'DM Serif Display',serif;color:var(--white);font-size:1.6rem;text-decoration:none;letter-spacing:1px}
+.nav-logo span{background:linear-gradient(135deg,var(--sky),var(--sky2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--sky),var(--sky2));transition:width .3s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--sky),var(--sky2));color:var(--white)!important;padding:12px 28px;border-radius:50px;font-weight:600;letter-spacing:1px;transition:all .3s;border:none;position:relative;overflow:hidden}
+.nav-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--sky2),var(--sky));opacity:0;transition:opacity .3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(2,132,199,.4)}
+.nav-cta:hover::before{opacity:1}
+.nav-cta span{position:relative;z-index:1}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(30,41,59,.98);backdrop-filter:blur(20px);z-index:10002;flex-direction:column;align-items:center;justify-content:center;gap:30px;opacity:0;visibility:hidden;transition:all .4s}
+.mobile-menu.open{opacity:1;visibility:visible;display:flex}
+.mobile-menu a{color:var(--white);text-decoration:none;font-family:'DM Serif Display',serif;font-size:2rem;transition:color .3s}
+.mobile-menu a:hover{color:var(--sky)}
+.mobile-close{position:absolute;top:30px;right:30px;background:none;border:none;color:var(--white);font-size:2rem;cursor:pointer}
 
-.why-us{background:var(--light)}
-.why-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
-.why-card{background:white;padding:2rem;text-align:center;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,.05);transition:all .3s}
-.why-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,.1)}
-.why-card .icon{width:60px;height:60px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:white;font-size:1.3rem}
-.why-card h3{font-size:1.1rem;margin-bottom:.5rem;color:var(--navy)}
-.why-card p{color:#888;font-size:.9rem;line-height:1.6}
+.hero{min-height:100vh;padding-top:116px;background:var(--deep);display:flex;align-items:center;justify-content:center;text-align:center;padding-left:5%;padding-right:5%;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://placehold.co/1920x1080/1e293b/0f172a?text=') center/cover;opacity:.25}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(2,132,199,.1),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(14,165,233,.06),transparent 50%)}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(transparent,var(--white));z-index:2}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;animation:blobFloat 8s ease-in-out infinite}
+.hero-blob-1{width:400px;height:400px;background:var(--sky);top:-100px;right:-100px;animation-delay:0s}
+.hero-blob-2{width:300px;height:300px;background:var(--sky2);bottom:0;left:-50px;animation-delay:-3s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
 
-.services-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.svc-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,.06);transition:all .4s}
-.svc-card:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(0,0,0,.12)}
-.svc-card img{width:100%;height:200px;object-fit:cover}
-.svc-card .content{padding:1.5rem}
-.svc-card h3{color:var(--navy);font-size:1.2rem;margin-bottom:.5rem}
-.svc-card p{color:#888;font-size:.9rem;line-height:1.6}
+.hero-content{max-width:900px;position:relative;z-index:3}
+.hero-trust{display:flex;justify-content:center;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.hero-trust-item{display:flex;align-items:center;gap:8px;color:var(--sky3);font-size:.78rem;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.hero-trust-item i{font-size:.7rem}
+.hero h1{font-size:clamp(2.5rem,5vw,4.5rem);color:var(--white);line-height:1;margin-bottom:28px;font-weight:400}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:inline-block;animation:heroReveal 1s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateY(100%)}
+.hero h1 .line:nth-child(2) span{animation-delay:.15s}
+.hero h1 .gradient-text{background:linear-gradient(135deg,var(--sky),var(--sky2),var(--sky3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:gradientShift 4s ease infinite}
+@keyframes heroReveal{to{opacity:1;transform:translateY(0)}}
+@keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.hero p{color:rgba(255,255,255,.5);font-size:1.1rem;max-width:600px;margin:0 auto 40px;line-height:1.9;font-weight:300}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--sky),var(--sky2));color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--sky2),var(--sky));opacity:0;transition:opacity .3s}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(2,132,199,.35);scale:1.02}
+.btn-primary:hover::before{opacity:1}
+.btn-primary i,.btn-primary span{position:relative;z-index:1}
+.btn-outline{border:1.5px solid rgba(255,255,255,.2);color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:500;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;backdrop-filter:blur(10px)}
+.btn-outline:hover{border-color:var(--sky);color:var(--sky);background:rgba(2,132,199,.05)}
 
-.stats-bar{background:linear-gradient(135deg,var(--navy),var(--steel));color:white;padding:4rem 2rem}
-.stats-row{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
-.stat .num{font-size:3rem;font-weight:900;font-family:'Playfair Display',serif;color:var(--accent)}
-.stat .label{font-size:.9rem;opacity:.7;margin-top:.3rem}
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-indicator span{color:rgba(255,255,255,.3);font-size:.65rem;text-transform:uppercase;letter-spacing:3px}
+.scroll-mouse{width:24px;height:38px;border:2px solid rgba(255,255,255,.2);border-radius:12px;position:relative}
+.scroll-mouse::after{content:'';position:absolute;top:6px;left:50%;width:3px;height:8px;margin-left:-1.5px;background:var(--sky);border-radius:2px;animation:scrollDown 1.5s ease infinite}
+@keyframes scrollDown{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
 
-.about-section{background:var(--light)}
-.about-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.about-img img{width:100%;height:400px;object-fit:cover;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.1)}
-.about-text h2{font-size:2.2rem;color:var(--navy);margin-bottom:1rem}
-.about-text p{color:#666;line-height:1.8;margin-bottom:1.5rem}
-.about-text .discount-box{background:var(--accent);color:white;padding:1.5rem;border-radius:8px;display:flex;align-items:center;gap:1rem}
-.about-text .discount-box i{font-size:2rem}
-.about-text .discount-box div h4{margin-bottom:.2rem}
-.about-text .discount-box div p{font-size:.9rem;opacity:.9;margin:0}
+.section-tag{color:var(--sky);font-size:.7rem;text-transform:uppercase;letter-spacing:5px;font-weight:600;margin-bottom:15px;display:block}
+.section-header{text-align:center;max-width:650px;margin:0 auto 70px}
+.section-header h2{font-size:clamp(2.2rem,4.5vw,3.8rem);color:var(--deep);line-height:1.1}
+.section-header h2 em{font-style:italic;background:linear-gradient(135deg,var(--sky),var(--sky2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-header p{color:var(--text-light);margin-top:18px;line-height:1.9;font-size:.95rem}
 
-.reviews-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
-.review-card{background:white;padding:2rem;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,.06)}
-.review-card .stars{color:var(--gold);margin-bottom:1rem}
-.review-card p{color:#666;font-style:italic;line-height:1.7;margin-bottom:1rem}
-.review-card .author{font-weight:700;color:var(--navy)}
+.wave-divider{position:relative;margin-top:-2px;z-index:1}
+.wave-divider svg{display:block;width:100%}
 
-.cta{background:linear-gradient(135deg,rgba(230,57,70,.9),rgba(13,27,42,.9)),url('https://placehold.co/1920x600/e63946/ffffff?text=Get+Quote') center/cover;color:white;text-align:center}
-.cta h2{font-size:2.5rem;margin-bottom:1rem}
-.cta p{opacity:.9;margin-bottom:2rem;font-size:1.1rem}
+/* WHY US */
+.why-us{padding:140px 6% 120px;background:var(--white);position:relative}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1200px;margin:0 auto}
+.why-card{background:rgba(240,249,255,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.8);border-radius:20px;padding:36px 28px;text-align:center;transition:all .5s cubic-bezier(.16,1,.3,1);cursor:pointer;position:relative;overflow:hidden}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--sky2));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.why-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.why-card:hover::before{transform:scaleX(1)}
+.why-icon{width:65px;height:65px;background:linear-gradient(135deg,var(--sky),var(--sky2));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:var(--white);font-size:1.4rem;transition:transform .3s}
+.why-card:hover .why-icon{transform:scale(1.1) rotate(5deg)}
+.why-card h3{font-size:1.15rem;color:var(--deep);margin-bottom:10px}
+.why-card p{color:var(--text-light);font-size:.88rem;line-height:1.8}
 
-.contact-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-.contact-info .item{display:flex;gap:1rem;margin-bottom:2rem}
-.contact-info .item .ic{width:50px;height:50px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;flex-shrink:0}
-.contact-info .item h4{color:var(--navy);margin-bottom:.2rem}
-.contact-info .item p{color:#666}
-.contact-form input,.contact-form select,.contact-form textarea{width:100%;padding:1rem;border:2px solid #eee;border-radius:8px;font-family:inherit;font-size:1rem;margin-bottom:1rem;transition:border .3s}
-.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);outline:none}
-.contact-form textarea{height:120px;resize:vertical}
+/* ABOUT */
+.about{padding:120px 6%;background:var(--cream);position:relative}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.about-img-wrapper{position:relative}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:480px;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.about-img:hover img{transform:scale(1.05)}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(2,132,199,.1),transparent);pointer-events:none}
+.about-badge{position:absolute;bottom:-20px;right:-20px;background:linear-gradient(135deg,var(--sky),var(--sky2));color:var(--white);padding:20px 30px;border-radius:16px;font-family:'DM Serif Display',serif;font-size:1.5rem;box-shadow:0 12px 30px rgba(2,132,199,.3)}
+.about-floating{position:absolute;top:30px;left:-30px;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.5);padding:18px 24px;border-radius:14px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-md);z-index:2}
+.about-floating .stars{color:#f59e0b;font-size:.75rem;display:flex;gap:2px}
+.about-floating .rating-text{font-weight:700;color:var(--deep);font-size:.9rem}
+.about-floating .rating-sub{font-size:.7rem;color:var(--text-light)}
+.about-text h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--deep);margin-bottom:25px;line-height:1.15}
+.about-text h2 em{font-style:italic;background:linear-gradient(135deg,var(--sky),var(--sky2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.about-text p{color:var(--text-light);line-height:1.9;margin-bottom:20px;font-size:.95rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:35px}
+.about-feature{display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--deep);font-weight:500;padding:12px 16px;background:var(--white);border-radius:12px;border:1px solid rgba(0,0,0,.04);transition:all .3s}
+.about-feature:hover{transform:translateX(5px);box-shadow:var(--shadow-sm)}
+.about-feature i{color:var(--sky);font-size:1rem;width:20px;text-align:center}
+.discount-box{background:linear-gradient(135deg,var(--sky),var(--sky2));color:var(--white);padding:20px 24px;border-radius:16px;display:flex;align-items:center;gap:14px;margin-top:30px;box-shadow:0 8px 25px rgba(2,132,199,.3)}
+.discount-box i{font-size:2rem}
+.discount-box h4{margin-bottom:4px;font-family:'Inter',sans-serif;font-size:.95rem}
+.discount-box p{font-size:.85rem;opacity:.9;margin:0}
 
-footer{background:var(--navy);color:rgba(255,255,255,.6);padding:3rem 2rem;text-align:center}
-footer .brand{font-family:'Playfair Display',serif;font-size:1.5rem;color:white;margin-bottom:.5rem}
-footer .brand span{color:var(--accent)}
+/* SERVICES */
+.services{padding:120px 6%;background:var(--white);position:relative;overflow:hidden}
+.services::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(2,132,199,.04),transparent);pointer-events:none}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:0 auto}
+.service-card{background:rgba(240,249,255,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.8);border-radius:20px;overflow:hidden;transition:all .5s cubic-bezier(.16,1,.3,1);cursor:pointer;position:relative}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--sky2));transform:scaleX(0);transition:transform .4s;transform-origin:left;z-index:2}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card img{width:100%;height:200px;object-fit:cover;transition:transform .6s}
+.service-card:hover img{transform:scale(1.05)}
+.service-card-body{padding:28px 28px 32px}
+.service-card h3{font-size:1.3rem;color:var(--deep);margin-bottom:12px}
+.service-card p{color:var(--text-light);font-size:.9rem;line-height:1.8}
 
-.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease-out}
-.fade-up.visible{opacity:1;transform:translateY(0)}
+/* DIAGONAL / STATS */
+.diagonal-section{clip-path:polygon(0 5%,100% 0,100% 95%,0 100%);padding:160px 6%;background:var(--deep);position:relative;overflow:hidden}
+.diagonal-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(2,132,199,.08),transparent 50%),radial-gradient(ellipse at 80% 50%,rgba(14,165,233,.05),transparent 50%)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1100px;margin:0 auto;text-align:center}
+.stat-item{position:relative;padding:30px 0}
+.stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:60px;background:linear-gradient(transparent,rgba(255,255,255,.1),transparent)}
+.stat-number{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);color:var(--white);font-weight:400;line-height:1}
+.stat-number .counter-suffix{background:linear-gradient(135deg,var(--sky),var(--sky2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.stat-label{color:rgba(255,255,255,.35);font-size:.72rem;text-transform:uppercase;letter-spacing:4px;font-weight:500;margin-top:12px}
+
+/* WHY ALTERNATING */
+.why-section{padding:120px 6%;background:var(--cream)}
+.why-row{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto 80px;align-items:center}
+.why-row:last-child{margin-bottom:0}
+.why-row.reverse .why-img-wrap{order:2}
+.why-row.reverse .why-text-alt{order:1}
+.why-img-wrap{border-radius:20px;overflow:hidden;position:relative}
+.why-img-wrap img{width:100%;height:400px;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.why-img-wrap:hover img{transform:scale(1.05)}
+.why-text-alt h3{font-size:2rem;color:var(--deep);margin-bottom:18px}
+.why-text-alt p{color:var(--text-light);line-height:1.9;margin-bottom:15px;font-size:.95rem}
+.why-text-alt .check-list{list-style:none;margin-top:20px}
+.why-text-alt .check-list li{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.9rem;color:var(--text)}
+.why-text-alt .check-list li i{color:var(--sky);font-size:.85rem}
+
+/* PROCESS */
+.process{padding:120px 6%;background:var(--white)}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:1100px;margin:0 auto}
+.process-step{text-align:center;position:relative;padding:0 15px}
+.process-step::after{content:'';position:absolute;top:35px;right:-15px;width:30px;height:2px;background:linear-gradient(90deg,var(--sky),transparent);display:block}
+.process-step:last-child::after{display:none}
+.process-num{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--sky2));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--white);box-shadow:0 8px 25px rgba(2,132,199,.3)}
+.process-step h4{font-size:1.1rem;color:var(--deep);margin-bottom:10px}
+.process-step p{color:var(--text-light);font-size:.88rem;line-height:1.7}
+
+/* TESTIMONIALS */
+.testimonials{padding:120px 6%;background:var(--cream);position:relative}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.testimonial-card{background:rgba(255,255,255,.8);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.8);border-radius:20px;padding:40px 35px;transition:all .4s;position:relative;overflow:hidden}
+.testimonial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--sky2));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.testimonial-card:hover::before{transform:scaleX(1)}
+.quote-icon{font-family:'DM Serif Display',serif;font-size:6rem;background:linear-gradient(135deg,var(--sky),var(--sky2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.15;line-height:1;position:absolute;top:10px;right:25px}
+.testimonial-stars{color:#f59e0b;font-size:.9rem;margin-bottom:16px;display:flex;gap:3px}
+.testimonial-text{color:var(--text-light);font-size:.95rem;line-height:1.9;margin-bottom:22px;font-style:italic;position:relative;z-index:1}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--sky2));display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-weight:700;color:var(--white);font-size:1.1rem}
+.testimonial-name{font-weight:600;font-size:.9rem;color:var(--deep)}
+.testimonial-role{font-size:.75rem;color:var(--text-light);display:flex;align-items:center;gap:4px}
+.testimonial-role i{color:#f59e0b;font-size:.6rem}
+
+/* CTA */
+.cta-section{padding:140px 6%;background:var(--deep);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(2,132,199,.08),transparent 60%)}
+.cta-section h2{font-size:clamp(2.5rem,5vw,4rem);color:var(--white);margin-bottom:20px;position:relative}
+.cta-section h2 em{font-style:italic;background:linear-gradient(135deg,var(--sky),var(--sky2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-section p{color:rgba(255,255,255,.4);max-width:600px;margin:0 auto 40px;line-height:1.8;font-size:1rem;position:relative}
+.urgency{background:rgba(2,132,199,.08);border:1px solid rgba(2,132,199,.2);border-radius:14px;padding:18px 28px;display:inline-flex;align-items:center;gap:12px;margin-top:30px;font-size:.85rem;color:var(--white);position:relative}
+.urgency i{color:var(--sky2);font-size:1rem}
+.urgency strong{color:var(--sky2)}
+
+/* FOOTER */
+footer{background:#0c1220;padding:100px 6% 30px;position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--sky),var(--sky2),transparent)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:50px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--white);margin-bottom:16px}
+.footer-brand h3 span{background:linear-gradient(135deg,var(--sky),var(--sky2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-brand p{color:rgba(255,255,255,.35);font-size:.85rem;line-height:1.9;margin-bottom:22px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;transition:all .3s}
+.footer-social a:hover{border-color:var(--sky);color:var(--sky);transform:translateY(-3px);box-shadow:0 6px 20px rgba(2,132,199,.2)}
+.footer-col h4{color:var(--white);font-family:'Inter',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:22px}
+.footer-col a{display:block;color:rgba(255,255,255,.35);text-decoration:none;font-size:.85rem;margin-bottom:12px;transition:all .3s;padding-left:0}
+.footer-col a:hover{color:var(--sky);padding-left:5px}
+.footer-hours span{display:block;color:rgba(255,255,255,.35);font-size:.85rem;margin-bottom:8px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);margin-top:60px;padding-top:25px;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,.25);font-size:.8rem;flex-wrap:wrap;gap:10px}
+
+.floating-cta{position:fixed;bottom:30px;right:30px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}
+.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--sky2));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(2,132,199,.4);transition:all .3s;animation:pulse 2s ease infinite}
+.floating-cta a:hover{transform:scale(1.1)}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(2,132,199,.4)}50%{box-shadow:0 8px 50px rgba(2,132,199,.6)}}
 
 @media(max-width:768px){
-.hero h1{font-size:2.2rem}
-.why-grid{grid-template-columns:repeat(2,1fr)}
-.services-grid,.about-grid,.reviews-grid,.contact-grid,.stats-row{grid-template-columns:1fr}
-nav ul,.nav .badges{display:none}
-.nav-toggle{display:block}
-.btn-outline{margin-left:0;margin-top:1rem}
+  .nav-links{display:none}
+  .mobile-toggle{display:block}
+  .about-grid,.why-row{grid-template-columns:1fr;gap:50px}
+  .why-row.reverse .why-img-wrap,.why-row.reverse .why-text-alt{order:unset}
+  .about-floating{position:relative;top:auto;left:auto;margin-bottom:15px;display:inline-flex}
+  .about-badge{bottom:15px;right:15px}
+  .stats-grid,.why-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .stat-item::after{display:none}
+  .services-grid,.process-grid{grid-template-columns:1fr}
+  .process-step::after{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .phone-bar{font-size:.7rem;gap:10px}
+  .diagonal-section{clip-path:none;padding:100px 6%}
+  .testimonial-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .hero h1{font-size:clamp(2rem,8vw,3rem)}
+  .stats-grid,.why-grid{grid-template-columns:1fr}
+  .about-features{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:center}
 }
 </style>
 </head>
 <body>
 
-<div class="preloader"><i class="fas fa-home"></i></div>
-
-<nav>
-<div class="container">
-<div class="logo">T&M <span>Roofing</span></div>
-<div class="nav-toggle"><i class="fas fa-bars"></i></div>
-<ul>
-<li><a href="#why">Why Us</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#reviews">Reviews</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <h2>T&M <span>Roofing</span></h2>
+    <div class="preloader-bar"></div>
+  </div>
 </div>
+
+<!-- PHONE BAR -->
+<div class="phone-bar" id="phoneBar">
+  <a href="tel:313-600-4538"><i class="fas fa-phone"></i> (313) 600-4538</a>
+  <span class="sep"></span>
+  <span><i class="fas fa-map-marker-alt"></i> 14564 Schaefer Hwy, Detroit, MI</span>
+  <span class="sep"></span>
+  <span><i class="fas fa-clock"></i> Mon–Sat: 7AM – 7PM</span>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">T&M <span>Roofing</span></a>
+  <ul class="nav-links">
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="tel:313-600-4538" class="nav-cta"><span>Call Now</span></a></li>
+  </ul>
+  <button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 </nav>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose"><i class="fas fa-times"></i></button>
+  <a href="#why" onclick="closeMobile()">Why Us</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="tel:313-600-4538" style="color:var(--sky)"><i class="fas fa-phone"></i> (313) 600-4538</a>
+</div>
+
+<!-- HERO -->
 <section class="hero">
-<div class="hero-content">
-<div class="trust-badges">
-<div class="tb"><i class="fas fa-shield-alt"></i> Licensed & Insured</div>
-<div class="tb"><i class="fas fa-medal"></i> Veteran Owned</div>
-<div class="tb"><i class="fas fa-users"></i> Family Operated</div>
-</div>
-<h1>Detroit's Most <span>Trusted</span> Roofing Company</h1>
-<p>Over 20 years of experience protecting homes and businesses across Metro Detroit. Free estimates. We'll beat any licensed & insured competitor's written quote.</p>
-<a href="#contact" class="btn btn-red">Get Free Estimate</a>
-<a href="tel:313-600-4538" class="btn btn-outline"><i class="fas fa-phone"></i> 313-600-4538</a>
-</div>
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-content">
+    <div class="hero-trust">
+      <div class="hero-trust-item"><i class="fas fa-flag-usa"></i> Veteran Owned</div>
+      <div class="hero-trust-item"><i class="fas fa-shield-alt"></i> Licensed & Insured</div>
+      <div class="hero-trust-item"><i class="fas fa-users"></i> Family Operated</div>
+    </div>
+    <h1>
+      <span class="line"><span>Detroit's Most</span></span>
+      <span class="line"><span><strong class="gradient-text">Trusted Roofing Company</strong></span></span>
+    </h1>
+    <p>Over 20 years of experience protecting homes and businesses across Metro Detroit. Free estimates — we'll beat any licensed & insured competitor's written quote.</p>
+    <div class="hero-btns">
+      <a href="tel:313-600-4538" class="btn-primary"><i class="fas fa-phone"></i> <span>(313) 600-4538</span></a>
+      <a href="#services" class="btn-outline">View Services</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"></div>
+    <span>Scroll</span>
+  </div>
 </section>
 
+<!-- WAVE -->
 <div class="wave-divider">
-<svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C300,80 600,0 1200,40 L1200,80 L0,80 Z" fill="#f1faee"/></svg>
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#ffffff" d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z"/></svg>
 </div>
 
+<!-- WHY US -->
 <section class="why-us" id="why">
-<div class="section-header fade-up">
-<h2>Why Choose T&M Roofing?</h2>
-<div class="bar"></div>
-</div>
-<div class="why-grid">
-<div class="why-card fade-up">
-<div class="icon"><i class="fas fa-flag-usa"></i></div>
-<h3>Veteran Owned</h3>
-<p>Proudly veteran-owned with the discipline and dedication you deserve.</p>
-</div>
-<div class="why-card fade-up">
-<div class="icon"><i class="fas fa-certificate"></i></div>
-<h3>10-Year Warranty</h3>
-<p>Our 10-year labor warranty plus manufacturer's lifetime limited warranty.</p>
-</div>
-<div class="why-card fade-up">
-<div class="icon"><i class="fas fa-dollar-sign"></i></div>
-<h3>Price Match</h3>
-<p>We'll beat any written estimate from a licensed and insured roofer.</p>
-</div>
-<div class="why-card fade-up">
-<div class="icon"><i class="fas fa-heart"></i></div>
-<h3>Community First</h3>
-<p>Discounts for seniors, veterans, and first responders.</p>
-</div>
-</div>
+  <div class="section-header reveal">
+    <span class="section-tag">Why Choose Us</span>
+    <h2>Why <em>T&M Roofing?</em></h2>
+    <p>Veteran-owned integrity, family values, and unbeatable quality on every project.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal d1">
+      <div class="why-icon"><i class="fas fa-flag-usa"></i></div>
+      <h3>Veteran Owned</h3>
+      <p>Proudly veteran-owned with the discipline and dedication your project deserves.</p>
+    </div>
+    <div class="why-card reveal d2">
+      <div class="why-icon"><i class="fas fa-certificate"></i></div>
+      <h3>10-Year Warranty</h3>
+      <p>Our 10-year labor warranty plus manufacturer's lifetime limited warranty.</p>
+    </div>
+    <div class="why-card reveal d3">
+      <div class="why-icon"><i class="fas fa-dollar-sign"></i></div>
+      <h3>Price Match</h3>
+      <p>We'll beat any written estimate from a licensed and insured competitor.</p>
+    </div>
+    <div class="why-card reveal d4">
+      <div class="why-icon"><i class="fas fa-heart"></i></div>
+      <h3>Community First</h3>
+      <p>Special discounts for seniors, veterans, and first responders.</p>
+    </div>
+  </div>
 </section>
 
-<section id="services">
-<div class="section-header fade-up">
-<h2>Our Services</h2>
-<div class="bar"></div>
-<p>Complete roofing and exterior solutions for residential, commercial, and industrial properties.</p>
-</div>
-<div class="services-grid">
-<div class="svc-card fade-up">
-<img src="https://placehold.co/400x200/1b3a4b/e63946?text=Roof+Replacement" alt="Roof replacement">
-<div class="content"><h3>Roof Replacement</h3><p>Full tear-off and replacement with quality materials. Shingles, flat roofing, metal, and more.</p></div>
-</div>
-<div class="svc-card fade-up">
-<img src="https://placehold.co/400x200/415a77/f4a261?text=Roof+Repair" alt="Roof repair">
-<div class="content"><h3>Roof Repair</h3><p>Storm damage, leaks, missing shingles — we fix it all quickly and affordably.</p></div>
-</div>
-<div class="svc-card fade-up">
-<img src="https://placehold.co/400x200/0d1b2a/e63946?text=Commercial" alt="Commercial roofing">
-<div class="content"><h3>Commercial Roofing</h3><p>Industrial and commercial roofing solutions built for durability and performance.</p></div>
-</div>
-<div class="svc-card fade-up">
-<img src="https://placehold.co/400x200/1b3a4b/ffffff?text=Siding" alt="Siding">
-<div class="content"><h3>Siding</h3><p>Vinyl, aluminum, and fiber cement siding installation and replacement.</p></div>
-</div>
-<div class="svc-card fade-up">
-<img src="https://placehold.co/400x200/415a77/ffffff?text=Gutters" alt="Gutters">
-<div class="content"><h3>Gutters</h3><p>Seamless gutter installation, repair, and gutter guard protection systems.</p></div>
-</div>
-<div class="svc-card fade-up">
-<img src="https://placehold.co/400x200/0d1b2a/f4a261?text=Inspections" alt="Inspections">
-<div class="content"><h3>Free Inspections</h3><p>Thorough roof inspections with detailed reports and honest recommendations.</p></div>
-</div>
-</div>
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrapper reveal-left">
+      <div class="about-floating">
+        <div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="rating-text">5-Star Rated</div>
+          <div class="rating-sub">Metro Detroit's best</div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://placehold.co/600x480/1e293b/0284c7?text=T%26M+Roofing+Team" alt="T&M Roofing Team">
+      </div>
+      <div class="about-badge">20+ Years</div>
+    </div>
+    <div class="about-text reveal-right">
+      <span class="section-tag">Our Story</span>
+      <h2>Family & Veteran <em>Owned</em></h2>
+      <p>T&M Roofing is a family- and veteran-owned roofing company based right here in Detroit. We handle all types of roofing — residential, commercial, and industrial. From small repairs to full replacements, every job gets quality materials and attention to detail.</p>
+      <p>We are fully licensed and insured, and we stand behind our work with a 10-year labor warranty plus manufacturer's lifetime warranty.</p>
+      <div class="about-features">
+        <div class="about-feature"><i class="fas fa-flag-usa"></i> Veteran Owned</div>
+        <div class="about-feature"><i class="fas fa-shield-alt"></i> Licensed & Insured</div>
+        <div class="about-feature"><i class="fas fa-certificate"></i> 10-Year Warranty</div>
+        <div class="about-feature"><i class="fas fa-dollar-sign"></i> Price Match</div>
+      </div>
+      <div class="discount-box">
+        <i class="fas fa-tags"></i>
+        <div>
+          <h4>Special Discounts Available</h4>
+          <p>Seniors, veterans, and first responders save on every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="stats-bar">
-<div class="stats-row">
-<div class="stat fade-up"><div class="num">20+</div><div class="label">Years Experience</div></div>
-<div class="stat fade-up"><div class="num">3K+</div><div class="label">Roofs Completed</div></div>
-<div class="stat fade-up"><div class="num">10yr</div><div class="label">Labor Warranty</div></div>
-<div class="stat fade-up"><div class="num">100%</div><div class="label">Satisfaction</div></div>
-</div>
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <span class="section-tag">What We Do</span>
+    <h2>Our <em>Services</em></h2>
+    <p>Complete roofing and exterior solutions for residential, commercial, and industrial properties.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal d1">
+      <img src="https://placehold.co/400x200/1e293b/0284c7?text=Roof+Replacement" alt="Roof Replacement">
+      <div class="service-card-body">
+        <h3>Roof Replacement</h3>
+        <p>Full tear-off and replacement with quality materials. Shingles, flat roofing, metal, and more.</p>
+      </div>
+    </div>
+    <div class="service-card reveal d2">
+      <img src="https://placehold.co/400x200/0f172a/0ea5e9?text=Roof+Repair" alt="Roof Repair">
+      <div class="service-card-body">
+        <h3>Roof Repair</h3>
+        <p>Storm damage, leaks, missing shingles — we fix it all quickly and affordably.</p>
+      </div>
+    </div>
+    <div class="service-card reveal d3">
+      <img src="https://placehold.co/400x200/1e293b/38bdf8?text=Commercial" alt="Commercial Roofing">
+      <div class="service-card-body">
+        <h3>Commercial Roofing</h3>
+        <p>Industrial and commercial roofing solutions built for durability and performance.</p>
+      </div>
+    </div>
+    <div class="service-card reveal d4">
+      <img src="https://placehold.co/400x200/0f172a/0284c7?text=Siding" alt="Siding">
+      <div class="service-card-body">
+        <h3>Siding</h3>
+        <p>Vinyl, aluminum, and fiber cement siding installation and replacement.</p>
+      </div>
+    </div>
+    <div class="service-card reveal d5">
+      <img src="https://placehold.co/400x200/1e293b/0ea5e9?text=Gutters" alt="Gutters">
+      <div class="service-card-body">
+        <h3>Gutters</h3>
+        <p>Seamless gutter installation, repair, and gutter guard protection systems.</p>
+      </div>
+    </div>
+    <div class="service-card reveal d1">
+      <img src="https://placehold.co/400x200/0f172a/38bdf8?text=Inspections" alt="Inspections">
+      <div class="service-card-body">
+        <h3>Free Inspections</h3>
+        <p>Thorough roof inspections with detailed reports and honest recommendations.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="about-section" id="about">
-<div class="about-grid">
-<div class="about-img fade-up">
-<img src="https://placehold.co/600x400/1b3a4b/e63946?text=T%26M+Roofing+Team" alt="T&M Roofing team">
+<!-- STATS -->
+<div class="diagonal-section">
+  <div class="stats-grid">
+    <div class="stat-item reveal d1">
+      <div class="stat-number"><span class="counter" data-target="20">0</span><span class="counter-suffix">+</span></div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-number"><span class="counter" data-target="3000">0</span><span class="counter-suffix">+</span></div>
+      <div class="stat-label">Roofs Completed</div>
+    </div>
+    <div class="stat-item reveal d3">
+      <div class="stat-number"><span class="counter" data-target="10">0</span><span class="counter-suffix">yr</span></div>
+      <div class="stat-label">Labor Warranty</div>
+    </div>
+    <div class="stat-item reveal d4">
+      <div class="stat-number"><span class="counter" data-target="100">0</span><span class="counter-suffix">%</span></div>
+      <div class="stat-label">Satisfaction Rate</div>
+    </div>
+  </div>
 </div>
-<div class="about-text fade-up">
-<h2>Family & Veteran Owned Since Day One</h2>
-<p>T&M Roofing is a family- and veteran-owned roofing company based right here in Detroit. We handle all types of roofing — residential, commercial, and industrial. From small repairs to full replacements, every job gets quality materials and attention to detail.</p>
-<p>We are fully licensed and insured, and we stand behind our work. Our commitment to fair pricing means we'll beat any written estimate from a licensed roofer.</p>
-<div class="discount-box">
-<i class="fas fa-tags"></i>
-<div>
-<h4>Special Discounts Available</h4>
-<p>Seniors, veterans, and first responders save on every project.</p>
-</div>
-</div>
-</div>
-</div>
+
+<!-- WHY ALTERNATING -->
+<section class="why-section">
+  <div class="section-header reveal">
+    <span class="section-tag">Our Promise</span>
+    <h2>Built on <em>Honor & Quality</em></h2>
+    <p>Every roof we install is backed by our veteran commitment to excellence.</p>
+  </div>
+  <div class="why-row reveal">
+    <div class="why-img-wrap">
+      <img src="https://placehold.co/600x400/1e293b/0284c7?text=Quality+Work" alt="Quality Work">
+    </div>
+    <div class="why-text-alt">
+      <h3>Unbeatable Price Guarantee</h3>
+      <p>We believe in fair, honest pricing. That's why we'll beat any written estimate from a licensed and insured competitor. No gimmicks, no hidden fees — just quality work at a fair price.</p>
+      <ul class="check-list">
+        <li><i class="fas fa-check-circle"></i> Written estimate price match</li>
+        <li><i class="fas fa-check-circle"></i> No hidden fees or surprises</li>
+        <li><i class="fas fa-check-circle"></i> Transparent pricing always</li>
+      </ul>
+    </div>
+  </div>
+  <div class="why-row reverse reveal">
+    <div class="why-img-wrap">
+      <img src="https://placehold.co/600x400/0f172a/0ea5e9?text=10+Year+Warranty" alt="Warranty">
+    </div>
+    <div class="why-text-alt">
+      <h3>10-Year Labor Warranty</h3>
+      <p>We stand behind every nail, every shingle, every seam. Our 10-year labor warranty combined with the manufacturer's lifetime limited warranty means your roof is protected for decades.</p>
+      <ul class="check-list">
+        <li><i class="fas fa-check-circle"></i> 10-year labor warranty</li>
+        <li><i class="fas fa-check-circle"></i> Manufacturer lifetime warranty</li>
+        <li><i class="fas fa-check-circle"></i> Complete peace of mind</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
-<section id="reviews">
-<div class="section-header fade-up">
-<h2>Customer Reviews</h2>
-<div class="bar"></div>
-</div>
-<div class="reviews-grid">
-<div class="review-card fade-up">
-<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-<p>"T&M Roofing did an outstanding job on our roof replacement. Professional crew, fair price, and they cleaned up everything when they finished. Highly recommend!"</p>
-<div class="author">— Detroit Homeowner</div>
-</div>
-<div class="review-card fade-up">
-<div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-<p>"As a fellow veteran, I appreciate the integrity this company brings. They did what they said they'd do, on time and on budget. My roof looks fantastic."</p>
-<div class="author">— Southfield Resident</div>
-</div>
-</div>
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-header reveal">
+    <span class="section-tag">How It Works</span>
+    <h2>Our <em>Process</em></h2>
+    <p>Simple, straightforward, and stress-free from start to finish.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step reveal d1">
+      <div class="process-num">1</div>
+      <h4>Free Inspection</h4>
+      <p>We assess your roof with a thorough inspection and detailed report.</p>
+    </div>
+    <div class="process-step reveal d2">
+      <div class="process-num">2</div>
+      <h4>Honest Quote</h4>
+      <p>Transparent pricing with our price-match guarantee — no hidden fees.</p>
+    </div>
+    <div class="process-step reveal d3">
+      <div class="process-num">3</div>
+      <h4>Expert Install</h4>
+      <p>Our experienced crew installs your new roof with premium materials.</p>
+    </div>
+    <div class="process-step reveal d4">
+      <div class="process-num">4</div>
+      <h4>Final Walkthrough</h4>
+      <p>We inspect every detail to ensure your complete satisfaction.</p>
+    </div>
+  </div>
 </section>
 
-<section class="cta">
-<h2 class="fade-up">Need a New Roof? Get Your Free Estimate Today</h2>
-<p class="fade-up">We'll beat any licensed & insured competitor's written quote.</p>
-<a href="tel:313-600-4538" class="btn btn-red fade-up" style="margin-right:1rem"><i class="fas fa-phone"></i> 313-600-4538</a>
-<a href="#contact" class="btn btn-outline fade-up">Request a Quote</a>
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="section-header reveal">
+    <span class="section-tag">Reviews</span>
+    <h2>What <em>Customers</em> Say</h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal d1">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">T&M Roofing did an outstanding job on our roof replacement. Professional crew, fair price, and they cleaned up everything when they finished. Highly recommend!</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">D</div>
+        <div><div class="testimonial-name">Detroit Homeowner</div><div class="testimonial-role"><i class="fab fa-google"></i> Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d2">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">As a fellow veteran, I appreciate the integrity this company brings. They did what they said they'd do, on time and on budget. My roof looks fantastic.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">S</div>
+        <div><div class="testimonial-name">Southfield Resident</div><div class="testimonial-role"><i class="fab fa-google"></i> Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d3">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">Best roofing company in Metro Detroit. Fair pricing, quality materials, and they actually showed up when they said they would. That alone sets them apart.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div><div class="testimonial-name">Dearborn Homeowner</div><div class="testimonial-role"><i class="fab fa-google"></i> Google Review</div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="contact">
-<div class="section-header fade-up">
-<h2>Contact Us</h2>
-<div class="bar"></div>
-<p>Get your free, no-obligation roofing estimate today.</p>
-</div>
-<div class="contact-grid">
-<div class="contact-info fade-up">
-<div class="item"><div class="ic"><i class="fas fa-map-marker-alt"></i></div><div><h4>Location</h4><p>14564 Schaefer Hwy<br>Detroit, MI 48227</p></div></div>
-<div class="item"><div class="ic"><i class="fas fa-phone"></i></div><div><h4>Phone</h4><p>313-600-4538</p></div></div>
-<div class="item"><div class="ic"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p>4224tmroof@gmail.com</p></div></div>
-<div class="item"><div class="ic"><i class="fas fa-clock"></i></div><div><h4>Hours</h4><p>Mon-Sat: 7AM - 7PM<br>Emergency service available</p></div></div>
-</div>
-<form class="contact-form fade-up" onsubmit="event.preventDefault();alert('Thank you! We\'ll contact you within 24 hours with your free estimate.')">
-<input type="text" placeholder="Your Name" required>
-<input type="email" placeholder="Your Email" required>
-<input type="tel" placeholder="Your Phone" required>
-<input type="text" placeholder="Property Address">
-<textarea placeholder="Describe your roofing needs..."></textarea>
-<button type="submit" class="btn btn-red" style="width:100%;border:none;cursor:pointer">Get Free Estimate</button>
-</form>
-</div>
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-header reveal">
+    <span class="section-tag" style="color:var(--sky2)">Get Started</span>
+    <h2 style="color:var(--white)">Get Your <em>Free Estimate</em> Today</h2>
+    <p style="color:rgba(255,255,255,.4)">We'll beat any licensed & insured competitor's written quote. Call now for a free inspection.</p>
+  </div>
+  <div class="reveal" style="text-align:center">
+    <a href="tel:313-600-4538" class="btn-primary" style="margin-right:15px"><i class="fas fa-phone"></i> <span>(313) 600-4538</span></a>
+    <a href="mailto:4224tmroof@gmail.com" class="btn-outline"><i class="fas fa-envelope"></i> Email Us</a>
+  </div>
+  <div style="text-align:center;margin-top:30px" class="reveal">
+    <div class="urgency"><i class="fas fa-tags"></i> <span><strong>Discounts</strong> for seniors, veterans & first responders</span></div>
+  </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-<div class="brand">T&M <span>Roofing</span> LLC</div>
-<p>&copy; 2026 T&M Roofing LLC. Detroit, MI. Licensed & Insured. Veteran Owned.</p>
+  <div class="footer-grid">
+    <div class="footer-brand reveal">
+      <h3>T&M <span>Roofing</span></h3>
+      <p>Detroit's trusted roofing company. Veteran-owned, family-operated, and committed to quality on every project. Licensed & insured with a 10-year labor warranty.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-google"></i></a>
+        <a href="#"><i class="fab fa-yelp"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col reveal d1">
+      <h4>Quick Links</h4>
+      <a href="#why">Why Us</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="tel:313-600-4538">Contact</a>
+    </div>
+    <div class="footer-col reveal d2">
+      <h4>Hours</h4>
+      <div class="footer-hours">
+        <span>Mon–Sat: 7AM – 7PM</span>
+        <span>Sunday: Closed</span>
+        <span style="margin-top:8px;color:var(--sky)">Emergency Service Available</span>
+      </div>
+    </div>
+    <div class="footer-col reveal d3">
+      <h4>Contact Info</h4>
+      <div class="footer-hours">
+        <span><i class="fas fa-map-marker-alt" style="color:var(--sky);margin-right:6px"></i> 14564 Schaefer Hwy</span>
+        <span style="padding-left:20px">Detroit, MI 48227</span>
+        <span><i class="fas fa-phone" style="color:var(--sky);margin-right:6px"></i> <a href="tel:313-600-4538" style="color:rgba(255,255,255,.35);text-decoration:none">(313) 600-4538</a></span>
+        <span><i class="fas fa-envelope" style="color:var(--sky);margin-right:6px"></i> <a href="mailto:4224tmroof@gmail.com" style="color:rgba(255,255,255,.35);text-decoration:none">4224tmroof@gmail.com</a></span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 T&M Roofing LLC. All rights reserved. Licensed & Insured. Veteran Owned.</p>
+    <p>14564 Schaefer Hwy, Detroit, MI 48227 · <a href="tel:313-600-4538" style="color:var(--sky);text-decoration:none">(313) 600-4538</a></p>
+  </div>
 </footer>
 
+<!-- FLOATING CTA -->
+<div class="floating-cta" id="floatingCta">
+  <a href="tel:313-600-4538" title="Call Now"><i class="fas fa-phone"></i></a>
+</div>
+
 <script>
-window.addEventListener('load',()=>{document.querySelector('.preloader').classList.add('hidden')});
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15});
-document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},1000)});
+document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('menuClose').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
+const nav=document.getElementById('navbar');
+const floatingCta=document.getElementById('floatingCta');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>80);
+  floatingCta.classList.toggle('visible',window.scrollY>600);
+});
+const revealObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObserver.unobserve(e.target)}})
+},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>revealObserver.observe(el));
+const counterObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;const target=+el.getAttribute('data-target');const duration=2000;const start=performance.now();
+      const animate=(now)=>{const progress=Math.min((now-start)/duration,1);const eased=1-Math.pow(1-progress,4);el.textContent=Math.floor(eased*target);if(progress<1)requestAnimationFrame(animate);else el.textContent=target;};
+      requestAnimationFrame(animate);counterObserver.unobserve(el);
+    }
+  })
+},{threshold:.5});
+document.querySelectorAll('.counter').forEach(el=>counterObserver.observe(el));
+window.addEventListener('scroll',()=>{const y=window.scrollY;document.querySelectorAll('.hero-blob').forEach((blob,i)=>{blob.style.transform=`translateY(${y*(i===0?.15:-.1)}px)`})});
 </script>
 </body>
 </html>
