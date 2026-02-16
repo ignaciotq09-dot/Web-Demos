@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>PPM Heating & Air Conditioning | 24/7 HVAC Service</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>*{margin:0;padding:0;box-sizing:border-box}:root{--dark:#0f172a;--orange:#f97316;--orange2:#fb923c;--amber:#fbbf24;--light:#fff7ed;--white:#fff;--text:#334155;--text-light:#64748b}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white)}h1,h2,h3{font-family:'Bebas Neue',sans-serif;letter-spacing:1px}
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s ease}.reveal.active{opacity:1;transform:translateY(0)}.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.bar{background:var(--orange);color:#fff;text-align:center;padding:10px;font-size:.8rem;font-weight:600;position:fixed;top:0;width:100%;z-index:10001}
+.bar a{color:#fff;text-decoration:none}
+nav{position:fixed;top:38px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:70px;transition:.4s}
+nav.scrolled{background:rgba(15,23,42,.95);backdrop-filter:blur(20px);top:0;height:64px}
+.logo{font-family:'Bebas Neue',sans-serif;color:#fff;font-size:2rem;text-decoration:none}.logo span{color:var(--orange)}
+.links{display:flex;gap:28px;list-style:none}.links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:.3s}.links a:hover{color:#fff}
+.cta-btn{background:var(--orange);color:#fff!important;padding:10px 24px;border-radius:8px;font-weight:700}
+.hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;padding:140px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(249,115,22,.08),transparent 50%)}
+.hero-content{max-width:650px;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:var(--orange);padding:10px 20px;border-radius:50px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:20px}
+.hero h1{font-size:clamp(3rem,7vw,5.5rem);color:#fff;line-height:.95;margin-bottom:20px}.hero h1 .a{color:var(--orange)}
+.hero p{color:rgba(255,255,255,.45);font-size:1.05rem;line-height:1.8;max-width:480px;margin-bottom:32px}
+.btn{padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;transition:.3s;display:inline-flex;align-items:center;gap:8px}
+.btn-o{background:var(--orange);color:#fff}.btn-o:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(249,115,22,.3)}
+.s{padding:100px 6%}.s-alt{background:var(--light)}
+.sh{text-align:center;max-width:600px;margin:0 auto 60px}
+.sh h2{font-size:clamp(2rem,4vw,3.5rem);color:var(--dark);margin-bottom:14px}.sh h2 .a{color:var(--orange)}
+.sh p{color:var(--text-light);line-height:1.8}
+.tag{color:var(--orange);font-size:.7rem;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:10px;display:block}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.c{background:var(--white);border-radius:16px;padding:36px 28px;transition:.4s;border:1px solid transparent}
+.c:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.06);border-color:rgba(249,115,22,.1)}
+.ci{width:50px;height:50px;border-radius:12px;background:rgba(249,115,22,.08);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.2rem;margin-bottom:18px}
+.c h3{font-size:1.4rem;color:var(--dark);margin-bottom:10px}.c p{color:var(--text-light);font-size:.88rem;line-height:1.8}
+.stats{background:var(--dark);padding:80px 6%}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:1000px;margin:0 auto;text-align:center}
+.sn{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#fff}.sn span{color:var(--orange);font-weight:700}
+.sl{color:rgba(255,255,255,.3);font-size:.7rem;text-transform:uppercase;letter-spacing:3px;margin-top:8px}
+.ct{padding:120px 6%;background:var(--dark);text-align:center}
+.ct h2{font-size:clamp(2.2rem,4vw,3.5rem);color:#fff;margin-bottom:16px}.ct h2 .a{color:var(--orange)}
+.ct p{color:rgba(255,255,255,.35);max-width:500px;margin:0 auto 32px;line-height:1.8}
+footer{background:#070b14;padding:60px 6% 20px}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto}
+.fb h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fff;margin-bottom:12px}.fb h3 span{color:var(--orange)}
+.fb p{color:rgba(255,255,255,.25);font-size:.85rem;line-height:1.8}
+.fc h4{color:#fff;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:16px;font-family:'Inter',sans-serif}
+.fc a{display:block;color:rgba(255,255,255,.25);text-decoration:none;font-size:.85rem;margin-bottom:8px;transition:.3s}.fc a:hover{color:var(--orange)}
+.fbot{border-top:1px solid rgba(255,255,255,.05);margin-top:40px;padding-top:16px;text-align:center;color:rgba(255,255,255,.15);font-size:.8rem}
+@media(max-width:768px){.links{display:none}.sg{grid-template-columns:1fr 1fr}.fg{grid-template-columns:1fr}.g{grid-template-columns:1fr}}
+</style></head><body>
+<div class="bar"><i class="fas fa-snowflake"></i> 24/7 Emergency HVAC Service — <a href="#contact">Get a Free Estimate Today!</a></div>
+<nav id="nav"><a href="#" class="logo">PPM <span>HVAC</span></a><ul class="links"><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#contact" class="cta-btn">Free Estimate</a></li></ul></nav>
+<section class="hero"><div class="hero-content">
+<div class="badge"><i class="fas fa-shield-alt"></i> Licensed & Insured</div>
+<h1>Heating & <span class="a">Cooling</span> You Can Count On</h1>
+<p>PPM Heating & Air Conditioning delivers honest, reliable HVAC service — installations, repairs, maintenance, and 24/7 emergency calls.</p>
+<a href="#contact" class="btn btn-o"><i class="fas fa-calendar-check"></i> Get Free Estimate</a>
+</div></section>
+<section class="s s-alt" id="services">
+<div class="sh reveal"><span class="tag">Services</span><h2>Complete <span class="a">HVAC</span> Solutions</h2><p>From new installations to emergency repairs, we keep your home comfortable year-round.</p></div>
+<div class="g">
+<div class="c reveal d1"><div class="ci"><i class="fas fa-snowflake"></i></div><h3>AC Installation</h3><p>Expert installation of energy-efficient air conditioning systems for your home.</p></div>
+<div class="c reveal d2"><div class="ci"><i class="fas fa-wrench"></i></div><h3>AC & Heating Repair</h3><p>Fast diagnosis and repair to restore your comfort when systems break down.</p></div>
+<div class="c reveal d3"><div class="ci"><i class="fas fa-fire"></i></div><h3>Heating Systems</h3><p>Furnace installation, repair, and maintenance to keep you warm all winter.</p></div>
+<div class="c reveal d1"><div class="ci"><i class="fas fa-tools"></i></div><h3>Maintenance Plans</h3><p>Preventive maintenance to extend equipment life and prevent costly breakdowns.</p></div>
+<div class="c reveal d2"><div class="ci"><i class="fas fa-bolt"></i></div><h3>Emergency Service</h3><p>24/7 emergency HVAC service — because comfort emergencies don't wait.</p></div>
+<div class="c reveal d3"><div class="ci"><i class="fas fa-leaf"></i></div><h3>Energy Efficiency</h3><p>Upgrades and assessments to reduce energy costs and improve home comfort.</p></div>
+</div></section>
+<section class="stats">
+<div class="sg">
+<div class="reveal d1"><div class="sn">24<span>/7</span></div><div class="sl">Emergency Service</div></div>
+<div class="reveal d2"><div class="sn">100<span>%</span></div><div class="sl">Satisfaction Guarantee</div></div>
+<div class="reveal d3"><div class="sn">Free</div><div class="sl">Estimates</div></div>
+<div class="reveal"><div class="sn">5<span>★</span></div><div class="sl">Customer Rating</div></div>
+</div></section>
+<section class="s" id="about">
+<div class="sh reveal"><span class="tag">About</span><h2>Honesty, Integrity, <span class="a">Excellence</span></h2><p>Welcome to PPM Heating & Air Conditioning LLC — where our motto is built on honesty, integrity, and a commitment to excellence. We treat every home like our own.</p></div>
+</section>
+<section class="ct" id="contact"><div class="reveal">
+<span class="tag">Contact</span>
+<h2>Stay <span class="a">Comfortable</span> All Year</h2>
+<p>Get a free estimate today. Our team is standing by to help with all your heating and cooling needs.</p>
+<a href="#" class="btn btn-o"><i class="fas fa-phone"></i> Get Free Estimate</a>
+</div></section>
+<footer><div class="fg">
+<div class="fb"><h3>PPM <span>HVAC</span></h3><p>Heating & Air Conditioning service you can trust. Licensed, insured, and committed to your comfort.</p></div>
+<div class="fc"><h4>Services</h4><a href="#">AC Installation</a><a href="#">Heating Repair</a><a href="#">Maintenance</a><a href="#">Emergency</a></div>
+<div class="fc"><h4>Contact</h4><a href="#">Get a Free Estimate</a><a href="https://www.facebook.com/profile.php?id=61565367697012">Facebook</a></div>
+</div><div class="fbot">© 2026 PPM Heating & Air Conditioning LLC. All rights reserved.</div></footer>
+<script>
+const n=document.getElementById('nav');window.addEventListener('scroll',()=>{n.classList.toggle('scrolled',scrollY>60)});
+document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('active')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'}).observe(el));
+</script></body></html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LJ Warren Plumbing & Electrical | Winchester, TN</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0c1e3a;--blue:#2563eb;--blue2:#3b82f6;--sky:#dbeafe;--white:#fff;--light:#f0f4f8;--text:#334155;--text-light:#64748b;--gold:#f59e0b}
+html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white)}
+h1,h2,h3{font-family:'Playfair Display',serif}
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s ease}.reveal.active{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.phone-bar{background:var(--blue);color:var(--white);text-align:center;padding:10px;font-size:.8rem;font-weight:600;position:fixed;top:0;width:100%;z-index:10001}
+.phone-bar a{color:var(--white);text-decoration:none;margin:0 12px}
+nav{position:fixed;top:38px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:70px;transition:all .4s}
+nav.scrolled{background:rgba(12,30,58,.95);backdrop-filter:blur(20px);top:0;height:64px;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.nav-logo{font-family:'Playfair Display',serif;color:var(--white);font-size:1.6rem;text-decoration:none}.nav-logo span{color:var(--blue2)}
+.nav-links{display:flex;gap:28px;list-style:none}.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:.3s}.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--blue);color:#fff!important;padding:10px 24px;border-radius:8px;font-weight:700}.nav-cta:hover{background:var(--blue2)}
+.hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;padding:140px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(37,99,235,.1),transparent 50%)}
+.hero-content{max-width:650px;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.3);color:var(--blue2);padding:10px 20px;border-radius:50px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:20px}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);color:#fff;line-height:1;margin-bottom:20px;font-weight:600}
+.hero h1 em{font-style:italic;color:var(--blue2)}
+.hero p{color:rgba(255,255,255,.45);font-size:1.05rem;line-height:1.8;max-width:480px;margin-bottom:32px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,99,235,.3)}
+.btn-ghost{border:2px solid rgba(255,255,255,.15);color:#fff}.btn-ghost:hover{border-color:var(--blue2);color:var(--blue2)}
+.section{padding:100px 6%}.section-alt{background:var(--light)}
+.section-header{text-align:center;max-width:600px;margin:0 auto 60px}
+.section-header h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--navy);margin-bottom:14px;font-weight:600}
+.section-header h2 em{font-style:italic;color:var(--blue)}
+.section-header p{color:var(--text-light);line-height:1.8}
+.tag{color:var(--blue);font-size:.7rem;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:10px;display:block}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.card{background:var(--white);border-radius:16px;padding:36px 28px;transition:all .4s;border:1px solid transparent}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.06);border-color:rgba(37,99,235,.08)}
+.card-icon{width:50px;height:50px;border-radius:12px;background:var(--sky);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:1.2rem;margin-bottom:18px}
+.card h3{font-size:1.4rem;color:var(--navy);margin-bottom:10px}
+.card p{color:var(--text-light);font-size:.88rem;line-height:1.8}
+.stats{background:var(--navy);padding:80px 6%}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:1000px;margin:0 auto;text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;font-weight:300}.stat-num span{color:var(--blue2);font-weight:700}
+.stat-label{color:rgba(255,255,255,.3);font-size:.7rem;text-transform:uppercase;letter-spacing:3px;margin-top:8px}
+.cta-section{padding:120px 6%;background:var(--navy);text-align:center}
+.cta-section h2{font-size:clamp(2.2rem,4vw,3.5rem);color:#fff;margin-bottom:16px;font-weight:600}
+.cta-section h2 em{color:var(--blue2)}
+.cta-section p{color:rgba(255,255,255,.35);max-width:500px;margin:0 auto 32px;line-height:1.8}
+footer{background:#060e1a;padding:60px 6% 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;margin-bottom:12px}.footer-brand h3 span{color:var(--blue2)}
+.footer-brand p{color:rgba(255,255,255,.25);font-size:.85rem;line-height:1.8}
+.footer-col h4{color:#fff;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:16px;font-family:'Inter',sans-serif}
+.footer-col a{display:block;color:rgba(255,255,255,.25);text-decoration:none;font-size:.85rem;margin-bottom:8px;transition:.3s}.footer-col a:hover{color:var(--blue2)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);margin-top:40px;padding-top:16px;text-align:center;color:rgba(255,255,255,.15);font-size:.8rem}
+.float-cta{position:fixed;bottom:24px;right:24px;z-index:9999;opacity:0;visibility:hidden;transition:.4s}.float-cta.visible{opacity:1;visibility:visible}
+.float-cta a{width:56px;height:56px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(37,99,235,.4);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(37,99,235,.4)}50%{box-shadow:0 8px 50px rgba(37,99,235,.6)}}
+@media(max-width:768px){.nav-links{display:none}.stats-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="phone-bar"><a href="tel:9319679100"><i class="fas fa-phone"></i> (931) 967-9100</a> | <a href="tel:9316367922"><i class="fas fa-phone"></i> (931) 636-7922</a> | <span>24/7 Emergency Service</span></div>
+<nav id="nav"><a href="#" class="nav-logo">LJ Warren <span>Plumbing</span></a><ul class="nav-links"><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#contact" class="nav-cta">Get Estimate</a></li></ul></nav>
+<section class="hero">
+<div class="hero-content">
+<div class="hero-badge"><i class="fas fa-wrench"></i> Licensed & Insured</div>
+<h1>Your Local <em>Plumbing & Electrical</em> Experts</h1>
+<p>Serving the Winchester, Sewanee, and surrounding Tennessee communities. From leaky faucets to full rewiring — we handle it all with care.</p>
+<div class="hero-btns"><a href="tel:9319679100" class="btn btn-blue"><i class="fas fa-phone"></i> Call for Free Quote</a><a href="#services" class="btn btn-ghost">Our Services</a></div>
+</div>
+</section>
+<section class="section section-alt" id="services">
+<div class="section-header reveal"><span class="tag">Services</span><h2>Plumbing & <em>Electrical</em> Solutions</h2><p>Commercial and residential service for all your plumbing and electrical needs.</p></div>
+<div class="grid-3">
+<div class="card reveal d1"><div class="card-icon"><i class="fas fa-faucet-drip"></i></div><h3>Leak & Clog Repair</h3><p>Expert troubleshooting for sinks, toilets, faucets, bathtubs, and sewer pipes.</p></div>
+<div class="card reveal d2"><div class="card-icon"><i class="fas fa-fire-flame-simple"></i></div><h3>Water Heater Service</h3><p>Repair and installation of water heaters to keep your hot water flowing.</p></div>
+<div class="card reveal d3"><div class="card-icon"><i class="fas fa-pipe-section"></i></div><h3>Pipe Repair & Install</h3><p>Water piping repair, main line replacement, and new installations.</p></div>
+<div class="card reveal d1"><div class="card-icon"><i class="fas fa-broom"></i></div><h3>Drain Cleaning</h3><p>Professional drain cleaning to keep your plumbing flowing freely.</p></div>
+<div class="card reveal d2"><div class="card-icon"><i class="fas fa-bolt"></i></div><h3>Electrical Repairs</h3><p>All electrical change-outs and repairs for residential and commercial properties.</p></div>
+<div class="card reveal d3"><div class="card-icon"><i class="fas fa-water"></i></div><h3>Well Pump Service</h3><p>Installation, repair, and maintenance of well pump systems.</p></div>
+</div>
+</section>
+<section class="stats">
+<div class="stats-grid">
+<div class="reveal d1"><div class="stat-num">24<span>/7</span></div><div class="stat-label">Emergency Service</div></div>
+<div class="reveal d2"><div class="stat-num">100<span>%</span></div><div class="stat-label">Satisfaction</div></div>
+<div class="reveal d3"><div class="stat-num">Free</div><div class="stat-label">Estimates & Quotes</div></div>
+<div class="reveal d4"><div class="stat-num">All</div><div class="stat-label">Comm. & Residential</div></div>
+</div>
+</section>
+<section class="cta-section" id="contact">
+<div class="reveal">
+<span class="tag">Contact Us</span>
+<h2>Need a <em>Plumber</em> or <em>Electrician</em>?</h2>
+<p>We offer free estimates and quotes 24/7. Call us anytime — we're here when you need us.</p>
+<a href="tel:9319679100" class="btn btn-blue"><i class="fas fa-phone"></i> (931) 967-9100</a>
+</div>
+</section>
+<footer>
+<div class="footer-grid">
+<div class="footer-brand"><h3>LJ Warren <span>Plumbing</span></h3><p>Licensed plumbing and electrical services for residential and commercial properties in the Winchester, TN area.</p></div>
+<div class="footer-col"><h4>Services</h4><a href="#">Plumbing Repair</a><a href="#">Water Heaters</a><a href="#">Drain Cleaning</a><a href="#">Electrical</a><a href="#">Well Pumps</a></div>
+<div class="footer-col"><h4>Contact</h4><a href="tel:9319679100">(931) 967-9100</a><a href="tel:9316367922">(931) 636-7922</a><a href="mailto:Ljwarren83@gmail.com">Ljwarren83@gmail.com</a></div>
+</div>
+<div class="footer-bottom">© 2026 LJ Warren Plumbing & Electrical. All rights reserved.</div>
+</footer>
+<div class="float-cta" id="fc"><a href="tel:9319679100"><i class="fas fa-phone"></i></a></div>
+<script>
+const nav=document.getElementById('nav'),fc=document.getElementById('fc');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60);fc.classList.toggle('visible',scrollY>400)});
+new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('active')}})},{threshold:.1}).observe(document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('active')}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'}).observe(el))||document.body);
+</script>
+</body>
+</html>
