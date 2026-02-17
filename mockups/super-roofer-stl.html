@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SuperRoofer Roofing LLC | St. Louis County's Premier Roofing Contractor</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--deep:#0f172a;--deep2:#1e293b;--orange:#ea580c;--orange2:#f97316;--orange3:#fb923c;
+--white:#ffffff;--cream:#fffbf5;--light:#fef3e2;--text:#374151;--text-light:#6b7280;
+--shadow-sm:0 4px 15px rgba(0,0,0,.06);--shadow-md:0 12px 35px rgba(0,0,0,.1);--shadow-lg:0 24px 60px rgba(0,0,0,.15);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);overflow-x:hidden;background:var(--white)}
+h1,h2,h3,h4{font-family:'DM Serif Display',serif}
+
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--deep)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--orange),var(--orange2));border-radius:4px}
+
+.preloader{position:fixed;inset:0;background:var(--deep);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s cubic-bezier(.4,0,.2,1),visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader-inner{text-align:center}
+.preloader-inner h2{font-family:'DM Serif Display',serif;color:var(--white);font-size:2.4rem;font-weight:400;letter-spacing:4px;opacity:0;animation:fadeUp .8s .2s forwards}
+.preloader-inner h2 span{background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;border-radius:2px;overflow:hidden}
+.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--orange),var(--orange2));animation:preloaderSlide 1s ease infinite}
+@keyframes preloaderSlide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(15px)}}
+
+.reveal{opacity:0;transform:translateY(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.9);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.active{opacity:1;transform:scale(1)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:linear-gradient(90deg,var(--orange),var(--orange2));padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--white);transition:transform .3s}
+.phone-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.phone-bar a:hover{text-decoration:underline}
+.phone-bar .sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
+
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:76px;transition:all .4s cubic-bezier(.16,1,.3,1)}
+nav.scrolled{background:rgba(15,23,42,.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 8px 32px rgba(0,0,0,.25);height:66px;top:0}
+.nav-logo{font-family:'DM Serif Display',serif;color:var(--white);font-size:1.6rem;text-decoration:none;letter-spacing:1px}
+.nav-logo span{background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--orange),var(--orange2));transition:width .3s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--orange),var(--orange2));color:var(--white)!important;padding:12px 28px;border-radius:50px;font-weight:600;letter-spacing:1px;transition:all .3s;border:none;position:relative;overflow:hidden}
+.nav-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--orange2),var(--orange));opacity:0;transition:opacity .3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(234,88,12,.4)}
+.nav-cta:hover::before{opacity:1}
+.nav-cta span{position:relative;z-index:1}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(15,23,42,.98);backdrop-filter:blur(20px);z-index:10002;flex-direction:column;align-items:center;justify-content:center;gap:30px;opacity:0;visibility:hidden;transition:all .4s}
+.mobile-menu.open{opacity:1;visibility:visible;display:flex}
+.mobile-menu a{color:var(--white);text-decoration:none;font-family:'DM Serif Display',serif;font-size:2rem;transition:color .3s}
+.mobile-menu a:hover{color:var(--orange)}
+.mobile-close{position:absolute;top:30px;right:30px;background:none;border:none;color:var(--white);font-size:2rem;cursor:pointer}
+
+.hero{min-height:100vh;padding-top:116px;background:var(--deep);display:flex;align-items:center;justify-content:center;text-align:center;padding-left:5%;padding-right:5%;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://placehold.co/1920x1080/0f172a/1e293b?text=') center/cover;opacity:.25}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(234,88,12,.1),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(249,115,22,.06),transparent 50%)}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(transparent,var(--white));z-index:2}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;animation:blobFloat 8s ease-in-out infinite}
+.hero-blob-1{width:400px;height:400px;background:var(--orange);top:-100px;right:-100px;animation-delay:0s}
+.hero-blob-2{width:300px;height:300px;background:var(--orange2);bottom:0;left:-50px;animation-delay:-3s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
+
+.hero-content{max-width:900px;position:relative;z-index:3}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(234,88,12,.1);border:1px solid rgba(234,88,12,.25);color:var(--orange2);padding:10px 22px;border-radius:50px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:3px;margin-bottom:28px;backdrop-filter:blur(10px)}
+.hero-badge i{font-size:.65rem}
+.hero h1{font-size:clamp(2.5rem,5vw,4.5rem);color:var(--white);line-height:1;margin-bottom:28px;font-weight:400}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:inline-block;animation:heroReveal 1s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateY(100%)}
+.hero h1 .line:nth-child(2) span{animation-delay:.15s}
+.hero h1 .gradient-text{background:linear-gradient(135deg,var(--orange),var(--orange2),var(--orange3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:gradientShift 4s ease infinite}
+@keyframes heroReveal{to{opacity:1;transform:translateY(0)}}
+@keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.hero p{color:rgba(255,255,255,.5);font-size:1.1rem;max-width:600px;margin:0 auto 40px;line-height:1.9;font-weight:300}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--orange),var(--orange2));color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--orange2),var(--orange));opacity:0;transition:opacity .3s}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(234,88,12,.35);scale:1.02}
+.btn-primary:hover::before{opacity:1}
+.btn-primary i,.btn-primary span{position:relative;z-index:1}
+.btn-outline{border:1.5px solid rgba(255,255,255,.2);color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:500;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;backdrop-filter:blur(10px)}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange);background:rgba(234,88,12,.05)}
+
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-indicator span{color:rgba(255,255,255,.3);font-size:.65rem;text-transform:uppercase;letter-spacing:3px}
+.scroll-mouse{width:24px;height:38px;border:2px solid rgba(255,255,255,.2);border-radius:12px;position:relative}
+.scroll-mouse::after{content:'';position:absolute;top:6px;left:50%;width:3px;height:8px;margin-left:-1.5px;background:var(--orange);border-radius:2px;animation:scrollDown 1.5s ease infinite}
+@keyframes scrollDown{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+
+.section-tag{color:var(--orange);font-size:.7rem;text-transform:uppercase;letter-spacing:5px;font-weight:600;margin-bottom:15px;display:block}
+.section-header{text-align:center;max-width:650px;margin:0 auto 70px}
+.section-header h2{font-size:clamp(2.2rem,4.5vw,3.8rem);color:var(--deep);line-height:1.1}
+.section-header h2 em{font-style:italic;background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-header p{color:var(--text-light);margin-top:18px;line-height:1.9;font-size:.95rem}
+
+.wave-divider{position:relative;margin-top:-2px;z-index:1}
+.wave-divider svg{display:block;width:100%}
+
+/* INSURANCE / ABOUT */
+.about{padding:140px 6% 120px;background:var(--white);position:relative}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.about-img-wrapper{position:relative}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:480px;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.about-img:hover img{transform:scale(1.05)}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(234,88,12,.1),transparent);pointer-events:none}
+.about-badge{position:absolute;bottom:-20px;right:-20px;background:linear-gradient(135deg,var(--orange),var(--orange2));color:var(--white);padding:20px 30px;border-radius:16px;font-family:'DM Serif Display',serif;font-size:1.5rem;box-shadow:0 12px 30px rgba(234,88,12,.3)}
+.about-floating{position:absolute;top:30px;left:-30px;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.5);padding:18px 24px;border-radius:14px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-md);z-index:2}
+.about-floating .stars{color:#f59e0b;font-size:.75rem;display:flex;gap:2px}
+.about-floating .rating-text{font-weight:700;color:var(--deep);font-size:.9rem}
+.about-floating .rating-sub{font-size:.7rem;color:var(--text-light)}
+.about-text h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--deep);margin-bottom:25px;line-height:1.15}
+.about-text h2 em{font-style:italic;background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.about-text p{color:var(--text-light);line-height:1.9;margin-bottom:20px;font-size:.95rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:35px}
+.about-feature{display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--deep);font-weight:500;padding:12px 16px;background:var(--cream);border-radius:12px;border:1px solid rgba(0,0,0,.04);transition:all .3s}
+.about-feature:hover{transform:translateX(5px);box-shadow:var(--shadow-sm)}
+.about-feature i{color:var(--orange);font-size:1rem;width:20px;text-align:center}
+
+/* SERVICES */
+.services{padding:120px 6%;background:var(--cream);position:relative;overflow:hidden}
+.services::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(234,88,12,.04),transparent);pointer-events:none}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:0 auto}
+.service-card{background:rgba(255,255,255,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.8);border-radius:20px;padding:40px 32px;transition:all .5s cubic-bezier(.16,1,.3,1);cursor:pointer;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange2));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:65px;height:65px;background:linear-gradient(135deg,var(--orange),var(--orange2));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;color:var(--white);font-size:1.4rem;transition:transform .3s}
+.service-card:hover .service-icon{transform:scale(1.1) rotate(5deg)}
+.service-card h3{font-size:1.3rem;color:var(--deep);margin-bottom:12px}
+.service-card p{color:var(--text-light);font-size:.9rem;line-height:1.8}
+
+/* DIAGONAL / STATS */
+.diagonal-section{clip-path:polygon(0 5%,100% 0,100% 95%,0 100%);padding:160px 6%;background:var(--deep);position:relative;overflow:hidden}
+.diagonal-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(234,88,12,.08),transparent 50%),radial-gradient(ellipse at 80% 50%,rgba(249,115,22,.05),transparent 50%)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1100px;margin:0 auto;text-align:center}
+.stat-item{position:relative;padding:30px 0}
+.stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:60px;background:linear-gradient(transparent,rgba(255,255,255,.1),transparent)}
+.stat-number{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);color:var(--white);font-weight:400;line-height:1}
+.stat-number .counter-suffix{background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.stat-label{color:rgba(255,255,255,.35);font-size:.72rem;text-transform:uppercase;letter-spacing:4px;font-weight:500;margin-top:12px}
+
+/* WHY US */
+.why-section{padding:120px 6%;background:var(--white)}
+.why-row{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto 80px;align-items:center}
+.why-row:last-child{margin-bottom:0}
+.why-row.reverse .why-img-wrap{order:2}
+.why-row.reverse .why-text{order:1}
+.why-img-wrap{border-radius:20px;overflow:hidden;position:relative}
+.why-img-wrap img{width:100%;height:400px;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.why-img-wrap:hover img{transform:scale(1.05)}
+.why-text h3{font-size:2rem;color:var(--deep);margin-bottom:18px}
+.why-text p{color:var(--text-light);line-height:1.9;margin-bottom:15px;font-size:.95rem}
+.why-text .check-list{list-style:none;margin-top:20px}
+.why-text .check-list li{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.9rem;color:var(--text)}
+.why-text .check-list li i{color:var(--orange);font-size:.85rem}
+
+/* PROCESS */
+.process{padding:120px 6%;background:var(--cream)}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:1100px;margin:0 auto}
+.process-step{text-align:center;position:relative;padding:0 15px}
+.process-step::after{content:'';position:absolute;top:35px;right:-15px;width:30px;height:2px;background:linear-gradient(90deg,var(--orange),transparent);display:block}
+.process-step:last-child::after{display:none}
+.process-num{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange2));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--white);box-shadow:0 8px 25px rgba(234,88,12,.3)}
+.process-step h4{font-size:1.1rem;color:var(--deep);margin-bottom:10px}
+.process-step p{color:var(--text-light);font-size:.88rem;line-height:1.7}
+
+/* TESTIMONIALS */
+.testimonials{padding:120px 6%;background:var(--white);position:relative}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.testimonial-card{background:rgba(255,251,245,.8);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.8);border-radius:20px;padding:40px 35px;transition:all .4s;position:relative;overflow:hidden}
+.testimonial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange2));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.testimonial-card:hover::before{transform:scaleX(1)}
+.quote-icon{font-family:'DM Serif Display',serif;font-size:6rem;background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.15;line-height:1;position:absolute;top:10px;right:25px}
+.testimonial-stars{color:#f59e0b;font-size:.9rem;margin-bottom:16px;display:flex;gap:3px}
+.testimonial-text{color:var(--text-light);font-size:.95rem;line-height:1.9;margin-bottom:22px;font-style:italic;position:relative;z-index:1}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange2));display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-weight:700;color:var(--white);font-size:1.1rem}
+.testimonial-name{font-weight:600;font-size:.9rem;color:var(--deep)}
+.testimonial-role{font-size:.75rem;color:var(--text-light);display:flex;align-items:center;gap:4px}
+.testimonial-role i{color:#f59e0b;font-size:.6rem}
+
+/* GALLERY */
+.gallery{padding:120px 6%;background:var(--cream)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1200px;margin:0 auto}
+.gallery-item{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;aspect-ratio:1}
+.gallery-item:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .4s}
+.gallery-item:hover img{transform:scale(1.05);filter:brightness(1.1)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(15,23,42,.6));opacity:0;transition:opacity .4s}
+.gallery-item:hover::after{opacity:1}
+.gallery-item .gallery-zoom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);color:var(--white);font-size:1.5rem;z-index:2;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.gallery-item:hover .gallery-zoom{transform:translate(-50%,-50%) scale(1)}
+
+/* STORM URGENCY */
+.urgency-section{padding:100px 6%;background:var(--deep);position:relative;overflow:hidden}
+.urgency-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(234,88,12,.06),transparent 60%)}
+.urgency-inner{max-width:900px;margin:0 auto;text-align:center;position:relative}
+.urgency-icon{font-size:4rem;margin-bottom:20px;animation:pulseWarn 2s ease infinite}
+@keyframes pulseWarn{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:.8}}
+.urgency-inner h2{font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:16px}
+.urgency-inner h2 em{font-style:italic;background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.urgency-inner p{color:rgba(255,255,255,.5);font-size:1rem;line-height:1.8;max-width:600px;margin:0 auto 30px}
+.urgency-badges{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.urgency-badge{background:rgba(234,88,12,.1);border:1px solid rgba(234,88,12,.25);border-radius:14px;padding:14px 24px;display:flex;align-items:center;gap:10px;color:var(--white);font-size:.85rem}
+.urgency-badge i{color:var(--orange2)}
+.urgency-badge strong{color:var(--orange2)}
+
+/* CTA */
+.cta-section{padding:140px 6%;background:var(--deep);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(234,88,12,.08),transparent 60%)}
+.cta-section h2{font-size:clamp(2.5rem,5vw,4rem);color:var(--white);margin-bottom:20px;position:relative}
+.cta-section h2 em{font-style:italic;background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-section p{color:rgba(255,255,255,.4);max-width:600px;margin:0 auto 40px;line-height:1.8;font-size:1rem;position:relative}
+
+/* FOOTER */
+footer{background:#070c18;padding:100px 6% 30px;position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--orange),var(--orange2),transparent)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:50px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--white);margin-bottom:16px}
+.footer-brand h3 span{background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-brand p{color:rgba(255,255,255,.35);font-size:.85rem;line-height:1.9;margin-bottom:22px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;transition:all .3s}
+.footer-social a:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-3px);box-shadow:0 6px 20px rgba(234,88,12,.2)}
+.footer-col h4{color:var(--white);font-family:'Inter',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:22px}
+.footer-col a{display:block;color:rgba(255,255,255,.35);text-decoration:none;font-size:.85rem;margin-bottom:12px;transition:all .3s;padding-left:0}
+.footer-col a:hover{color:var(--orange);padding-left:5px}
+.footer-hours span{display:block;color:rgba(255,255,255,.35);font-size:.85rem;margin-bottom:8px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);margin-top:60px;padding-top:25px;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,.25);font-size:.8rem;flex-wrap:wrap;gap:10px}
+
+/* FLOATING CTA */
+.floating-cta{position:fixed;bottom:30px;right:30px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}
+.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange2));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(234,88,12,.4);transition:all .3s;animation:pulse 2s ease infinite}
+.floating-cta a:hover{transform:scale(1.1)}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(234,88,12,.4)}50%{box-shadow:0 8px 50px rgba(234,88,12,.6)}}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .mobile-toggle{display:block}
+  .about-grid,.why-row{grid-template-columns:1fr;gap:50px}
+  .why-row.reverse .why-img-wrap,.why-row.reverse .why-text{order:unset}
+  .about-floating{position:relative;top:auto;left:auto;margin-bottom:15px;display:inline-flex}
+  .about-badge{bottom:15px;right:15px}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .stat-item::after{display:none}
+  .services-grid,.process-grid{grid-template-columns:1fr}
+  .process-step::after{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item:first-child{grid-column:span 2}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .phone-bar{font-size:.7rem;gap:10px}
+  .diagonal-section{clip-path:none;padding:100px 6%}
+  .testimonial-grid{grid-template-columns:1fr}
+  .urgency-badges{flex-direction:column;align-items:center}
+}
+@media(max-width:480px){
+  .hero h1{font-size:clamp(2rem,8vw,3rem)}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .about-features{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <h2>Super<span>Roofer</span></h2>
+    <div class="preloader-bar"></div>
+  </div>
+</div>
+
+<!-- PHONE BAR -->
+<div class="phone-bar" id="phoneBar">
+  <a href="mailto:Asuperroofer@gmail.com"><i class="fas fa-envelope"></i> Asuperroofer@gmail.com</a>
+  <span class="sep"></span>
+  <span><i class="fas fa-map-marker-alt"></i> St. Louis County, MO</span>
+  <span class="sep"></span>
+  <span><i class="fas fa-clock"></i> Mon–Sat: 7AM – 7PM</span>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Super<span>Roofer</span></a>
+  <ul class="nav-links">
+    <li><a href="#insurance">Insurance</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta"><span>Free Estimate</span></a></li>
+  </ul>
+  <button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose"><i class="fas fa-times"></i></button>
+  <a href="#insurance" onclick="closeMobile()">Insurance Claims</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#process" onclick="closeMobile()">Process</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="#contact" onclick="closeMobile()" style="color:var(--orange)">Free Estimate</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-bolt"></i> St. Louis County's Premier Roofing Contractor</div>
+    <h1>
+      <span class="line"><span>Quality &</span></span>
+      <span class="line"><span><strong class="gradient-text">Excellence In Every Roof</strong></span></span>
+    </h1>
+    <p>Expert roofing services with hassle-free insurance claims processing. Our specialist Dustin handles everything — often with little to no out-of-pocket expense for storm damage.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary"><i class="fas fa-calendar-check"></i> <span>Free Estimate</span></a>
+      <a href="#insurance" class="btn-outline">Insurance Claims</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#ffffff" d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z"/></svg>
+</div>
+
+<!-- INSURANCE / ABOUT -->
+<section class="about" id="insurance">
+  <div class="about-grid">
+    <div class="about-img-wrapper reveal-left">
+      <div class="about-floating">
+        <div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="rating-text">5.0 Rating</div>
+          <div class="rating-sub">Trusted by homeowners</div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://placehold.co/600x480/0f172a/ea580c?text=Insurance+Claims" alt="SuperRoofer Insurance Claims">
+      </div>
+      <div class="about-badge">98% Approved</div>
+    </div>
+    <div class="about-text reveal-right">
+      <span class="section-tag">Insurance Claims</span>
+      <h2>Stress-Free <em>Claims Process</em></h2>
+      <p>Dealing with storm damage? Our insurance claims expert Dustin handles everything from filing your claim to final repairs. We negotiate with insurance companies to ensure fair payouts, saving you money.</p>
+      <p>We guide you step-by-step, making the entire process stress-free with quality results and minimal cost to you.</p>
+      <div class="about-features">
+        <div class="about-feature"><i class="fas fa-file-shield"></i> Full Claims Filing</div>
+        <div class="about-feature"><i class="fas fa-handshake"></i> Insurer Negotiation</div>
+        <div class="about-feature"><i class="fas fa-dollar-sign"></i> Minimal Out-of-Pocket</div>
+        <div class="about-feature"><i class="fas fa-user-tie"></i> Dedicated Specialist</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <span class="section-tag">What We Do</span>
+    <h2>Our <em>Services</em></h2>
+    <p>Residential and commercial roofing solutions for St. Louis County and surrounding areas.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal d1">
+      <div class="service-icon"><i class="fas fa-home"></i></div>
+      <h3>Roof Replacement</h3>
+      <p>Complete tear-off and installation using top-quality materials. Most jobs completed in 1–3 days with factory-trained crews.</p>
+    </div>
+    <div class="service-card reveal d2">
+      <div class="service-icon"><i class="fas fa-tools"></i></div>
+      <h3>Roof Repair</h3>
+      <p>Emergency and scheduled repairs for storm damage, leaks, and missing shingles — fast response when you need it most.</p>
+    </div>
+    <div class="service-card reveal d3">
+      <div class="service-icon"><i class="fas fa-building"></i></div>
+      <h3>Commercial Roofing</h3>
+      <p>Flat roof systems, TPO, EPDM, and built-up roofing for businesses of all sizes.</p>
+    </div>
+    <div class="service-card reveal d4">
+      <div class="service-icon"><i class="fas fa-tint-slash"></i></div>
+      <h3>Gutter Systems</h3>
+      <p>Seamless gutters, downspouts, and gutter guard installation to protect your property.</p>
+    </div>
+    <div class="service-card reveal d5">
+      <div class="service-icon"><i class="fas fa-file-shield"></i></div>
+      <h3>Insurance Claims</h3>
+      <p>Full-service claims management — we handle the paperwork, you get the roof.</p>
+    </div>
+    <div class="service-card reveal d1">
+      <div class="service-icon"><i class="fas fa-search"></i></div>
+      <h3>Free Inspections</h3>
+      <p>Comprehensive roof inspections with detailed reports and photos — no obligation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="diagonal-section">
+  <div class="stats-grid">
+    <div class="stat-item reveal d1">
+      <div class="stat-number"><span class="counter" data-target="15">0</span><span class="counter-suffix">+</span></div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-number"><span class="counter" data-target="2000">0</span><span class="counter-suffix">+</span></div>
+      <div class="stat-label">Roofs Installed</div>
+    </div>
+    <div class="stat-item reveal d3">
+      <div class="stat-number"><span class="counter" data-target="98">0</span><span class="counter-suffix">%</span></div>
+      <div class="stat-label">Claims Approved</div>
+    </div>
+    <div class="stat-item reveal d4">
+      <div class="stat-number">5.0<span class="counter-suffix">★</span></div>
+      <div class="stat-label">Average Rating</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY CHOOSE US -->
+<section class="why-section">
+  <div class="section-header reveal">
+    <span class="section-tag">Why Choose Us</span>
+    <h2>The <em>Smart Choice</em> for Roofing</h2>
+    <p>Licensed, insured, and committed to excellence on every project.</p>
+  </div>
+  <div class="why-row reveal">
+    <div class="why-img-wrap">
+      <img src="https://placehold.co/600x400/0f172a/ea580c?text=Expert+Crew" alt="Expert Crew">
+    </div>
+    <div class="why-text">
+      <h3>Expert Claims Handling</h3>
+      <p>Our specialist Dustin has years of experience navigating insurance claims. He files your claim, negotiates with adjusters, and ensures you get the maximum payout — often with little to no out-of-pocket expense.</p>
+      <ul class="check-list">
+        <li><i class="fas fa-check-circle"></i> Dedicated claims specialist</li>
+        <li><i class="fas fa-check-circle"></i> Maximum payout negotiation</li>
+        <li><i class="fas fa-check-circle"></i> 98% claims approval rate</li>
+      </ul>
+    </div>
+  </div>
+  <div class="why-row reverse reveal">
+    <div class="why-img-wrap">
+      <img src="https://placehold.co/600x400/1e293b/f97316?text=Quality+Materials" alt="Quality Materials">
+    </div>
+    <div class="why-text">
+      <h3>Premium Materials & Warranty</h3>
+      <p>We use only top-quality roofing materials from trusted manufacturers. Every installation is backed by our workmanship warranty and the manufacturer's product warranty for total peace of mind.</p>
+      <ul class="check-list">
+        <li><i class="fas fa-check-circle"></i> Top-tier materials only</li>
+        <li><i class="fas fa-check-circle"></i> Workmanship warranty</li>
+        <li><i class="fas fa-check-circle"></i> Licensed & fully insured</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-header reveal">
+    <span class="section-tag">How It Works</span>
+    <h2>Our <em>Process</em></h2>
+    <p>From inspection to final walkthrough — we make it simple.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step reveal d1">
+      <div class="process-num">1</div>
+      <h4>Free Inspection</h4>
+      <p>We assess your roof and identify any damage, concerns, or storm-related issues.</p>
+    </div>
+    <div class="process-step reveal d2">
+      <div class="process-num">2</div>
+      <h4>Insurance Filing</h4>
+      <p>Dustin files your claim and negotiates directly with your insurance company.</p>
+    </div>
+    <div class="process-step reveal d3">
+      <div class="process-num">3</div>
+      <h4>Quality Install</h4>
+      <p>Our experienced crew installs your new roof with premium materials in 1–3 days.</p>
+    </div>
+    <div class="process-step reveal d4">
+      <div class="process-num">4</div>
+      <h4>Final Walkthrough</h4>
+      <p>We inspect every detail to ensure your complete satisfaction before we leave.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="section-header reveal">
+    <span class="section-tag">Our Work</span>
+    <h2>Project <em>Gallery</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal-scale"><img src="https://placehold.co/600x600/0f172a/ea580c?text=Roof+Replacement" alt="Roof Replacement"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d1"><img src="https://placehold.co/300x300/1e293b/f97316?text=Shingle+Work" alt="Shingles"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d2"><img src="https://placehold.co/300x300/0f172a/fb923c?text=Storm+Repair" alt="Storm Repair"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d3"><img src="https://placehold.co/300x300/1e293b/ea580c?text=Commercial" alt="Commercial"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d4"><img src="https://placehold.co/300x300/0f172a/f97316?text=Gutters" alt="Gutters"><i class="fas fa-search-plus gallery-zoom"></i></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="section-header reveal">
+    <span class="section-tag">Reviews</span>
+    <h2>What <em>Homeowners</em> Say</h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal d1">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">SuperRoofer made the entire insurance claims process so easy. Dustin handled everything and I ended up paying almost nothing out of pocket. My new roof looks amazing!</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div><div class="testimonial-name">St. Louis County Homeowner</div><div class="testimonial-role"><i class="fab fa-google"></i> Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d2">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">After the hail storm, I called SuperRoofer and they had my roof replaced within a week. Quality work, fair pricing, and excellent communication throughout the entire process.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">J</div>
+        <div><div class="testimonial-name">Chesterfield Resident</div><div class="testimonial-role"><i class="fab fa-google"></i> Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d3">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">Professional from start to finish. The crew was on time, cleaned up everything, and the roof looks incredible. Highly recommend SuperRoofer to anyone in the St. Louis area.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">R</div>
+        <div><div class="testimonial-name">Ballwin Homeowner</div><div class="testimonial-role"><i class="fab fa-google"></i> Google Review</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORM URGENCY -->
+<section class="urgency-section">
+  <div class="urgency-inner reveal">
+    <div class="urgency-icon">⛈️</div>
+    <h2>Storm Damage? <em>Act Now</em></h2>
+    <p>Don't wait — storm damage can worsen quickly. Get a free inspection today and let our insurance claims specialist handle the rest.</p>
+    <a href="#contact" class="btn-primary"><i class="fas fa-bolt"></i> <span>Free Storm Inspection</span></a>
+    <div class="urgency-badges">
+      <div class="urgency-badge"><i class="fas fa-clock"></i> <span><strong>24/7</strong> Emergency Response</span></div>
+      <div class="urgency-badge"><i class="fas fa-shield-alt"></i> <span><strong>Licensed</strong> & Insured</span></div>
+      <div class="urgency-badge"><i class="fas fa-dollar-sign"></i> <span><strong>$0</strong> Out-of-Pocket (Most Cases)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-header reveal">
+    <span class="section-tag" style="color:var(--orange2)">Get Started</span>
+    <h2 style="color:var(--white)">Get Your <em>Free Estimate</em> Today</h2>
+    <p style="color:rgba(255,255,255,.4)">Call or email us for a no-obligation roof inspection and estimate.</p>
+  </div>
+  <div class="reveal" style="text-align:center">
+    <a href="mailto:Asuperroofer@gmail.com" class="btn-primary" style="margin-right:15px"><i class="fas fa-envelope"></i> <span>Email Us</span></a>
+    <a href="#services" class="btn-outline">View Services</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand reveal">
+      <h3>Super<span>Roofer</span></h3>
+      <p>St. Louis County's premier roofing contractor. Expert insurance claims handling, quality materials, and professional installation on every project.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-google"></i></a>
+        <a href="#"><i class="fab fa-yelp"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col reveal d1">
+      <h4>Quick Links</h4>
+      <a href="#insurance">Insurance Claims</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col reveal d2">
+      <h4>Hours</h4>
+      <div class="footer-hours">
+        <span>Mon–Sat: 7AM – 7PM</span>
+        <span>Sunday: Closed</span>
+        <span style="margin-top:8px;color:var(--orange)">Emergency: 24/7</span>
+      </div>
+    </div>
+    <div class="footer-col reveal d3">
+      <h4>Contact Info</h4>
+      <div class="footer-hours">
+        <span><i class="fas fa-map-marker-alt" style="color:var(--orange);margin-right:6px"></i> St. Louis County, MO</span>
+        <span style="padding-left:20px">& Surrounding Areas</span>
+        <span><i class="fas fa-envelope" style="color:var(--orange);margin-right:6px"></i> <a href="mailto:Asuperroofer@gmail.com" style="color:rgba(255,255,255,.35);text-decoration:none">Asuperroofer@gmail.com</a></span>
+        <span><i class="fas fa-shield-alt" style="color:var(--orange);margin-right:6px"></i> Licensed & Insured</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 SuperRoofer Exteriors LLC. All rights reserved.</p>
+    <p>St. Louis County, MO · <a href="mailto:Asuperroofer@gmail.com" style="color:var(--orange);text-decoration:none">Asuperroofer@gmail.com</a></p>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="floating-cta" id="floatingCta">
+  <a href="mailto:Asuperroofer@gmail.com" title="Get Estimate"><i class="fas fa-envelope"></i></a>
+</div>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},1000)});
+document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('menuClose').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
+const nav=document.getElementById('navbar');
+const floatingCta=document.getElementById('floatingCta');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>80);
+  floatingCta.classList.toggle('visible',window.scrollY>600);
+});
+const revealObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObserver.unobserve(e.target)}})
+},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>revealObserver.observe(el));
+const counterObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;const target=+el.getAttribute('data-target');const duration=2000;const start=performance.now();
+      const animate=(now)=>{const progress=Math.min((now-start)/duration,1);const eased=1-Math.pow(1-progress,4);el.textContent=Math.floor(eased*target);if(progress<1)requestAnimationFrame(animate);else el.textContent=target;};
+      requestAnimationFrame(animate);counterObserver.unobserve(el);
+    }
+  })
+},{threshold:.5});
+document.querySelectorAll('.counter').forEach(el=>counterObserver.observe(el));
+window.addEventListener('scroll',()=>{const y=window.scrollY;document.querySelectorAll('.hero-blob').forEach((blob,i)=>{blob.style.transform=`translateY(${y*(i===0?.15:-.1)}px)`})});
+</script>
+</body>
+</html>

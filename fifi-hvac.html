@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIFI HVAC | Atlanta, GA — BBB A+ Rated, NATE Certified</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--dark:#0b1120;--accent:#6c63ff;--accent2:#8b83ff;--gold:#f0a500;--gray:#1a1a2e;--light:#f4f5f9;--white:#fff;--text:#333;--text-light:#6b7280}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);overflow-x:hidden;background:var(--light)}
+h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;letter-spacing:1px}
+.preloader{position:fixed;inset:0;background:var(--dark);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader h2{font-family:'Bebas Neue',sans-serif;color:var(--white);font-size:3rem;letter-spacing:6px}
+.preloader h2 span{color:var(--accent)}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;border-radius:2px;overflow:hidden}
+.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));animation:slide 1s ease infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+.reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.16,1,.3,1)}.reveal.active{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:linear-gradient(90deg,var(--accent),#5a52d5);padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--white)}
+.phone-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.phone-bar a:hover{text-decoration:underline}
+.phone-bar .sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
+.phone-bar .badge-bbb{background:var(--gold);color:#111;padding:3px 10px;border-radius:4px;font-size:.7rem;letter-spacing:1px;font-weight:800}
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:72px;transition:all .4s}
+nav.scrolled{background:rgba(11,17,32,.95);backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.3);height:64px;top:0}
+.nav-logo{font-family:'Bebas Neue',sans-serif;color:var(--white);font-size:2rem;text-decoration:none;letter-spacing:4px}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:10px 28px;border-radius:6px;font-weight:700;transition:all .3s}
+.nav-cta:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 25px rgba(108,99,255,.4)}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;padding:140px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(108,99,255,.1),transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(240,165,0,.05),transparent 50%)}
+.hero-content{max-width:650px;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(240,165,0,.1);border:1px solid rgba(240,165,0,.3);color:var(--gold);padding:10px 22px;border-radius:6px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:24px}
+.hero h1{font-size:clamp(3rem,7vw,5.5rem);color:var(--white);line-height:.95;margin-bottom:24px}
+.hero h1 .accent{color:var(--accent)}
+.hero p{color:rgba(255,255,255,.5);font-size:1.1rem;max-width:500px;line-height:1.8;margin-bottom:36px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:var(--white);padding:16px 36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:10px}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-3px);box-shadow:0 12px 30px rgba(108,99,255,.35)}
+.btn-outline{border:2px solid rgba(255,255,255,.15);color:var(--white);padding:16px 36px;border-radius:6px;text-decoration:none;font-weight:600;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:50px;margin-top:60px}
+.hero-stat .num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--white)}
+.hero-stat .num span{color:var(--accent)}
+.hero-stat .label{color:rgba(255,255,255,.35);font-size:.7rem;text-transform:uppercase;letter-spacing:3px;margin-top:4px}
+.section-tag{color:var(--accent);font-size:.7rem;text-transform:uppercase;letter-spacing:5px;font-weight:700;margin-bottom:12px;display:block}
+.section-header{text-align:center;max-width:650px;margin:0 auto 60px}
+.section-header h2{font-size:clamp(2rem,4vw,3.5rem);color:var(--dark);line-height:1.1}
+.section-header h2 .accent{color:var(--accent)}
+.section-header p{color:var(--text-light);margin-top:16px;line-height:1.8}
+.services{padding:120px 6%;background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.service-card{background:var(--light);border-radius:16px;padding:40px 30px;transition:all .4s;position:relative;overflow:hidden;border:1px solid transparent}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.08);border-color:rgba(108,99,255,.15)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:56px;height:56px;border-radius:12px;background:rgba(108,99,255,.08);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent);font-size:1.4rem}
+.service-card h3{font-size:1.6rem;color:var(--dark);margin-bottom:12px}
+.service-card p{color:var(--text-light);font-size:.9rem;line-height:1.8}
+.about{padding:120px 6%;background:var(--light)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:450px;object-fit:cover}
+.about-badge{position:absolute;bottom:-15px;right:20px;background:var(--gold);color:#111;padding:18px 28px;border-radius:12px;font-family:'Bebas Neue',sans-serif;font-size:1.8rem}
+.about-text h2{font-size:clamp(2rem,4vw,3rem);color:var(--dark);margin-bottom:20px}
+.about-text h2 .accent{color:var(--accent)}
+.about-text p{color:var(--text-light);line-height:1.9;margin-bottom:16px}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
+.about-feature{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--dark);font-weight:500;padding:12px 16px;background:var(--white);border-radius:10px;border:1px solid rgba(0,0,0,.04)}
+.about-feature i{color:var(--accent)}
+.reviews{padding:120px 6%;background:var(--white)}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.review-card{background:var(--light);border-radius:16px;padding:36px 30px;position:relative}
+.review-card::before{content:'"';font-family:'Bebas Neue',sans-serif;font-size:6rem;color:var(--accent);opacity:.1;position:absolute;top:0;right:20px;line-height:1}
+.review-stars{color:#ffd60a;font-size:.85rem;margin-bottom:14px;display:flex;gap:3px}
+.review-text{color:var(--text-light);font-size:.92rem;line-height:1.8;margin-bottom:18px;font-style:italic}
+.review-author{font-weight:600;font-size:.88rem;color:var(--dark)}
+.review-role{font-size:.75rem;color:var(--text-light)}
+.cta{padding:120px 6%;background:var(--dark);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(108,99,255,.08),transparent 60%)}
+.cta h2{font-size:clamp(2.5rem,5vw,4rem);color:var(--white);margin-bottom:20px}
+.cta h2 .accent{color:var(--accent)}
+.cta p{color:rgba(255,255,255,.4);max-width:550px;margin:0 auto 36px;line-height:1.8}
+.cta .btn-primary{font-size:.9rem;padding:20px 44px}
+footer{background:#070b16;padding:80px 6% 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--white);margin-bottom:14px}
+.footer-brand h3 span{color:var(--accent)}
+.footer-brand p{color:rgba(255,255,255,.3);font-size:.85rem;line-height:1.8;margin-bottom:18px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);text-decoration:none;transition:all .3s}
+.footer-social a:hover{border-color:var(--accent);color:var(--accent)}
+.footer-col h4{color:var(--white);font-family:'Inter',sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:18px}
+.footer-col a{display:block;color:rgba(255,255,255,.3);text-decoration:none;font-size:.85rem;margin-bottom:10px;transition:all .3s}
+.footer-col a:hover{color:var(--accent);padding-left:4px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);margin-top:50px;padding-top:20px;display:flex;justify-content:space-between;color:rgba(255,255,255,.2);font-size:.8rem;flex-wrap:wrap;gap:10px}
+.floating-cta{position:fixed;bottom:24px;right:24px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}
+.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(108,99,255,.4);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(108,99,255,.4)}50%{box-shadow:0 8px 50px rgba(108,99,255,.6)}}
+@media(max-width:968px){.nav-links{display:none}.mobile-toggle{display:block}.about-grid{grid-template-columns:1fr;gap:40px}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}.hero-stats{gap:30px;flex-wrap:wrap}}
+@media(max-width:600px){.hero h1{font-size:clamp(2.5rem,10vw,3.5rem)}.services-grid,.review-grid{grid-template-columns:1fr}.about-features{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.phone-bar{font-size:.7rem;gap:8px}}
+</style>
+</head>
+<body>
+<div class="preloader" id="preloader"><div><h2>FIFI <span>HVAC</span></h2><div class="preloader-bar"></div></div></div>
+<div class="phone-bar">
+<a href="tel:6789487247"><i class="fas fa-phone"></i> (678) 948-7247</a>
+<span class="sep"></span>
+<span class="badge-bbb"><i class="fas fa-award"></i> BBB A+</span>
+<span class="sep"></span>
+<span><i class="fas fa-map-marker-alt"></i> Atlanta, GA</span>
+<span class="sep"></span>
+<span><i class="fas fa-certificate"></i> NATE Certified</span>
+</div>
+<nav id="navbar">
+<a href="#" class="nav-logo">FIFI <span>HVAC</span></a>
+<ul class="nav-links">
+<li><a href="#services">Services</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact" class="nav-cta">Free Estimate</a></li>
+</ul>
+<button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<div class="hero-badge"><i class="fas fa-award"></i> BBB A+ Rated &bull; NATE Certified</div>
+<h1>Atlanta's <span class="accent">Award-Winning</span> HVAC Team</h1>
+<p>With over 20 years of experience, BBB A+ rating, and NATE Certified technicians — FIFI HVAC delivers excellence on every job.</p>
+<div class="hero-btns">
+<a href="tel:6789487247" class="btn-primary"><i class="fas fa-phone"></i> Call Now</a>
+<a href="#services" class="btn-outline">Our Services</a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num">20<span>+</span></div><div class="label">Years Experience</div></div>
+<div class="hero-stat"><div class="num">A<span>+</span></div><div class="label">BBB Rating</div></div>
+<div class="hero-stat"><div class="num">10K<span>+</span></div><div class="label">Jobs Completed</div></div>
+</div>
+</div>
+</section>
+
+<section class="services" id="services">
+<div class="section-header reveal">
+<span class="section-tag">What We Do</span>
+<h2>Expert <span class="accent">HVAC Services</span></h2>
+<p>NATE Certified technicians delivering top-tier heating, cooling, and air quality solutions across metro Atlanta.</p>
+</div>
+<div class="services-grid">
+<div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-snowflake"></i></div><h3>AC Systems</h3><p>Complete air conditioning installation, repair, and maintenance for homes and businesses.</p></div>
+<div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-fire"></i></div><h3>Heating Systems</h3><p>Furnace, heat pump, and boiler services. Stay warm through Georgia winters with reliable heating.</p></div>
+<div class="service-card reveal d3"><div class="service-icon"><i class="fas fa-fan"></i></div><h3>Ductwork</h3><p>Professional duct design, installation, cleaning, and sealing for optimal airflow efficiency.</p></div>
+<div class="service-card reveal d4"><div class="service-icon"><i class="fas fa-thermometer-half"></i></div><h3>Smart Thermostats</h3><p>Smart thermostat installation and setup for energy savings and ultimate comfort control.</p></div>
+<div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-clipboard-check"></i></div><h3>Maintenance Plans</h3><p>Bi-annual tune-ups to keep your system efficient and prevent unexpected breakdowns.</p></div>
+<div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-wind"></i></div><h3>Indoor Air Quality</h3><p>Air purifiers, humidifiers, and filtration systems for cleaner, healthier indoor air.</p></div>
+</div>
+</section>
+
+<section class="about" id="about">
+<div class="about-grid">
+<div class="about-img reveal">
+<img src="https://placehold.co/600x450/0b1120/6c63ff?text=FIFI+HVAC" alt="FIFI HVAC Team">
+<div class="about-badge">20+ Yrs</div>
+</div>
+<div class="about-text reveal">
+<span class="section-tag">Our Story</span>
+<h2>Two Decades of <span class="accent">Excellence</span></h2>
+<p>FIFI HVAC has proudly served the greater Atlanta area for over 20 years. Our BBB A+ rating and NATE Certified team reflect our commitment to quality, integrity, and customer satisfaction.</p>
+<p>We treat every home like our own, delivering honest assessments, fair pricing, and craftsmanship that stands the test of time.</p>
+<div class="about-features">
+<div class="about-feature"><i class="fas fa-check-circle"></i> BBB A+ Rated</div>
+<div class="about-feature"><i class="fas fa-check-circle"></i> NATE Certified</div>
+<div class="about-feature"><i class="fas fa-check-circle"></i> 20+ Years Exp</div>
+<div class="about-feature"><i class="fas fa-check-circle"></i> Licensed & Insured</div>
+<div class="about-feature"><i class="fas fa-check-circle"></i> Free Estimates</div>
+<div class="about-feature"><i class="fas fa-check-circle"></i> Financing Available</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="reviews" id="reviews">
+<div class="section-header reveal">
+<span class="section-tag">Reviews</span>
+<h2>Trusted by <span class="accent">Atlanta</span></h2>
+</div>
+<div class="review-grid">
+<div class="review-card reveal d1">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">FIFI HVAC installed a brand new system in our home. Professional from start to finish. The NATE certification really shows in their work quality.</p>
+<div class="review-author">Angela D.</div><div class="review-role"><i class="fab fa-google" style="color:#4285f4"></i> Google Review</div>
+</div>
+<div class="review-card reveal d2">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">Best HVAC company in Atlanta, hands down. Fair pricing, excellent communication, and they stand behind their work 100%.</p>
+<div class="review-author">Robert M.</div><div class="review-role"><i class="fab fa-yelp" style="color:#d32323"></i> Yelp Review</div>
+</div>
+<div class="review-card reveal d3">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">Called for an emergency repair and they were out same day. Honest diagnosis and reasonable pricing. Been using them for 8 years now.</p>
+<div class="review-author">Keisha P.</div><div class="review-role"><i class="fab fa-google" style="color:#4285f4"></i> Google Review</div>
+</div>
+</div>
+</section>
+
+<section class="cta" id="contact">
+<div class="reveal">
+<span class="section-tag">Get Started</span>
+<h2>Experience the <span class="accent">FIFI Difference</span></h2>
+<p>BBB A+ rated with over 20 years of trusted HVAC service. Call today for a free estimate on any heating or cooling project.</p>
+<a href="tel:6789487247" class="btn-primary"><i class="fas fa-phone"></i> Call (678) 948-7247</a>
+</div>
+</section>
+
+<footer>
+<div class="footer-grid">
+<div class="footer-brand reveal">
+<h3>FIFI <span>HVAC</span></h3>
+<p>BBB A+ rated, NATE Certified HVAC professionals serving metro Atlanta for over 20 years.</p>
+<div class="footer-social">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-google"></i></a>
+</div>
+</div>
+<div class="footer-col reveal d1">
+<h4>Services</h4>
+<a href="#">AC Systems</a><a href="#">Heating</a><a href="#">Ductwork</a><a href="#">Maintenance</a><a href="#">Air Quality</a>
+</div>
+<div class="footer-col reveal d2">
+<h4>Hours</h4>
+<a href="#">Mon–Fri: 7am – 7pm</a><a href="#">Saturday: 8am – 4pm</a><a href="#">Sunday: Emergency Only</a>
+</div>
+<div class="footer-col reveal d3">
+<h4>Contact</h4>
+<a href="tel:6789487247">(678) 948-7247</a>
+<a href="#">Atlanta, GA</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 FIFI HVAC. All rights reserved.</p>
+<p>Atlanta, GA</p>
+</div>
+</footer>
+<div class="floating-cta" id="floatingCta"><a href="tel:6789487247" title="Call Now"><i class="fas fa-phone"></i></a></div>
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},800)});
+const nav=document.getElementById('navbar'),fc=document.getElementById('floatingCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60);fc.classList.toggle('visible',scrollY>500)});
+const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('active');ro.unobserve(el.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>

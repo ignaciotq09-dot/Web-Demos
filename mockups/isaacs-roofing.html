@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isaacs Roofing & Insulation Corp | Miami, FL</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--deep:#0a0f1a;--dark:#101828;--card:#1a2540;--navy:#1e3a5f;--blue:#2563eb;--blue2:#3b82f6;--sky:#38bdf8;--white:#fff;--text:#94a3b8;--text-light:#64748b;--gold:#f59e0b}
+html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:var(--deep);color:var(--text);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:800}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--deep)}::-webkit-scrollbar-thumb{background:linear-gradient(var(--blue),var(--sky));border-radius:4px}
+.preloader{position:fixed;inset:0;background:var(--deep);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}.preloader.hidden{opacity:0;visibility:hidden}
+.preloader h2{font-family:'Montserrat',sans-serif;color:var(--white);font-size:2rem;letter-spacing:3px;text-transform:uppercase}.preloader h2 span{color:var(--blue2)}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;overflow:hidden}.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--blue),var(--sky));animation:slide 1s ease infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+.reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.16,1,.3,1)}.reveal.active{opacity:1;transform:translateY(0)}.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:linear-gradient(90deg,var(--blue),var(--sky));padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--white)}
+.phone-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:6px}.phone-bar .sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:75px;transition:all .4s}
+nav.scrolled{background:rgba(10,15,26,.95);backdrop-filter:blur(20px);top:0;height:65px}
+.nav-logo{font-family:'Montserrat',sans-serif;color:var(--white);font-size:1.3rem;font-weight:800;text-decoration:none;letter-spacing:1px;text-transform:uppercase}.nav-logo span{color:var(--blue2)}
+.nav-links{display:flex;gap:30px;list-style:none}.nav-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--white)}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--sky));color:var(--white);padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s}.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,99,235,.4)}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,15,26,.98);z-index:10002;flex-direction:column;align-items:center;justify-content:center;gap:30px;opacity:0;visibility:hidden;transition:all .4s}.mobile-menu.open{opacity:1;visibility:visible;display:flex}
+.mobile-menu a{color:var(--white);text-decoration:none;font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:700;text-transform:uppercase}.mobile-close{position:absolute;top:30px;right:30px;background:none;border:none;color:var(--white);font-size:2rem;cursor:pointer}
+
+.hero{min-height:100vh;padding-top:111px;background:var(--deep);display:flex;align-items:center;justify-content:center;text-align:center;padding-left:5%;padding-right:5%;position:relative;overflow:hidden}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(37,99,235,.1),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.06),transparent 50%)}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.12;animation:bf 8s ease-in-out infinite}.hero-blob-1{width:400px;height:400px;background:var(--blue);top:-100px;right:-100px}.hero-blob-2{width:300px;height:300px;background:var(--sky);bottom:0;left:-50px;animation-delay:-3s}
+@keyframes bf{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(transparent,var(--deep));z-index:2}
+.hero-content{max-width:900px;position:relative;z-index:3}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.3);color:var(--blue2);padding:10px 22px;border-radius:50px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:3px;margin-bottom:28px}
+.hero h1{font-size:clamp(2.8rem,7vw,5.5rem);color:var(--white);line-height:1;margin-bottom:28px}
+.hero h1 .grad{background:linear-gradient(135deg,var(--blue),var(--sky),var(--blue2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:gs 4s ease infinite}
+@keyframes gs{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.hero p{color:rgba(255,255,255,.4);font-size:1.1rem;max-width:580px;margin:0 auto 40px;line-height:1.9;font-weight:300}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--sky));color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;display:inline-flex;align-items:center;gap:10px}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(37,99,235,.35)}
+.btn-outline{border:1.5px solid rgba(255,255,255,.2);color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:500;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s}.btn-outline:hover{border-color:var(--blue2);color:var(--blue2)}
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}.scroll-indicator span{color:rgba(255,255,255,.3);font-size:.65rem;text-transform:uppercase;letter-spacing:3px}
+.scroll-mouse{width:24px;height:38px;border:2px solid rgba(255,255,255,.2);border-radius:12px;position:relative}.scroll-mouse::after{content:'';position:absolute;top:6px;left:50%;width:3px;height:8px;margin-left:-1.5px;background:var(--blue2);border-radius:2px;animation:sd 1.5s ease infinite}
+@keyframes sd{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+.section-tag{color:var(--blue2);font-size:.7rem;text-transform:uppercase;letter-spacing:5px;font-weight:600;margin-bottom:15px;display:block}
+.section-header{text-align:center;max-width:650px;margin:0 auto 70px}
+.section-header h2{font-size:clamp(2rem,4.5vw,3.5rem);color:var(--white);line-height:1.1}
+.section-header h2 em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-header p{color:var(--text-light);margin-top:18px;line-height:1.9;font-size:.95rem}
+
+/* BBB + Trust badges */
+.trust-bar{padding:60px 6%;background:var(--dark)}
+.trust-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:35px;flex-wrap:wrap}
+.trust-badge{display:flex;align-items:center;gap:14px;background:var(--card);padding:20px 28px;border-radius:16px;border:1px solid rgba(37,99,235,.12)}
+.trust-badge i{font-size:2rem;color:var(--blue2)}.trust-badge .gold{color:var(--gold)}
+.trust-badge div h4{color:var(--white);font-size:.95rem;margin-bottom:2px;font-weight:700}.trust-badge div p{color:var(--text-light);font-size:.78rem}
+
+.services{padding:120px 6%;background:var(--deep)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.service-card{background:var(--card);border-radius:20px;padding:40px 30px;transition:all .5s;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.04)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--sky));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover{transform:translateY(-10px);box-shadow:0 20px 50px rgba(0,0,0,.3)}.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:60px;height:60px;border-radius:16px;background:rgba(37,99,235,.1);display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:1.5rem;color:var(--blue2)}
+.service-card h3{font-size:1.2rem;color:var(--white);margin-bottom:12px}.service-card p{color:var(--text-light);font-size:.88rem;line-height:1.8}
+
+.experience{padding:80px 6%;background:var(--dark)}
+.experience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1100px;margin:0 auto;text-align:center}
+.exp-item{padding:30px 0}.exp-number{font-family:'Montserrat',sans-serif;font-size:clamp(2.8rem,5vw,4rem);color:var(--white);font-weight:800;line-height:1}
+.exp-number .suffix{background:linear-gradient(135deg,var(--blue),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.exp-label{color:var(--text-light);font-size:.72rem;text-transform:uppercase;letter-spacing:4px;font-weight:500;margin-top:12px}
+
+.testimonials{padding:120px 6%;background:var(--deep)}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.testimonial-card{background:var(--card);border:1px solid rgba(255,255,255,.04);border-radius:20px;padding:40px 32px;transition:all .4s;position:relative;overflow:hidden}
+.testimonial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--sky));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.3)}.testimonial-card:hover::before{transform:scaleX(1)}
+.quote-icon{font-size:5rem;background:linear-gradient(135deg,var(--blue),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.15;position:absolute;top:10px;right:25px}
+.t-stars{color:var(--gold);font-size:.85rem;margin-bottom:14px;display:flex;gap:3px}
+.t-text{color:var(--text-light);font-size:.92rem;line-height:1.9;margin-bottom:20px;font-style:italic}
+.t-author{display:flex;align-items:center;gap:14px}
+.t-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--white);font-size:1.1rem}
+.t-name{font-weight:600;font-size:.9rem;color:var(--white)}.t-role{font-size:.75rem;color:var(--text-light)}
+
+.cta-section{padding:120px 6%;background:var(--dark);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(37,99,235,.08),transparent 60%)}
+.cta-section h2{font-size:clamp(2rem,5vw,3.5rem);color:var(--white);margin-bottom:20px}.cta-section h2 em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-section p{color:var(--text-light);max-width:550px;margin:0 auto 40px;line-height:1.8}
+
+footer{background:#060a12;padding:80px 6% 30px}
+footer::before{content:'';display:block;height:1px;background:linear-gradient(90deg,transparent,var(--blue),var(--sky),transparent);margin-bottom:60px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'Montserrat',sans-serif;font-size:1.2rem;color:var(--white);text-transform:uppercase;margin-bottom:14px}.footer-brand h3 span{color:var(--blue2)}
+.footer-brand p{color:var(--text-light);font-size:.85rem;line-height:1.9;margin-bottom:20px}
+.footer-social{display:flex;gap:10px}.footer-social a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;transition:all .3s}.footer-social a:hover{border-color:var(--blue2);color:var(--blue2);transform:translateY(-3px)}
+.footer-col h4{color:var(--white);font-size:.8rem;text-transform:uppercase;letter-spacing:3px;margin-bottom:20px;font-weight:700}
+.footer-col a{display:block;color:var(--text-light);text-decoration:none;font-size:.85rem;margin-bottom:12px;transition:all .3s}.footer-col a:hover{color:var(--blue2);padding-left:5px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);margin-top:50px;padding-top:25px;display:flex;justify-content:space-between;color:rgba(255,255,255,.25);font-size:.8rem;flex-wrap:wrap;gap:10px}.footer-bottom a{color:var(--blue2);text-decoration:none}
+
+.floating-cta{position:fixed;bottom:30px;right:30px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(37,99,235,.4);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(37,99,235,.4)}50%{box-shadow:0 8px 50px rgba(37,99,235,.6)}}
+
+@media(max-width:968px){.nav-links{display:none}.mobile-toggle{display:block}.experience-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr}.trust-inner{flex-direction:column}}
+@media(max-width:600px){.hero h1{font-size:clamp(2.2rem,10vw,3.5rem)}.services-grid,.testimonial-grid{grid-template-columns:1fr}.phone-bar{font-size:.7rem;gap:10px}}
+</style>
+</head>
+<body>
+<div class="preloader" id="preloader"><div><h2>Isaacs <span>Roofing</span></h2><div class="preloader-bar"></div></div></div>
+
+<div class="phone-bar">
+  <a href="tel:3052345234"><i class="fas fa-phone"></i> 305-234-5234</a>
+  <span class="sep"></span>
+  <span><i class="fas fa-award"></i> BBB A+ Rated</span>
+  <span class="sep"></span>
+  <span><i class="fas fa-history"></i> 30+ Years Experience</span>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">Isaacs <span>Roofing</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="tel:3052345234" class="nav-cta">Call Now</a></li>
+  </ul>
+  <button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose"><i class="fas fa-times"></i></button>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="tel:3052345234" style="color:var(--blue2)"><i class="fas fa-phone"></i> 305-234-5234</a>
+</div>
+
+<section class="hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-award"></i> BBB A+ Rated · 30+ Years</div>
+    <h1>Miami's Most <span class="grad">Trusted Roofers</span> Since 1994</h1>
+    <p>Isaacs Roofing & Insulation Corp has protected Miami homes for over 30 years. BBB A+ rated, fully licensed, and backed by decades of expertise.</p>
+    <div class="hero-btns">
+      <a href="tel:3052345234" class="btn-primary"><i class="fas fa-phone"></i> Call 305-234-5234</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-mouse"></div><span>Scroll</span></div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-badge reveal d1"><i class="fas fa-award gold"></i><div><h4>BBB A+ Rating</h4><p>Better Business Bureau accredited</p></div></div>
+    <div class="trust-badge reveal d2"><i class="fas fa-shield-alt"></i><div><h4>Fully Licensed & Insured</h4><p>Florida State licensed contractor</p></div></div>
+    <div class="trust-badge reveal d3"><i class="fas fa-history"></i><div><h4>30+ Years Experience</h4><p>Serving Miami since the 1990s</p></div></div>
+    <div class="trust-badge reveal d4"><i class="fas fa-home"></i><div><h4>Free Inspections</h4><p>No-obligation roof assessments</p></div></div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <span class="section-tag">Services</span>
+    <h2>Roofing & <em>Insulation</em></h2>
+    <p>Complete roofing and insulation solutions for residential and commercial properties throughout Miami.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-home"></i></div><h3>Residential Roofing</h3><p>Tile, shingle, metal, and flat roofing for Miami homes. Hurricane-rated installations and repairs.</p></div>
+    <div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-building"></i></div><h3>Commercial Roofing</h3><p>Large-scale commercial roofing solutions including TPO, EPDM, and modified bitumen systems.</p></div>
+    <div class="service-card reveal d3"><div class="service-icon"><i class="fas fa-temperature-low"></i></div><h3>Insulation</h3><p>Energy-efficient insulation installations that reduce cooling costs and improve comfort in Florida's heat.</p></div>
+    <div class="service-card reveal d4"><div class="service-icon"><i class="fas fa-tools"></i></div><h3>Roof Repairs</h3><p>Emergency leak repair, storm damage restoration, and preventive maintenance programs.</p></div>
+    <div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-search"></i></div><h3>Free Inspections</h3><p>Comprehensive roof inspections with detailed reports and honest recommendations.</p></div>
+    <div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div><h3>Insurance Claims</h3><p>We navigate the insurance claim process for storm damage and aging roof replacements.</p></div>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="experience-grid">
+    <div class="exp-item reveal d1"><div class="exp-number"><span class="counter" data-target="30">0</span><span class="suffix">+</span></div><div class="exp-label">Years in Business</div></div>
+    <div class="exp-item reveal d2"><div class="exp-number"><span class="counter" data-target="5000">0</span><span class="suffix">+</span></div><div class="exp-label">Roofs Completed</div></div>
+    <div class="exp-item reveal d3"><div class="exp-number">A<span class="suffix">+</span></div><div class="exp-label">BBB Rating</div></div>
+    <div class="exp-item reveal d4"><div class="exp-number">4.9<span class="suffix">★</span></div><div class="exp-label">Google Rating</div></div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="section-header reveal">
+    <span class="section-tag">Reviews</span>
+    <h2>Client <em>Testimonials</em></h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal d1"><div class="quote-icon">"</div><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-text">Isaacs has done two roofs for us over the years. They stand behind their work and the quality is unmatched. There's a reason they have an A+ BBB rating.</p><div class="t-author"><div class="t-avatar">D</div><div><div class="t-name">Diana F.</div><div class="t-role">Google Review</div></div></div></div>
+    <div class="testimonial-card reveal d2"><div class="quote-icon">"</div><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-text">30 years of experience shows in their work. Professional from estimate to cleanup. Our tile roof looks incredible.</p><div class="t-author"><div class="t-avatar">C</div><div><div class="t-name">Carlos R.</div><div class="t-role">BBB Review</div></div></div></div>
+    <div class="testimonial-card reveal d3"><div class="quote-icon">"</div><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-text">Added insulation to our attic and our electric bill dropped 25%. Isaacs knows what they're doing. Highly recommend!</p><div class="t-author"><div class="t-avatar">P</div><div><div class="t-name">Patricia M.</div><div class="t-role">Google Review</div></div></div></div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Protect Your <em>Property</em></h2>
+  <p>30+ years of trusted roofing expertise. BBB A+ rated. Call Isaacs Roofing today for your free inspection.</p>
+  <a href="tel:3052345234" class="btn-primary"><i class="fas fa-phone"></i> Call 305-234-5234</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>Isaacs <span>Roofing</span> & Insulation</h3><p>BBB A+ rated roofing and insulation company serving Miami, FL for over 30 years. Licensed, insured, trusted.</p><div class="footer-social"><a href="#"><i class="fab fa-google"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div></div>
+    <div class="footer-col"><h4>Services</h4><a href="#">Residential Roofing</a><a href="#">Commercial Roofing</a><a href="#">Insulation</a><a href="#">Repairs</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:3052345234"><i class="fas fa-phone"></i> 305-234-5234</a><a href="#"><i class="fas fa-map-marker-alt"></i> Miami, FL</a><a href="#"><i class="fas fa-award"></i> BBB A+ Rated</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Isaacs Roofing & Insulation Corp. All rights reserved.</p><p>Miami, FL · <a href="tel:3052345234">305-234-5234</a></p></div>
+</footer>
+
+<div class="floating-cta" id="floatingCta"><a href="tel:3052345234"><i class="fas fa-phone"></i></a></div>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},800)});
+document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('menuClose').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
+const nav=document.getElementById('navbar'),fc=document.getElementById('floatingCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>80);fc.classList.toggle('visible',scrollY>600)});
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('active');ro.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const t=+x.target.dataset.target,s=performance.now();const a=n=>{const p=Math.min((n-s)/2000,1);x.target.textContent=Math.floor((1-Math.pow(1-p,4))*t);if(p<1)requestAnimationFrame(a);else x.target.textContent=t};requestAnimationFrame(a);co.unobserve(x.target)}})},{threshold:.5});
+document.querySelectorAll('.counter').forEach(el=>co.observe(el));
+</script>
+</body>
+</html>

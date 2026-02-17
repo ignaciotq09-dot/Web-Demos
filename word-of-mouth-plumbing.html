@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word of Mouth Plumbing | Utah — Plumbing Done Right</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--dark:#1a1a2e;--orange:#ff6b35;--orange2:#ff8c5a;--amber:#ffb347;--gray:#16213e;--light:#faf5f0;--white:#fff;--text:#2d3748;--text-light:#64748b}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;color:var(--text);overflow-x:hidden;background:var(--light)}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:800}
+h4{font-family:'Poppins',sans-serif;font-weight:700}
+.preloader{position:fixed;inset:0;background:var(--dark);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader h2{font-family:'Playfair Display',serif;color:var(--white);font-size:2.2rem}
+.preloader h2 span{color:var(--orange)}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;border-radius:2px;overflow:hidden}
+.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--orange),var(--amber));animation:slide 1s ease infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+.reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.16,1,.3,1)}.reveal.active{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:var(--orange);padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--white)}
+.phone-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.phone-bar .sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.4)}
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:72px;transition:all .4s}
+nav.scrolled{background:rgba(26,26,46,.97);backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.3);top:0}
+.nav-logo{font-family:'Playfair Display',serif;color:var(--white);font-size:1.5rem;text-decoration:none}
+.nav-logo span{color:var(--orange)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--orange);color:var(--white)!important;padding:10px 28px;border-radius:50px;font-weight:700;transition:all .3s}
+.nav-cta:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,107,53,.4)}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;padding:140px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,107,53,.1),transparent 60%)}
+.hero-content{max-width:700px;position:relative;z-index:2;text-align:center;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.25);color:var(--orange);padding:10px 22px;border-radius:50px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:24px;font-family:'Poppins',sans-serif}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);color:var(--white);line-height:1.05;margin-bottom:24px}
+.hero h1 .accent{color:var(--orange)}
+.hero p{color:rgba(255,255,255,.5);font-size:1.1rem;max-width:550px;line-height:1.8;margin:0 auto 36px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn-primary{background:var(--orange);color:var(--white);padding:16px 36px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif}
+.btn-primary:hover{background:var(--orange2);transform:translateY(-3px);box-shadow:0 12px 30px rgba(255,107,53,.35)}
+.btn-outline{border:2px solid rgba(255,255,255,.15);color:var(--white);padding:16px 36px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;font-family:'Poppins',sans-serif}
+.btn-outline:hover{border-color:var(--amber);color:var(--amber)}
+.trust-bar{display:flex;gap:40px;justify-content:center;margin-top:60px;flex-wrap:wrap}
+.trust-item{text-align:center}
+.trust-item i{font-size:2rem;color:var(--orange);margin-bottom:8px;display:block}
+.trust-item .val{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--white)}
+.trust-item .lbl{color:rgba(255,255,255,.35);font-size:.7rem;text-transform:uppercase;letter-spacing:2px;margin-top:4px}
+.section-tag{color:var(--orange);font-size:.7rem;text-transform:uppercase;letter-spacing:5px;font-weight:700;margin-bottom:12px;display:block;font-family:'Poppins',sans-serif}
+.section-header{text-align:center;max-width:650px;margin:0 auto 60px}
+.section-header h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--dark);line-height:1.1}
+.section-header h2 .accent{color:var(--orange)}
+.section-header p{color:var(--text-light);margin-top:16px;line-height:1.8;font-size:.95rem}
+.services{padding:120px 6%;background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.service-card{background:var(--light);border-radius:20px;padding:40px 30px;transition:all .4s;position:relative;overflow:hidden;border:1px solid transparent}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.06);border-color:rgba(255,107,53,.15)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--amber));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:56px;height:56px;border-radius:50%;background:rgba(255,107,53,.08);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--orange);font-size:1.4rem}
+.service-card h3{font-size:1.5rem;color:var(--dark);margin-bottom:12px}
+.service-card p{color:var(--text-light);font-size:.88rem;line-height:1.8}
+.why-us{padding:120px 6%;background:var(--light)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.why-text h2{font-size:clamp(2rem,4vw,3rem);color:var(--dark);margin-bottom:20px}
+.why-text h2 .accent{color:var(--orange)}
+.why-text p{color:var(--text-light);line-height:1.9;margin-bottom:16px}
+.why-features{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
+.why-feature{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--dark);font-weight:500;padding:12px 16px;background:var(--white);border-radius:12px;border:1px solid rgba(0,0,0,.04)}
+.why-feature i{color:var(--orange)}
+.why-img{border-radius:24px;overflow:hidden;position:relative;background:linear-gradient(135deg,var(--orange),var(--amber));height:420px;display:flex;align-items:center;justify-content:center}
+.why-img i{font-size:8rem;color:rgba(255,255,255,.15)}
+.why-img .badge{position:absolute;bottom:20px;left:20px;background:var(--dark);color:var(--white);padding:14px 24px;border-radius:12px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem}
+.reviews{padding:120px 6%;background:var(--white)}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.review-card{background:var(--light);border-radius:20px;padding:36px 30px;position:relative}
+.review-card::before{content:'"';font-family:'Playfair Display',serif;font-size:6rem;color:var(--orange);opacity:.1;position:absolute;top:0;right:20px;line-height:1}
+.review-stars{color:#fbbf24;font-size:.85rem;margin-bottom:14px;display:flex;gap:3px}
+.review-text{color:var(--text-light);font-size:.92rem;line-height:1.8;margin-bottom:18px;font-style:italic}
+.review-author{font-weight:600;font-size:.88rem;color:var(--dark)}
+.review-role{font-size:.75rem;color:var(--text-light)}
+.cta{padding:120px 6%;background:var(--dark);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,107,53,.06),transparent 60%)}
+.cta h2{font-size:clamp(2.5rem,5vw,3.5rem);color:var(--white);margin-bottom:20px}
+.cta h2 .accent{color:var(--orange)}
+.cta p{color:rgba(255,255,255,.4);max-width:550px;margin:0 auto 36px;line-height:1.8}
+.cta .btn-primary{font-size:.9rem;padding:20px 44px}
+footer{background:#0f0f1e;padding:80px 6% 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--white);margin-bottom:14px}
+.footer-brand h3 span{color:var(--orange)}
+.footer-brand p{color:rgba(255,255,255,.3);font-size:.85rem;line-height:1.8;margin-bottom:18px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);text-decoration:none;transition:all .3s}
+.footer-social a:hover{border-color:var(--orange);color:var(--orange)}
+.footer-col h4{color:var(--white);font-size:.7rem;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:18px}
+.footer-col a{display:block;color:rgba(255,255,255,.3);text-decoration:none;font-size:.85rem;margin-bottom:10px;transition:all .3s}
+.footer-col a:hover{color:var(--orange);padding-left:4px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);margin-top:50px;padding-top:20px;display:flex;justify-content:space-between;color:rgba(255,255,255,.2);font-size:.8rem;flex-wrap:wrap;gap:10px}
+.floating-cta{position:fixed;bottom:24px;right:24px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}
+.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:56px;height:56px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(255,107,53,.4);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(255,107,53,.4)}50%{box-shadow:0 8px 50px rgba(255,107,53,.6)}}
+@media(max-width:968px){.nav-links{display:none}.mobile-toggle{display:block}.why-grid{grid-template-columns:1fr;gap:40px}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}.trust-bar{gap:25px}}
+@media(max-width:600px){.hero h1{font-size:clamp(2.2rem,9vw,3rem)}.services-grid,.review-grid{grid-template-columns:1fr}.why-features{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.phone-bar{font-size:.7rem;gap:8px}}
+</style>
+</head>
+<body>
+<div class="preloader" id="preloader"><div><h2>Word of Mouth <span>Plumbing</span></h2><div class="preloader-bar"></div></div></div>
+<div class="phone-bar">
+<a href="tel:8016084334"><i class="fas fa-phone"></i> (801) 608-4334</a>
+<span class="sep"></span>
+<span><i class="fas fa-map-marker-alt"></i> Utah</span>
+<span class="sep"></span>
+<span><i class="fas fa-comments"></i> Referred by Your Neighbors</span>
+</div>
+<nav id="navbar">
+<a href="#" class="nav-logo">Word of Mouth <span>Plumbing</span></a>
+<ul class="nav-links">
+<li><a href="#services">Services</a></li>
+<li><a href="#why">Why Us</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact" class="nav-cta">Call Now</a></li>
+</ul>
+<button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+<section class="hero">
+<div class="hero-content">
+<div class="hero-badge"><i class="fas fa-comments"></i> Reputation-Built Business</div>
+<h1>Utah's Most <span class="accent">Recommended</span> Plumber</h1>
+<p>We don't advertise — our customers do it for us. Word of Mouth Plumbing has earned its name through exceptional service, honest pricing, and plumbing done right.</p>
+<div class="hero-btns">
+<a href="tel:8016084334" class="btn-primary"><i class="fas fa-phone"></i> (801) 608-4334</a>
+<a href="#services" class="btn-outline">Our Services</a>
+</div>
+<div class="trust-bar">
+<div class="trust-item"><i class="fas fa-star"></i><div class="val">5.0</div><div class="lbl">Google Rating</div></div>
+<div class="trust-item"><i class="fas fa-users"></i><div class="val">1K+</div><div class="lbl">Happy Customers</div></div>
+<div class="trust-item"><i class="fas fa-thumbs-up"></i><div class="val">98%</div><div class="lbl">Referral Rate</div></div>
+</div>
+</div>
+</section>
+<section class="services" id="services">
+<div class="section-header reveal">
+<span class="section-tag">Services</span>
+<h2>Expert <span class="accent">Plumbing</span> Solutions</h2>
+<p>Comprehensive plumbing services for homes and businesses throughout Utah. Quality work that gets people talking.</p>
+</div>
+<div class="services-grid">
+<div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-faucet-drip"></i></div><h3>Leak Repair</h3><p>Quick detection and permanent fixes for pipe leaks, faucet drips, and hidden water damage threats.</p></div>
+<div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-shower"></i></div><h3>Bathroom Plumbing</h3><p>Full bathroom plumbing — from remodels to repairs. Toilets, showers, tubs, and vanities installed right.</p></div>
+<div class="service-card reveal d3"><div class="service-icon"><i class="fas fa-fire"></i></div><h3>Water Heaters</h3><p>Tank and tankless water heater installation, repair, and replacement with same-day service available.</p></div>
+<div class="service-card reveal d4"><div class="service-icon"><i class="fas fa-sink"></i></div><h3>Kitchen Plumbing</h3><p>Garbage disposals, dishwasher hookups, sink replacements, and kitchen remodel plumbing.</p></div>
+<div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-water"></i></div><h3>Drain Cleaning</h3><p>Stubborn clogs don't stand a chance. Professional drain clearing for kitchens, baths, and main lines.</p></div>
+<div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-house-chimney-crack"></i></div><h3>Sewer Repair</h3><p>Video inspection, trenchless repair, and sewer line replacement to keep your system flowing right.</p></div>
+</div>
+</section>
+<section class="why-us" id="why">
+<div class="why-grid">
+<div class="why-text reveal">
+<span class="section-tag">Why Choose Us</span>
+<h2>Our Name Says <span class="accent">Everything</span></h2>
+<p>Word of Mouth Plumbing was built on referrals. We earned our reputation one happy customer at a time — and we plan to keep it that way.</p>
+<p>When your neighbors recommend us, it's because we showed up on time, did the job right, and charged a fair price. No gimmicks, no hidden fees.</p>
+<div class="why-features">
+<div class="why-feature"><i class="fas fa-check-circle"></i> Licensed & Insured</div>
+<div class="why-feature"><i class="fas fa-check-circle"></i> Upfront Pricing</div>
+<div class="why-feature"><i class="fas fa-check-circle"></i> Clean & Professional</div>
+<div class="why-feature"><i class="fas fa-check-circle"></i> Same-Day Available</div>
+<div class="why-feature"><i class="fas fa-check-circle"></i> Satisfaction Guaranteed</div>
+<div class="why-feature"><i class="fas fa-check-circle"></i> Family Owned</div>
+</div>
+</div>
+<div class="why-img reveal">
+<i class="fas fa-faucet-drip"></i>
+<div class="badge"><i class="fas fa-heart"></i> &nbsp;Built on Trust</div>
+</div>
+</div>
+</section>
+<section class="reviews" id="reviews">
+<div class="section-header reveal">
+<span class="section-tag">Reviews</span>
+<h2>What Utah <span class="accent">Says About Us</span></h2>
+</div>
+<div class="review-grid">
+<div class="review-card reveal d1">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">My neighbor recommended them and now I understand why. Fair price, showed up on time, fixed the problem fast. Already told three friends!</p>
+<div class="review-author">Jessica P.</div><div class="review-role"><i class="fab fa-google" style="color:#4285f4"></i> Google Review</div>
+</div>
+<div class="review-card reveal d2">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">These guys are the real deal. Honest, affordable, and they actually care about doing quality work. Rare to find a plumber like this.</p>
+<div class="review-author">Brandon H.</div><div class="review-role"><i class="fab fa-google" style="color:#4285f4"></i> Google Review</div>
+</div>
+<div class="review-card reveal d3">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">Third time using Word of Mouth Plumbing. They replaced our water heater and it was seamless. Best plumber in Utah, period.</p>
+<div class="review-author">The Larsen Family</div><div class="review-role"><i class="fab fa-google" style="color:#4285f4"></i> Google Review</div>
+</div>
+</div>
+</section>
+<section class="cta" id="contact">
+<div class="reveal">
+<span class="section-tag">Get in Touch</span>
+<h2>Ready to See <span class="accent">What the Buzz</span> Is About?</h2>
+<p>Join thousands of happy Utah homeowners who trust Word of Mouth Plumbing for all their plumbing needs.</p>
+<a href="tel:8016084334" class="btn-primary"><i class="fas fa-phone"></i> Call (801) 608-4334</a>
+</div>
+</section>
+<footer>
+<div class="footer-grid">
+<div class="footer-brand reveal">
+<h3>Word of Mouth <span>Plumbing</span></h3>
+<p>Utah's most recommended plumber. Built on referrals, driven by quality.</p>
+<div class="footer-social">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-google"></i></a>
+<a href="#"><i class="fab fa-yelp"></i></a>
+</div>
+</div>
+<div class="footer-col reveal d1">
+<h4>Services</h4>
+<a href="#">Leak Repair</a><a href="#">Water Heaters</a><a href="#">Drain Cleaning</a><a href="#">Sewer Repair</a>
+</div>
+<div class="footer-col reveal d2">
+<h4>Hours</h4>
+<a href="#">Mon–Fri: 7am – 6pm</a><a href="#">Sat: 8am – 2pm</a><a href="#">Emergency Available</a>
+</div>
+<div class="footer-col reveal d3">
+<h4>Contact</h4>
+<a href="tel:8016084334">(801) 608-4334</a>
+<a href="#">Utah</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 Word of Mouth Plumbing. All rights reserved.</p>
+<p>Utah</p>
+</div>
+</footer>
+<div class="floating-cta" id="floatingCta"><a href="tel:8016084334" title="Call Now"><i class="fas fa-phone"></i></a></div>
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},800)});
+const nav=document.getElementById('navbar'),fc=document.getElementById('floatingCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60);fc.classList.toggle('visible',scrollY>500)});
+const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('active');ro.unobserve(el.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>

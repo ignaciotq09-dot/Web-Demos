@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avanta Health Professionals | Houston Heights Medical Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--teal:#0d9488;--teal-dark:#0f766e;--teal-light:#ccfbf1;--mint:#5eead4;
+--dark:#0f172a;--white:#ffffff;--gray:#64748b;--light:#f0fdfa;
+--surface:rgba(255,255,255,.7);--glass:rgba(255,255,255,.15);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:#334155;overflow-x:hidden;line-height:1.7;background:var(--white)}
+h1,h2,h3,h4{font-family:'DM Serif Display',serif;font-weight:400;line-height:1.2}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#f1f5f9}
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--teal-dark)}
+
+/* PRELOADER */
+.preloader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader-logo{font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--white);letter-spacing:2px}
+.preloader-logo span{background:linear-gradient(135deg,var(--teal),var(--mint));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;border-radius:2px;overflow:hidden}
+.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:var(--teal);border-radius:2px;animation:preload 1s ease infinite}
+@keyframes preload{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+
+/* REVEALS */
+.reveal{opacity:0;transform:translateY(50px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+.reveal-delay-5{transition-delay:.5s}
+.reveal-delay-6{transition-delay:.6s}
+.reveal-delay-7{transition-delay:.7s}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:0 5%;display:flex;justify-content:space-between;align-items:center;height:80px;transition:all .4s ease}
+nav.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);box-shadow:0 1px 30px rgba(0,0,0,.08);height:70px}
+.nav-logo{font-family:'DM Serif Display',serif;color:var(--white);font-size:1.5rem;text-decoration:none;letter-spacing:1px;transition:color .3s}
+.nav-logo span{color:var(--mint)}
+nav.scrolled .nav-logo{color:var(--dark)}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--teal);transition:width .3s ease}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{width:100%}
+nav.scrolled .nav-links a{color:var(--gray)}
+nav.scrolled .nav-links a:hover{color:var(--dark)}
+.nav-cta{background:var(--teal);color:var(--white)!important;padding:10px 24px;border-radius:50px;font-weight:600;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s;border:none;text-decoration:none}
+.nav-cta:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(13,148,136,.3)}
+.nav-cta::after{display:none!important}
+.nav-phone{display:flex;align-items:center;gap:8px;color:var(--white);text-decoration:none;font-weight:600;font-size:.85rem;transition:color .3s}
+nav.scrolled .nav-phone{color:var(--teal)}
+.mobile-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer}
+nav.scrolled .mobile-toggle{color:var(--dark)}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:var(--dark)}
+.hero-bg{position:absolute;inset:0;background:url('https://placehold.co/1920x1080/0d9488/ffffff?text=Healthcare+Excellence') center/cover;opacity:.15}
+.hero-gradient{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.95) 0%,rgba(13,148,136,.4) 50%,rgba(15,23,42,.9) 100%)}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.3;animation:float 8s ease-in-out infinite}
+.hero-blob-1{width:500px;height:500px;background:var(--teal);top:-10%;right:-5%;animation-delay:0s}
+.hero-blob-2{width:300px;height:300px;background:var(--mint);bottom:10%;left:-5%;animation-delay:3s}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 5% 80px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(13,148,136,.15);border:1px solid rgba(13,148,136,.3);color:var(--mint);padding:8px 20px;border-radius:50px;font-size:.8rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(2.8rem,5vw,4.5rem);color:var(--white);margin-bottom:24px;line-height:1.1}
+.hero h1 .gradient-text{background:linear-gradient(135deg,var(--mint),var(--teal),#a7f3d0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{color:rgba(255,255,255,.7);font-size:1.1rem;line-height:1.8;margin-bottom:36px;max-width:520px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-weight:600;text-decoration:none;transition:all .3s ease;font-size:.9rem;border:none;cursor:pointer}
+.btn-primary{background:var(--teal);color:var(--white);box-shadow:0 4px 15px rgba(13,148,136,.3)}
+.btn-primary:hover{background:var(--teal-dark);transform:translateY(-3px);box-shadow:0 12px 30px rgba(13,148,136,.4)}
+.btn-outline{border:2px solid rgba(255,255,255,.25);color:var(--white);background:transparent}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5);transform:translateY(-3px)}
+.hero-trust{display:flex;gap:32px;flex-wrap:wrap}
+.hero-trust-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.6);font-size:.85rem}
+.hero-trust-item i{color:var(--mint);font-size:1rem}
+.hero-visual{position:relative}
+.hero-card{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:32px;overflow:hidden}
+.hero-card img{width:100%;border-radius:16px;display:block}
+.hero-float-card{position:absolute;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-radius:16px;padding:16px 20px;box-shadow:0 20px 40px rgba(0,0,0,.15);animation:floatCard 6s ease-in-out infinite}
+.hero-float-card.card-1{bottom:-20px;left:-30px;animation-delay:1s}
+.hero-float-card.card-2{top:20px;right:-20px;animation-delay:3s}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-float-card .hfc-icon{width:40px;height:40px;background:var(--teal-light);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--teal);margin-bottom:8px}
+.hero-float-card h4{font-size:.9rem;color:var(--dark);margin-bottom:2px}
+.hero-float-card p{font-size:.75rem;color:var(--gray)}
+
+/* WAVE */
+.wave-section{position:relative;margin-top:-2px}
+.wave-section svg{display:block;width:100%}
+
+/* SECTION STYLES */
+.section{padding:100px 5%}
+.section-center{text-align:center;max-width:600px;margin:0 auto 60px}
+.section-tag{display:inline-block;color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:clamp(2rem,3.5vw,3rem);color:var(--dark);margin-bottom:16px}
+.section-desc{color:var(--gray);font-size:1.05rem;line-height:1.8}
+
+/* SERVICES */
+.services{background:var(--light)}
+.services-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.svc-card{background:var(--white);padding:36px 28px;border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.04);transition:all .4s ease;position:relative;overflow:hidden;border:1px solid #f1f5f9}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--mint));transform:scaleX(0);transition:transform .4s ease;transform-origin:left}
+.svc-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(13,148,136,.1)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-icon{width:64px;height:64px;background:linear-gradient(135deg,var(--teal-light),#e0f7f5);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.4rem;color:var(--teal);transition:all .3s}
+.svc-card:hover .svc-icon{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:var(--white);transform:scale(1.05)}
+.svc-card h3{font-size:1.1rem;color:var(--dark);margin-bottom:10px}
+.svc-card p{color:var(--gray);font-size:.88rem;line-height:1.7}
+
+/* ABOUT */
+.about-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-wrap{position:relative}
+.about-img{border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.1)}
+.about-img img{width:100%;display:block;transition:transform .6s ease}
+.about-img:hover img{transform:scale(1.05)}
+.about-img-badge{position:absolute;bottom:-20px;right:-20px;background:var(--teal);color:var(--white);padding:24px;border-radius:20px;text-align:center;box-shadow:0 15px 30px rgba(13,148,136,.3)}
+.about-img-badge .num{font-family:'DM Serif Display',serif;font-size:2.5rem;display:block}
+.about-img-badge .label{font-size:.75rem;letter-spacing:1px;text-transform:uppercase;opacity:.8}
+.about-text .section-tag{text-align:left}
+.about-text h2{font-size:clamp(1.8rem,3vw,2.6rem);color:var(--dark);margin-bottom:20px}
+.about-text p{color:var(--gray);line-height:1.8;margin-bottom:16px;font-size:1rem}
+.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.feature-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--light);border-radius:12px;transition:all .3s}
+.feature-item:hover{background:var(--teal-light);transform:translateX(4px)}
+.feature-item i{color:var(--teal);font-size:1rem;flex-shrink:0}
+.feature-item span{font-size:.9rem;font-weight:500;color:var(--dark)}
+
+/* STATS */
+.stats-section{background:linear-gradient(135deg,var(--dark) 0%,#1e293b 100%);padding:80px 5%;position:relative;overflow:hidden}
+.stats-section::before{content:'';position:absolute;inset:0;background:repeating-radial-gradient(circle at 25% 25%,transparent 0,transparent 2px,rgba(255,255,255,.01) 2px,rgba(255,255,255,.01) 3px);pointer-events:none}
+.stats-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.stat-item{position:relative}
+.stat-num{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,4vw,3.5rem);background:linear-gradient(135deg,var(--mint),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
+.stat-label{color:rgba(255,255,255,.5);font-size:.85rem;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+/* IMAGING */
+.imaging-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.img-card{background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.06);transition:all .4s ease;border:1px solid #f1f5f9}
+.img-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(13,148,136,.12)}
+.img-card-img{overflow:hidden;height:220px}
+.img-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.img-card:hover .img-card-img img{transform:scale(1.08)}
+.img-card-body{padding:28px}
+.img-card h3{font-size:1.15rem;color:var(--dark);margin-bottom:10px}
+.img-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
+
+/* TEAM SECTION */
+.team-section{background:var(--light);position:relative;overflow:hidden}
+.team-section::before{content:'';position:absolute;top:0;left:0;right:0;height:100%;background:linear-gradient(180deg,var(--white) 0%,var(--light) 30%,var(--light) 70%,var(--white) 100%);pointer-events:none}
+.team-content{position:relative;z-index:2;max-width:800px;margin:0 auto;text-align:center}
+.team-content h2{font-size:clamp(2rem,3vw,2.8rem);color:var(--dark);margin-bottom:20px}
+.team-content p{color:var(--gray);font-size:1.05rem;line-height:1.8;margin-bottom:32px}
+
+/* REVIEWS */
+.reviews-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.review-card{background:var(--white);padding:36px;border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,.04);position:relative;transition:all .4s ease;border:1px solid #f1f5f9}
+.review-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.08)}
+.review-card::before{content:'"';font-family:'DM Serif Display',serif;font-size:5rem;color:var(--teal);opacity:.1;position:absolute;top:10px;left:24px;line-height:1}
+.review-stars{color:#f59e0b;font-size:.9rem;margin-bottom:16px;display:flex;gap:2px}
+.review-card p{color:var(--gray);font-style:italic;line-height:1.8;margin-bottom:20px;position:relative;z-index:1;font-size:.95rem}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-author-avatar{width:44px;height:44px;background:linear-gradient(135deg,var(--teal),var(--mint));border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:.9rem}
+.review-author-info strong{color:var(--dark);font-size:.9rem;display:block}
+.review-author-info span{color:var(--gray);font-size:.8rem}
+
+/* CTA */
+.cta-section{position:relative;padding:100px 5%;overflow:hidden;background:linear-gradient(135deg,var(--teal),var(--teal-dark))}
+.cta-section::before{content:'';position:absolute;inset:0;background:repeating-radial-gradient(circle at 50% 50%,transparent 0,transparent 3px,rgba(255,255,255,.03) 3px,rgba(255,255,255,.03) 4px)}
+.cta-blob{position:absolute;border-radius:50%;background:rgba(255,255,255,.1);filter:blur(60px)}
+.cta-blob-1{width:400px;height:400px;top:-100px;right:-100px}
+.cta-blob-2{width:300px;height:300px;bottom:-100px;left:-50px}
+.cta-content{position:relative;z-index:2;max-width:700px;margin:0 auto;text-align:center;color:var(--white)}
+.cta-content h2{font-size:clamp(2rem,3.5vw,3rem);margin-bottom:16px}
+.cta-content p{opacity:.85;font-size:1.1rem;margin-bottom:36px;line-height:1.8}
+.cta-content .btn{background:var(--white);color:var(--teal);font-weight:700}
+.cta-content .btn:hover{transform:translateY(-3px);box-shadow:0 15px 30px rgba(0,0,0,.2)}
+.cta-phone{display:block;margin-top:20px;color:rgba(255,255,255,.8);font-size:1.3rem;font-family:'DM Serif Display',serif;text-decoration:none;transition:color .3s}
+.cta-phone:hover{color:var(--white)}
+
+/* FOOTER */
+footer{background:var(--dark);color:rgba(255,255,255,.6);padding:80px 5% 40px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:48px}
+.footer-col h4{color:var(--white);font-family:'DM Serif Display',serif;font-size:1.15rem;margin-bottom:24px}
+.footer-col p{line-height:1.9;font-size:.9rem}
+.footer-col a{color:rgba(255,255,255,.6);text-decoration:none;display:block;padding:4px 0;font-size:.9rem;transition:all .3s}
+.footer-col a:hover{color:var(--mint);transform:translateX(4px)}
+.footer-social{display:flex;gap:12px;margin-top:20px}
+.footer-social a{width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);transition:all .3s;transform:none!important}
+.footer-social a:hover{background:var(--teal);border-color:var(--teal);color:var(--white)}
+.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;font-size:.85rem}
+
+/* FLOATING CTA */
+.floating-cta{position:fixed;bottom:24px;right:24px;z-index:900;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.floating-btn{display:flex;align-items:center;gap:10px;background:var(--teal);color:var(--white);padding:14px 24px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.85rem;box-shadow:0 8px 25px rgba(13,148,136,.4);transition:all .3s;animation:pulse-shadow 2s ease infinite}
+.floating-btn:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(13,148,136,.5)}
+@keyframes pulse-shadow{0%,100%{box-shadow:0 8px 25px rgba(13,148,136,.4)}50%{box-shadow:0 8px 35px rgba(13,148,136,.6)}}
+
+/* DIAGONAL SECTION */
+.diagonal-section{position:relative;padding:120px 5% 100px;clip-path:polygon(0 5%,100% 0,100% 95%,0 100%);background:var(--light)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.services-grid{grid-template-columns:repeat(2,1fr)}
+.hero-content{grid-template-columns:1fr;text-align:center}
+.hero-desc{margin-left:auto;margin-right:auto}
+.hero-btns,.hero-trust{justify-content:center}
+.hero-visual{max-width:500px;margin:0 auto}
+}
+@media(max-width:768px){
+.nav-links{display:none}.mobile-toggle{display:block}
+.services-grid,.imaging-grid,.reviews-grid{grid-template-columns:1fr}
+.about-grid{grid-template-columns:1fr;gap:40px}
+.stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+.features-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+.footer-bottom{flex-direction:column;gap:8px;text-align:center}
+.diagonal-section{clip-path:none;padding:80px 5%}
+}
+</style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="preloader">
+<div>
+<div class="preloader-logo">Avanta <span>Health</span></div>
+<div class="preloader-bar"></div>
+</div>
+</div>
+
+<!-- Nav -->
+<nav>
+<a href="#" class="nav-logo">Avanta <span>Health</span></a>
+<ul class="nav-links">
+<li><a href="#services">Services</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#imaging">Imaging</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="tel:7135275000" class="nav-phone"><i class="fas fa-phone"></i> (713) 527-5000</a></li>
+<li><a href="#contact" class="nav-cta">Book Appointment</a></li>
+</ul>
+<button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-gradient"></div>
+<div class="hero-blob hero-blob-1"></div>
+<div class="hero-blob hero-blob-2"></div>
+<div class="hero-content">
+<div class="hero-text">
+<div class="hero-tag reveal"><i class="fas fa-shield-heart"></i> Trusted Healthcare in Houston Heights</div>
+<h1 class="reveal reveal-delay-1">Compassionate <span class="gradient-text">Medical Care</span> You Deserve</h1>
+<p class="hero-desc reveal reveal-delay-2">Providing high quality, patient-centered healthcare with dedicated physicians and state-of-the-art diagnostics in the heart of Houston Heights.</p>
+<div class="hero-btns reveal reveal-delay-3">
+<a href="tel:7135275000" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+<a href="#services" class="btn btn-outline"><i class="fas fa-arrow-down"></i> Our Services</a>
+</div>
+<div class="hero-trust reveal reveal-delay-4">
+<div class="hero-trust-item"><i class="fas fa-user-md"></i> Board Certified</div>
+<div class="hero-trust-item"><i class="fas fa-clock"></i> Same-Day Visits</div>
+<div class="hero-trust-item"><i class="fas fa-heart-pulse"></i> In-House Diagnostics</div>
+</div>
+</div>
+<div class="hero-visual reveal reveal-delay-3">
+<div class="hero-card">
+<img src="https://placehold.co/600x400/e0f7f5/0d9488?text=Expert+Healthcare" alt="Avanta Health">
+</div>
+<div class="hero-float-card card-1">
+<div class="hfc-icon"><i class="fas fa-star"></i></div>
+<h4>5-Star Rated</h4>
+<p>Exceptional patient care</p>
+</div>
+<div class="hero-float-card card-2">
+<div class="hfc-icon"><i class="fas fa-shield-alt"></i></div>
+<h4>Most Insurance Accepted</h4>
+<p>Hassle-free billing</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Wave -->
+<div class="wave-section"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#f0fdfa" d="M0,60 C360,120 1080,0 1440,80 L1440,120 L0,120Z"/></svg></div>
+
+<!-- Services -->
+<section class="section services" id="services">
+<div class="section-center">
+<span class="section-tag reveal">Our Specialties</span>
+<h2 class="section-title reveal reveal-delay-1">Comprehensive Medical Services</h2>
+<p class="section-desc reveal reveal-delay-2">Specialized treatments tailored to your unique health needs, all under one roof.</p>
+</div>
+<div class="services-grid">
+<div class="svc-card reveal"><div class="svc-icon"><i class="fas fa-heartbeat"></i></div><h3>Internal Medicine</h3><p>Comprehensive primary care for adults including preventive screenings and chronic disease management.</p></div>
+<div class="svc-card reveal reveal-delay-1"><div class="svc-icon"><i class="fas fa-tint"></i></div><h3>Diabetes Care</h3><p>Advanced diabetes management with continuous glucose monitoring and personalized treatment plans.</p></div>
+<div class="svc-card reveal reveal-delay-2"><div class="svc-icon"><i class="fas fa-heart"></i></div><h3>Heart Disease</h3><p>Cardiac evaluation, EKG, stress testing, and ongoing cardiovascular monitoring.</p></div>
+<div class="svc-card reveal reveal-delay-3"><div class="svc-icon"><i class="fas fa-hand-holding-medical"></i></div><h3>Pain Management</h3><p>Multimodal pain therapies combining modern techniques with rehabilitation.</p></div>
+<div class="svc-card reveal reveal-delay-4"><div class="svc-icon"><i class="fas fa-stethoscope"></i></div><h3>Hypertension</h3><p>Blood pressure management with lifestyle guidance and medication optimization.</p></div>
+<div class="svc-card reveal reveal-delay-5"><div class="svc-icon"><i class="fas fa-weight"></i></div><h3>Obesity Treatment</h3><p>Medical weight management with nutritional counseling and metabolic assessment.</p></div>
+<div class="svc-card reveal reveal-delay-6"><div class="svc-icon"><i class="fas fa-walking"></i></div><h3>Rehabilitation</h3><p>Physical rehabilitation programs designed to restore mobility and function.</p></div>
+<div class="svc-card reveal reveal-delay-7"><div class="svc-icon"><i class="fas fa-vials"></i></div><h3>Lab Services</h3><p>In-house laboratory with same-day results for blood work and diagnostic panels.</p></div>
+</div>
+</section>
+
+<!-- Wave -->
+<div class="wave-section"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#ffffff" d="M0,80 C480,0 960,120 1440,40 L1440,120 L0,120Z"/></svg></div>
+
+<!-- About -->
+<section class="section" id="about">
+<div class="about-grid">
+<div class="about-img-wrap reveal">
+<div class="about-img"><img src="https://placehold.co/600x500/0d9488/ffffff?text=Our+Medical+Team" alt="Avanta Health Team"></div>
+<div class="about-img-badge"><span class="num">20+</span><span class="label">Years Experience</span></div>
+</div>
+<div class="about-text">
+<span class="section-tag reveal">About Us</span>
+<h2 class="reveal reveal-delay-1">Your Health Is Our Mission</h2>
+<p class="reveal reveal-delay-2">Located in the heart of Houston Heights, Avanta Health Professionals provides compassionate, patient-centered care. Our board-certified physicians combine decades of experience with the latest medical technology.</p>
+<p class="reveal reveal-delay-3">We take the time to listen, understand, and create personalized treatment plans. From routine checkups to complex medical conditions, your wellbeing is always our top priority.</p>
+<div class="features-grid">
+<div class="feature-item reveal reveal-delay-3"><i class="fas fa-check-circle"></i><span>Board Certified Physicians</span></div>
+<div class="feature-item reveal reveal-delay-4"><i class="fas fa-check-circle"></i><span>Same-Day Appointments</span></div>
+<div class="feature-item reveal reveal-delay-5"><i class="fas fa-check-circle"></i><span>In-House Diagnostics</span></div>
+<div class="feature-item reveal reveal-delay-6"><i class="fas fa-check-circle"></i><span>Most Insurance Accepted</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Stats -->
+<section class="stats-section">
+<div class="stats-grid">
+<div class="stat-item reveal"><span class="stat-num" data-target="20">0</span><span class="stat-label">Years Experience</span></div>
+<div class="stat-item reveal reveal-delay-1"><span class="stat-num" data-target="10000">0</span><span class="stat-label">Patients Served</span></div>
+<div class="stat-item reveal reveal-delay-2"><span class="stat-num" data-target="98">0</span><span class="stat-label">% Satisfaction</span></div>
+<div class="stat-item reveal reveal-delay-3"><span class="stat-num" data-target="8">0</span><span class="stat-label">Specialties</span></div>
+</div>
+</section>
+
+<!-- Imaging -->
+<section class="section diagonal-section" id="imaging">
+<div class="section-center">
+<span class="section-tag reveal">Diagnostics</span>
+<h2 class="section-title reveal reveal-delay-1">Advanced Medical Imaging</h2>
+<p class="section-desc reveal reveal-delay-2">State-of-the-art diagnostic imaging services available during your office visit.</p>
+</div>
+<div class="imaging-grid">
+<div class="img-card reveal"><div class="img-card-img"><img src="https://placehold.co/500x300/e0f7f5/0d9488?text=X-Ray+Services" alt="X-Rays"></div><div class="img-card-body"><h3>Digital X-Rays</h3><p>Immediate digital x-rays during your visit including chest, abdominal, and all extremity imaging with rapid results.</p></div></div>
+<div class="img-card reveal reveal-delay-1"><div class="img-card-img"><img src="https://placehold.co/500x300/e0f7f5/0d9488?text=Echocardiograms" alt="Echo"></div><div class="img-card-body"><h3>Echocardiograms</h3><p>Advanced cardiac imaging to assess heart structure and function with state-of-the-art ultrasound technology.</p></div></div>
+<div class="img-card reveal reveal-delay-2"><div class="img-card-img"><img src="https://placehold.co/500x300/e0f7f5/0d9488?text=Doppler+Studies" alt="Doppler"></div><div class="img-card-body"><h3>Doppler Studies</h3><p>Venous and arterial doppler studies evaluating circulation and detecting vascular conditions early.</p></div></div>
+</div>
+</section>
+
+<!-- Team -->
+<section class="section team-section">
+<div class="team-content">
+<span class="section-tag reveal">Our Physicians</span>
+<h2 class="reveal reveal-delay-1">Experienced, Caring Doctors</h2>
+<p class="reveal reveal-delay-2">Our board-certified physicians bring decades of combined experience and a genuine passion for patient care. We treat every patient like family.</p>
+<a href="tel:7135275000" class="btn btn-primary reveal reveal-delay-3"><i class="fas fa-calendar-check"></i> Schedule a Visit</a>
+</div>
+</section>
+
+<!-- Reviews -->
+<section class="section" id="reviews">
+<div class="section-center">
+<span class="section-tag reveal">Patient Reviews</span>
+<h2 class="section-title reveal reveal-delay-1">Trusted by Houston Heights</h2>
+<p class="section-desc reveal reveal-delay-2">Hear from patients who trust Avanta Health Professionals with their care.</p>
+</div>
+<div class="reviews-grid">
+<div class="review-card reveal">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"The doctors here are incredibly thorough and take the time to explain everything. I never feel rushed. Best medical experience in Houston."</p>
+<div class="review-author"><div class="review-author-avatar">MR</div><div class="review-author-info"><strong>Maria R.</strong><span>Patient since 2019</span></div></div>
+</div>
+<div class="review-card reveal reveal-delay-1">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"Same-day appointments are a lifesaver. The staff is warm, professional, and the in-house lab means I get results fast. Highly recommend!"</p>
+<div class="review-author"><div class="review-author-avatar">JT</div><div class="review-author-info"><strong>James T.</strong><span>Patient since 2021</span></div></div>
+</div>
+<div class="review-card reveal reveal-delay-2">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p>"After years of feeling unheard at other clinics, Avanta changed everything. They truly care about your health and wellbeing."</p>
+<div class="review-author"><div class="review-author-avatar">SW</div><div class="review-author-info"><strong>Sandra W.</strong><span>Patient since 2020</span></div></div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+<div class="cta-blob cta-blob-1"></div>
+<div class="cta-blob cta-blob-2"></div>
+<div class="cta-content">
+<h2 class="reveal">New Patients Welcome</h2>
+<p class="reveal reveal-delay-1">We're accepting new patients and most insurance plans. Experience the Avanta difference — schedule your first visit today.</p>
+<a href="tel:7135275000" class="btn reveal reveal-delay-2"><i class="fas fa-calendar-check"></i> Book Your Appointment</a>
+<a href="tel:7135275000" class="cta-phone reveal reveal-delay-3"><i class="fas fa-phone"></i> (713) 527-5000</a>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="footer-grid">
+<div class="footer-col">
+<h4>Avanta Health Professionals</h4>
+<p>Providing high quality, compassionate medical care in Houston Heights. Your health is our mission.</p>
+<div class="footer-social">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-google"></i></a>
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Services</h4>
+<a href="#">Internal Medicine</a>
+<a href="#">Diabetes Care</a>
+<a href="#">Heart Disease</a>
+<a href="#">Pain Management</a>
+<a href="#">Hypertension</a>
+<a href="#">Lab Services</a>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<a href="#services">Our Services</a>
+<a href="#about">About Us</a>
+<a href="#imaging">Medical Imaging</a>
+<a href="#reviews">Patient Reviews</a>
+<a href="#contact">Contact Us</a>
+</div>
+<div class="footer-col">
+<h4>Contact Info</h4>
+<p><i class="fas fa-map-marker-alt" style="color:var(--teal);margin-right:8px"></i>Houston Heights<br>Houston, TX</p>
+<p style="margin-top:12px"><i class="fas fa-phone" style="color:var(--teal);margin-right:8px"></i>(713) 527-5000</p>
+<p style="margin-top:12px"><i class="fas fa-envelope" style="color:var(--teal);margin-right:8px"></i>info@avantahealthprofessionals.com</p>
+<p style="margin-top:12px"><i class="fas fa-clock" style="color:var(--teal);margin-right:8px"></i>Mon–Fri: 9am – 5pm</p>
+</div>
+</div>
+<div class="footer-bottom">
+<span>&copy; 2026 Avanta Health Professionals. All Rights Reserved.</span>
+<span>Designed with <i class="fas fa-heart" style="color:var(--teal)"></i> for better health</span>
+</div>
+</footer>
+
+<!-- Floating CTA -->
+<a href="tel:7135275000" class="floating-btn"><i class="fas fa-phone"></i> Call Now — (713) 527-5000</a>
+
+<script>
+// Preloader
+window.addEventListener('load',()=>{setTimeout(()=>{document.querySelector('.preloader').classList.add('hidden')},600)});
+
+// Nav scroll
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>80)});
+
+// Scroll reveals
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Counter animation
+function animateCounters(){
+document.querySelectorAll('.stat-num[data-target]').forEach(el=>{
+const target=parseInt(el.dataset.target);
+const duration=2000;
+const start=performance.now();
+function update(now){
+const elapsed=now-start;
+const progress=Math.min(elapsed/duration,1);
+const eased=1-Math.pow(1-progress,3);
+let val=Math.floor(eased*target);
+if(target>=10000)el.textContent=val.toLocaleString()+'+';
+else if(target===98)el.textContent=val+'%';
+else el.textContent=val+'+';
+if(progress<1)requestAnimationFrame(update);
+}
+requestAnimationFrame(update);
+});
+}
+const counterObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){animateCounters();counterObs.unobserve(e.target)}})},{threshold:.3});
+const statsEl=document.querySelector('.stats-section');
+if(statsEl)counterObs.observe(statsEl);
+</script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>America's Best Electric | Houston, TX — Since 1972</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--dark:#0b0e14;--gold:#d4a531;--gold2:#e8bd4e;--red:#c0392b;--navy:#1a2332;--light:#f5f0e8;--white:#fff;--text:#2d3748;--text-light:#64748b}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;color:var(--text);overflow-x:hidden;background:var(--light)}
+h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;letter-spacing:1.5px}
+.preloader{position:fixed;inset:0;background:var(--dark);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader h2{font-family:'Bebas Neue',sans-serif;color:var(--white);font-size:2.5rem;letter-spacing:6px}
+.preloader h2 span{color:var(--gold)}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;border-radius:2px;overflow:hidden}
+.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--gold),var(--red));animation:slide 1s ease infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+.reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.16,1,.3,1)}.reveal.active{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:linear-gradient(90deg,var(--navy),var(--dark));padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--gold)}
+.phone-bar a{color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.phone-bar .sep{width:4px;height:4px;border-radius:50%;background:rgba(212,165,49,.3)}
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:72px;transition:all .4s}
+nav.scrolled{background:rgba(11,14,20,.97);backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.4);top:0}
+.nav-logo{font-family:'Bebas Neue',sans-serif;color:var(--white);font-size:1.8rem;text-decoration:none;letter-spacing:3px}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--dark)!important;padding:10px 28px;border-radius:4px;font-weight:800;transition:all .3s}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 25px rgba(212,165,49,.3)}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;padding:140px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(212,165,49,.08),transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(192,57,43,.04),transparent 50%)}
+.stars-bg{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 20%,rgba(212,165,49,.15),transparent),radial-gradient(1px 1px at 30% 60%,rgba(212,165,49,.1),transparent),radial-gradient(1px 1px at 60% 30%,rgba(212,165,49,.12),transparent),radial-gradient(1px 1px at 80% 70%,rgba(212,165,49,.08),transparent),radial-gradient(1px 1px at 50% 80%,rgba(212,165,49,.1),transparent)}
+.hero-content{max-width:650px;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,165,49,.08);border:1px solid rgba(212,165,49,.2);color:var(--gold);padding:10px 22px;border-radius:4px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:4px;margin-bottom:24px}
+.hero h1{font-size:clamp(3rem,7vw,6rem);color:var(--white);line-height:.9;margin-bottom:24px}
+.hero h1 .accent{color:var(--gold)}
+.hero h1 .year{font-size:.4em;color:rgba(255,255,255,.3);display:block;letter-spacing:8px}
+.hero p{color:rgba(255,255,255,.45);font-size:1.05rem;max-width:500px;line-height:1.8;margin-bottom:36px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--dark);padding:16px 36px;border-radius:4px;text-decoration:none;font-weight:800;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:10px}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-3px);box-shadow:0 12px 30px rgba(212,165,49,.3)}
+.btn-outline{border:2px solid rgba(212,165,49,.2);color:var(--gold);padding:16px 36px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;transition:all .3s}
+.btn-outline:hover{border-color:var(--gold);background:rgba(212,165,49,.05)}
+.hero-stats{display:flex;gap:50px;margin-top:60px}
+.hero-stat .num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--gold)}
+.hero-stat .label{color:rgba(255,255,255,.3);font-size:.65rem;text-transform:uppercase;letter-spacing:4px;margin-top:4px}
+.section-tag{color:var(--gold);font-size:.65rem;text-transform:uppercase;letter-spacing:6px;font-weight:700;margin-bottom:12px;display:block}
+.section-header{text-align:center;max-width:650px;margin:0 auto 60px}
+.section-header h2{font-size:clamp(2rem,4vw,3.5rem);color:var(--dark);line-height:1}
+.section-header h2 .accent{color:var(--gold)}
+.section-header p{color:var(--text-light);margin-top:16px;line-height:1.8}
+.services{padding:120px 6%;background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.service-card{background:var(--light);border-radius:12px;padding:40px 30px;transition:all .4s;position:relative;overflow:hidden;border:1px solid transparent}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.06);border-color:rgba(212,165,49,.2)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:56px;height:56px;border-radius:8px;background:rgba(212,165,49,.08);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--gold);font-size:1.4rem}
+.service-card h3{font-size:1.7rem;color:var(--dark);margin-bottom:12px}
+.service-card p{color:var(--text-light);font-size:.9rem;line-height:1.8}
+.legacy{padding:120px 6%;background:var(--light)}
+.legacy-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.legacy-timeline{position:relative;padding-left:30px;border-left:2px solid rgba(212,165,49,.2)}
+.timeline-item{margin-bottom:30px;position:relative}
+.timeline-item::before{content:'';position:absolute;left:-36px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--gold)}
+.timeline-item h4{font-size:1.3rem;color:var(--dark);margin-bottom:4px}
+.timeline-item p{color:var(--text-light);font-size:.88rem;line-height:1.7}
+.legacy-text h2{font-size:clamp(2rem,4vw,3rem);color:var(--dark);margin-bottom:20px}
+.legacy-text h2 .accent{color:var(--gold)}
+.legacy-text p{color:var(--text-light);line-height:1.9;margin-bottom:16px}
+.reviews{padding:120px 6%;background:var(--white)}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.review-card{background:var(--light);border-radius:12px;padding:36px 30px;position:relative}
+.review-card::before{content:'"';font-family:'Bebas Neue',sans-serif;font-size:6rem;color:var(--gold);opacity:.15;position:absolute;top:0;right:20px;line-height:1}
+.review-stars{color:var(--gold);font-size:.85rem;margin-bottom:14px;display:flex;gap:3px}
+.review-text{color:var(--text-light);font-size:.92rem;line-height:1.8;margin-bottom:18px;font-style:italic}
+.review-author{font-weight:700;font-size:.88rem;color:var(--dark)}
+.review-role{font-size:.75rem;color:var(--text-light)}
+.cta{padding:120px 6%;background:var(--dark);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(212,165,49,.06),transparent 60%)}
+.cta h2{font-size:clamp(2.5rem,5vw,4rem);color:var(--white);margin-bottom:20px}
+.cta h2 .accent{color:var(--gold)}
+.cta p{color:rgba(255,255,255,.35);max-width:550px;margin:0 auto 36px;line-height:1.8}
+.cta .btn-primary{font-size:.9rem;padding:20px 44px}
+footer{background:#060810;padding:80px 6% 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--white);margin-bottom:14px;letter-spacing:2px}
+.footer-brand h3 span{color:var(--gold)}
+.footer-brand p{color:rgba(255,255,255,.25);font-size:.85rem;line-height:1.8;margin-bottom:18px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);text-decoration:none;transition:all .3s}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col h4{color:var(--gold);font-size:.65rem;letter-spacing:4px;margin-bottom:18px}
+.footer-col a{display:block;color:rgba(255,255,255,.25);text-decoration:none;font-size:.85rem;margin-bottom:10px;transition:all .3s}
+.footer-col a:hover{color:var(--gold);padding-left:4px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);margin-top:50px;padding-top:20px;display:flex;justify-content:space-between;color:rgba(255,255,255,.15);font-size:.8rem;flex-wrap:wrap;gap:10px}
+.floating-cta{position:fixed;bottom:24px;right:24px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}
+.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:56px;height:56px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:var(--dark);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(212,165,49,.4);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(212,165,49,.4)}50%{box-shadow:0 8px 50px rgba(212,165,49,.6)}}
+@media(max-width:968px){.nav-links{display:none}.mobile-toggle{display:block}.legacy-grid{grid-template-columns:1fr;gap:40px}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}.hero-stats{gap:30px;flex-wrap:wrap}}
+@media(max-width:600px){.hero h1{font-size:clamp(2.5rem,10vw,3.5rem)}.services-grid,.review-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.phone-bar{font-size:.7rem;gap:8px}}
+</style>
+</head>
+<body>
+<div class="preloader" id="preloader"><div><h2>America's Best <span>Electric</span></h2><div class="preloader-bar"></div></div></div>
+<div class="phone-bar">
+<a href="tel:3463975562"><i class="fas fa-phone"></i> (346) 397-5562</a>
+<span class="sep"></span>
+<span><i class="fas fa-map-marker-alt"></i> Houston, TX</span>
+<span class="sep"></span>
+<span><i class="fas fa-bolt"></i> Serving Houston Since 1972</span>
+</div>
+<nav id="navbar">
+<a href="#" class="nav-logo">America's Best <span>Electric</span></a>
+<ul class="nav-links">
+<li><a href="#services">Services</a></li>
+<li><a href="#legacy">Our Legacy</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact" class="nav-cta">Call Now</a></li>
+</ul>
+<button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+<section class="hero">
+<div class="stars-bg"></div>
+<div class="hero-content">
+<div class="hero-badge"><i class="fas fa-flag-usa"></i> America's Best Since 1972</div>
+<h1>Houston's <span class="accent">Legendary</span> Electricians<span class="year">★ Established 1972 ★</span></h1>
+<p>Over 50 years of powering Houston homes and businesses. Licensed master electricians delivering excellence for three generations.</p>
+<div class="hero-btns">
+<a href="tel:3463975562" class="btn-primary"><i class="fas fa-phone"></i> (346) 397-5562</a>
+<a href="#services" class="btn-outline">Our Services</a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num">52+</div><div class="label">Years in Business</div></div>
+<div class="hero-stat"><div class="num">50K+</div><div class="label">Jobs Completed</div></div>
+<div class="hero-stat"><div class="num">4.9★</div><div class="label">Customer Rating</div></div>
+</div>
+</div>
+</section>
+<section class="services" id="services">
+<div class="section-header reveal">
+<span class="section-tag">Our Services</span>
+<h2>Electrical <span class="accent">Excellence</span></h2>
+<p>Complete residential and commercial electrical services from Houston's most experienced team of licensed electricians.</p>
+</div>
+<div class="services-grid">
+<div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-bolt"></i></div><h3>Panel Upgrades</h3><p>Modernize your electrical panel for safety and capacity. 100A, 200A, and 400A panel installations and upgrades.</p></div>
+<div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-plug"></i></div><h3>Wiring & Rewiring</h3><p>Full home rewiring, new construction wiring, and circuit additions by licensed master electricians.</p></div>
+<div class="service-card reveal d3"><div class="service-icon"><i class="fas fa-lightbulb"></i></div><h3>Lighting</h3><p>Interior, exterior, landscape, and recessed lighting design and installation for homes and businesses.</p></div>
+<div class="service-card reveal d4"><div class="service-icon"><i class="fas fa-car-battery"></i></div><h3>EV Chargers</h3><p>Tesla and universal EV charger installation. Level 2 charging stations for your home or commercial property.</p></div>
+<div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-house-signal"></i></div><h3>Smart Home</h3><p>Smart switches, automated lighting, and whole-home automation wiring and setup.</p></div>
+<div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-generator"></i></div><h3>Generators</h3><p>Whole-home standby generator installation. Never lose power during Houston storms again.</p></div>
+</div>
+</section>
+<section class="legacy" id="legacy">
+<div class="legacy-grid">
+<div class="legacy-text reveal">
+<span class="section-tag">Our Legacy</span>
+<h2>50+ Years of <span class="accent">Excellence</span></h2>
+<p>Founded in 1972, America's Best Electric has been a cornerstone of Houston's electrical industry for over half a century. What started as a one-man operation has grown into one of the most trusted electrical companies in Texas.</p>
+<p>Three generations of master electricians have carried forward our founding principles: quality workmanship, honest pricing, and unwavering commitment to safety.</p>
+</div>
+<div class="legacy-timeline reveal">
+<div class="timeline-item"><h4>1972</h4><p>Founded in Houston, TX. Started with residential electrical services.</p></div>
+<div class="timeline-item"><h4>1985</h4><p>Expanded into commercial electrical contracting. Grew to a team of 15.</p></div>
+<div class="timeline-item"><h4>2000</h4><p>Second generation takes the helm. Modernized operations and expanded service area.</p></div>
+<div class="timeline-item"><h4>2020</h4><p>Third generation joins. Added EV charging and smart home services.</p></div>
+<div class="timeline-item"><h4>Today</h4><p>50,000+ jobs completed. Still family-owned, still Houston's best.</p></div>
+</div>
+</div>
+</section>
+<section class="reviews" id="reviews">
+<div class="section-header reveal">
+<span class="section-tag">Testimonials</span>
+<h2>What Houston <span class="accent">Says</span></h2>
+</div>
+<div class="review-grid">
+<div class="review-card reveal d1">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">My family has used America's Best since the 80s. They rewired my grandparents' house, my parents' house, and now mine. That's trust.</p>
+<div class="review-author">Robert G.</div><div class="review-role"><i class="fab fa-google" style="color:#4285f4"></i> Google Review</div>
+</div>
+<div class="review-card reveal d2">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">Installed our whole-home generator before hurricane season. Professional, on-time, and fair pricing. Living up to their name!</p>
+<div class="review-author">Patricia M.</div><div class="review-role"><i class="fab fa-google" style="color:#4285f4"></i> Google Review</div>
+</div>
+<div class="review-card reveal d3">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">Upgraded our panel and installed Tesla charger. They really are the best — 50 years of experience shows in every detail.</p>
+<div class="review-author">James & Donna H.</div><div class="review-role"><i class="fab fa-google" style="color:#4285f4"></i> Google Review</div>
+</div>
+</div>
+</section>
+<section class="cta" id="contact">
+<div class="reveal">
+<span class="section-tag">Contact Us</span>
+<h2>Power Your Home With <span class="accent">The Best</span></h2>
+<p>Over 50 years of trusted electrical service. Call America's Best Electric today for expert solutions.</p>
+<a href="tel:3463975562" class="btn-primary"><i class="fas fa-phone"></i> Call (346) 397-5562</a>
+</div>
+</section>
+<footer>
+<div class="footer-grid">
+<div class="footer-brand reveal">
+<h3>America's Best <span>Electric</span></h3>
+<p>Houston's most trusted electricians since 1972. Three generations of excellence.</p>
+<div class="footer-social">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-google"></i></a>
+<a href="#"><i class="fab fa-yelp"></i></a>
+</div>
+</div>
+<div class="footer-col reveal d1">
+<h4>Services</h4>
+<a href="#">Panel Upgrades</a><a href="#">Wiring</a><a href="#">Lighting</a><a href="#">EV Chargers</a><a href="#">Generators</a>
+</div>
+<div class="footer-col reveal d2">
+<h4>Hours</h4>
+<a href="#">Mon–Fri: 7am – 6pm</a><a href="#">Saturday: 8am – 2pm</a><a href="#">Emergency: 24/7</a>
+</div>
+<div class="footer-col reveal d3">
+<h4>Contact</h4>
+<a href="tel:3463975562">(346) 397-5562</a>
+<a href="#">Houston, TX</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 America's Best Electric. All rights reserved.</p>
+<p>Houston, TX — Since 1972</p>
+</div>
+</footer>
+<div class="floating-cta" id="floatingCta"><a href="tel:3463975562" title="Call Now"><i class="fas fa-phone"></i></a></div>
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},800)});
+const nav=document.getElementById('navbar'),fc=document.getElementById('floatingCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60);fc.classList.toggle('visible',scrollY>500)});
+const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('active');ro.unobserve(el.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>

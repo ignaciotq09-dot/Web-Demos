@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HW Barbering | Highlands Ranch, CO</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--deep:#0b1222;--dark:#111827;--blue:#3b82f6;--blue2:#60a5fa;--steel:#94a3b8;--cream:#f1f5f9;--white:#fff;--accent:#c8a97e;--accent2:#e0c9a6}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--cream);overflow-x:hidden;background:var(--deep)}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--deep)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--blue),var(--accent));border-radius:4px}
+
+.preloader{position:fixed;inset:0;background:var(--deep);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader-inner{text-align:center}
+.preloader-inner h2{font-family:'Playfair Display',serif;color:var(--cream);font-size:2.8rem;font-weight:300;letter-spacing:6px;opacity:0;animation:fadeUp .8s .2s forwards}
+.preloader-inner h2 span{background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;border-radius:2px;overflow:hidden}
+.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--blue),var(--accent));animation:slide 1s ease infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(15px)}}
+
+.reveal{opacity:0;transform:translateY(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.9);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.active{opacity:1;transform:scale(1)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:linear-gradient(90deg,var(--blue),var(--accent));padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--white)}
+.phone-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.phone-bar a:hover{text-decoration:underline}
+.phone-bar .separator{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
+
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:80px;transition:all .4s}
+nav.scrolled{background:rgba(11,18,34,.95);backdrop-filter:blur(24px);box-shadow:0 8px 32px rgba(0,0,0,.4);height:68px;top:0}
+.nav-logo{font-family:'Playfair Display',serif;color:var(--cream);font-size:1.6rem;font-weight:700;text-decoration:none;letter-spacing:1px}
+.nav-logo span{background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{color:rgba(241,245,249,.5);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--accent));transition:width .3s}
+.nav-links a:hover{color:var(--cream)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--blue2));color:var(--white);padding:12px 30px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s;border:none}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(59,130,246,.4)}
+.mobile-toggle{display:none;color:var(--cream);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(11,18,34,.98);z-index:10002;flex-direction:column;align-items:center;justify-content:center;gap:30px;opacity:0;visibility:hidden;transition:all .4s}
+.mobile-menu.open{opacity:1;visibility:visible;display:flex}
+.mobile-menu a{color:var(--cream);text-decoration:none;font-family:'Playfair Display',serif;font-size:2rem;transition:color .3s}
+.mobile-menu a:hover{color:var(--blue)}
+.mobile-close{position:absolute;top:30px;right:30px;background:none;border:none;color:var(--cream);font-size:2rem;cursor:pointer}
+
+.hero{min-height:100vh;padding-top:116px;display:flex;align-items:center;justify-content:center;text-align:center;padding-left:5%;padding-right:5%;position:relative;overflow:hidden}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(59,130,246,.08),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(200,169,126,.06),transparent 50%)}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.12;animation:blobFloat 8s ease-in-out infinite}
+.hero-blob-1{width:400px;height:400px;background:var(--blue);top:-100px;right:-100px}
+.hero-blob-2{width:300px;height:300px;background:var(--accent);bottom:0;left:-50px;animation-delay:-3s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
+.hero-content{max-width:900px;position:relative;z-index:3}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);color:var(--blue2);padding:10px 22px;border-radius:50px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:3px;margin-bottom:28px}
+.hero h1{font-size:clamp(3.2rem,8vw,6.5rem);color:var(--cream);line-height:.95;margin-bottom:28px;font-weight:400}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:inline-block;animation:heroReveal 1s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateY(100%)}
+.hero h1 .line:nth-child(2) span{animation-delay:.15s}
+.hero h1 em{font-style:italic}
+.hero h1 .gradient-text{background:linear-gradient(135deg,var(--blue),var(--accent),var(--blue2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:gradientShift 4s ease infinite}
+@keyframes heroReveal{to{opacity:1;transform:translateY(0)}}
+@keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.hero p{color:rgba(241,245,249,.45);font-size:1.15rem;max-width:550px;margin:0 auto 40px;line-height:1.9;font-weight:300}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue2));color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;display:inline-flex;align-items:center;gap:10px}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(59,130,246,.35)}
+.btn-outline{border:1.5px solid rgba(241,245,249,.2);color:var(--cream);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:500;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-indicator span{color:rgba(241,245,249,.3);font-size:.65rem;text-transform:uppercase;letter-spacing:3px}
+.scroll-mouse{width:24px;height:38px;border:2px solid rgba(241,245,249,.2);border-radius:12px;position:relative}
+.scroll-mouse::after{content:'';position:absolute;top:6px;left:50%;width:3px;height:8px;margin-left:-1.5px;background:var(--blue);border-radius:2px;animation:scrollDown 1.5s ease infinite}
+@keyframes scrollDown{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+
+.section-tag{color:var(--blue2);font-size:.7rem;text-transform:uppercase;letter-spacing:5px;font-weight:600;margin-bottom:15px;display:block}
+.section-header{text-align:center;max-width:650px;margin:0 auto 70px}
+.section-header h2{font-size:clamp(2.2rem,4.5vw,3.8rem);color:var(--cream);line-height:1.1;font-weight:400}
+.section-header h2 em{font-style:italic;background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-header p{color:rgba(241,245,249,.4);margin-top:18px;line-height:1.9;font-size:.95rem}
+
+.about{padding:140px 6% 120px;position:relative}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.about-img-wrapper{position:relative}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:480px;object-fit:cover;transition:transform .8s}
+.about-img:hover img{transform:scale(1.04)}
+.about-img-badge{position:absolute;bottom:-20px;right:-20px;background:linear-gradient(135deg,var(--blue),var(--accent));color:var(--white);padding:20px 30px;border-radius:16px;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;box-shadow:0 12px 30px rgba(59,130,246,.3)}
+.about-floating-card{position:absolute;top:30px;left:-30px;background:rgba(17,24,39,.9);backdrop-filter:blur(20px);border:1px solid rgba(59,130,246,.2);padding:18px 24px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.3);z-index:2}
+.about-floating-card .stars{color:var(--accent);font-size:.75rem;display:flex;gap:2px}
+.about-floating-card .rating-text{font-weight:700;color:var(--cream);font-size:.9rem}
+.about-floating-card .rating-sub{font-size:.7rem;color:var(--steel)}
+.about-text h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--cream);margin-bottom:25px;line-height:1.15;font-weight:400}
+.about-text h2 em{font-style:italic;background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.about-text p{color:var(--steel);line-height:1.9;margin-bottom:20px;font-size:.95rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:35px}
+.about-feature{display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--cream);font-weight:500;padding:12px 16px;background:rgba(59,130,246,.05);border-radius:12px;border:1px solid rgba(59,130,246,.1);transition:all .3s}
+.about-feature:hover{transform:translateX(5px);background:rgba(59,130,246,.1)}
+.about-feature i{color:var(--blue2);font-size:1rem;width:20px;text-align:center}
+
+.services{padding:120px 6%;background:var(--dark);position:relative;overflow:hidden}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.service-card{background:rgba(59,130,246,.04);border:1px solid rgba(59,130,246,.08);border-radius:20px;padding:40px 35px;transition:all .5s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--accent));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover{transform:translateY(-12px);box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card .icon{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue2));display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:1.3rem;color:var(--white)}
+.service-card h3{font-size:1.4rem;color:var(--cream);margin-bottom:12px;font-weight:600}
+.service-card p{color:var(--steel);font-size:.88rem;line-height:1.8}
+.service-card .price-tag{display:inline-block;margin-top:16px;font-family:'Playfair Display',serif;font-size:1.3rem;background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+
+.experience{padding:100px 6%;background:var(--deep);position:relative}
+.experience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1100px;margin:0 auto;text-align:center}
+.exp-item{padding:30px 0;position:relative}
+.exp-item:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:60px;background:linear-gradient(transparent,rgba(241,245,249,.1),transparent)}
+.exp-number{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);color:var(--cream);font-weight:300;line-height:1}
+.exp-number .counter-suffix{background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.exp-label{color:rgba(241,245,249,.35);font-size:.72rem;text-transform:uppercase;letter-spacing:4px;font-weight:500;margin-top:12px}
+
+.testimonials{padding:120px 6%;background:var(--dark)}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.testimonial-card{background:rgba(59,130,246,.04);border:1px solid rgba(59,130,246,.08);border-radius:20px;padding:40px 35px;transition:all .4s;position:relative;overflow:hidden}
+.testimonial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--accent));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.testimonial-card:hover::before{transform:scaleX(1)}
+.quote-icon{font-family:'Playfair Display',serif;font-size:6rem;background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.15;line-height:1;position:absolute;top:10px;right:25px}
+.testimonial-stars{color:var(--accent);font-size:.9rem;margin-bottom:16px;display:flex;gap:3px}
+.testimonial-text{color:var(--steel);font-size:.95rem;line-height:1.9;margin-bottom:22px;font-style:italic;position:relative;z-index:1}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--accent));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:var(--white);font-size:1.1rem}
+.testimonial-name{font-weight:600;font-size:.9rem;color:var(--cream)}
+.testimonial-role{font-size:.75rem;color:var(--steel)}
+
+.booking{padding:140px 6%;background:var(--deep);text-align:center;position:relative;overflow:hidden}
+.booking::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(59,130,246,.05),transparent 60%)}
+.booking-form{max-width:750px;margin:50px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-group{position:relative}
+.form-group.full{grid-column:span 2}
+.booking-form input,.booking-form select{width:100%;padding:20px 24px;border:1.5px solid rgba(59,130,246,.1);border-radius:14px;background:rgba(59,130,246,.04);color:var(--cream);font-family:'Inter',sans-serif;font-size:.9rem;transition:all .3s;outline:none}
+.booking-form input::placeholder{color:rgba(241,245,249,.25)}
+.booking-form input:focus,.booking-form select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(59,130,246,.1)}
+.booking-form select option{background:var(--dark);color:var(--cream)}
+.booking-submit{grid-column:span 2;background:linear-gradient(135deg,var(--blue),var(--blue2));color:var(--white);padding:20px;border:none;border-radius:50px;font-size:.9rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .4s;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px}
+.booking-submit:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(59,130,246,.3)}
+
+footer{background:#060a14;padding:100px 6% 30px;position:relative}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--blue),var(--accent),transparent)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:50px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'Playfair Display',serif;font-size:2rem;color:var(--cream);font-weight:400;margin-bottom:16px}
+.footer-brand h3 span{background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-brand p{color:var(--steel);font-size:.85rem;line-height:1.9;margin-bottom:22px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(241,245,249,.1);display:flex;align-items:center;justify-content:center;color:var(--steel);text-decoration:none;transition:all .3s}
+.footer-social a:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-3px)}
+.footer-col h4{color:var(--cream);font-family:'Inter',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:22px}
+.footer-col a{display:block;color:var(--steel);text-decoration:none;font-size:.85rem;margin-bottom:12px;transition:all .3s}
+.footer-col a:hover{color:var(--blue);padding-left:5px}
+.footer-bottom{border-top:1px solid rgba(241,245,249,.06);margin-top:60px;padding-top:25px;display:flex;justify-content:space-between;align-items:center;color:rgba(241,245,249,.25);font-size:.8rem;flex-wrap:wrap;gap:10px}
+.footer-bottom a{color:var(--blue);text-decoration:none}
+
+.floating-cta{position:fixed;bottom:30px;right:30px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}
+.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue2));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(59,130,246,.4);transition:all .3s;animation:pulse 2s ease infinite}
+.floating-cta a:hover{transform:scale(1.1)}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(59,130,246,.4)}50%{box-shadow:0 8px 50px rgba(59,130,246,.6)}}
+
+@media(max-width:968px){
+  .nav-links{display:none}.mobile-toggle{display:block}
+  .about-grid{grid-template-columns:1fr;gap:50px}
+  .about-floating-card{position:relative;top:auto;left:auto;margin-bottom:15px;display:inline-flex}
+  .experience-grid{grid-template-columns:1fr 1fr}.exp-item::after{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .phone-bar{font-size:.7rem;gap:10px}
+}
+@media(max-width:600px){
+  .hero h1{font-size:clamp(2.6rem,10vw,3.8rem)}
+  .services-grid,.testimonial-grid{grid-template-columns:1fr}
+  .booking-form{grid-template-columns:1fr}
+  .form-group.full,.booking-submit{grid-column:span 1}
+  .footer-grid,.about-features{grid-template-columns:1fr}
+  nav{top:32px}.phone-bar{padding:6px 4%}
+}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <h2>HW <span>Barbering</span></h2>
+    <div class="preloader-bar"></div>
+  </div>
+</div>
+
+<div class="phone-bar" id="phoneBar">
+  <a href="tel:7209391526"><i class="fas fa-phone"></i> (720) 939-1526</a>
+  <span class="separator"></span>
+  <span><i class="fas fa-map-marker-alt"></i> Highlands Ranch, CO</span>
+  <span class="separator"></span>
+  <span><i class="fas fa-clock"></i> Serving Since 2015</span>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">HW <span>Barbering</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose"><i class="fas fa-times"></i></button>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+  <a href="#booking" onclick="closeMobile()">Book Now</a>
+  <a href="tel:7209391526" style="color:var(--blue)" onclick="closeMobile()"><i class="fas fa-phone"></i> (720) 939-1526</a>
+</div>
+
+<section class="hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-cut"></i> Highlands Ranch Since 2015</div>
+    <h1>
+      <span class="line"><span><em>Precision</em></span></span>
+      <span class="line"><span><strong class="gradient-text">Craftsmanship</strong></span></span>
+    </h1>
+    <p>A decade of delivering premium cuts, sharp fades, and expert grooming to the Highlands Ranch community.</p>
+    <div class="hero-btns">
+      <a href="tel:7209391526" class="btn-primary"><i class="fas fa-phone"></i> <span>Call to Book</span></a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-mouse"></div><span>Scroll</span></div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrapper reveal-left">
+      <div class="about-floating-card">
+        <div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="rating-text">Top Rated in Highlands Ranch</div>
+          <div class="rating-sub">Trusted since 2015</div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://placehold.co/600x480/111827/3b82f6?text=HW+Barbering" alt="HW Barbering">
+      </div>
+      <div class="about-img-badge">Est. 2015</div>
+    </div>
+    <div class="about-text reveal-right">
+      <span class="section-tag">Our Story</span>
+      <h2>Built on <em>Trust & Skill</em></h2>
+      <p>Since 2015, HW Barbering has been the go-to barbershop in Highlands Ranch, Colorado. What started as a passion for the craft has grown into a trusted community staple where every cut is personal.</p>
+      <p>We believe great barbering is about more than hair — it's about confidence, conversation, and craftsmanship that speaks for itself.</p>
+      <div class="about-features">
+        <div class="about-feature"><i class="fas fa-cut"></i> Expert Fades</div>
+        <div class="about-feature"><i class="fas fa-user-tie"></i> Beard Sculpting</div>
+        <div class="about-feature"><i class="fas fa-child"></i> All Ages Welcome</div>
+        <div class="about-feature"><i class="fas fa-medal"></i> 10+ Years Craft</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <span class="section-tag">Services</span>
+    <h2>What We <em>Offer</em></h2>
+    <p>Premium barbering services with attention to detail and a personal touch.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal d1">
+      <div class="icon"><i class="fas fa-cut"></i></div>
+      <h3>Men's Haircut</h3>
+      <p>Consultation, precision cut, and styled finish. Clean lines guaranteed.</p>
+      <span class="price-tag">From $30</span>
+    </div>
+    <div class="service-card reveal d2">
+      <div class="icon"><i class="fas fa-paint-brush"></i></div>
+      <h3>Fade & Taper</h3>
+      <p>Skin fades, mid fades, low tapers — blended to perfection every time.</p>
+      <span class="price-tag">From $35</span>
+    </div>
+    <div class="service-card reveal d3">
+      <div class="icon"><i class="fas fa-user-tie"></i></div>
+      <h3>Beard Trim</h3>
+      <p>Shape, line-up, and conditioning for a polished, sharp beard.</p>
+      <span class="price-tag">From $20</span>
+    </div>
+    <div class="service-card reveal d4">
+      <div class="icon"><i class="fas fa-child"></i></div>
+      <h3>Kids' Cut</h3>
+      <p>Patient, friendly service for the little ones. All styles welcome.</p>
+      <span class="price-tag">From $22</span>
+    </div>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="experience-grid">
+    <div class="exp-item reveal d1">
+      <div class="exp-number"><span class="counter" data-target="10">0</span><span class="counter-suffix">+</span></div>
+      <div class="exp-label">Years in Business</div>
+    </div>
+    <div class="exp-item reveal d2">
+      <div class="exp-number"><span class="counter" data-target="20">0</span><span class="counter-suffix">K+</span></div>
+      <div class="exp-label">Cuts Delivered</div>
+    </div>
+    <div class="exp-item reveal d3">
+      <div class="exp-number">5.0<span class="counter-suffix">★</span></div>
+      <div class="exp-label">Client Rating</div>
+    </div>
+    <div class="exp-item reveal d4">
+      <div class="exp-number"><span class="counter" data-target="100">0</span><span class="counter-suffix">%</span></div>
+      <div class="exp-label">Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-header reveal">
+    <span class="section-tag">Reviews</span>
+    <h2>Client <em>Testimonials</em></h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal d1">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">Best barber in Highlands Ranch. Consistent quality every single time. My whole family goes here now.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div><div class="testimonial-name">Mike T.</div><div class="testimonial-role"><i class="fab fa-google"></i> Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d2">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">Professional, skilled, and genuinely cares about getting the cut right. HW Barbering is the real deal.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">J</div>
+        <div><div class="testimonial-name">Jason W.</div><div class="testimonial-role"><i class="fab fa-google"></i> Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d3">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">Been going here since they opened in 2015. Wouldn't trust my fade to anyone else. Top-tier barbering.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">A</div>
+        <div><div class="testimonial-name">Alex R.</div><div class="testimonial-role"><i class="fab fa-yelp"></i> Yelp Review</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="section-header reveal">
+    <span class="section-tag">Book Now</span>
+    <h2>Schedule Your <em>Cut</em></h2>
+    <p>Call us or fill out the form below to book your appointment.</p>
+  </div>
+  <form class="booking-form reveal" onsubmit="return false">
+    <div class="form-group"><input type="text" placeholder="Your Name" required></div>
+    <div class="form-group"><input type="tel" placeholder="Phone Number"></div>
+    <div class="form-group"><input type="date"></div>
+    <div class="form-group">
+      <select><option>Select Service</option><option>Men's Haircut</option><option>Fade & Taper</option><option>Beard Trim</option><option>Kids' Cut</option></select>
+    </div>
+    <button type="submit" class="booking-submit"><span>Book Appointment</span> <i class="fas fa-arrow-right"></i></button>
+  </form>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand reveal">
+      <h3>HW <span>Barbering</span></h3>
+      <p>Highlands Ranch's trusted barbershop since 2015. Precision cuts, expert fades, and a community-first approach to grooming.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footer-col reveal d1">
+      <h4>Navigate</h4>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#booking">Book Now</a>
+    </div>
+    <div class="footer-col reveal d2">
+      <h4>Hours</h4>
+      <a href="#">Mon–Fri: 9am – 7pm</a>
+      <a href="#">Saturday: 8am – 4pm</a>
+      <a href="#">Sunday: Closed</a>
+    </div>
+    <div class="footer-col reveal d3">
+      <h4>Contact</h4>
+      <p style="color:var(--steel);font-size:.85rem;line-height:1.8">Highlands Ranch, CO<br><a href="tel:7209391526" style="color:var(--blue);text-decoration:none">(720) 939-1526</a><br>Walk-ins & Appointments</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 HW Barbering. All rights reserved.</p>
+    <p>Highlands Ranch, CO · <a href="tel:7209391526">(720) 939-1526</a></p>
+  </div>
+</footer>
+
+<div class="floating-cta" id="floatingCta">
+  <a href="tel:7209391526" title="Call Now"><i class="fas fa-phone"></i></a>
+</div>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},1000)});
+document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('menuClose').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
+const nav=document.getElementById('navbar'),floatingCta=document.getElementById('floatingCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>80);floatingCta.classList.toggle('visible',window.scrollY>600)});
+const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObserver.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>revealObserver.observe(el));
+const counterObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target;const target=+el.getAttribute('data-target');const duration=2000;const start=performance.now();const animate=(now)=>{const progress=Math.min((now-start)/duration,1);const eased=1-Math.pow(1-progress,4);el.textContent=Math.floor(eased*target);if(progress<1)requestAnimationFrame(animate);else el.textContent=target};requestAnimationFrame(animate);counterObserver.unobserve(el)}})},{threshold:.5});
+document.querySelectorAll('.counter').forEach(el=>counterObserver.observe(el));
+window.addEventListener('scroll',()=>{const y=window.scrollY;document.querySelectorAll('.hero-blob').forEach((blob,i)=>{blob.style.transform=`translateY(${y*(i===0?.15:-.1)}px)`})});
+</script>
+</body>
+</html>

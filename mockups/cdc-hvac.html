@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CDC HVAC | South Shore & Greater Boston Heating & Cooling</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>*{margin:0;padding:0;box-sizing:border-box}:root{--dark:#0c1220;--blue:#3b82f6;--blue2:#60a5fa;--sky:#dbeafe;--light:#f0f7ff;--white:#fff;--text:#334155;--text-light:#64748b}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white)}h1,h2,h3{font-family:'Bebas Neue',sans-serif;letter-spacing:1px}.reveal{opacity:0;transform:translateY(30px);transition:all .8s ease}.reveal.active{opacity:1;transform:translateY(0)}.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.bar{background:var(--blue);color:#fff;text-align:center;padding:10px;font-size:.8rem;font-weight:600;position:fixed;top:0;width:100%;z-index:10001}.bar a{color:#fff;text-decoration:none}
+nav{position:fixed;top:38px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:70px;transition:.4s}nav.scrolled{background:rgba(12,18,32,.95);backdrop-filter:blur(20px);top:0;height:64px}
+.logo{font-family:'Bebas Neue',sans-serif;color:#fff;font-size:2rem;text-decoration:none}.logo span{color:var(--blue2)}
+.links{display:flex;gap:28px;list-style:none}.links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:.3s}.links a:hover{color:#fff}
+.hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;padding:140px 6% 80px;position:relative}.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(59,130,246,.08),transparent 50%)}
+.hero-content{max-width:650px;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);color:var(--blue2);padding:10px 20px;border-radius:50px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:20px}
+.hero h1{font-size:clamp(3rem,7vw,5.5rem);color:#fff;line-height:.95;margin-bottom:20px}.hero h1 .a{color:var(--blue2)}.hero p{color:rgba(255,255,255,.45);font-size:1.05rem;line-height:1.8;max-width:480px;margin-bottom:32px}
+.btn{padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;transition:.3s;display:inline-flex;align-items:center;gap:8px}
+.btn-b{background:var(--blue);color:#fff}.btn-b:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(59,130,246,.3)}
+.s{padding:100px 6%}.s-alt{background:var(--light)}.sh{text-align:center;max-width:600px;margin:0 auto 60px}.sh h2{font-size:clamp(2rem,4vw,3.5rem);color:var(--dark);margin-bottom:14px}.sh h2 .a{color:var(--blue)}.sh p{color:var(--text-light);line-height:1.8}
+.tag{color:var(--blue);font-size:.7rem;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:10px;display:block}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.c{background:var(--white);border-radius:16px;padding:36px 28px;transition:.4s;border:1px solid transparent}.c:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.06)}
+.ci{width:50px;height:50px;border-radius:12px;background:var(--sky);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:1.2rem;margin-bottom:18px}
+.c h3{font-size:1.4rem;color:var(--dark);margin-bottom:10px}.c p{color:var(--text-light);font-size:.88rem;line-height:1.8}
+.about{padding:100px 6%}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;max-width:1200px;margin:0 auto;align-items:center}
+.about-img{border-radius:20px;overflow:hidden}.about-img img{width:100%;height:400px;object-fit:cover}
+.about-text h2{font-size:clamp(2rem,4vw,3rem);color:var(--dark);margin-bottom:16px}.about-text h2 .a{color:var(--blue)}.about-text p{color:var(--text-light);line-height:1.9;margin-bottom:14px}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}.feature{display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:500;padding:10px 14px;background:var(--light);border-radius:10px}.feature i{color:var(--blue)}
+.reviews{padding:100px 6%;background:var(--light)}.rv{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.rc{background:var(--white);border-radius:16px;padding:32px 26px}.rc .stars{color:#f59e0b;font-size:.85rem;margin-bottom:12px}.rc .rt{color:var(--text-light);font-size:.9rem;line-height:1.8;font-style:italic;margin-bottom:14px}.rc .ra{font-weight:600;font-size:.88rem;color:var(--dark)}
+.ct{padding:120px 6%;background:var(--dark);text-align:center}.ct h2{font-size:clamp(2.2rem,4vw,3.5rem);color:#fff;margin-bottom:16px}.ct h2 .a{color:var(--blue2)}.ct p{color:rgba(255,255,255,.35);max-width:500px;margin:0 auto 32px;line-height:1.8}
+footer{background:#060a12;padding:60px 6% 20px}.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto}
+.fb h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fff;margin-bottom:12px}.fb h3 span{color:var(--blue2)}.fb p{color:rgba(255,255,255,.25);font-size:.85rem;line-height:1.8}
+.fc h4{color:#fff;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:16px;font-family:'Inter',sans-serif}.fc a{display:block;color:rgba(255,255,255,.25);text-decoration:none;font-size:.85rem;margin-bottom:8px;transition:.3s}.fc a:hover{color:var(--blue2)}
+.fbot{border-top:1px solid rgba(255,255,255,.05);margin-top:40px;padding-top:16px;text-align:center;color:rgba(255,255,255,.15);font-size:.8rem}
+@media(max-width:768px){.links{display:none}.about-grid{grid-template-columns:1fr}.features{grid-template-columns:1fr}.fg,.g,.rv{grid-template-columns:1fr}}
+</style></head><body>
+<div class="bar"><i class="fas fa-snowflake"></i> Serving the South Shore & Greater Boston — <a href="#contact">Get a Free Quote</a></div>
+<nav id="nav"><a href="#" class="logo">CDC <span>HVAC</span></a><ul class="links"><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact" style="background:var(--blue);color:#fff!important;padding:10px 24px;border-radius:8px;font-weight:700">Get Quote</a></li></ul></nav>
+<section class="hero"><div class="hero-content">
+<div class="badge"><i class="fas fa-certificate"></i> Licensed & Insured · 20+ Years</div>
+<h1>Your Comfort <span class="a">Comes First</span></h1>
+<p>Locally owned HVAC service for the South Shore and Greater Boston area. Honest work, fair prices, and 20+ years of hands-on expertise.</p>
+<a href="#contact" class="btn btn-b"><i class="fas fa-calendar-check"></i> Get Free Quote</a>
+</div></section>
+<section class="s s-alt" id="services">
+<div class="sh reveal"><span class="tag">Services</span><h2>Residential <span class="a">HVAC</span> Services</h2><p>Quality parts, efficient systems, and expert installation — keeping your home comfortable year-round.</p></div>
+<div class="g">
+<div class="c reveal d1"><div class="ci"><i class="fas fa-snowflake"></i></div><h3>Central AC Systems</h3><p>Installation and repair of central air conditioning for optimal summer comfort.</p></div>
+<div class="c reveal d2"><div class="ci"><i class="fas fa-fire"></i></div><h3>Furnace Service</h3><p>Gas, electric, and oil furnace installation, repair, and maintenance.</p></div>
+<div class="c reveal d3"><div class="ci"><i class="fas fa-fan"></i></div><h3>Heat Pumps</h3><p>Energy-efficient heat pump systems for year-round heating and cooling.</p></div>
+<div class="c reveal d1"><div class="ci"><i class="fas fa-temperature-half"></i></div><h3>Smart Thermostats</h3><p>Installation of smart thermostats for better control and energy savings.</p></div>
+<div class="c reveal d2"><div class="ci"><i class="fas fa-tools"></i></div><h3>Maintenance & Tune-Ups</h3><p>Seasonal inspections to keep your system running efficiently and prevent breakdowns.</p></div>
+<div class="c reveal d3"><div class="ci"><i class="fas fa-swimming-pool"></i></div><h3>Pool Heater Service</h3><p>Pool heater repair and maintenance to extend your swimming season.</p></div>
+</div></section>
+<section class="about" id="about">
+<div class="about-grid">
+<div class="about-img reveal"><img src="https://placehold.co/600x400/0c1220/3b82f6?text=CDC+HVAC" alt="CDC HVAC"></div>
+<div class="about-text reveal"><span class="tag">About CDC HVAC</span>
+<h2>Meet <span class="a">Ryan</span></h2>
+<p>Hi, I'm Ryan — Owner & Founder of CDC HVAC. I started this company with one goal: to deliver honest, high-quality HVAC service you can rely on.</p>
+<p>With over 20 years of hands-on experience, we're proud to serve the South Shore and greater Boston communities. Your comfort always comes first.</p>
+<div class="features">
+<div class="feature"><i class="fas fa-check-circle"></i> Fully Licensed</div>
+<div class="feature"><i class="fas fa-check-circle"></i> 20+ Years Experience</div>
+<div class="feature"><i class="fas fa-check-circle"></i> Transparent Pricing</div>
+<div class="feature"><i class="fas fa-check-circle"></i> Satisfaction Guarantee</div>
+</div></div></div></section>
+<section class="reviews" id="reviews">
+<div class="sh reveal"><span class="tag">Reviews</span><h2>What Customers <span class="a">Say</span></h2></div>
+<div class="rv">
+<div class="rc reveal d1"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="rt">Ryan came to our house the day we called and was quickly able to diagnose and fix our AC. Highly recommend!</p><div class="ra">Graham S. — Weymouth, MA</div></div>
+<div class="rc reveal d2"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="rt">Honest, reliable, and fair pricing. CDC HVAC is the only company I trust with my home's heating and cooling.</p><div class="ra">Jennifer M. — Quincy, MA</div></div>
+<div class="rc reveal d3"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="rt">Installed a new heat pump system and the difference is incredible. Professional work from start to finish.</p><div class="ra">Mike T. — Braintree, MA</div></div>
+</div></section>
+<section class="ct" id="contact"><div class="reveal"><span class="tag">Contact</span>
+<h2>Ready for <span class="a">Real Comfort?</span></h2>
+<p>Get a free quote from CDC HVAC today. Fast response, transparent pricing, and expert service guaranteed.</p>
+<a href="#" class="btn btn-b"><i class="fas fa-phone"></i> Get Free Quote</a>
+</div></section>
+<footer><div class="fg">
+<div class="fb"><h3>CDC <span>HVAC</span></h3><p>Locally owned HVAC service for the South Shore and Greater Boston. 20+ years of trusted expertise.</p></div>
+<div class="fc"><h4>Services</h4><a href="#">AC Systems</a><a href="#">Furnaces</a><a href="#">Heat Pumps</a><a href="#">Maintenance</a></div>
+<div class="fc"><h4>Service Areas</h4><a href="#">Weymouth</a><a href="#">Quincy</a><a href="#">Braintree</a><a href="#">South Shore</a></div>
+</div><div class="fbot">© 2026 CDC HVAC. All rights reserved.</div></footer>
+<script>const n=document.getElementById('nav');window.addEventListener('scroll',()=>{n.classList.toggle('scrolled',scrollY>60)});document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('active')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'}).observe(el));</script></body></html>

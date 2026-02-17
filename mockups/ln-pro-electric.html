@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LN Pro Electric | Houston, TX — Professional Electricians</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--dark:#111827;--purple:#7c3aed;--purple2:#8b5cf6;--indigo:#6366f1;--light:#f5f3ff;--white:#fff;--text:#1e293b;--text-light:#64748b}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);overflow-x:hidden;background:var(--light)}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:700}
+.preloader{position:fixed;inset:0;background:var(--dark);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader h2{font-family:'Space Grotesk',sans-serif;color:var(--white);font-size:2.8rem;letter-spacing:2px}
+.preloader h2 span{color:var(--purple2)}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;border-radius:2px;overflow:hidden}
+.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--purple),var(--indigo));animation:slide 1s ease infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+.reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.16,1,.3,1)}.reveal.active{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:linear-gradient(90deg,var(--purple),var(--indigo));padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--white)}
+.phone-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.phone-bar .sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.4)}
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:72px;transition:all .4s}
+nav.scrolled{background:rgba(17,24,39,.97);backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.3);top:0}
+.nav-logo{font-family:'Space Grotesk',sans-serif;color:var(--white);font-size:1.8rem;text-decoration:none;font-weight:700}
+.nav-logo span{color:var(--purple2)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--purple);color:var(--white)!important;padding:10px 28px;border-radius:8px;transition:all .3s}
+.nav-cta:hover{background:var(--purple2);transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,58,237,.4)}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;padding:140px 6% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(124,58,237,.15),transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(99,102,241,.08),transparent 50%)}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15}
+.orb-1{width:400px;height:400px;background:var(--purple);top:-100px;right:-100px;animation:orbFloat 15s ease-in-out infinite}
+.orb-2{width:300px;height:300px;background:var(--indigo);bottom:-50px;left:-50px;animation:orbFloat 20s ease-in-out infinite reverse}
+@keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,30px)}}
+.hero-content{max-width:650px;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);color:var(--purple2);padding:10px 22px;border-radius:8px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:24px}
+.hero h1{font-size:clamp(3rem,7vw,5.5rem);color:var(--white);line-height:.95;margin-bottom:24px}
+.hero h1 .accent{background:linear-gradient(135deg,var(--purple2),var(--indigo));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:rgba(255,255,255,.45);font-size:1.05rem;max-width:500px;line-height:1.8;margin-bottom:36px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--purple),var(--indigo));color:var(--white);padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:10px}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(124,58,237,.4)}
+.btn-outline{border:2px solid rgba(255,255,255,.15);color:var(--white);padding:16px 36px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s}
+.btn-outline:hover{border-color:var(--purple2);color:var(--purple2)}
+.hero-stats{display:flex;gap:50px;margin-top:60px}
+.hero-stat .num{font-family:'Space Grotesk',sans-serif;font-size:3rem;color:var(--white)}
+.hero-stat .num span{color:var(--purple2)}
+.hero-stat .label{color:rgba(255,255,255,.3);font-size:.68rem;text-transform:uppercase;letter-spacing:3px;margin-top:4px}
+.section-tag{color:var(--purple);font-size:.7rem;text-transform:uppercase;letter-spacing:5px;font-weight:700;margin-bottom:12px;display:block}
+.section-header{text-align:center;max-width:650px;margin:0 auto 60px}
+.section-header h2{font-size:clamp(2rem,4vw,3.5rem);color:var(--dark);line-height:1.1}
+.section-header h2 .accent{color:var(--purple)}
+.section-header p{color:var(--text-light);margin-top:16px;line-height:1.8}
+.services{padding:120px 6%;background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.service-card{background:var(--light);border-radius:16px;padding:40px 30px;transition:all .4s;position:relative;overflow:hidden;border:1px solid transparent}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.06);border-color:rgba(124,58,237,.15)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--indigo));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:56px;height:56px;border-radius:12px;background:rgba(124,58,237,.08);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--purple);font-size:1.4rem}
+.service-card h3{font-size:1.5rem;color:var(--dark);margin-bottom:12px}
+.service-card p{color:var(--text-light);font-size:.9rem;line-height:1.8}
+.about{padding:120px 6%;background:var(--light)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.about-visual{border-radius:24px;overflow:hidden;position:relative;background:linear-gradient(135deg,var(--purple),var(--indigo));height:420px;display:flex;align-items:center;justify-content:center}
+.about-visual i{font-size:8rem;color:rgba(255,255,255,.1)}
+.about-text h2{font-size:clamp(2rem,4vw,3rem);color:var(--dark);margin-bottom:20px}
+.about-text h2 .accent{color:var(--purple)}
+.about-text p{color:var(--text-light);line-height:1.9;margin-bottom:16px}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
+.about-feature{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--dark);font-weight:600;padding:12px 16px;background:var(--white);border-radius:12px;border:1px solid rgba(0,0,0,.04)}
+.about-feature i{color:var(--purple)}
+.reviews{padding:120px 6%;background:var(--white)}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.review-card{background:var(--light);border-radius:16px;padding:36px 30px;position:relative}
+.review-card::before{content:'"';font-family:'Space Grotesk',sans-serif;font-size:6rem;color:var(--purple);opacity:.08;position:absolute;top:0;right:20px;line-height:1}
+.review-stars{color:#fbbf24;font-size:.85rem;margin-bottom:14px;display:flex;gap:3px}
+.review-text{color:var(--text-light);font-size:.92rem;line-height:1.8;margin-bottom:18px;font-style:italic}
+.review-author{font-weight:700;font-size:.88rem;color:var(--dark)}
+.review-role{font-size:.75rem;color:var(--text-light)}
+.cta{padding:120px 6%;background:var(--dark);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(124,58,237,.08),transparent 60%)}
+.cta h2{font-size:clamp(2.5rem,5vw,4rem);color:var(--white);margin-bottom:20px}
+.cta h2 .accent{color:var(--purple2)}
+.cta p{color:rgba(255,255,255,.35);max-width:550px;margin:0 auto 36px;line-height:1.8}
+.cta .btn-primary{font-size:.9rem;padding:20px 44px}
+footer{background:#0a0e18;padding:80px 6% 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;color:var(--white);margin-bottom:14px}
+.footer-brand h3 span{color:var(--purple2)}
+.footer-brand p{color:rgba(255,255,255,.25);font-size:.85rem;line-height:1.8;margin-bottom:18px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);text-decoration:none;transition:all .3s}
+.footer-social a:hover{border-color:var(--purple2);color:var(--purple2)}
+.footer-col h4{color:var(--white);font-family:'DM Sans',sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;font-weight:700;margin-bottom:18px}
+.footer-col a{display:block;color:rgba(255,255,255,.25);text-decoration:none;font-size:.85rem;margin-bottom:10px;transition:all .3s}
+.footer-col a:hover{color:var(--purple2);padding-left:4px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);margin-top:50px;padding-top:20px;display:flex;justify-content:space-between;color:rgba(255,255,255,.15);font-size:.8rem;flex-wrap:wrap;gap:10px}
+.floating-cta{position:fixed;bottom:24px;right:24px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}
+.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--indigo));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(124,58,237,.4);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(124,58,237,.4)}50%{box-shadow:0 8px 50px rgba(124,58,237,.6)}}
+@media(max-width:968px){.nav-links{display:none}.mobile-toggle{display:block}.about-grid{grid-template-columns:1fr;gap:40px}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}.hero-stats{gap:30px;flex-wrap:wrap}}
+@media(max-width:600px){.hero h1{font-size:clamp(2.5rem,10vw,3.5rem)}.services-grid,.review-grid{grid-template-columns:1fr}.about-features{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.phone-bar{font-size:.7rem;gap:8px}}
+</style>
+</head>
+<body>
+<div class="preloader" id="preloader"><div><h2>LN Pro <span>Electric</span></h2><div class="preloader-bar"></div></div></div>
+<div class="phone-bar">
+<a href="tel:2817363711"><i class="fas fa-phone"></i> (281) 736-3711</a>
+<span class="sep"></span>
+<span><i class="fas fa-map-marker-alt"></i> Houston, TX</span>
+<span class="sep"></span>
+<span><i class="fas fa-bolt"></i> Pro-Level Electrical Services</span>
+</div>
+<nav id="navbar">
+<a href="#" class="nav-logo">LN Pro <span>Electric</span></a>
+<ul class="nav-links">
+<li><a href="#services">Services</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact" class="nav-cta">Get Quote</a></li>
+</ul>
+<button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+<section class="hero">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="hero-content">
+<div class="hero-badge"><i class="fas fa-shield-alt"></i> Licensed & Insured</div>
+<h1>Houston's <span class="accent">Pro-Level</span> Electricians</h1>
+<p>LN Pro Electric delivers professional-grade electrical services for homes and businesses across Houston. Precision work, fair pricing, guaranteed results.</p>
+<div class="hero-btns">
+<a href="tel:2817363711" class="btn-primary"><i class="fas fa-phone"></i> (281) 736-3711</a>
+<a href="#services" class="btn-outline">Our Services</a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num">5.0<span>★</span></div><div class="label">Rating</div></div>
+<div class="hero-stat"><div class="num">100<span>%</span></div><div class="label">Satisfaction</div></div>
+<div class="hero-stat"><div class="num">Fast<span>⚡</span></div><div class="label">Response</div></div>
+</div>
+</div>
+</section>
+<section class="services" id="services">
+<div class="section-header reveal">
+<span class="section-tag">Services</span>
+<h2>Pro-Grade <span class="accent">Solutions</span></h2>
+<p>From residential repairs to commercial installations, LN Pro Electric handles it all with precision and expertise.</p>
+</div>
+<div class="services-grid">
+<div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-bolt"></i></div><h3>Panel Services</h3><p>Electrical panel installation, upgrades, and repair. Ensure your home has the power capacity it needs.</p></div>
+<div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-plug"></i></div><h3>Wiring</h3><p>New construction wiring, rewiring, and circuit additions. Code-compliant installations every time.</p></div>
+<div class="service-card reveal d3"><div class="service-icon"><i class="fas fa-lightbulb"></i></div><h3>Lighting Design</h3><p>Recessed, track, landscape, and accent lighting to transform your space beautifully.</p></div>
+<div class="service-card reveal d4"><div class="service-icon"><i class="fas fa-fan"></i></div><h3>Ceiling Fans</h3><p>Expert ceiling fan installation and wiring. Stay cool and save on energy costs.</p></div>
+<div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-house-signal"></i></div><h3>Smart Home</h3><p>Smart switches, outlets, and home automation wiring for the modern connected home.</p></div>
+<div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-triangle-exclamation"></i></div><h3>Emergency</h3><p>Electrical emergencies can't wait. Fast response for power outages, sparking, and safety hazards.</p></div>
+</div>
+</section>
+<section class="about" id="about">
+<div class="about-grid">
+<div class="about-visual reveal"><i class="fas fa-bolt"></i></div>
+<div class="about-text reveal">
+<span class="section-tag">About LN Pro</span>
+<h2>Professional <span class="accent">Electrical</span> Excellence</h2>
+<p>LN Pro Electric was founded with a simple mission: deliver professional-grade electrical work at honest prices. We treat every project — big or small — with the same level of care and expertise.</p>
+<p>Our licensed electricians bring skill, reliability, and attention to detail to every job in the Houston area.</p>
+<div class="about-features">
+<div class="about-feature"><i class="fas fa-check-circle"></i> Licensed & Insured</div>
+<div class="about-feature"><i class="fas fa-check-circle"></i> Free Estimates</div>
+<div class="about-feature"><i class="fas fa-check-circle"></i> Code Compliant</div>
+<div class="about-feature"><i class="fas fa-check-circle"></i> Clean Worksite</div>
+<div class="about-feature"><i class="fas fa-check-circle"></i> Warranty Included</div>
+<div class="about-feature"><i class="fas fa-check-circle"></i> On-Time Arrival</div>
+</div>
+</div>
+</div>
+</section>
+<section class="reviews" id="reviews">
+<div class="section-header reveal">
+<span class="section-tag">Reviews</span>
+<h2>What Clients <span class="accent">Say</span></h2>
+</div>
+<div class="review-grid">
+<div class="review-card reveal d1">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">LN Pro did a fantastic job on our whole-house rewiring. Professional, clean, and the price was exactly what they quoted. No surprises!</p>
+<div class="review-author">Chris W.</div><div class="review-role"><i class="fab fa-google" style="color:#4285f4"></i> Google Review</div>
+</div>
+<div class="review-card reveal d2">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">Called for a ceiling fan install and they came out the next day. Quick, professional, and very knowledgeable. Will definitely use again.</p>
+<div class="review-author">Diana M.</div><div class="review-role"><i class="fab fa-google" style="color:#4285f4"></i> Google Review</div>
+</div>
+<div class="review-card reveal d3">
+<div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="review-text">Top-notch electricians. They upgraded our panel and added several circuits for our home office. Everything was done to code. Highly recommend!</p>
+<div class="review-author">Ryan & Jessica T.</div><div class="review-role"><i class="fab fa-google" style="color:#4285f4"></i> Google Review</div>
+</div>
+</div>
+</section>
+<section class="cta" id="contact">
+<div class="reveal">
+<span class="section-tag">Get Started</span>
+<h2>Ready for <span class="accent">Pro-Level</span> Service?</h2>
+<p>Contact LN Pro Electric today for a free estimate. Professional results, every time.</p>
+<a href="tel:2817363711" class="btn-primary"><i class="fas fa-phone"></i> Call (281) 736-3711</a>
+</div>
+</section>
+<footer>
+<div class="footer-grid">
+<div class="footer-brand reveal">
+<h3>LN Pro <span>Electric</span></h3>
+<p>Professional electrical services for Houston, TX homes and businesses.</p>
+<div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-google"></i></a></div>
+</div>
+<div class="footer-col reveal d1"><h4>Services</h4><a href="#">Panel Upgrades</a><a href="#">Wiring</a><a href="#">Lighting</a><a href="#">Smart Home</a></div>
+<div class="footer-col reveal d2"><h4>Hours</h4><a href="#">Mon–Fri: 7am – 6pm</a><a href="#">Sat: By Appointment</a><a href="#">Emergency: 24/7</a></div>
+<div class="footer-col reveal d3"><h4>Contact</h4><a href="tel:2817363711">(281) 736-3711</a><a href="#">Houston, TX</a></div>
+</div>
+<div class="footer-bottom"><p>© 2026 LN Pro Electric. All rights reserved.</p><p>Houston, TX</p></div>
+</footer>
+<div class="floating-cta" id="floatingCta"><a href="tel:2817363711" title="Call Now"><i class="fas fa-phone"></i></a></div>
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},800)});
+const nav=document.getElementById('navbar'),fc=document.getElementById('floatingCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60);fc.classList.toggle('visible',scrollY>500)});
+const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('active');ro.unobserve(el.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>

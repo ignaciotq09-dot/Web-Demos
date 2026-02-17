@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CJ Auto Repair | Las Vegas, NV</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--deep:#0b1120;--dark:#111827;--card:#1f2937;--blue:#2563eb;--blue2:#3b82f6;--cyan:#06b6d4;--white:#fff;--cream:#f8fafc;--text:#94a3b8;--text-light:#64748b;--gold:#f59e0b}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--deep);color:var(--text);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Rajdhani',sans-serif;font-weight:700;text-transform:uppercase}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--deep)}::-webkit-scrollbar-thumb{background:linear-gradient(var(--blue),var(--cyan));border-radius:4px}
+
+.preloader{position:fixed;inset:0;background:var(--deep);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}.preloader.hidden{opacity:0;visibility:hidden}
+.preloader h2{font-family:'Rajdhani',sans-serif;color:var(--white);font-size:2.5rem;letter-spacing:6px;text-transform:uppercase}.preloader h2 span{color:var(--blue2)}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;overflow:hidden;border-radius:2px}.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));animation:slide 1s ease infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.16,1,.3,1)}.reveal.active{opacity:1;transform:translateY(0)}.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:linear-gradient(90deg,var(--blue),var(--cyan));padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--white)}
+.phone-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:6px}.phone-bar .sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
+
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:75px;transition:all .4s}
+nav.scrolled{background:rgba(11,17,32,.95);backdrop-filter:blur(20px);box-shadow:0 4px 30px rgba(0,0,0,.5);top:0;height:65px}
+.nav-logo{font-family:'Rajdhani',sans-serif;color:var(--white);font-size:1.8rem;font-weight:700;text-decoration:none;letter-spacing:2px;text-transform:uppercase}.nav-logo span{color:var(--blue2)}
+.nav-links{display:flex;gap:30px;list-style:none}.nav-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--white)}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--white);padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s}.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,99,235,.4)}
+.mobile-toggle{display:none;color:var(--white);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(11,17,32,.98);z-index:10002;flex-direction:column;align-items:center;justify-content:center;gap:30px;opacity:0;visibility:hidden;transition:all .4s}.mobile-menu.open{opacity:1;visibility:visible;display:flex}
+.mobile-menu a{color:var(--white);text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:2rem;text-transform:uppercase}.mobile-menu a:hover{color:var(--blue2)}
+.mobile-close{position:absolute;top:30px;right:30px;background:none;border:none;color:var(--white);font-size:2rem;cursor:pointer}
+
+.hero{min-height:100vh;padding-top:111px;background:var(--deep);display:flex;align-items:center;justify-content:center;text-align:center;padding-left:5%;padding-right:5%;position:relative;overflow:hidden}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(37,99,235,.1),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(6,182,212,.06),transparent 50%)}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.12;animation:bf 8s ease-in-out infinite}.hero-blob-1{width:400px;height:400px;background:var(--blue);top:-100px;right:-100px}.hero-blob-2{width:300px;height:300px;background:var(--cyan);bottom:0;left:-50px;animation-delay:-3s}
+@keyframes bf{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(transparent,var(--deep));z-index:2}
+.hero-content{max-width:900px;position:relative;z-index:3}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.3);color:var(--blue2);padding:10px 22px;border-radius:50px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:3px;margin-bottom:28px}
+.hero h1{font-size:clamp(3rem,8vw,6rem);color:var(--white);line-height:.95;margin-bottom:28px}
+.hero h1 .grad{background:linear-gradient(135deg,var(--blue),var(--cyan),var(--blue2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:gs 4s ease infinite}
+@keyframes gs{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.hero p{color:rgba(255,255,255,.4);font-size:1.1rem;max-width:580px;margin:0 auto 40px;line-height:1.9;font-weight:300}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;display:inline-flex;align-items:center;gap:10px}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(37,99,235,.35)}
+.btn-outline{border:1.5px solid rgba(255,255,255,.2);color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:500;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s}.btn-outline:hover{border-color:var(--blue2);color:var(--blue2)}
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}.scroll-indicator span{color:rgba(255,255,255,.3);font-size:.65rem;text-transform:uppercase;letter-spacing:3px}
+.scroll-mouse{width:24px;height:38px;border:2px solid rgba(255,255,255,.2);border-radius:12px;position:relative}.scroll-mouse::after{content:'';position:absolute;top:6px;left:50%;width:3px;height:8px;margin-left:-1.5px;background:var(--blue2);border-radius:2px;animation:sd 1.5s ease infinite}
+@keyframes sd{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+
+.section-tag{color:var(--blue2);font-size:.7rem;text-transform:uppercase;letter-spacing:5px;font-weight:600;margin-bottom:15px;display:block}
+.section-header{text-align:center;max-width:650px;margin:0 auto 70px}
+.section-header h2{font-size:clamp(2rem,4.5vw,3.5rem);color:var(--white);line-height:1.1}
+.section-header h2 em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-header p{color:var(--text-light);margin-top:18px;line-height:1.9;font-size:.95rem}
+
+/* Certified badge banner */
+.certified-banner{padding:60px 6%;background:var(--dark);text-align:center}
+.cert-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.cert-badge{display:flex;align-items:center;gap:14px;background:var(--card);padding:20px 30px;border-radius:16px;border:1px solid rgba(37,99,235,.15)}
+.cert-badge i{font-size:2rem;color:var(--blue2)}
+.cert-badge div h4{color:var(--white);font-size:1rem;margin-bottom:2px}.cert-badge div p{color:var(--text-light);font-size:.8rem}
+
+.services{padding:120px 6%;background:var(--deep)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.service-card{background:var(--card);border-radius:20px;padding:40px 30px;transition:all .5s;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.04)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.service-card:hover{transform:translateY(-10px);box-shadow:0 20px 50px rgba(0,0,0,.3)}.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:60px;height:60px;border-radius:16px;background:rgba(37,99,235,.1);display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:1.5rem;color:var(--blue2)}
+.service-card h3{font-size:1.3rem;color:var(--white);margin-bottom:12px}.service-card p{color:var(--text-light);font-size:.88rem;line-height:1.8}
+
+.experience{padding:80px 6%;background:var(--dark)}
+.experience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1100px;margin:0 auto;text-align:center}
+.exp-item{padding:30px 0}
+.exp-number{font-family:'Rajdhani',sans-serif;font-size:clamp(2.8rem,5vw,4rem);color:var(--white);font-weight:700;line-height:1}
+.exp-number .suffix{background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.exp-label{color:var(--text-light);font-size:.72rem;text-transform:uppercase;letter-spacing:4px;font-weight:500;margin-top:12px}
+
+.about{padding:120px 6%;background:var(--deep)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.about-img{border-radius:20px;overflow:hidden;position:relative}.about-img img{width:100%;height:420px;object-fit:cover;transition:transform .8s}.about-img:hover img{transform:scale(1.04)}
+.about-badge{position:absolute;bottom:-15px;right:-15px;background:linear-gradient(135deg,var(--blue),var(--cyan));color:var(--white);padding:18px 28px;border-radius:14px;font-family:'Rajdhani',sans-serif;font-size:1.4rem;font-weight:700;box-shadow:0 10px 30px rgba(37,99,235,.3)}
+.about-text h2{font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:22px;line-height:1.15}
+.about-text h2 em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.about-text p{color:var(--text-light);line-height:1.9;margin-bottom:18px;font-size:.95rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
+.about-feature{display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--white);font-weight:500;padding:12px 16px;background:var(--card);border-radius:12px;border:1px solid rgba(255,255,255,.04);transition:all .3s}
+.about-feature:hover{transform:translateX(5px);border-color:var(--blue2)}.about-feature i{color:var(--blue2);width:20px;text-align:center}
+
+.testimonials{padding:120px 6%;background:var(--dark)}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.testimonial-card{background:var(--card);border:1px solid rgba(255,255,255,.04);border-radius:20px;padding:40px 32px;transition:all .4s;position:relative;overflow:hidden}
+.testimonial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.3)}.testimonial-card:hover::before{transform:scaleX(1)}
+.quote-icon{font-size:5rem;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.15;position:absolute;top:10px;right:25px}
+.t-stars{color:var(--gold);font-size:.85rem;margin-bottom:14px;display:flex;gap:3px}
+.t-text{color:var(--text-light);font-size:.92rem;line-height:1.9;margin-bottom:20px;font-style:italic}
+.t-author{display:flex;align-items:center;gap:14px}
+.t-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--white);font-size:1.1rem}
+.t-name{font-weight:600;font-size:.9rem;color:var(--white)}.t-role{font-size:.75rem;color:var(--text-light)}
+
+.cta-section{padding:120px 6%;background:var(--deep);text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(37,99,235,.08),transparent 60%)}
+.cta-section h2{font-size:clamp(2rem,5vw,3.5rem);color:var(--white);margin-bottom:20px}.cta-section h2 em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-section p{color:var(--text-light);max-width:550px;margin:0 auto 40px;line-height:1.8}
+
+footer{background:#060a14;padding:80px 6% 30px}
+footer::before{content:'';display:block;height:1px;background:linear-gradient(90deg,transparent,var(--blue),var(--cyan),transparent);margin-bottom:60px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'Rajdhani',sans-serif;font-size:1.8rem;color:var(--white);text-transform:uppercase;margin-bottom:14px}.footer-brand h3 span{color:var(--blue2)}
+.footer-brand p{color:var(--text-light);font-size:.85rem;line-height:1.9;margin-bottom:20px}
+.footer-social{display:flex;gap:10px}.footer-social a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;transition:all .3s}.footer-social a:hover{border-color:var(--blue2);color:var(--blue2);transform:translateY(-3px)}
+.footer-col h4{color:var(--white);font-family:'Rajdhani',sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:3px;margin-bottom:20px}
+.footer-col a{display:block;color:var(--text-light);text-decoration:none;font-size:.85rem;margin-bottom:12px;transition:all .3s}.footer-col a:hover{color:var(--blue2);padding-left:5px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);margin-top:50px;padding-top:25px;display:flex;justify-content:space-between;color:rgba(255,255,255,.25);font-size:.8rem;flex-wrap:wrap;gap:10px}.footer-bottom a{color:var(--blue2);text-decoration:none}
+
+.floating-cta{position:fixed;bottom:30px;right:30px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(37,99,235,.4);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(37,99,235,.4)}50%{box-shadow:0 8px 50px rgba(37,99,235,.6)}}
+
+@media(max-width:968px){.nav-links{display:none}.mobile-toggle{display:block}.about-grid{grid-template-columns:1fr}.experience-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.hero h1{font-size:clamp(2.4rem,10vw,3.5rem)}.services-grid,.testimonial-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.about-features{grid-template-columns:1fr}.phone-bar{font-size:.7rem;gap:10px}}
+</style>
+</head>
+<body>
+<div class="preloader" id="preloader"><div><h2>CJ <span>Auto</span></h2><div class="preloader-bar"></div></div></div>
+
+<div class="phone-bar">
+  <a href="tel:7024547711"><i class="fas fa-phone"></i> (702) 454-7711</a>
+  <span class="sep"></span>
+  <span><i class="fas fa-certificate"></i> Certified Technicians</span>
+  <span class="sep"></span>
+  <span><i class="fas fa-map-marker-alt"></i> Las Vegas, NV</span>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">CJ <span>Auto</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="tel:7024547711" class="nav-cta">Call Now</a></li>
+  </ul>
+  <button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose"><i class="fas fa-times"></i></button>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="tel:7024547711" style="color:var(--blue2)"><i class="fas fa-phone"></i> (702) 454-7711</a>
+</div>
+
+<section class="hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-certificate"></i> Certified Technicians</div>
+    <h1>Professional <span class="grad">Auto Repair</span><br>Done Right</h1>
+    <p>CJ Auto Repair provides certified, professional auto repair in Las Vegas. Our trained technicians use dealer-level diagnostics at independent shop prices.</p>
+    <div class="hero-btns">
+      <a href="tel:7024547711" class="btn-primary"><i class="fas fa-phone"></i> Call (702) 454-7711</a>
+      <a href="#services" class="btn-outline">View Services</a>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-mouse"></div><span>Scroll</span></div>
+</section>
+
+<div class="certified-banner">
+  <div class="cert-inner">
+    <div class="cert-badge reveal d1"><i class="fas fa-award"></i><div><h4>ASE Certified</h4><p>Factory-trained technicians</p></div></div>
+    <div class="cert-badge reveal d2"><i class="fas fa-shield-alt"></i><div><h4>Warranty Included</h4><p>12-month parts & labor</p></div></div>
+    <div class="cert-badge reveal d3"><i class="fas fa-laptop-code"></i><div><h4>Advanced Diagnostics</h4><p>Dealer-level equipment</p></div></div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <span class="section-tag">Our Services</span>
+    <h2>Certified <em>Expertise</em></h2>
+    <p>From routine maintenance to complex repairs, our certified techs handle it all with precision and care.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-cogs"></i></div><h3>Engine Diagnostics</h3><p>State-of-the-art computer diagnostics to pinpoint issues fast. Check engine light? We'll decode it.</p></div>
+    <div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-exchange-alt"></i></div><h3>Transmission</h3><p>Full transmission service — fluid changes, rebuilds, and replacements for all makes and models.</p></div>
+    <div class="service-card reveal d3"><div class="service-icon"><i class="fas fa-car-crash"></i></div><h3>Brake Systems</h3><p>Complete brake service including pads, rotors, calipers, and ABS diagnostics.</p></div>
+    <div class="service-card reveal d4"><div class="service-icon"><i class="fas fa-fan"></i></div><h3>Cooling & A/C</h3><p>Radiator repair, coolant flush, A/C recharge and compressor replacement.</p></div>
+    <div class="service-card reveal d1"><div class="service-icon"><i class="fas fa-bolt"></i></div><h3>Electrical Systems</h3><p>Starters, alternators, wiring harnesses, and complete electrical diagnostics.</p></div>
+    <div class="service-card reveal d2"><div class="service-icon"><i class="fas fa-oil-can"></i></div><h3>Preventive Maintenance</h3><p>Oil changes, tune-ups, fluid checks, and scheduled maintenance to prevent costly repairs.</p></div>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="experience-grid">
+    <div class="exp-item reveal d1"><div class="exp-number"><span class="counter" data-target="10000">0</span><span class="suffix">+</span></div><div class="exp-label">Vehicles Serviced</div></div>
+    <div class="exp-item reveal d2"><div class="exp-number">4.9<span class="suffix">★</span></div><div class="exp-label">Google Rating</div></div>
+    <div class="exp-item reveal d3"><div class="exp-number"><span class="counter" data-target="15">0</span><span class="suffix">+</span></div><div class="exp-label">Years Experience</div></div>
+    <div class="exp-item reveal d4"><div class="exp-number"><span class="counter" data-target="5">0</span><span class="suffix"></span></div><div class="exp-label">Certified Techs</div></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <img src="https://placehold.co/600x420/111827/2563eb?text=CJ+Auto+Repair" alt="CJ Auto Repair">
+      <div class="about-badge">Certified ✓</div>
+    </div>
+    <div class="about-text reveal">
+      <span class="section-tag">About CJ Auto</span>
+      <h2>Certified <em>Technicians</em> You Can Trust</h2>
+      <p>At CJ Auto Repair, we believe in doing things right the first time. Our ASE-certified technicians have the training and tools to service all makes and models — from domestic to import, classic to modern.</p>
+      <p>We provide transparent pricing, honest assessments, and stand behind every repair with our comprehensive warranty.</p>
+      <div class="about-features">
+        <div class="about-feature"><i class="fas fa-certificate"></i> ASE Certified</div>
+        <div class="about-feature"><i class="fas fa-tools"></i> All Makes & Models</div>
+        <div class="about-feature"><i class="fas fa-hand-holding-usd"></i> Upfront Pricing</div>
+        <div class="about-feature"><i class="fas fa-undo"></i> 12-Mo Warranty</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="section-header reveal">
+    <span class="section-tag">Reviews</span>
+    <h2>Customer <em>Testimonials</em></h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal d1">
+      <div class="quote-icon">"</div>
+      <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="t-text">CJ Auto diagnosed my engine issue in minutes. What the dealer wanted $2,000 for, they fixed for $600. Certified quality at fair prices!</p>
+      <div class="t-author"><div class="t-avatar">M</div><div><div class="t-name">Michael P.</div><div class="t-role">Google Review</div></div></div>
+    </div>
+    <div class="testimonial-card reveal d2">
+      <div class="quote-icon">"</div>
+      <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="t-text">I've been bringing my cars here for years. The certified techs know their stuff, always explain what's needed, never push unnecessary work.</p>
+      <div class="t-author"><div class="t-avatar">S</div><div><div class="t-name">Sandra W.</div><div class="t-role">Yelp Review</div></div></div>
+    </div>
+    <div class="testimonial-card reveal d3">
+      <div class="quote-icon">"</div>
+      <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="t-text">Transmission rebuild was done perfectly. They even gave me a ride home while they worked. This is what auto repair should be.</p>
+      <div class="t-author"><div class="t-avatar">K</div><div><div class="t-name">Kevin L.</div><div class="t-role">Google Review</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Schedule Your <em>Repair Today</em></h2>
+  <p>Professional, certified auto repair at prices that won't break the bank. Call CJ Auto now.</p>
+  <a href="tel:7024547711" class="btn-primary"><i class="fas fa-phone"></i> Call (702) 454-7711</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>CJ <span>Auto Repair</span></h3>
+      <p>Certified auto repair in Las Vegas, Nevada. Professional technicians, honest service, guaranteed work.</p>
+      <div class="footer-social"><a href="#"><i class="fab fa-google"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-yelp"></i></a></div>
+    </div>
+    <div class="footer-col"><h4>Services</h4><a href="#">Engine Diagnostics</a><a href="#">Transmission</a><a href="#">Brakes</a><a href="#">A/C Service</a></div>
+    <div class="footer-col"><h4>Hours</h4><a href="#">Mon–Fri: 8am – 6pm</a><a href="#">Saturday: 8am – 3pm</a><a href="#">Sunday: Closed</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:7024547711"><i class="fas fa-phone"></i> (702) 454-7711</a><a href="#"><i class="fas fa-map-marker-alt"></i> Las Vegas, NV</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 CJ Auto Repair. All rights reserved.</p><p>Las Vegas, NV · <a href="tel:7024547711">(702) 454-7711</a></p></div>
+</footer>
+
+<div class="floating-cta" id="floatingCta"><a href="tel:7024547711"><i class="fas fa-phone"></i></a></div>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},800)});
+document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('menuClose').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
+const nav=document.getElementById('navbar'),fc=document.getElementById('floatingCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>80);fc.classList.toggle('visible',scrollY>600)});
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('active');ro.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const t=+x.target.dataset.target,s=performance.now();const a=n=>{const p=Math.min((n-s)/2000,1);x.target.textContent=Math.floor((1-Math.pow(1-p,4))*t);if(p<1)requestAnimationFrame(a);else x.target.textContent=t};requestAnimationFrame(a);co.unobserve(x.target)}})},{threshold:.5});
+document.querySelectorAll('.counter').forEach(el=>co.observe(el));
+</script>
+</body>
+</html>

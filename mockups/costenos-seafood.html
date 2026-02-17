@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costeños Seafood | Key Biscayne, FL</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--deep:#0a192f;--ocean:#0d2847;--teal:#0ea5e9;--coral:#ff6b6b;--coral2:#ff8787;
+--cream:#faf5ef;--sand:#f0e6d6;--white:#fff;--text:#3a3a3a;--text-light:#6b7280;
+--gold:#d4a574;--gold2:#e8c49a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);overflow-x:hidden;background:var(--cream)}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700}
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--deep)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--coral),var(--gold));border-radius:4px}
+
+/* PRELOADER */
+.preloader{position:fixed;inset:0;background:var(--deep);z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .8s cubic-bezier(.4,0,.2,1),visibility .8s}
+.preloader.hidden{opacity:0;visibility:hidden}
+.preloader-inner{text-align:center}
+.preloader-inner h2{font-family:'Playfair Display',serif;color:var(--cream);font-size:2.8rem;font-weight:300;letter-spacing:6px;opacity:0;animation:fadeUp .8s .2s forwards}
+.preloader-inner h2 span{background:linear-gradient(135deg,var(--coral),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);margin:20px auto 0;border-radius:2px;overflow:hidden}
+.preloader-bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,var(--coral),var(--gold));animation:preloaderSlide 1s ease infinite}
+@keyframes preloaderSlide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(15px)}}
+
+/* REVEAL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.9);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.active{opacity:1;transform:scale(1)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* STICKY PHONE BAR */
+.phone-bar{position:fixed;top:0;width:100%;z-index:10001;background:linear-gradient(90deg,var(--coral),var(--gold));padding:8px 6%;display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;font-weight:600;color:var(--white);transform:translateY(0);transition:transform .3s}
+.phone-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.phone-bar a:hover{text-decoration:underline}
+.phone-bar .separator{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
+
+/* NAV */
+nav{position:fixed;top:36px;width:100%;z-index:10000;padding:0 6%;display:flex;justify-content:space-between;align-items:center;height:80px;transition:all .4s cubic-bezier(.16,1,.3,1)}
+nav.scrolled{background:rgba(10,25,47,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 8px 32px rgba(0,0,0,.2);height:68px;top:0}
+nav.scrolled+.phone-bar-spacer~.phone-bar{transform:translateY(-100%)}
+.nav-logo{font-family:'Playfair Display',serif;color:var(--cream);font-size:1.8rem;font-weight:700;text-decoration:none;letter-spacing:1px}
+.nav-logo span{background:linear-gradient(135deg,var(--coral),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{color:rgba(250,245,239,.6);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--coral),var(--gold));transition:width .3s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:var(--cream)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--coral),var(--coral2));color:var(--white);padding:12px 30px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s;border:none;position:relative;overflow:hidden}
+.nav-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--coral2),var(--coral));opacity:0;transition:opacity .3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,107,107,.4)}
+.nav-cta:hover::before{opacity:1}
+.nav-cta span{position:relative;z-index:1}
+.mobile-toggle{display:none;color:var(--cream);font-size:1.5rem;cursor:pointer;background:none;border:none}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,25,47,.98);backdrop-filter:blur(20px);z-index:10002;flex-direction:column;align-items:center;justify-content:center;gap:30px;opacity:0;visibility:hidden;transition:all .4s}
+.mobile-menu.open{opacity:1;visibility:visible;display:flex}
+.mobile-menu a{color:var(--cream);text-decoration:none;font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;transition:color .3s}
+.mobile-menu a:hover{color:var(--coral)}
+.mobile-close{position:absolute;top:30px;right:30px;background:none;border:none;color:var(--cream);font-size:2rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:116px;background:var(--deep);display:flex;align-items:center;justify-content:center;text-align:center;padding-left:5%;padding-right:5%;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://placehold.co/1920x1080/0a192f/1a3a5c?text=') center/cover;opacity:.3}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(255,107,107,.08),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(212,165,116,.06),transparent 50%)}
+.hero-noise{position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(transparent,var(--cream));z-index:2}
+/* Floating decorative elements */
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;animation:blobFloat 8s ease-in-out infinite}
+.hero-blob-1{width:400px;height:400px;background:var(--coral);top:-100px;right:-100px;animation-delay:0s}
+.hero-blob-2{width:300px;height:300px;background:var(--gold);bottom:0;left:-50px;animation-delay:-3s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
+
+.hero-content{max-width:900px;position:relative;z-index:3}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,107,.1);border:1px solid rgba(255,107,107,.25);color:var(--coral);padding:10px 22px;border-radius:50px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:3px;margin-bottom:28px;backdrop-filter:blur(10px)}
+.hero-badge i{font-size:.65rem}
+.hero h1{font-size:clamp(3.2rem,8vw,6.5rem);color:var(--cream);line-height:.95;margin-bottom:28px;font-weight:400}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:inline-block;animation:heroReveal 1s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateY(100%)}
+.hero h1 .line:nth-child(2) span{animation-delay:.15s}
+.hero h1 em{font-style:italic;font-weight:400}
+.hero h1 strong{font-weight:800}
+.hero h1 .gradient-text{background:linear-gradient(135deg,var(--coral),var(--gold),var(--coral2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:gradientShift 4s ease infinite}
+@keyframes heroReveal{to{opacity:1;transform:translateY(0)}}
+@keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.hero p{color:rgba(250,245,239,.5);font-size:1.15rem;max-width:550px;margin:0 auto 40px;line-height:1.9;font-weight:300}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--coral),var(--coral2));color:var(--white);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--coral2),var(--coral));opacity:0;transition:opacity .3s}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(255,107,107,.35)}
+.btn-primary:hover::before{opacity:1}
+.btn-primary i,.btn-primary span{position:relative;z-index:1}
+.btn-primary .arrow{transition:transform .3s}
+.btn-primary:hover .arrow{transform:translateX(4px)}
+.btn-outline{border:1.5px solid rgba(250,245,239,.2);color:var(--cream);padding:18px 44px;border-radius:50px;text-decoration:none;font-weight:500;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s;backdrop-filter:blur(10px)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);background:rgba(212,165,116,.05)}
+
+/* SCROLL INDICATOR */
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-indicator span{color:rgba(250,245,239,.3);font-size:.65rem;text-transform:uppercase;letter-spacing:3px}
+.scroll-mouse{width:24px;height:38px;border:2px solid rgba(250,245,239,.2);border-radius:12px;position:relative}
+.scroll-mouse::after{content:'';position:absolute;top:6px;left:50%;width:3px;height:8px;margin-left:-1.5px;background:var(--coral);border-radius:2px;animation:scrollDown 1.5s ease infinite}
+@keyframes scrollDown{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+
+/* SECTION STYLES */
+.section-tag{color:var(--coral);font-size:.7rem;text-transform:uppercase;letter-spacing:5px;font-weight:600;margin-bottom:15px;display:block}
+.section-header{text-align:center;max-width:650px;margin:0 auto 70px}
+.section-header h2{font-size:clamp(2.2rem,4.5vw,3.8rem);color:var(--deep);line-height:1.1;font-weight:400}
+.section-header h2 em{font-style:italic;background:linear-gradient(135deg,var(--coral),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-header p{color:var(--text-light);margin-top:18px;line-height:1.9;font-size:.95rem}
+
+/* ABOUT */
+.about{padding:140px 6% 120px;background:var(--cream);position:relative}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:center}
+.about-img-wrapper{position:relative}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:480px;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.about-img:hover img{transform:scale(1.04)}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,107,.1),transparent);pointer-events:none}
+.about-img-badge{position:absolute;bottom:-20px;right:-20px;background:linear-gradient(135deg,var(--coral),var(--gold));color:var(--white);padding:20px 30px;border-radius:16px;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;box-shadow:0 12px 30px rgba(255,107,107,.3)}
+.about-floating-card{position:absolute;top:30px;left:-30px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.5);padding:18px 24px;border-radius:14px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 30px rgba(0,0,0,.08);z-index:2}
+.about-floating-card i{color:var(--coral);font-size:1.5rem}
+.about-floating-card .stars{color:var(--gold);font-size:.75rem;display:flex;gap:2px}
+.about-floating-card .rating-text{font-weight:700;color:var(--deep);font-size:.9rem}
+.about-floating-card .rating-sub{font-size:.7rem;color:var(--text-light)}
+.about-text h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--deep);margin-bottom:25px;line-height:1.15;font-weight:400}
+.about-text h2 em{font-style:italic;background:linear-gradient(135deg,var(--coral),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.about-text p{color:var(--text-light);line-height:1.9;margin-bottom:20px;font-size:.95rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:35px}
+.about-feature{display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--deep);font-weight:500;padding:12px 16px;background:var(--white);border-radius:12px;border:1px solid rgba(0,0,0,.04);transition:all .3s}
+.about-feature:hover{transform:translateX(5px);box-shadow:0 4px 15px rgba(0,0,0,.06)}
+.about-feature i{color:var(--coral);font-size:1rem;width:20px;text-align:center}
+
+/* MENU */
+.menu{padding:120px 6%;background:var(--white);position:relative;overflow:hidden}
+.menu::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,107,.04),transparent);pointer-events:none}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.menu-card{background:var(--cream);border-radius:20px;overflow:hidden;transition:all .5s cubic-bezier(.16,1,.3,1);cursor:pointer;position:relative}
+.menu-card:hover{transform:translateY(-12px);box-shadow:0 24px 60px rgba(10,25,47,.12)}
+.menu-card-img{height:240px;overflow:hidden;position:relative}
+.menu-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.menu-card:hover .menu-card-img img{transform:scale(1.1)}
+.menu-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(10,25,47,.3))}
+.menu-card-body{padding:28px 30px 32px}
+.menu-card-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:10px}
+.menu-card h3{font-size:1.5rem;color:var(--deep);font-weight:600}
+.menu-card .price{font-family:'Playfair Display',serif;font-size:1.5rem;background:linear-gradient(135deg,var(--coral),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.menu-card p{color:var(--text-light);font-size:.88rem;line-height:1.8}
+
+/* EXPERIENCE / STATS */
+.experience{padding:100px 6%;background:var(--deep);position:relative;overflow:hidden}
+.experience::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,107,107,.06),transparent 50%),radial-gradient(ellipse at 80% 50%,rgba(212,165,116,.04),transparent 50%)}
+.experience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1100px;margin:0 auto;text-align:center}
+.exp-item{position:relative;padding:30px 0}
+.exp-item:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:60px;background:linear-gradient(transparent,rgba(250,245,239,.1),transparent)}
+.exp-number{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);color:var(--cream);font-weight:300;line-height:1}
+.exp-number .counter-suffix{background:linear-gradient(135deg,var(--coral),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.exp-label{color:rgba(250,245,239,.35);font-size:.72rem;text-transform:uppercase;letter-spacing:4px;font-weight:500;margin-top:12px}
+
+/* TESTIMONIALS */
+.testimonials{padding:120px 6%;background:var(--cream);position:relative}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+.testimonial-card{background:rgba(255,255,255,.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.8);border-radius:20px;padding:40px 35px;transition:all .4s;position:relative;overflow:hidden}
+.testimonial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--gold));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(10,25,47,.08)}
+.testimonial-card:hover::before{transform:scaleX(1)}
+.quote-icon{font-family:'Playfair Display',serif;font-size:6rem;background:linear-gradient(135deg,var(--coral),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:.15;line-height:1;position:absolute;top:10px;right:25px}
+.testimonial-stars{color:var(--gold);font-size:.9rem;margin-bottom:16px;display:flex;gap:3px}
+.testimonial-text{color:var(--text-light);font-size:.95rem;line-height:1.9;margin-bottom:22px;font-style:italic;position:relative;z-index:1}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:var(--white);font-size:1.1rem}
+.testimonial-name{font-weight:600;font-size:.9rem;color:var(--deep)}
+.testimonial-role{font-size:.75rem;color:var(--text-light);display:flex;align-items:center;gap:4px}
+.testimonial-role i{color:var(--gold);font-size:.6rem}
+
+/* GALLERY */
+.gallery{padding:120px 6%;background:var(--white)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1200px;margin:0 auto}
+.gallery-item{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;aspect-ratio:1}
+.gallery-item:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .4s}
+.gallery-item:hover img{transform:scale(1.12);filter:brightness(1.1)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(10,25,47,.6));opacity:0;transition:opacity .4s}
+.gallery-item:hover::after{opacity:1}
+.gallery-item .gallery-zoom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);color:var(--white);font-size:1.5rem;z-index:2;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.gallery-item:hover .gallery-zoom{transform:translate(-50%,-50%) scale(1)}
+
+/* RESERVATION */
+.reservation{padding:140px 6%;background:var(--deep);text-align:center;position:relative;overflow:hidden}
+.reservation::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,107,107,.05),transparent 60%)}
+.reservation .section-header h2{color:var(--cream)}
+.reservation .section-header h2 em{color:var(--coral)}
+.reservation .section-header p{color:rgba(250,245,239,.4)}
+.reservation-form{max-width:750px;margin:50px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-group{position:relative}
+.form-group.full{grid-column:span 2}
+.reservation-form input,.reservation-form select{width:100%;padding:20px 24px;border:1.5px solid rgba(250,245,239,.08);border-radius:14px;background:rgba(250,245,239,.04);color:var(--cream);font-family:'Inter',sans-serif;font-size:.9rem;transition:all .3s;outline:none;backdrop-filter:blur(10px)}
+.reservation-form input::placeholder{color:rgba(250,245,239,.25)}
+.reservation-form input:focus,.reservation-form select:focus{border-color:var(--coral);background:rgba(250,245,239,.06);box-shadow:0 0 0 4px rgba(255,107,107,.1)}
+.reservation-submit{grid-column:span 2;background:linear-gradient(135deg,var(--coral),var(--gold));color:var(--white);padding:20px;border:none;border-radius:50px;font-size:.9rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .4s;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden}
+.reservation-submit::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold),var(--coral));opacity:0;transition:opacity .3s}
+.reservation-submit:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(255,107,107,.3)}
+.reservation-submit:hover::before{opacity:1}
+.reservation-submit i,.reservation-submit span{position:relative;z-index:1}
+
+/* URGENCY BANNER */
+.urgency{background:linear-gradient(135deg,rgba(255,107,107,.05),rgba(212,165,116,.05));border:1px solid rgba(255,107,107,.1);border-radius:14px;padding:18px 28px;display:inline-flex;align-items:center;gap:12px;margin-top:30px;font-size:.85rem;color:var(--cream)}
+.urgency i{color:var(--coral);font-size:1rem}
+.urgency strong{color:var(--gold)}
+
+/* GOOGLE REVIEWS BADGE */
+.google-badge{display:inline-flex;align-items:center;gap:10px;background:var(--white);padding:12px 22px;border-radius:50px;box-shadow:0 4px 20px rgba(0,0,0,.06);margin-top:40px}
+.google-badge img{width:20px;height:20px}
+.google-badge .g-icon{font-size:1.2rem}
+.google-badge .g-stars{color:#f59e0b;font-size:.8rem;display:flex;gap:2px}
+.google-badge .g-text{font-size:.8rem;color:var(--text-light);font-weight:500}
+.google-badge .g-rating{font-weight:700;color:var(--deep)}
+
+/* FOOTER */
+footer{background:#06101f;padding:100px 6% 30px;position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--coral),var(--gold),transparent)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:50px;max-width:1200px;margin:0 auto}
+.footer-brand h3{font-family:'Playfair Display',serif;font-size:2rem;color:var(--cream);font-weight:400;margin-bottom:16px}
+.footer-brand h3 span{background:linear-gradient(135deg,var(--coral),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-brand p{color:rgba(250,245,239,.35);font-size:.85rem;line-height:1.9;margin-bottom:22px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(250,245,239,.1);display:flex;align-items:center;justify-content:center;color:rgba(250,245,239,.4);text-decoration:none;transition:all .3s}
+.footer-social a:hover{border-color:var(--coral);color:var(--coral);transform:translateY(-3px);box-shadow:0 6px 20px rgba(255,107,107,.15)}
+.footer-col h4{color:var(--cream);font-family:'Inter',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:22px}
+.footer-col a{display:block;color:rgba(250,245,239,.35);text-decoration:none;font-size:.85rem;margin-bottom:12px;transition:all .3s;padding-left:0}
+.footer-col a:hover{color:var(--coral);padding-left:5px}
+.footer-newsletter input{width:100%;padding:16px 20px;border:1px solid rgba(250,245,239,.08);border-radius:50px;background:rgba(250,245,239,.04);color:var(--cream);font-size:.85rem;margin-bottom:12px;outline:none;font-family:'Inter',sans-serif;transition:border-color .3s}
+.footer-newsletter input::placeholder{color:rgba(250,245,239,.2)}
+.footer-newsletter input:focus{border-color:var(--coral)}
+.footer-newsletter button{width:100%;padding:16px;border:none;border-radius:50px;background:linear-gradient(135deg,var(--coral),var(--gold));color:var(--white);font-weight:600;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif}
+.footer-newsletter button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,107,107,.3)}
+.footer-bottom{border-top:1px solid rgba(250,245,239,.06);margin-top:60px;padding-top:25px;display:flex;justify-content:space-between;align-items:center;color:rgba(250,245,239,.25);font-size:.8rem;flex-wrap:wrap;gap:10px}
+
+/* FLOATING CTA */
+.floating-cta{position:fixed;bottom:30px;right:30px;z-index:9999;opacity:0;visibility:hidden;transition:all .4s}
+.floating-cta.visible{opacity:1;visibility:visible}
+.floating-cta a{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--gold));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;text-decoration:none;box-shadow:0 8px 30px rgba(255,107,107,.4);transition:all .3s;animation:pulse 2s ease infinite}
+.floating-cta a:hover{transform:scale(1.1)}
+@keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(255,107,107,.4)}50%{box-shadow:0 8px 50px rgba(255,107,107,.6)}}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+  .nav-links{display:none}
+  .mobile-toggle{display:block}
+  .about-grid{grid-template-columns:1fr;gap:50px}
+  .about-floating-card{position:relative;top:auto;left:auto;margin-bottom:15px;display:inline-flex}
+  .about-img-badge{bottom:15px;right:15px}
+  .experience-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .exp-item::after{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item:first-child{grid-column:span 2}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .phone-bar{font-size:.7rem;gap:10px}
+}
+@media(max-width:600px){
+  .hero h1{font-size:clamp(2.6rem,10vw,3.8rem)}
+  .experience-grid{grid-template-columns:1fr 1fr}
+  .menu-grid{grid-template-columns:1fr}
+  .testimonial-grid{grid-template-columns:1fr}
+  .reservation-form{grid-template-columns:1fr}
+  .form-group.full,.reservation-submit{grid-column:span 1}
+  .footer-grid{grid-template-columns:1fr}
+  .about-features{grid-template-columns:1fr}
+  nav{top:32px}
+  .phone-bar{padding:6px 4%}
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <h2>Costeños <span>Seafood</span></h2>
+    <div class="preloader-bar"></div>
+  </div>
+</div>
+
+<!-- PHONE BAR -->
+<div class="phone-bar" id="phoneBar">
+  <a href="tel:3055550123"><i class="fas fa-phone"></i> (305) 555-0123</a>
+  <span class="separator"></span>
+  <span><i class="fas fa-map-marker-alt"></i> 180 Crandon Blvd, Key Biscayne</span>
+  <span class="separator"></span>
+  <span><i class="fas fa-clock"></i> Open Today: 11am – 10pm</span>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Costeños <span>Seafood</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#reservation" class="nav-cta"><span>Reserve a Table</span></a></li>
+  </ul>
+  <button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose"><i class="fas fa-times"></i></button>
+  <a href="#about" onclick="closeMobile()">Our Story</a>
+  <a href="#menu" onclick="closeMobile()">Menu</a>
+  <a href="#gallery" onclick="closeMobile()">Gallery</a>
+  <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+  <a href="#reservation" onclick="closeMobile()">Reservations</a>
+  <a href="tel:3055550123" style="color:var(--coral)"><i class="fas fa-phone"></i> (305) 555-0123</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-star"></i> Key Biscayne's Finest Seafood</div>
+    <h1>
+      <span class="line"><span><em>Savor the</em></span></span>
+      <span class="line"><span><strong class="gradient-text">Ocean's Finest</strong></span></span>
+    </h1>
+    <p>An elegant coastal dining experience where the freshest catch meets Latin-inspired flavors and breathtaking waterfront ambiance.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary"><i class="fas fa-utensils"></i> <span>View Menu</span> <i class="fas fa-arrow-right arrow"></i></a>
+      <a href="#reservation" class="btn-outline">Reserve a Table</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrapper reveal-left">
+      <div class="about-floating-card">
+        <div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="rating-text">4.9 on Google</div>
+          <div class="rating-sub">Based on 200+ reviews</div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://placehold.co/600x480/0a192f/d4a574?text=Our+Kitchen" alt="Our Kitchen">
+      </div>
+      <div class="about-img-badge">Est. 2018</div>
+    </div>
+    <div class="about-text reveal-right">
+      <span class="section-tag">Our Story</span>
+      <h2>Where <em>Tradition</em> Meets the Sea</h2>
+      <p>Born from a family passion for coastal cuisine, Costeños brings the authentic flavors of Latin American seafood to Key Biscayne. Every dish tells a story of heritage, craftsmanship, and the ocean's bounty.</p>
+      <p>Our chef-curated menu features sustainably sourced seafood, prepared with time-honored techniques and modern artistry that celebrates the coast.</p>
+      <div class="about-features">
+        <div class="about-feature"><i class="fas fa-fish"></i> Fresh Daily Catch</div>
+        <div class="about-feature"><i class="fas fa-leaf"></i> Sustainable Sourcing</div>
+        <div class="about-feature"><i class="fas fa-wine-glass-alt"></i> Curated Wine List</div>
+        <div class="about-feature"><i class="fas fa-water"></i> Waterfront Dining</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="section-header reveal">
+    <span class="section-tag">The Menu</span>
+    <h2>Crafted with <em>Passion</em></h2>
+    <p>Each plate is a celebration of the ocean's finest ingredients, prepared by our award-winning culinary team.</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card reveal d1">
+      <div class="menu-card-img"><img src="https://placehold.co/400x260/0a192f/ff6b6b?text=🦞+Lobster" alt="Grilled Lobster"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-top"><h3>Grilled Lobster</h3><span class="price">$42</span></div>
+        <p>Whole Maine lobster grilled with garlic herb butter, served with coconut rice and sweet plantains.</p>
+      </div>
+    </div>
+    <div class="menu-card reveal d2">
+      <div class="menu-card-img"><img src="https://placehold.co/400x260/0d2847/d4a574?text=🐟+Ceviche" alt="Ceviche Mixto"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-top"><h3>Ceviche Mixto</h3><span class="price">$24</span></div>
+        <p>Shrimp, octopus, and fresh fish marinated in tiger's milk with red onion and crispy corn.</p>
+      </div>
+    </div>
+    <div class="menu-card reveal d3">
+      <div class="menu-card-img"><img src="https://placehold.co/400x260/071020/ff6b6b?text=🦐+Prawns" alt="Garlic Prawns"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-top"><h3>Garlic Prawns</h3><span class="price">$28</span></div>
+        <p>Jumbo prawns sautéed in white wine, garlic, and chili flakes on a bed of saffron risotto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="experience">
+  <div class="experience-grid">
+    <div class="exp-item reveal d1">
+      <div class="exp-number"><span class="counter" data-target="6">0</span><span class="counter-suffix">+</span></div>
+      <div class="exp-label">Years Serving</div>
+    </div>
+    <div class="exp-item reveal d2">
+      <div class="exp-number"><span class="counter" data-target="50">0</span><span class="counter-suffix">K+</span></div>
+      <div class="exp-label">Guests Served</div>
+    </div>
+    <div class="exp-item reveal d3">
+      <div class="exp-number">4.9<span class="counter-suffix">★</span></div>
+      <div class="exp-label">Google Rating</div>
+    </div>
+    <div class="exp-item reveal d4">
+      <div class="exp-number"><span class="counter" data-target="30">0</span><span class="counter-suffix">+</span></div>
+      <div class="exp-label">Signature Dishes</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header reveal">
+    <span class="section-tag">Guest Reviews</span>
+    <h2>What Our <em>Guests</em> Say</h2>
+    <div class="google-badge">
+      <i class="fab fa-google g-icon" style="color:#4285F4"></i>
+      <div class="g-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <span class="g-text"><span class="g-rating">4.9</span> · 200+ reviews</span>
+    </div>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal d1">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">The best seafood I've had in South Florida. The ceviche is absolutely divine, and the waterfront atmosphere is unmatched. A must-visit!</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div><div class="testimonial-name">Maria S.</div><div class="testimonial-role"><i class="fab fa-google"></i> Google Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d2">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">We celebrated our anniversary here and it was magical. The lobster was cooked to perfection, and the staff made us feel like VIPs.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">J</div>
+        <div><div class="testimonial-name">James R.</div><div class="testimonial-role"><i class="fab fa-yelp"></i> Yelp Review</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal d3">
+      <div class="quote-icon">"</div>
+      <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p class="testimonial-text">Every time we visit Key Biscayne, Costeños is our first stop. Consistently incredible food and a warm, inviting atmosphere.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">A</div>
+        <div><div class="testimonial-name">Ana L.</div><div class="testimonial-role"><i class="fas fa-map-marker-alt"></i> TripAdvisor</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-header reveal">
+    <span class="section-tag">Gallery</span>
+    <h2>A Glimpse of <em>Costeños</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal-scale"><img src="https://placehold.co/600x600/0a192f/d4a574?text=Dining+Room" alt="Dining Room"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d1"><img src="https://placehold.co/300x300/0d2847/ff6b6b?text=Plating" alt="Plating"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d2"><img src="https://placehold.co/300x300/071020/faf5ef?text=Bar" alt="Bar"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d3"><img src="https://placehold.co/300x300/0a192f/ff6b6b?text=Patio" alt="Patio"><i class="fas fa-search-plus gallery-zoom"></i></div>
+    <div class="gallery-item reveal-scale d4"><img src="https://placehold.co/300x300/0d2847/d4a574?text=Kitchen" alt="Kitchen"><i class="fas fa-search-plus gallery-zoom"></i></div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section class="reservation" id="reservation">
+  <div class="section-header reveal">
+    <span class="section-tag">Reservations</span>
+    <h2>Reserve Your <em>Table</em></h2>
+    <p>Join us for an unforgettable dining experience on the water.</p>
+  </div>
+  <form class="reservation-form reveal" onsubmit="return false">
+    <div class="form-group"><input type="text" placeholder="Your Name" required></div>
+    <div class="form-group"><input type="email" placeholder="Email Address" required></div>
+    <div class="form-group"><input type="tel" placeholder="Phone Number"></div>
+    <div class="form-group"><input type="date"></div>
+    <div class="form-group"><input type="time"></div>
+    <div class="form-group">
+      <select><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5+ Guests</option></select>
+    </div>
+    <button type="submit" class="reservation-submit"><span>Reserve Now</span> <i class="fas fa-arrow-right"></i></button>
+  </form>
+  <div class="urgency reveal">
+    <i class="fas fa-fire"></i> <span><strong>Valentine's Special:</strong> Complimentary dessert for two with every reservation this month</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand reveal">
+      <h3>Costeños <span>Seafood</span></h3>
+      <p>An elegant coastal dining experience in the heart of Key Biscayne, Florida. Fresh catches, Latin flavors, waterfront views.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-yelp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col reveal d1">
+      <h4>Navigation</h4>
+      <a href="#about">Our Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#reservation">Reservations</a>
+    </div>
+    <div class="footer-col reveal d2">
+      <h4>Hours</h4>
+      <a href="#">Mon–Thu: 11am – 10pm</a>
+      <a href="#">Fri–Sat: 11am – 11pm</a>
+      <a href="#">Sunday: 11am – 9pm</a>
+      <a href="#">Happy Hour: 4–6pm</a>
+    </div>
+    <div class="footer-col reveal d3">
+      <h4>Stay Updated</h4>
+      <p style="color:rgba(250,245,239,.35);font-size:.85rem;margin-bottom:15px;line-height:1.8">Get special offers and event invitations delivered to your inbox.</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Your email address">
+        <button>Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Costeños Seafood. All rights reserved.</p>
+    <p>180 Crandon Blvd, Key Biscayne, FL 33149 · <a href="tel:3055550123" style="color:var(--coral);text-decoration:none">(305) 555-0123</a></p>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="floating-cta" id="floatingCta">
+  <a href="tel:3055550123" title="Call Now"><i class="fas fa-phone"></i></a>
+</div>
+
+<script>
+// Preloader
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('preloader').classList.add('hidden')},1000)});
+
+// Mobile menu
+document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('menuClose').addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
+
+// Nav scroll + phone bar hide + floating CTA
+const nav=document.getElementById('navbar');
+const floatingCta=document.getElementById('floatingCta');
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY>80;
+  nav.classList.toggle('scrolled',s);
+  floatingCta.classList.toggle('visible',window.scrollY>600);
+});
+
+// Scroll reveal with IntersectionObserver
+const revealObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObserver.unobserve(e.target)}})
+},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>revealObserver.observe(el));
+
+// Animated counters
+const counterObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const target=+el.getAttribute('data-target');
+      const duration=2000;
+      const start=performance.now();
+      const animate=(now)=>{
+        const progress=Math.min((now-start)/duration,1);
+        const eased=1-Math.pow(1-progress,4);
+        el.textContent=Math.floor(eased*target);
+        if(progress<1)requestAnimationFrame(animate);
+        else el.textContent=target;
+      };
+      requestAnimationFrame(animate);
+      counterObserver.unobserve(el);
+    }
+  })
+},{threshold:.5});
+document.querySelectorAll('.counter').forEach(el=>counterObserver.observe(el));
+
+// Parallax on hero blobs
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  document.querySelectorAll('.hero-blob').forEach((blob,i)=>{
+    blob.style.transform=`translateY(${y*(i===0?.15:-.1)}px)`;
+  });
+});
+</script>
+</body>
+</html>
